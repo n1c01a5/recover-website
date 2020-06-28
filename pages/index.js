@@ -1,15 +1,17 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
+import TextLoop from 'react-text-loop'
 
 import Layout from '../components/layout'
+import Button from '../components/elements/button'
 
 export default function Home() {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1224px)'
   })
 
-  const [ isMenuOpen, setIsMenuOpen ] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <Layout>
@@ -25,11 +27,24 @@ export default function Home() {
               <div>
                 <h1>
                   Blockchain Friendly Gadget,
-                  <br />Lost & Found Service for Ledger.
+                  <br />Lost & Found Service for&nbsp;
+                  <TextLoop mask={true} interval={1400}>
+                    <span>Phone</span>
+                    <span>Wallet</span>
+                    <span>Pets</span>
+                    <span>Keys</span>
+                    <span>Wallet</span>
+                    <span>Bag</span>
+                    <span>Tablet</span>
+                    <span>Ledger</span>
+                    <span>Luggage</span>
+                    <span>AirPods</span>
+                  </TextLoop>
+                  .
                 </h1>
                 <div>
-                  <div><button>How it Works</button></div>
-                  <div><button>Get your Loser Box</button></div>
+                  <div><Button>How it Works</Button></div>
+                  <div><Button isPrimary={true}>Get your Loser Box</Button></div>
                 </div>
               </div>
               <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" className="doge" /></div>
@@ -42,9 +57,9 @@ export default function Home() {
             </div>
             <div>
               <ul>
-                <li><a href="#">Kleros</a></li>
-                <li><a href="#">Ethereum</a></li>
-                <li><a href="#">IPFS</a></li>
+                <li className="tool"><a href="#">Kleros</a></li>
+                <li className="tool"><a href="#">Ethereum</a></li>
+                <li className="tool"><a href="#">IPFS</a></li>
               </ul>
             </div>
           </div>
@@ -61,19 +76,19 @@ export default function Home() {
                   Generate QrCode with contact information and reward and paste it on your valuable to assure return if lost.
                 </p>
               </div>
-              <div></div>
+              <div><img src="/generate-qr-code.jpg" alt="Generate Lost and Found QrCode" role="presentation" /></div>
             </div>
             <div style={{display: 'flex'}}>
+              <div><img src="/lose-valuable.jpg" alt="Lose your Valuable" role="presentation" /></div>
               <div>
                 <p>If your valuable is lost, the finder is incentivized to return.</p>
               </div>
-              <div></div>
             </div>
             <div style={{display: 'flex'}}>
               <div>
                 <p>If the finder returns your valuable, you share the reward for his good deed.</p>
               </div>
-              <div></div>
+              <div><img src="/exchange-valuable.jpg" alt="Exchange the Reward against the Valuable" role="presentation" /></div>
             </div>
           </div>
         </section>
@@ -124,7 +139,7 @@ export default function Home() {
           <ul>
             <li>
               <h3>What is Lorem Ipsum ?</h3>
-              <i className="active" />
+              <i className="isOpenQuestion" />
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             </li>
             <li>
@@ -150,6 +165,10 @@ export default function Home() {
           margin: 0;
         }
 
+        .tool {
+          display: inline;
+        }
+
         li {
           position: relative;
           padding: 0;
@@ -171,7 +190,7 @@ export default function Home() {
           content: "+";
         }
 
-        i.active:after {
+        i.isOpenQuestion:after {
           content: "−";
         }
       `}</style>
