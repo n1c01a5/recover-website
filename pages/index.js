@@ -1,194 +1,180 @@
 import Head from 'next/head'
+import { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
+
+import Layout from '../components/layout'
 
 export default function Home() {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-device-width: 1224px)'
+  })
+
+  const [ isMenuOpen, setIsMenuOpen ] = useState(false)
+
   return (
-    <div className="container">
+    <Layout>
       <Head>
         <title>Recover.ws - Lost anf Found service based on the Ethereum Blockchain</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div>
-        <header>
-          <nav style={{display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: '500'}}>
-            <div><img src="/recover.png" alt="Recover Logo" className="logo" /></div>
-            <div style={{display: 'flex'}}>
-              <div>APPLICATION</div>
-              <div style={{margin: '0 70px'}}>BLOG</div>
-              <div>ABOUT</div>
+        <header >
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+              <div>
+                <h1>
+                  Blockchain Friendly Gadget,
+                  <br />Lost & Found Service for Ledger.
+                </h1>
+                <div>
+                  <div><button>How it Works</button></div>
+                  <div><button>Get your Loser Box</button></div>
+                </div>
+              </div>
+              <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" className="doge" /></div>
             </div>
-            <div>GET YOUR LOSER BOX</div>
-          </nav>
+          </div>
+
+          <div>
+            <div>
+              <p><a href="#">#Build</a> top on</p>
+            </div>
+            <div>
+              <ul>
+                <li><a href="#">Kleros</a></li>
+                <li><a href="#">Ethereum</a></li>
+                <li><a href="#">IPFS</a></li>
+              </ul>
+            </div>
+          </div>
         </header>
       </div>
 
-
       <div>
-        <main>
-          <header style={{display: 'flex', justifyContent: 'space-between'}}>
-            <div>
-              <h1>
-                Blockchain Friendly Gadget,
-                <br />Lost & Found Service for Ledger.
-              </h1>
+        <section>
+          <h2>How I can Protect my Valuables from Loss?</h2>
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div style={{display: 'flex'}}>
+              <div>
+                <p>
+                  Generate QrCode with contact information and reward and paste it on your valuable to assure return if lost.
+                </p>
+              </div>
+              <div></div>
             </div>
-            <div><img src="/doge.png" alt="Doge" className="doge" /></div>
-          </header>
-          
-          <h1 className="title">
-          </h1>
-        </main>
+            <div style={{display: 'flex'}}>
+              <div>
+                <p>If your valuable is lost, the finder is incentivized to return.</p>
+              </div>
+              <div></div>
+            </div>
+            <div style={{display: 'flex'}}>
+              <div>
+                <p>If the finder returns your valuable, you share the reward for his good deed.</p>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </section>
       </div>
 
       <div>
-        <footer>
-          RECOVER 2020
-        </footer>
+        <section>
+          <h2>Why Choose the Recover Lost and Found Service?</h2>
+          <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div style={{display: 'flex'}}>
+              <div>
+                <h3>Resilience</h3>
+              </div>
+              <div>
+                <h3>Incentive</h3>
+              </div>
+              <div>
+                <h3>Privacy</h3>
+              </div>
+            </div>
+            <div>
+              <h3>Participate to the Blockchain Ecosystem</h3>
+              <div style={{display: 'flex', flex: '1 1'}}>
+                <div>
+                  <p>Recover is a blockchain sandbox to improve:</p>
+                </div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section>
+          <h2>Take a Look at our Products!</h2>
+          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div>FREEMIUM</div>
+            <div>LOSER BOX</div>
+            <div>BUSINESS</div>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section>
+          <h2>Frequently Asked Questions</h2>
+          <ul>
+            <li>
+              <h3>What is Lorem Ipsum ?</h3>
+              <i className="active" />
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </li>
+            <li>
+              <h3>Why do we use it ?</h3>
+              <i />
+              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+            </li>
+            <li>
+              <h3>Where we can it ?</h3>
+              <i />
+              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+            </li>
+          </ul>
+        </section>
       </div>
 
       <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          font-family: Montserrat, Roboto,
-          Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-          sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-        main {
-          padding: 10em 0;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          width: 170px;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
+        ul {
+          list-style: none;
           padding: 0;
           margin: 0;
-          font-family: Montserrat, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-          text-rendering: optimizeLegibility;
-          padding: 1em 5em;
         }
 
-        * {
-          box-sizing: border-box;
+        li {
+          position: relative;
+          padding: 0;
+          margin: 0;
+          padding-bottom: 4px;
+          padding-top: 18px;
+          border-top: 1px solid #dce7eb;
+        }
+
+        i {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 30px;
+          font-style: normal;
+        }
+
+        i:after {
+          content: "+";
+        }
+
+        i.active:after {
+          content: "−";
         }
       `}</style>
-    </div>
+    </Layout>
   )
 }
