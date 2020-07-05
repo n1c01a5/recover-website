@@ -11,8 +11,6 @@ export default function Home() {
     query: '(min-device-width: 1224px)'
   })
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   return (
     <Layout>
       <Head>
@@ -21,13 +19,13 @@ export default function Home() {
       </Head>
 
       <div>
-        <header >
+        <header>
           <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', minWidth: '1250px'}}>
               <div>
                 <h1>
                   Blockchain Friendly Gadget,
-                  <br />Lost & Found Service for&nbsp;
+                  <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
                   <TextLoop mask={true} interval={1400}>
                     <span>Phone</span>
                     <span>Wallet</span>
@@ -42,12 +40,12 @@ export default function Home() {
                   </TextLoop>
                   .
                 </h1>
-                <div>
+                <div style={{display: 'flex', justifyContent: 'space-between', width: '500px', marginTop: '50px'}}>
                   <div><Button>How it Works</Button></div>
                   <div><Button isPrimary={true}>Get your Loser Box</Button></div>
                 </div>
               </div>
-              <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" className="doge" /></div>
+              <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
             </div>
           </div>
 
@@ -57,9 +55,9 @@ export default function Home() {
             </div>
             <div>
               <ul>
-                <li className="tool"><a href="#">Kleros</a></li>
-                <li className="tool"><a href="#">Ethereum</a></li>
-                <li className="tool"><a href="#">IPFS</a></li>
+                <li><a href="#">Kleros</a></li>
+                <li><a href="#">Ethereum</a></li>
+                <li><a href="#">IPFS</a></li>
               </ul>
             </div>
           </div>
@@ -139,7 +137,7 @@ export default function Home() {
           <ul>
             <li>
               <h3>What is Lorem Ipsum ?</h3>
-              <i className="isOpenQuestion" />
+              <i />
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             </li>
             <li>
@@ -157,7 +155,9 @@ export default function Home() {
       </div>
 
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        h1 {
+          font-weight: 700;
+        }
 
         ul {
           list-style: none;
