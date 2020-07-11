@@ -1,7 +1,30 @@
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useLayoutEffect, useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { slide as Menu } from 'react-burger-menu'
+
+import Button from './elements/button'
+
+function useResponsive() {
+  const [isClient, setIsClient] = useState(false);
+
+  const isMobile = useMediaQuery({
+    maxWidth: '1224px'
+  })
+
+  const isDesktop = useMediaQuery({
+    minWidth: '1224px'
+  })
+
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') setIsClient(true);
+  }, [])
+
+  return {
+    isDesktop: isClient ? isDesktop : true,
+    isMobile: isClient ? isMobile : false
+  }
+}
 
 function Scroll({setTop, isTop}) {
   useEffect(function onFirstMount() {
@@ -22,11 +45,8 @@ function Scroll({setTop, isTop}) {
 }
 
 const Layout = ({ children }) => {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1224px)'
-  })
+  const { isMobile, isClient } = useResponsive()
 
-  const [ isMenuOpen, setIsMenuOpen ] = useState(false)
   const [isTop, setTop] = useState(true)
 
   Scroll({setTop, isTop})
@@ -35,18 +55,23 @@ const Layout = ({ children }) => {
     <>
       <nav suppressHydrationWarning={true}>{/* FIXME: remove this props to mute warning. */}
         {
-          isDesktopOrLaptop ? (
+          isMobile ? (
+            <div className="header-menu-small">
+              <img className="header-menu-logo" src="/recover.png" alt="Recover Logo" />
+              <Menu>
+                <a href="/">Application</a>
+              </Menu>
+            </div>
+          ) : (
             <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
               <div><img className="header-menu-logo" src="/recover.png" alt="Recover Logo" /></div>
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <div>APPLICATION</div>
-                <div>BLOG</div>
-                <div>ABOUT</div>
+                <div style={{padding: '0 40px'}}>APPLICATION</div>
+                <div style={{padding: '0 40px'}}>BLOG</div>
+                <div style={{padding: '0 40px'}}>ABOUT</div>
               </div>
-              <div>GET YOUR LOSER BOX</div>
+              <div><Button isPrimary={true}>Get Your Loser Box</Button></div>
             </div>
-          ) : (
-            <>Mobile</>
           )
         }
       </nav>
@@ -84,6 +109,7 @@ const Layout = ({ children }) => {
 
           .header-menu {
             display: flex;
+            justify-content: space-between;
             position: fixed;
             min-width: 100vw;
             padding: 0 calc((100vw - 1250px) / 2);
@@ -105,23 +131,33 @@ const Layout = ({ children }) => {
             top: 5px;
           }
 
+          .header-menu-small {
+            position: fixed;
+            box-shadow: 0px 1px 10px #999;
+            background: #fff;
+            line-height: 60px;
+            min-width: 100%;
+            color: #444;
+            z-index: 100;
+          }
+
           /* Position and sizing of burger button */
           .bm-burger-button {
             position: fixed;
             width: 36px;
             height: 30px;
             right: 36px;
-            top: 36px;
+            top: 16px;
           }
 
           /* Color/shape of burger icon bars */
           .bm-burger-bars {
-            background: #373a47;
+            background: #444;
           }
 
           /* Color/shape of burger icon bars on hover*/
           .bm-burger-bars-hover {
-            background: #a90000;
+            background: #444;
           }
 
           /* Position and sizing of clickable cross button */
@@ -132,7 +168,7 @@ const Layout = ({ children }) => {
 
           /* Color/shape of close button cross */
           .bm-cross {
-            background: #bdc3c7;
+            background: #444;
           }
 
           /*
@@ -146,19 +182,14 @@ const Layout = ({ children }) => {
 
           /* General sidebar styles */
           .bm-menu {
-            background: #373a47;
+            background: #fff;
             padding: 2.5em 1.5em 0;
             font-size: 1.15em;
           }
 
-          /* Morph shape necessary with bubble or elastic */
-          .bm-morph-shape {
-            fill: #373a47;
-          }
-
           /* Wrapper for item list */
           .bm-item-list {
-            color: #b8b7ad;
+            color: #444;
             padding: 0.8em;
           }
 

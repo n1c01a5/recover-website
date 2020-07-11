@@ -20,47 +20,53 @@ export default function Home() {
 
       <div>
         <header>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', minWidth: '1250px'}}>
-              <div>
-                <h1>
-                  Blockchain Friendly Gadget,
-                  <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
-                  <TextLoop mask={true} interval={1400}>
-                    <span>Phone</span>
-                    <span>Wallet</span>
-                    <span>Pets</span>
-                    <span>Keys</span>
-                    <span>Wallet</span>
-                    <span>Bag</span>
-                    <span>Tablet</span>
-                    <span>Ledger</span>
-                    <span>Luggage</span>
-                    <span>AirPods</span>
-                  </TextLoop>
-                  .
-                </h1>
-                <div style={{display: 'flex', justifyContent: 'space-between', width: '500px', marginTop: '50px'}}>
-                  <div><Button>How it Works</Button></div>
-                  <div><Button isPrimary={true}>Get your Loser Box</Button></div>
+          {
+            isDesktopOrLaptop ? (
+              <>
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', minWidth: '1250px'}}>
+                    <div>
+                      <h1>
+                        Blockchain Friendly Gadget,
+                        <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
+                        <TextLoop mask={true} interval={1400}>
+                          <span>Phone</span>
+                          <span>Wallet</span>
+                          <span>Pets</span>
+                          <span>Keys</span>
+                          <span>Wallet</span>
+                          <span>Bag</span>
+                          <span>Tablet</span>
+                          <span>Ledger</span>
+                          <span>Luggage</span>
+                          <span>AirPods</span>
+                        </TextLoop>
+                        .
+                      </h1>
+                      <div style={{display: 'flex', justifyContent: 'space-between', width: '500px', marginTop: '50px'}}>
+                        <div><Button>How it Works</Button></div>
+                        <div><Button isPrimary={true}>Get your Loser Box</Button></div>
+                      </div>
+                    </div>
+                    <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
+                  </div>
                 </div>
-              </div>
-              <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
-            </div>
-          </div>
 
-          <div>
-            <div>
-              <p><a href="#">#Build</a> top on</p>
-            </div>
-            <div>
-              <ul>
-                <li><a href="#">Kleros</a></li>
-                <li><a href="#">Ethereum</a></li>
-                <li><a href="#">IPFS</a></li>
-              </ul>
-            </div>
-          </div>
+                <div>
+                  <div>
+                    <p><a href="#">#Build</a> top on</p>
+                  </div>
+                  <div>
+                    <ul>
+                      <li><a href="#">Kleros</a></li>
+                      <li><a href="#">Ethereum</a></li>
+                      <li><a href="#">IPFS</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </>
+            ) : (<>Mobile</>)
+          }
         </header>
       </div>
 
