@@ -213,8 +213,7 @@ const Layout = ({ children }) => {
           .container {
             display: flex;
             flex-wrap: wrap;
-            max-width: 1250px;
-            margin: 0 auto;
+            flex-direction: column;
             padding-top: 200px;
           }
         `}

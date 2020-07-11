@@ -23,8 +23,7 @@ export default function Home() {
           {
             isDesktopOrLaptop ? (
               <>
-                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                  <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', minWidth: '1250px'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '1250px', margin: '0 auto'}}>
                     <div>
                       <h1>
                         Blockchain Friendly Gadget,
@@ -50,20 +49,18 @@ export default function Home() {
                     </div>
                     <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
                   </div>
-                </div>
-
-                <div>
-                  <div>
-                    <p><a href="#">#Build</a> top on</p>
-                  </div>
-                  <div>
-                    <ul>
-                      <li><a href="#">Kleros</a></li>
-                      <li><a href="#">Ethereum</a></li>
-                      <li><a href="#">IPFS</a></li>
-                    </ul>
-                  </div>
-                </div>
+                  <div style={{display: 'flex', width: '100%', background: 'rgba(196, 196, 196, 0.2)', margin: '-90px 0 120px 0'}}>
+                      <div><p><a href="https://consensys.net/developers/buidlnetwork/">#BUIDL</a> to on</p></div>
+                      <div>
+                        <ul>
+                          <li><a href="#">Kleros</a></li>
+                          <li><a href="#">Ethereum</a></li>
+                          <li><a href="#">IPFS</a></li>
+                        </ul>
+                      </div>
+                      <div><p>Hosted By</p></div>
+                      <div>STATIONF</div>
+                    </div>
               </>
             ) : (<>Mobile</>)
           }
