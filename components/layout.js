@@ -45,7 +45,7 @@ function Scroll({setTop, isTop}) {
 }
 
 const Layout = ({ children }) => {
-  const { isMobile, isClient } = useResponsive()
+  const { isMobile } = useResponsive()
 
   const [isTop, setTop] = useState(true)
 
@@ -59,18 +59,20 @@ const Layout = ({ children }) => {
             <div className="header-menu-small">
               <img className="header-menu-logo" src="/recover.png" alt="Recover Logo" />
               <Menu>
-                <a href="/">Application</a>
+                <a href="https://app.recover.ws/">APPLICATION</a>
+                <a><Link href="/blog">BLOG</Link></a>
+                <a><Link href="/about">ABOUT</Link></a>
               </Menu>
             </div>
           ) : (
             <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
               <div><img className="header-menu-logo" src="/recover.png" alt="Recover Logo" /></div>
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <div style={{padding: '0 40px'}}>APPLICATION</div>
-                <div style={{padding: '0 40px'}}>BLOG</div>
-                <div style={{padding: '0 40px'}}>ABOUT</div>
+                <div style={{padding: '0 40px'}}><a href="https://app.recover.ws/">APPLICATION</a></div>
+                <div style={{padding: '0 40px'}}><Link href="/blog"><a>BLOG</a></Link></div>
+                <div style={{padding: '0 40px'}}><Link href="/about"><a>ABOUT</a></Link></div>
               </div>
-              <div><Button isPrimary={true}>Get Your Loser Box</Button></div>
+              <div><Link href="/about"><Button isPrimary={true}>Get Your Loser Box</Button></Link></div>
             </div>
           )
         }
@@ -107,13 +109,19 @@ const Layout = ({ children }) => {
             color: #444;
           }
 
+          a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+          }
+
           .header-menu {
             display: flex;
             justify-content: space-between;
             position: fixed;
             min-width: 100vw;
-            padding: 0 calc((100vw - 1250px) / 2);
-            line-height: 60px;
+            padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
+            line-height: 58px;
             color: #444;
             box-shadow: 0px 1px 10px #999;
             background: #fff;
@@ -128,7 +136,7 @@ const Layout = ({ children }) => {
 
           .header-menu-logo {
             position: relative;
-            top: 5px;
+            top: 7px;
           }
 
           .header-menu-small {
@@ -201,13 +209,6 @@ const Layout = ({ children }) => {
           /* Styling of overlay */
           .bm-overlay {
             background: rgba(0, 0, 0, 0.3);
-          }
-
-          .container-menu {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1250px;
-            margin: 0 auto;
           }
 
           .container {

@@ -1,10 +1,13 @@
 import Head from 'next/head'
-import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
 
 import Layout from '../components/layout'
 import Button from '../components/elements/button'
+
+import EthereumLogo from '../public/ethereum-logo.svg'
+import KlerosLogo from '../public/kleros-logo.svg'
+import IpfsLogo from '../public/ipfs-logo.svg'
 
 export default function Home() {
   const isDesktopOrLaptop = useMediaQuery({
@@ -23,44 +26,86 @@ export default function Home() {
           {
             isDesktopOrLaptop ? (
               <>
-                  <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '1250px', margin: '0 auto'}}>
-                    <div>
-                      <h1>
-                        Blockchain Friendly Gadget,
-                        <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
-                        <TextLoop mask={true} interval={1400}>
-                          <span>Phone</span>
-                          <span>Wallet</span>
-                          <span>Pets</span>
-                          <span>Keys</span>
-                          <span>Wallet</span>
-                          <span>Bag</span>
-                          <span>Tablet</span>
-                          <span>Ledger</span>
-                          <span>Luggage</span>
-                          <span>AirPods</span>
-                        </TextLoop>
-                        .
-                      </h1>
-                      <div style={{display: 'flex', justifyContent: 'space-between', width: '500px', marginTop: '50px'}}>
-                        <div><Button>How it Works</Button></div>
-                        <div><Button isPrimary={true}>Get your Loser Box</Button></div>
-                      </div>
+                <div style={{
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  flexWrap: 'wrap', 
+                  width: '1250px', 
+                  margin: '0 auto'
+                  }}>
+                  <div>
+                    <h1>
+                      Blockchain Friendly Gadget,
+                      <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
+                      <TextLoop mask={true} interval={1400}>
+                        <span>Phone</span>
+                        <span>Wallet</span>
+                        <span>Pets</span>
+                        <span>Keys</span>
+                        <span>Wallet</span>
+                        <span>Bag</span>
+                        <span>Tablet</span>
+                        <span>Ledger</span>
+                        <span>Luggage</span>
+                        <span>AirPods</span>
+                      </TextLoop>
+                      .
+                    </h1>
+                    <div style={{display: 'flex', justifyContent: 'space-between', width: '500px', marginTop: '50px'}}>
+                      <div><Button>How it Works</Button></div>
+                      <div><Button isPrimary={true}>Get your Loser Box</Button></div>
                     </div>
-                    <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
                   </div>
-                  <div style={{display: 'flex', width: '100%', background: 'rgba(196, 196, 196, 0.2)', margin: '-90px 0 120px 0'}}>
-                      <div><p><a href="https://consensys.net/developers/buidlnetwork/">#BUIDL</a> to on</p></div>
-                      <div>
-                        <ul>
-                          <li><a href="#">Kleros</a></li>
-                          <li><a href="#">Ethereum</a></li>
-                          <li><a href="#">IPFS</a></li>
-                        </ul>
-                      </div>
-                      <div><p>Hosted By</p></div>
-                      <div>STATIONF</div>
+                  <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  width: '100vw',
+                  height: '140px',
+                  margin: '-90px 0 120px 0',
+                  padding: '0 calc((100vw - 1250px) / 2) 2px calc((100vw - 1250px) / 2)',
+                  background: 'rgba(196, 196, 196, 0.2)',
+                  color: 'rgba(0, 0, 0, 0.4)'
+                }}>
+                  <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div>
+                      <p><a href="https://consensys.net/developers/buidlnetwork/" style={{color: 'rgba(0, 0, 0, 0.4)', textDecoration: 'none'}}>BUIDL</a> top on</p>
                     </div>
+                    <div style={{
+                    }}>
+                      <ul style={{width: '500px', listStyle: 'none', paddingLeft: '40px'}}>
+                        <li style={{display: 'inline-block', padding: '10px 20px 0 20px'}}>
+                          <a href="https://kleros.io/" style={{textDecoration: 'none'}}>
+                            <figure style={{textAlign: 'center'}}>
+                              <img src={KlerosLogo} alt="Kleros logo svg" style={{width: '45px'}} />
+                              <figcaption style={{fontSize: '12px', color: 'rgba(0, 0, 0, 0.4)'}}>KLEROS</figcaption>
+                            </figure>
+                          </a>
+                        </li>
+                        <li style={{display: 'inline-block', padding: '10px 20px 0 20px'}}>
+                          <a href="https://ethereum.org/en/" style={{textDecoration: 'none'}}>
+                            <figure style={{textAlign: 'center'}}>
+                              <img src={EthereumLogo} alt="Ethereum logo svg" style={{width: '26px'}} />
+                              <figcaption style={{fontSize: '12px', color: 'rgba(0, 0, 0, 0.4)', textAlign: 'center'}}>ETHEREUM</figcaption>
+                            </figure>
+                          </a>
+                        </li>
+                        <li style={{display: 'inline-block', padding: '10px 20px 0 20px'}}>
+                          <a href="https://ipfs.io/" style={{textDecoration: 'none'}}>
+                            <figure style={{textAlign: 'center'}}>
+                              <img src={IpfsLogo} alt="IPFS logo svg" style={{width: '35px'}} />
+                              <figcaption style={{fontSize: '12px', color: 'rgba(0, 0, 0, 0.4)', textDecoration: 'none'}}>IPFS</figcaption>
+                            </figure>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div><p>Hosted By</p></div>
+                    <div><a href="https://stationf.co/"><img src='./stationf-logo.png' style={{width: '130px', marginLeft: '50px'}} /></a></div>
+                  </div>
+                </div>
               </>
             ) : (<>Mobile</>)
           }
@@ -160,25 +205,6 @@ export default function Home() {
       <style jsx>{`
         h1 {
           font-weight: 700;
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-
-        .tool {
-          display: inline;
-        }
-
-        li {
-          position: relative;
-          padding: 0;
-          margin: 0;
-          padding-bottom: 4px;
-          padding-top: 18px;
-          border-top: 1px solid #dce7eb;
         }
 
         i {

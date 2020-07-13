@@ -14,5 +14,8 @@
     "react-dom": "16.13.1",
     "react-responsive": "^8.1.0",
     "react-text-loop": "^2.3.0"
+  },
+  "devDependencies": {
+    "next-images": "^1.4.0"
   }
 }
