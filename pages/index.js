@@ -160,7 +160,7 @@ export default function Home() {
                   <div style={{
                     position: 'relative',
                     flex: '1',
-                    paddingTop: '30px'
+                    paddingTop: '40px'
                   }}>
                     <div>
                       <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
@@ -170,7 +170,7 @@ export default function Home() {
                     <div style={{
                       flex: '1',
                       position: 'absolute', 
-                      top: '-25px', 
+                      top: '-15px', 
                       color: 'rgba(166, 255, 203, 0.5)', 
                       fontSize: '90px', 
                       fontFamily: 'Roboto',
@@ -219,19 +219,31 @@ export default function Home() {
         </section>
       </div>
 
-      <div>
+      <div style={{marginTop: '140px'}}>
         <section>
-          <h2>Why Choose the Recover Lost and Found Service?</h2>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            <div style={{display: 'flex'}}>
-              <div>
-                <h3>Resilience</h3>
+          <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}><span style={{color: '#12c2e9'}}>Why</span> Choose the Recover Lost and Found Service?</h2>
+          <div style={{display: 'flex', flexDirection: 'column', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '80px'}}>
+              <div style={{flex: '1'}}>
+                <h3 style={{textAlign: 'center'}}>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-10px'}} src="/icon-qrcode.png" alt="Incentive people to give back your item" role="presentation" />
+                  Convenient
+                </h3>
+                <p  style={{marginTop: '20px'}}>
+                  Simply Put your QrCode on your Valuable to Protect it in case of Loss.
+                </p>
               </div>
-              <div>
-                <h3>Incentive</h3>
+              <div style={{flex: '1'}}>
+                <h3 style={{textAlign: 'center'}}>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-10px'}} src="/icon-incentive.png" alt="Incentive people to give back your item" role="presentation" />
+                  Incentive
+                </h3>
               </div>
-              <div>
-                <h3>Privacy</h3>
+              <div style={{flex: '1'}}>
+                <h3 style={{textAlign: 'center'}}>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-10px'}} src="/icon-secure.png" alt="Incentive people to give back your item" role="presentation" />
+                  Privacy
+                </h3>
               </div>
             </div>
             <div>
