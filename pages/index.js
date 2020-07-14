@@ -114,29 +114,108 @@ export default function Home() {
 
       <div>
         <section>
-          <h2>How I can Protect my Valuables from Loss?</h2>
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            <div style={{display: 'flex'}}>
-              <div>
-                <p>
-                  Generate QrCode with contact information and reward and paste it on your valuable to assure return if lost.
-                </p>
+        {
+          isDesktopOrLaptop ? (
+            <>
+              <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}><span style={{color: '#12c2e9'}}>How</span> I can Protect my Valuables from Loss?</h2>
+              <div style={{display: 'flex', flexDirection: 'column'}}>
+                <div style={{
+                  display: 'flex',
+                  padding: '80px calc((100vw - 1250px + 160px) / 2) 0 calc((100vw - 1250px + 160px) / 2)'
+                }}>
+                  <div style={{
+                    position: 'relative',
+                    flex: '1',
+                    paddingTop: '50px'
+                  }}>
+                    <div>
+                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
+                        Put the QrCode with your personal details and a reward on your valuables to ensure its return in case of loss.
+                      </p>
+                    </div>
+                    <div style={{
+                      flex: '1',
+                      position: 'absolute', 
+                      top: '-10px', 
+                      color: 'rgba(166, 255, 203, 0.5)', 
+                      fontSize: '90px', 
+                      fontFamily: 'Roboto',
+                      fontWeight: '700',
+                      zIndex: '-1'
+                    }}> 
+                      #1
+                    </div>
+                  </div>
+                  <div style={{flex: '1', textAlign: 'center'}}>
+                    <img style={{width: '240px'}} src="/generate-qr-code.jpg" alt="Generate Lost and Found QrCode" role="presentation" />
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  padding: '80px calc((100vw - 1250px + 160px) / 2) 0 calc((100vw - 1250px + 160px) / 2)'
+                }}>
+                  <div style={{flex: '1', textAlign: 'center'}}>
+                    <img style={{width: '300px'}} src="/lost-valuable.jpg" alt="Lose your Valuable" role="presentation" />
+                  </div>
+                  <div style={{
+                    position: 'relative',
+                    flex: '1',
+                    paddingTop: '30px'
+                  }}>
+                    <div>
+                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
+                        If your valuable is lost, the finder is incentivized to return it to the owner.
+                      </p>
+                    </div>
+                    <div style={{
+                      flex: '1',
+                      position: 'absolute', 
+                      top: '-25px', 
+                      color: 'rgba(166, 255, 203, 0.5)', 
+                      fontSize: '90px', 
+                      fontFamily: 'Roboto',
+                      fontWeight: '700',
+                      zIndex: '-1'
+                    }}> 
+                      #2
+                    </div>
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  padding: '80px calc((100vw - 1250px + 160px) / 2) 0 calc((100vw - 1250px + 160px) / 2)'
+                }}>
+                  <div style={{
+                    position: 'relative',
+                    flex: '1',
+                    paddingTop: '50px'
+                  }}>
+                    <div>
+                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
+                        If the finder returns your valuable, you give back the reward for his good deed.
+                      </p>
+                    </div>
+                    <div style={{
+                      flex: '1',
+                      position: 'absolute', 
+                      top: '-10px', 
+                      color: 'rgba(166, 255, 203, 0.5)', 
+                      fontSize: '90px', 
+                      fontFamily: 'Roboto',
+                      fontWeight: '700',
+                      zIndex: '-1'
+                    }}> 
+                      #3
+                    </div>
+                  </div>
+                  <div style={{flex: '1', textAlign: 'center'}}>
+                    <img style={{width: '270px'}} src="/exchange-reward-to-valuable.jpg" alt="Generate Lost and Found QrCode" role="presentation" />
+                  </div>
+                </div>
               </div>
-              <div><img src="/generate-qr-code.jpg" alt="Generate Lost and Found QrCode" role="presentation" /></div>
-            </div>
-            <div style={{display: 'flex'}}>
-              <div><img src="/lose-valuable.jpg" alt="Lose your Valuable" role="presentation" /></div>
-              <div>
-                <p>If your valuable is lost, the finder is incentivized to return.</p>
-              </div>
-            </div>
-            <div style={{display: 'flex'}}>
-              <div>
-                <p>If the finder returns your valuable, you share the reward for his good deed.</p>
-              </div>
-              <div><img src="/exchange-valuable.jpg" alt="Exchange the Reward against the Valuable" role="presentation" /></div>
-            </div>
-          </div>
+            </>
+          ) : (<>Mobile</>)
+        }
         </section>
       </div>
 

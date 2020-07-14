@@ -91,6 +91,7 @@ const Layout = ({ children }) => {
       <style jsx global>
         {`
           @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+          @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
           body, html {
             min-width: 100vw;
