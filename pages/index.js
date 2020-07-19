@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
 
@@ -129,7 +130,7 @@ export default function Home() {
                     paddingTop: '50px'
                   }}>
                     <div>
-                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
+                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px', lineHeight: '34px'}}>
                         Put the QrCode with your personal details and a reward on your valuables to ensure its return in case of loss.
                       </p>
                     </div>
@@ -163,7 +164,7 @@ export default function Home() {
                     paddingTop: '40px'
                   }}>
                     <div>
-                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
+                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px', lineHeight: '34px'}}>
                         If your valuable is lost, the finder is incentivized to return it to the owner.
                       </p>
                     </div>
@@ -191,7 +192,7 @@ export default function Home() {
                     paddingTop: '50px'
                   }}>
                     <div>
-                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px'}}>
+                      <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px', lineHeight: '34px'}}>
                         If the finder returns your valuable, you give back the reward for his good deed.
                       </p>
                     </div>
@@ -225,34 +226,49 @@ export default function Home() {
           <div style={{display: 'flex', flexDirection: 'column', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>
             <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '80px'}}>
               <div style={{flex: '1'}}>
-                <h3 style={{textAlign: 'center'}}>
-                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-10px'}} src="/icon-qrcode.png" alt="Incentive people to give back your item" role="presentation" />
-                  Convenient
+                <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-incentive.png" alt="Incentive people to give back your item" role="presentation" />
+                  <span style={{fontSize: '24px'}}>Incentive</span>
                 </h3>
-                <p  style={{marginTop: '20px'}}>
-                  Simply Put your QrCode on your Valuable to Protect it in case of Loss.
+                <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
+                  A Reward is linked with the QrCode to incentivize the finder to return your valuable.
                 </p>
               </div>
               <div style={{flex: '1'}}>
-                <h3 style={{textAlign: 'center'}}>
-                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-10px'}} src="/icon-incentive.png" alt="Incentive people to give back your item" role="presentation" />
-                  Incentive
+                <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-qrcode.png" alt="Incentive people to give back your item" role="presentation" />
+                  <span style={{fontSize: '24px'}}>Convenient</span>
                 </h3>
-              </div>
+                <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
+                  Simply Put your QrCode on your Valuable to Protect it in case of Loss.
+                </p>
+              </div>  
               <div style={{flex: '1'}}>
-                <h3 style={{textAlign: 'center'}}>
-                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-10px'}} src="/icon-secure.png" alt="Incentive people to give back your item" role="presentation" />
-                  Privacy
+                <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-secure.png" alt="Incentive people to give back your item" role="presentation" />
+                  <span style={{fontSize: '24px'}}>Privacy</span>
                 </h3>
+                <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
+                  Your Personal details are accessible only to the finder and no other third party services.
+                </p>
               </div>
             </div>
-            <div>
-              <h3>Participate to the Blockchain Ecosystem</h3>
-              <div style={{display: 'flex', flex: '1 1'}}>
-                <div>
-                  <p>Recover is a blockchain sandbox to improve:</p>
+            <div style={{marginTop: '78px'}}>
+              <h3>
+                <img style={{position: 'relative', width: '40px', top: '12px'}} src="/icon-blockchain.png" alt="Blockchain for a lost a found service" role="presentation" />
+                <span style={{paddingLeft: '20px', fontSize: '24px'}}>Experiment the Blockchain Ecosystem</span>
+              </h3>
+              <div style={{display: 'flex'}}>
+                <div style={{flex: '1'}}>
+                  <p style={{margin: '38px auto 18px auto', fontSize: '22px', lineHeight: '34px'}}>Recover is a blockchain sandbox to improve:</p>
+                  <ul style={{listStyle: 'none'}}>
+                    <li className="why-blockchain">The Blockchain User Experience (workflow, tools, libraries...) for regular and cryptoenthousiast user.</li>
+                    <li className="why-blockchain">A viable Business Model that does not interfere with the decentralization of the project.</li>
+                    <li className="why-blockchain">The trust for the transactions between parties (seller/buyer, finder/owner) thanks to the escrow technology.</li>
+                    <li className="why-blockchain">The traceability of products and sales by associating a non-fungible token to each Loser Box.</li>
+                  </ul>
                 </div>
-                <div></div>
+                <div style={{flex: '1'}}>Illustration</div>
               </div>
             </div>
           </div>
@@ -312,6 +328,18 @@ export default function Home() {
 
         i.isOpenQuestion:after {
           content: "−";
+        }
+
+        .why-blockchain {
+          margin: 20px 0;
+          padding: 12px 14px;
+          border-left: solid 5px #a6ffcb;
+        }
+
+        .why-blockchain:hover {
+          background: #f2f2f2;
+          border-left: solid 5px #12c2e9;
+          cursor: pointer;
         }
       `}</style>
     </Layout>
