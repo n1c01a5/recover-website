@@ -83,7 +83,7 @@ const Layout = ({ children }) => {
       </main>
 
       <div>
-        <footer>
+        <footer style={{textAlign: 'center', position: 'relative', top: '130px'}}>
           RECOVER 2020
         </footer>
       </div>

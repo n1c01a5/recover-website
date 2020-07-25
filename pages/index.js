@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
+import Faq from 'react-faq-component'
 
 import Layout from '../components/layout'
 import Button from '../components/elements/button'
@@ -9,11 +10,35 @@ import Button from '../components/elements/button'
 import EthereumLogo from '../public/ethereum-logo.svg'
 import KlerosLogo from '../public/kleros-logo.svg'
 import IpfsLogo from '../public/ipfs-logo.svg'
+import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
+import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
+import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
+import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escrow.svg'
+import IllustrationTraceabilityBlockchain from '../public/illustration_traceability-blockchain.svg'
+import BackgroundLoserBox from '../public/background_loser-box.svg'
+
+const data = {
+  rows: [
+    {
+      title: 'Why use blockchain?',
+      content: `
+        <p>For five main reasons: <br /><br /></p>
+        <ol>
+          <li>The service will always be accessible even if recover.ws servers are down. It will still be possible to use this service by making requests directly on the blockchain.</li>
+          <li>There are no intermediaries, which means that costs are low. All you need to do is pay the transaction fees (called gas) to use this service.</li>
+          <li>We do not need to trust a third party service. This is called a trustless service. The thing you trust is the Ethereum protocol and the smart contracts (Recover  and Kleros). These contracts are public and you can audit them (technical skills required).</li>
+          <li>Ethereum makes it easy to make valuable micro-transactions, which makes it possible to give a reward to the finder easily.</li>
+          <li>The blockchain is interoperable with third-party services as companies can easily use this service to plug their items with this lost and found service.</li>
+        </ul>
+      `
+    }]
+}
 
 export default function Home() {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1224px)'
   })
+  const [whyBlockchainIllustration, setWhyBlockchainIllustration] = useState(IllustrationUserExperienceBlockchain)
 
   return (
     <Layout>
@@ -253,7 +278,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div style={{marginTop: '78px'}}>
+            <div style={{margin: '78px 0'}}>
               <h3>
                 <img style={{position: 'relative', width: '40px', top: '12px'}} src="/icon-blockchain.png" alt="Blockchain for a lost a found service" role="presentation" />
                 <span style={{paddingLeft: '20px', fontSize: '24px'}}>Experiment the Blockchain Ecosystem</span>
@@ -262,50 +287,42 @@ export default function Home() {
                 <div style={{flex: '1'}}>
                   <p style={{margin: '38px auto 18px auto', fontSize: '22px', lineHeight: '34px'}}>Recover is a blockchain sandbox to improve:</p>
                   <ul style={{listStyle: 'none'}}>
-                    <li className="why-blockchain">The Blockchain User Experience (workflow, tools, libraries...) for regular and cryptoenthousiast user.</li>
-                    <li className="why-blockchain">A viable Business Model that does not interfere with the decentralization of the project.</li>
-                    <li className="why-blockchain">The trust for the transactions between parties (seller/buyer, finder/owner) thanks to the escrow technology.</li>
-                    <li className="why-blockchain">The traceability of products and sales by associating a non-fungible token to each Loser Box.</li>
+                    <li onMouseEnter={() => setWhyBlockchainIllustration(IllustrationUserExperienceBlockchain)} className="why-blockchain">The Blockchain User Experience (workflow, tools, libraries...) for regular and cryptoenthousiast user.</li>
+                    <li onMouseEnter={() => setWhyBlockchainIllustration(IllustrationBlockchainBusinessModel)} className="why-blockchain">A viable Business Model that does not interfere with the decentralization of the project.</li>
+                    <li onMouseEnter={() => setWhyBlockchainIllustration(IllustrationBlockchainEscrow)} className="why-blockchain">The trust for the transactions between parties (seller/buyer, finder/owner) thanks to the escrow technology.</li>
+                    <li onMouseEnter={() => setWhyBlockchainIllustration(IllustrationTraceabilityBlockchain)} className="why-blockchain">The traceability of products and sales by associating a non-fungible token to each Loser Box.</li>
                   </ul>
                 </div>
-                <div style={{flex: '1'}}>Illustration</div>
+                <div style={{display: 'flex', flex: '1', alignItems: 'center'}}>
+                  <div style={{width: '100%', textAlign: 'center'}}>
+                    <img style={{width: '370px'}} src={whyBlockchainIllustration} role="presentation" alt="User experience and blockchain" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
       </div>
 
-      <div>
+      <div style={{background: `url(${BackgroundLoserBox}) no-repeat right`, backgroundSize: 'contain', height: '500px'}}>
         <section>
-          <h2>Take a Look at our Products!</h2>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <div>FREEMIUM</div>
-            <div>LOSER BOX</div>
-            <div>BUSINESS</div>
+        <h2 style={{width: '100%', fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)', textAlign: 'center'}}>Take a look on the <span style={{color: '#12c2e9'}}>Loser Box</span>!</h2>
+        <div style={{display: 'flex', height: 'calc(500px - 34px)', padding: '0 calc((100vw - 1250px + 160px) / 2)', justifyContent: 'space-between', alignItems: 'center'}}>
+          <div style={{marginTop: '-120px'}}>
+            <h3 style={{marginBottom: '30px'}}>Discover the loser Box now:</h3>
+            <Button isPrimary={true}>Get your Loser Box</Button> <a href="" style={{paddingLeft: '28px', textDecoration: 'underline'}}>or test Recover for free</a>
           </div>
+          <div><img src='loser-box.jpg' style={{width: '200px'}} /></div>
+        </div>
         </section>
       </div>
 
       <div>
         <section>
-          <h2>Frequently Asked Questions</h2>
-          <ul>
-            <li>
-              <h3>What is Lorem Ipsum ?</h3>
-              <i />
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </li>
-            <li>
-              <h3>Why do we use it ?</h3>
-              <i />
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-            </li>
-            <li>
-              <h3>Where we can it ?</h3>
-              <i />
-              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-            </li>
-          </ul>
+          <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>Frequently Asked Questions</h2>
+          <div style={{padding: '0 calc((100vw - 1250px + 160px) / 2)', height: 'min-content'}}>
+            <Faq data={data}/>
+          </div>
         </section>
       </div>
 
