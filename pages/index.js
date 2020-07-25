@@ -1,8 +1,13 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
-import Faq from 'react-faq-component'
+
+const Faq = dynamic(
+  () => import('../components/faq'),
+  { ssr: false }
+)
 
 import Layout from '../components/layout'
 import Button from '../components/elements/button'
@@ -17,27 +22,11 @@ import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escr
 import IllustrationTraceabilityBlockchain from '../public/illustration_traceability-blockchain.svg'
 import BackgroundLoserBox from '../public/background_loser-box.svg'
 
-const data = {
-  rows: [
-    {
-      title: 'Why use blockchain?',
-      content: `
-        <p>For five main reasons: <br /><br /></p>
-        <ol>
-          <li>The service will always be accessible even if recover.ws servers are down. It will still be possible to use this service by making requests directly on the blockchain.</li>
-          <li>There are no intermediaries, which means that costs are low. All you need to do is pay the transaction fees (called gas) to use this service.</li>
-          <li>We do not need to trust a third party service. This is called a trustless service. The thing you trust is the Ethereum protocol and the smart contracts (Recover  and Kleros). These contracts are public and you can audit them (technical skills required).</li>
-          <li>Ethereum makes it easy to make valuable micro-transactions, which makes it possible to give a reward to the finder easily.</li>
-          <li>The blockchain is interoperable with third-party services as companies can easily use this service to plug their items with this lost and found service.</li>
-        </ul>
-      `
-    }]
-}
-
 export default function Home() {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1224px)'
   })
+
   const [whyBlockchainIllustration, setWhyBlockchainIllustration] = useState(IllustrationUserExperienceBlockchain)
 
   return (
@@ -310,18 +299,19 @@ export default function Home() {
         <div style={{display: 'flex', height: 'calc(500px - 34px)', padding: '0 calc((100vw - 1250px + 160px) / 2)', justifyContent: 'space-between', alignItems: 'center'}}>
           <div style={{marginTop: '-120px'}}>
             <h3 style={{marginBottom: '30px'}}>Discover the loser Box now:</h3>
-            <Button isPrimary={true}>Get your Loser Box</Button> <a href="" style={{paddingLeft: '28px', textDecoration: 'underline'}}>or test Recover for free</a>
+            <Button isPrimary={true}>Get your Loser Box</Button>
+            <a href="https://app.recover.ws/" style={{paddingLeft: '28px', textDecoration: 'underline'}}>or test Recover for free</a>
           </div>
-          <div><img src='loser-box.jpg' style={{width: '200px'}} /></div>
+          <div><img src='loser-box.png' style={{width: '200px'}} /></div>
         </div>
         </section>
       </div>
 
       <div>
         <section>
-          <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>Frequently Asked Questions</h2>
+          <h2 style={{fontWeight: '600', fontSize: '28px', padding: '130px calc((100vw - 1250px + 160px) / 2) 50px calc((100vw - 1250px + 160px) / 2)'}}>Frequently Asked <span style={{color: '#12c2e9'}}>Questions</span></h2>
           <div style={{padding: '0 calc((100vw - 1250px + 160px) / 2)', height: 'min-content'}}>
-            <Faq data={data}/>
+            <Faq />
           </div>
         </section>
       </div>
@@ -341,10 +331,6 @@ export default function Home() {
 
         i:after {
           content: "+";
-        }
-
-        i.isOpenQuestion:after {
-          content: "−";
         }
 
         .why-blockchain {

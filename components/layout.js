@@ -57,18 +57,18 @@ const Layout = ({ children }) => {
         {
           isMobile ? (
             <div className="header-menu-small">
-              <img className="header-menu-logo" src="/recover.png" alt="Recover Logo" />
+              <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" />
               <Menu>
-                <a href="https://app.recover.ws/">APPLICATION</a>
-                <a><Link href="/blog">BLOG</Link></a>
-                <a><Link href="/about">ABOUT</Link></a>
+                <a href="https://app.recover.ws/" target="_blank">APPLICATION</a>
+                <Link href="/blog"><a>BLOG</a></Link>
+                <Link href="/about"><a>ABOUT</a></Link>
               </Menu>
             </div>
           ) : (
             <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
-              <div><img className="header-menu-logo" src="/recover.png" alt="Recover Logo" /></div>
+              <div><img className="header-menu-logo" src="RECOVER-logo.svg" alt="Recover Logo" /></div>
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <div style={{padding: '0 40px'}}><a href="https://app.recover.ws/">APPLICATION</a></div>
+                <div style={{padding: '0 40px'}}><a href="https://app.recover.ws/" target="_blank">APPLICATION</a></div>
                 <div style={{padding: '0 40px'}}><Link href="/blog"><a>BLOG</a></Link></div>
                 <div style={{padding: '0 40px'}}><Link href="/about"><a>ABOUT</a></Link></div>
               </div>
@@ -82,9 +82,9 @@ const Layout = ({ children }) => {
         <div className="container">{children}</div>
       </main>
 
-      <div>
-        <footer style={{textAlign: 'center', position: 'relative', top: '130px'}}>
-          RECOVER 2020
+      <div style={{margin: '30px 0 10px 0', textAlign: 'center'}}>
+        <footer>
+          @RECOVER 2020
         </footer>
       </div>
 
@@ -126,13 +126,14 @@ const Layout = ({ children }) => {
             color: #444;
             box-shadow: 0px 1px 10px #999;
             background: #fff;
-            z-index: 100;
+            z-index: 1000;
           }
           
           .header-menu__isTop {
             position: absolute;
             margin-top: 30px;
             box-shadow: 0 0 0 #fff;
+            z-index: 1000;
           }
 
           .header-menu-logo {
@@ -217,6 +218,25 @@ const Layout = ({ children }) => {
             flex-wrap: wrap;
             flex-direction: column;
             padding-top: 200px;
+          }
+
+          .additionalClassForHead {
+            background: #12c2e9 !important;
+          }
+  
+          .additionalClassForHead:hover, .active-accordion {
+            color: #444 !important;
+            background: #a6ffcb !important;
+          }
+  
+          .additionalClassForContent {
+            background: #efefef !important;
+            padding: 20px 17px 22px 17px !important;
+            line-height: 24px !important;
+          }
+
+          .additionalClassForContent p {
+            padding: 7px;
           }
         `}
       </style>
