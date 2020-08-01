@@ -11,9 +11,14 @@ const Faq = () => {
   return (
     <>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 0 ? 0 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-1">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 0}>
-            <h3>Why use blockchain?</h3>
+            <h3 style={{position: 'relative'}}>
+              Why use blockchain?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 0 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 0}>
             <p>For five main reasons:</p>
@@ -50,9 +55,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 1 ? 1 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent  name="faq-2">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 1}>
-            <h3>Is this application completely decentralized?</h3>
+            <h3>
+              Is this application completely decentralized?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 1 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 1}>
             <p>Yes, all the logic of the application is programmed on a smart contract without any ownership.</p>
@@ -70,9 +80,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 2 ? 2 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent  name="faq-3">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 2}>
-            <h3>How it works if the finder is not a cryptoenthousiast?</h3>
+            <h3>
+              How it works if the finder is not a cryptoenthousiast?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 2 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 2}>
             <p>
@@ -86,9 +101,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 3 ? 3 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-4">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 3}>
-            <h3>Is it possible for a regular user to record an item?</h3>
+            <h3>
+              Is it possible for a regular user to record an item?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 3 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 3}>
             <p>
@@ -100,9 +120,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 4 ? 4 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-5">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 4}>
-            <h3>What happens if the user wants to be rewarded in fiat?</h3>
+            <h3>
+              What happens if the user wants to be rewarded in fiat?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 4 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 4}>
             <p>
@@ -115,9 +140,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 5 ? 5 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-6">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 5}>
-            <h3>Why the contact information are not directly visible?</h3>
+            <h3>
+              Why the contact information are not directly visible?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 5 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 5}>
             <p>This avoids showing your personal information directly.</p>
@@ -125,9 +155,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 6 ? 6 : null)}>
-        <CollapsibleComponent trigger="Is there a notification service when we claim a found?">
+        <CollapsibleComponent name="faq-7">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 6}>
-            <h3>Is there a notification service when we claim a found?</h3>
+            <h3>
+              Is there a notification service when we claim a found?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 6 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 6}>
             <p>
@@ -139,9 +174,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 7 ? 7 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-7">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 7}>
-            <h3>Where do I put the sticker?</h3>
+            <h3>
+              Where do I put the sticker?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 7 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 7}>
             <p>
@@ -154,9 +194,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 8 ? 8 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-8">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 8}>
-            <h3>What happens if the finder does not want a reward?</h3>
+            <h3>
+              What happens if the finder does not want a reward?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 8 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 8}>
             <p>
@@ -166,9 +211,14 @@ const Faq = () => {
         </CollapsibleComponent>
       </div>
       <div style={{margin: '5px 0'}} onClick={() => setOpenCollapsibleComponentByIndex(openCollapsibleComponentByIndex !== 9 ? 9 : null)}>
-        <CollapsibleComponent>
+        <CollapsibleComponent name="faq-9">
           <CollapsibleHead className="additionalClassForHead" isExpanded={openCollapsibleComponentByIndex === 9}>
-            <h3>What happens if one of the parties does not respect its commitments?</h3>
+            <h3>
+              What happens if one of the parties does not respect its commitments?
+              <span style={{float: 'right'}}>
+                {openCollapsibleComponentByIndex === 9 ? '–' : '+'}
+              </span>
+            </h3>
           </CollapsibleHead>
           <CollapsibleContent className="additionalClassForContent" isExpanded={openCollapsibleComponentByIndex === 9}>
             <p>

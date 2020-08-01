@@ -220,23 +220,40 @@ const Layout = ({ children }) => {
             padding-top: 200px;
           }
 
+          div[id^="rcc"] {
+            padding: 8px 0;
+            border-bottom: 1px solid #efefef;
+          }
+
           .additionalClassForHead {
-            background: #12c2e9 !important;
+            padding: 5px 0;
+            background: #fff !important;
+            color: #444 !important;
+            font-weight: 300 !important;
+          }
+
+          .additionalClassForHead h3 {
+            font-family: Montserrat;
+            font-size: 22px !important;
+            font-weight: 200 !important;
+            margin: 0;
+            padding: 0;
           }
   
           .additionalClassForHead:hover, .active-accordion {
             color: #444 !important;
-            background: #a6ffcb !important;
+            background: #fff !important;
           }
   
           .additionalClassForContent {
-            background: #efefef !important;
-            padding: 20px 17px 22px 17px !important;
+            background: #fff !important;
+            margin: 0 !important;
+            padding: 17px 0 !important;
             line-height: 24px !important;
           }
 
           .additionalClassForContent p {
-            padding: 7px;
+            padding: 7px 0;
           }
         `}
       </style>
