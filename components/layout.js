@@ -57,7 +57,9 @@ const Layout = ({ children }) => {
         {
           isMobile ? (
             <div className="header-menu-small">
-              <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" />
+              <Link href="/">
+                <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" />
+              </Link>
               <Menu>
                 <a href="https://app.recover.ws/" target="_blank">APPLICATION</a>
                 <Link href="/blog"><a>BLOG</a></Link>
@@ -82,9 +84,53 @@ const Layout = ({ children }) => {
         <div className="container">{children}</div>
       </main>
 
-      <div style={{margin: '30px 0 10px 0', textAlign: 'center'}}>
-        <footer>
-          @RECOVER 2020
+      <div style={{marginTop: '120px', padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'}}>
+        <footer style={{display: 'flex'}}>
+          <div  style={{display: 'flex', flex: '1', paddingTop: '20px', justifyContent: 'space-around'}}>
+            <div style={{width: '191px'}}>
+              <Link href="/">
+                <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" role="presentation" />
+              </Link>
+              <p style={{width: '191px', marginTop: '10px', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
+              <p  style={{width: '191px', marginTop: '50px', textAlign: 'center'}}>@ RECOVER 2020</p>
+            </div>
+            <div>
+              <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>
+              <ul>
+                <li style={{paddingBottom: '2px'}}>Kleros</li>
+                <li style={{padding: '2px 0'}}>Ethereum</li>
+                <li style={{padding: '2px 0'}}>IPFS</li>
+              </ul>
+            </div>
+            <div>
+              <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Incubator</strong></p>
+              <ul>
+                <li style={{paddingBottom: '2px'}}>StationF</li>
+              </ul>
+            </div>
+            <div>
+              <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Social</strong></p>
+              <ul>
+                <li style={{paddingBottom: '2px'}}>Github</li>
+                <li style={{padding: '2px 0'}}>Mail</li>
+              </ul>
+            </div>
+            <div>
+              <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Last Posts</strong></p>
+              <ul>
+                <li style={{paddingBottom: '2px'}}>Escrow</li>
+              </ul>
+            </div>
+          </div>
+          <div style={{height: '180px'}}>
+            <img 
+              style={{height: '180px'}}
+              className="footer-cryptokitty-recover"
+              src="/cryptokitty-recover.png"
+              alt="Cryptokitty with Recover"
+              role="presentation"
+            />
+          </div>
         </footer>
       </div>
 
@@ -94,6 +140,8 @@ const Layout = ({ children }) => {
           @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
           body, html {
+            padding: 0;
+            margin: 0;
             min-width: 100vw;
             min-height: 100hw;
           }
@@ -110,10 +158,20 @@ const Layout = ({ children }) => {
             color: #444;
           }
 
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+
           a {
             text-decoration: none;
             color: #444;
             font-weight: 500;
+          }
+
+          strong {
+            font-weight: 700;
           }
 
           .header-menu {
