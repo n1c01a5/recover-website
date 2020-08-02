@@ -302,7 +302,7 @@ export default function Home() {
             <Button isPrimary={true}>Get your Loser Box</Button>
             <a href="https://app.recover.ws/" style={{paddingLeft: '28px', textDecoration: 'underline'}}>or test Recover for free</a>
           </div>
-          <div><img src='loser-box.png' style={{width: '224px'}} /></div>
+          <div><img src='loser-box.png' style={{position: 'relative', width: '340px', top: '-14px', left: '60px'}} /></div>
         </div>
         </section>
       </div>

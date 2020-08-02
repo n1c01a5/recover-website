@@ -97,28 +97,28 @@ const Layout = ({ children }) => {
             <div>
               <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>
               <ul>
-                <li style={{paddingBottom: '2px'}}>Kleros</li>
-                <li style={{padding: '2px 0'}}>Ethereum</li>
-                <li style={{padding: '2px 0'}}>IPFS</li>
+                <li style={{paddingBottom: '2px'}}><a href="https://kleros.io/">Kleros</a></li>
+                <li style={{padding: '2px 0'}}><a href="https://ethereum.org/en/">Ethereum</a></li>
+                <li style={{padding: '2px 0'}}><a href="https://ipfs.io/">IPFS</a></li>
               </ul>
             </div>
             <div>
               <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Incubator</strong></p>
               <ul>
-                <li style={{paddingBottom: '2px'}}>StationF</li>
+                <li style={{paddingBottom: '2px'}}><a href="https://stationf.co/">StationF</a></li>
               </ul>
             </div>
             <div>
               <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Social</strong></p>
               <ul>
-                <li style={{paddingBottom: '2px'}}>Github</li>
-                <li style={{padding: '2px 0'}}>Mail</li>
+                <li style={{paddingBottom: '2px'}}><a href="https://github.com/blockchain-mafia/">Github</a></li>
+                <li style={{padding: '2px 0'}}><a href="mailto: contact@wagner-nicolas.com">Mail</a></li>
               </ul>
             </div>
             <div>
               <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Last Posts</strong></p>
               <ul>
-                <li style={{paddingBottom: '2px'}}>Escrow</li>
+                <li style={{paddingBottom: '2px'}}><a href="/">Escrow</a></li>
               </ul>
             </div>
           </div>
