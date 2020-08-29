@@ -16,7 +16,7 @@ const Faq = () => {
             <h3 style={{position: 'relative'}}>
               Why use blockchain?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 0 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 0 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -60,7 +60,7 @@ const Faq = () => {
             <h3>
               Is this application completely decentralized?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 1 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 1 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -85,7 +85,7 @@ const Faq = () => {
             <h3>
               How it works if the finder is not a cryptoenthousiast?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 2 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 2 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -106,7 +106,7 @@ const Faq = () => {
             <h3>
               Is it possible for a regular user to record an item?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 3 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 3 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -125,7 +125,7 @@ const Faq = () => {
             <h3>
               What happens if the user wants to be rewarded in fiat?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 4 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 4 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -145,7 +145,7 @@ const Faq = () => {
             <h3>
               Why the contact information are not directly visible?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 5 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 5 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -160,7 +160,7 @@ const Faq = () => {
             <h3>
               Is there a notification service when we claim a found?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 6 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 6 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -179,7 +179,7 @@ const Faq = () => {
             <h3>
               Where do I put the sticker?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 7 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 7 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -199,7 +199,7 @@ const Faq = () => {
             <h3>
               What happens if the finder does not want a reward?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 8 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 8 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
@@ -216,7 +216,7 @@ const Faq = () => {
             <h3>
               What happens if one of the parties does not respect its commitments?
               <span style={{float: 'right'}}>
-                {openCollapsibleComponentByIndex === 9 ? '–' : '+'}
+                {openCollapsibleComponentByIndex === 9 ? ' –' : ' +'}
               </span>
             </h3>
           </CollapsibleHead>
