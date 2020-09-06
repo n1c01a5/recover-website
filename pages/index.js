@@ -124,7 +124,7 @@ export default function Home() {
             <div style={{display: 'flex', flexDirection: 'column', width: '100vw', marginTop: '-40px'}}>
               <div style={{textAlign: 'center'}}><img style={{width: '80vw'}} src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
               <div style={{marginTop: '20px'}}>
-                <h1 style={{textAlign: 'center', fontSize: '18px'}}>
+                <h1 style={{textAlign: 'center', fontSize: '22px'}}>
                   Blockchain Friendly Gadget,
                   <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
                   <TextLoop mask={true} interval={1400}>
@@ -234,7 +234,7 @@ export default function Home() {
                   <div style={{
                     flex: '1',
                     position: 'absolute', 
-                    top: '-10px', 
+                    top: '-10px',
                     color: 'rgba(166, 255, 203, 0.5)', 
                     fontSize: '90px', 
                     fontFamily: 'Roboto',
@@ -251,7 +251,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mobile-layout">
-            <h2 style={{fontWeight: '600', fontSize: '18px', textAlign: 'center', margin: '40px 18px'}}>
+            <h2 style={{fontWeight: '600', fontSize: '22px', textAlign: 'center', margin: '40px 18px'}}>
               <span style={{color: '#12c2e9'}}>How</span> I can Protect my Valuables from Loss?
             </h2>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -318,59 +318,72 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <h2 style={{fontWeight: '600', fontSize: '18px', textAlign: 'center', margin: '30px 18px'}}>
+            <h2 style={{fontWeight: '600', fontSize: '22px', textAlign: 'center', margin: '30px 18px 10px 18px'}}>
               <span style={{color: '#12c2e9'}}>Why</span> Choose the Recover Lost and Found Service?
             </h2>
             <div style={{display: 'flex', flexDirection: 'column', margin: '0 20px'}}>
               <div>
-                <h3>Convenient</h3>
-                <p>
+                <h3>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-4px'}} src="/icon-qrcode.png" alt="Incentive people to give back your item" role="presentation" />
+                  <span style={{paddingLeft: '5px'}}>Convenient</span>
+                </h3>
+                <p style={{padding: '20px 0'}}>
                   Simply Put your QrCode on your Valuable to Protect it in case of Loss.
                 </p>
               </div>
               <div style={{textAlign: 'right'}}>
-                <h3>Incentive</h3>
-                <p>
+                <h3>
+                  <span style={{paddingRight: '10px'}}>Incentive</span>
+                  <img style={{position: 'relative', width: '40px', top: '12px'}} src="/icon-incentive.png" alt="Incentive people to give back your item" role="presentation" />
+                </h3>
+                <p style={{padding: '20px 0'}}>
                   A Reward is linked with the QrCode to incentivize the finder to return your valuable.
                 </p>
               </div>
               <div>
-                <h3>Privacy</h3>
-                <p>
+                <h3>
+                  <img style={{position: 'relative', width: '40px', top: '12px', left: '-4px'}} src="/icon-secure.png" alt="Keep private your personal details" role="presentation" />
+                  <span style={{paddingLeft: '5px'}}>Privacy</span>
+                </h3>
+                <p style={{padding: '20px 0'}}>
                   Your Personal details are accessible only to the finder and no other third party services.
                 </p>
               </div>
-              <div>
-                <h3 style={{textAlign: 'center'}}>Experiment the Blockchain Ecosystem</h3>
-                <p>
+              <div style={{marginTop: '40px'}}>
+                <h3 style={{textAlign: 'center'}}>
+                  <img style={{position: 'relative', width: '40px', top: '-10px'}} src="/icon-blockchain.png" alt="Blockchain for a lost a found service" role="presentation" />
+                  <br />
+                  Experiment the Blockchain Ecosystem
+                </h3>
+                <p style={{padding: '20px 0'}}>
                   Recover is a blockchain sandbox to improve:
                 </p>
-                <p>
+                <p style={{borderLeft: '2px solid #a6ffcb', paddingLeft: '10px'}}>
                   The Blockchain User Experience (workflow, tools, libraries...) for regular and cryptoenthousiast user.
                 </p>
-                <p>
+                <p style={{marginTop: '20px', borderLeft: '2px solid #a6ffcb', paddingLeft: '10px'}}>
                   A viable Business Model that does not interfere with the decentralization of the project.
                 </p>
-                <p>
+                <p style={{marginTop: '20px', borderLeft: '2px solid #a6ffcb', paddingLeft: '10px'}}>
                   The trust for the transactions between parties (seller/buyer, finder/owner) thanks to the escrow technology.
                 </p>
-                <p>
+                <p style={{marginTop: '20px', borderLeft: '2px solid #a6ffcb', paddingLeft: '10px'}}>
                   The traceability of products and sales by associating a non-fungible token to each Loser Box.
                 </p>
               </div>
-              <h2 style={{fontWeight: '600', fontSize: '18px', textAlign: 'center', margin: '30px 18px'}}>
+              <h2 style={{fontWeight: '600', fontSize: '22px', textAlign: 'center', margin: '60px 18px 30px 18px'}}>
                 Take a look on the <span style={{color: '#12c2e9'}}>Loser Box</span>!
               </h2>
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <img src='loser-box.png' style={{position: 'relative', width: '240px', top: '-40px', transform: 'rotate(-1.1deg)'}} />
                 <div style={{textAlign: 'center', marginTop: '-40px'}}><Button isPrimary={true} isSmallFormat={true}>Get your Loser Box</Button></div>
-                <div><p><a>Or test for free</a></p></div>
+                <div><p style={{marginTop: '20px'}}><a style={{textDecoration: 'underline'}}>Or test for free</a></p></div>
               </div>
             </div>
           </div>
         </section>
-        <section  className="mobile-layout">
-          <h2 style={{fontWeight: '600', fontSize: '22px', padding: '20px', textAlign: 'center'}}>
+        <section className="mobile-layout">
+          <h2 style={{fontWeight: '600', fontSize: '22px', padding: '60px 18px 0 18px', textAlign: 'center'}}>
             Frequently Asked <span style={{color: '#12c2e9'}}>Questions</span>
           </h2>
           <div style={{padding: '20px', height: 'min-content'}}>
@@ -379,9 +392,9 @@ export default function Home() {
         </section>
       </div>
 
-      <div style={{marginTop: '140px'}}>
+      <div>
         <section>
-          <div className="desktop-layout">
+          <div style={{marginTop: '140px'}} className="desktop-layout">
             <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>
               <span style={{color: '#12c2e9'}}>Why</span> Choose the Recover Lost and Found Service?
             </h2>
@@ -398,7 +411,7 @@ export default function Home() {
                 </div>
                 <div style={{flex: '1'}}>
                   <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
-                    <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-qrcode.png" alt="Incentive people to give back your item" role="presentation" />
+                    <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-qrcode.png" alt="Easy to use this lost and found service" role="presentation" />
                     <span style={{fontSize: '24px'}}>Convenient</span>
                   </h3>
                   <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
@@ -407,7 +420,7 @@ export default function Home() {
                 </div>  
                 <div style={{flex: '1'}}>
                   <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
-                    <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-secure.png" alt="Incentive people to give back your item" role="presentation" />
+                    <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-secure.png" alt="Keep private your personal details" role="presentation" />
                     <span style={{fontSize: '24px'}}>Privacy</span>
                   </h3>
                   <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
@@ -442,7 +455,7 @@ export default function Home() {
         </section>
       </div>
     
-      <div  className="desktop-layout" style={{background: `url(${BackgroundLoserBox}) no-repeat right`, backgroundSize: 'contain', height: '500px'}}>
+      <div className="desktop-layout" style={{background: `url(${BackgroundLoserBox}) no-repeat right`, backgroundSize: 'contain', height: '500px'}}>
         <section>
         <h2 style={{width: '100%', fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)', textAlign: 'center'}}>Take a look on the <span style={{color: '#12c2e9'}}>Loser Box</span>!</h2>
         <div style={{display: 'flex', height: 'calc(500px - 34px)', padding: '0 calc((100vw - 1250px + 160px) / 2)', justifyContent: 'space-between', alignItems: 'center'}}>

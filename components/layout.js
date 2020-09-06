@@ -59,7 +59,59 @@ const Layout = ({ children }) => {
         <div className="container">{children}</div>
       </main>
 
-      <div className="mobile-layout"></div>
+      <div className="mobile-layout">
+        <div style={{marginTop: '40px'}}>
+          <footer style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div>
+              <Link href="/">
+                <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" role="presentation" />
+              </Link>
+              <p style={{marginTop: '10px', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
+              <p style={{marginTop: '10px', textAlign: 'center'}}>@ RECOVER 2020</p>
+            </div>
+            <div style={{display: 'flex', width: '100vw', flexDirection: 'row', justifyContent: 'space-between', padding: '30px 14%'}}>
+              <div>
+                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>
+                <ul>
+                  <li style={{paddingBottom: '2px'}}><a href="https://kleros.io/">Kleros</a></li>
+                  <li style={{padding: '2px 0'}}><a href="https://ethereum.org/en/">Ethereum</a></li>
+                  <li style={{padding: '2px 0'}}><a href="https://ipfs.io/">IPFS</a></li>
+                </ul>
+              </div>
+              <div>
+                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Incubator</strong></p>
+                <ul>
+                  <li style={{paddingBottom: '2px'}}><a href="https://stationf.co/">StationF</a></li>
+                </ul>
+              </div>
+            </div>
+            <div style={{display: 'flex', width: '100vw', flexDirection: 'row', justifyContent: 'space-between', padding: '0 14%'}}>
+              <div>
+                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Social</strong></p>
+                <ul>
+                  <li style={{paddingBottom: '2px'}}><a href="https://github.com/blockchain-mafia/">Github</a></li>
+                  <li style={{padding: '2px 0'}}><a href="mailto: contact@wagner-nicolas.com">Mail</a></li>
+                </ul>
+              </div>
+              <div>
+                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Last Posts</strong></p>
+                <ul>
+                  <li style={{paddingBottom: '2px'}}><a href="/">Escrow</a></li>
+                </ul>
+              </div>
+            </div>
+            <div style={{height: '140px'}}>
+              <img 
+                style={{height: '140px'}}
+                className="footer-cryptokitty-recover"
+                src="/cryptokitty-recover.png"
+                alt="Cryptokitty with Recover"
+                role="presentation"
+              />
+            </div>
+          </footer>
+        </div>
+      </div>
       <div className="desktop-layout">
         <div style={{marginTop: '120px', padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'}}>
           <footer style={{display: 'flex'}}>
@@ -267,6 +319,13 @@ const Layout = ({ children }) => {
             font-weight: 300 !important;
           }
 
+          .additionalClassForHeadMobile {
+            padding: 5px 0;
+            background: #fff !important;
+            color: #444 !important;
+            font-weight: 300 !important;
+          }
+
           .additionalClassForHead h3 {
             font-family: Montserrat;
             font-size: 22px !important;
@@ -274,8 +333,21 @@ const Layout = ({ children }) => {
             margin: 0;
             padding: 0;
           }
+
+          .additionalClassForHeadMobile h3 {
+            font-family: Montserrat;
+            font-size: 18px !important;
+            font-weight: 200 !important;
+            margin: 0;
+            padding: 0;
+          }
   
           .additionalClassForHead:hover, .active-accordion {
+            color: #444 !important;
+            background: #fff !important;
+          }
+
+          .additionalClassForHeadMobile:hover, .active-accordion {
             color: #444 !important;
             background: #fff !important;
           }
