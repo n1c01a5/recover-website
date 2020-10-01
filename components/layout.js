@@ -37,8 +37,8 @@ const Layout = ({ children }) => {
             </Link>
             <Menu>
               <a href="https://app.recover.ws/" target="_blank">APPLICATION</a>
-              <Link href="/blog"><a>BLOG</a></Link>
-              <Link href="/about"><a>ABOUT</a></Link>
+              <a><Link href="/blog"><a>BLOG</a></Link></a>
+              <a><Link href="/about"><a>ABOUT</a></Link></a>
             </Menu>
           </div>
         </div>

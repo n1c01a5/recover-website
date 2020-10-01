@@ -265,7 +265,7 @@ export default function Home() {
                     fontSize: '50px', 
                     fontFamily: 'Roboto',
                     fontWeight: '700',
-                    zIndex: '100'
+                    zIndex: '10'
                   }}> 
                     #1
                   </div>
@@ -286,7 +286,7 @@ export default function Home() {
                   fontSize: '50px', 
                   fontFamily: 'Roboto',
                   fontWeight: '700',
-                  zIndex: '100'
+                  zIndex: '10'
                 }}> 
                   #2
                 </div>
@@ -307,7 +307,7 @@ export default function Home() {
                   fontSize: '50px', 
                   fontFamily: 'Roboto',
                   fontWeight: '700',
-                  zIndex: '100'
+                  zIndex: '10'
                 }}> 
                   #3
                 </div>
