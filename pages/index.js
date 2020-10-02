@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Recover.ws - Lost anf Found service based on the Ethereum Blockchain</title>
+        <title>Recover.ws - Lost and Found service based on the Ethereum Blockchain</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

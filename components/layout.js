@@ -115,13 +115,13 @@ const Layout = ({ children }) => {
       <div className="desktop-layout">
         <div style={{marginTop: '120px', padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'}}>
           <footer style={{display: 'flex'}}>
-            <div  style={{display: 'flex', flex: '1', paddingTop: '20px', justifyContent: 'space-around'}}>
+            <div  style={{display: 'flex', flex: '1', paddingTop: '20px', justifyContent: 'space-between'}}>
               <div style={{width: '191px'}}>
                 <Link href="/">
                   <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" role="presentation" />
                 </Link>
                 <p style={{width: '191px', marginTop: '10px', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
-                <p  style={{width: '191px', marginTop: '50px', textAlign: 'center'}}>@ RECOVER 2020</p>
+                <p style={{width: '191px', marginTop: '50px', textAlign: 'center'}}>@ RECOVER 2020</p>
               </div>
               <div>
                 <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>

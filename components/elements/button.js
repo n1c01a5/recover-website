@@ -1,11 +1,13 @@
 const Button = ({
     isPrimary,
     isSmallFormat,
+    widthSize,
     onClick,
+    style,
     children
 }) => (
   <>
-    <button onClick={onClick}>{children}</button>
+    <button onClick={onClick} style={style}>{children}</button>
     <style jsx>{`
       button {
         width: ${isSmallFormat ? '280px' : ' 218px'};
@@ -18,7 +20,6 @@ const Button = ({
         border-radius: 10px;
         line-height: ${isSmallFormat ? '48px' : ' 48px'};
         cursor: pointer;
-
       }
     `}</style>
   </>
