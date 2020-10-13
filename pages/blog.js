@@ -18,7 +18,7 @@ export default function Blog() {
           minim veniam, quis nostrud exercitation ullamco laboris
         </p>
         <section className="blogs">
-          <div class="blog">
+          <div className="blog">
             <h4>Lorem ipsum</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -26,7 +26,7 @@ export default function Blog() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
             </p>
           </div>
-          <div class="blog">
+          <div className="blog">
             <h4>Lorem ipsum</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -34,7 +34,7 @@ export default function Blog() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
             </p>
           </div>
-          <div class="blog">
+          <div className="blog">
             <h4>Lorem ipsum</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -42,7 +42,7 @@ export default function Blog() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
             </p>
           </div>
-          <div class="blog">
+          <div className="blog">
             <h4>Lorem ipsum</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -50,7 +50,7 @@ export default function Blog() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
             </p>
           </div>
-          <div class="blog">
+          <div className="blog">
             <h4>Lorem ipsum</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -58,7 +58,7 @@ export default function Blog() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
             </p>
           </div>
-          <div class="blog">
+          <div className="blog">
             <h4>Lorem ipsum</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
