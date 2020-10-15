@@ -9,3 +9,42 @@
     display: none;
   }
 }
+
+/* About */
+
+.about__hero {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about__hero-text {
+  padding: 2rem;
+  text-align: center;
+  width: 50%;
+}
+
+.img-container img {
+  width: 100%;
+}
+
+.social-links ul {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.social-links ul li {
+  margin: 1rem;
+}
+
+/* About - media queries */
+
+@media screen and (max-width: 1024px) {
+  .about__hero-text {
+    width: 90%;
+    padding: 2rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
