@@ -11,23 +11,38 @@ export default function About() {
       <div className="about__main-container">
         <section className="about__hero">
           <div className="img-container">
-            <img src="/doge.png" alt="Doge with QrCode" />
+            <img src="/wagner-nicolas.jpg" alt="Wagner Nicolas biography - blockchain developer" />
           </div>
           <div className="about__hero-text">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-            sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-            aliquid ex ea commodi consequatur? Quis autem vel eum iure
-            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-            pariatur?
+            <p>
+            (TODO: change to I and the wording)
+            Nicolas is a self-taught developer who has worked for Tradelab, Novactive, Air France and the French
+            Administration. Beginning in June 2016, he became interested in blockchain technology. The transparent
+            and disintermediate dimension of this blockchain protocol convinced him that it would be the next
+            technology that would disrupt technology and society, just as the internet did in the 1990s. He won many
+            hackathons (2nd BeMyApp, 2nd Startup weekend blockchain, 1st prize at Merkle Week with Dether). In
+            addition, he regularly contributes to blockchain projects (Kleroterion, Abie fund) and frequently organizes
+            blockchain workshops (HackerHouse, Blockfest).
+            </p>
+            <p style={{paddingTop: '1rem'}}>
+              I want to create projects:
+              <ul>
+                <li>- open source,</li>
+                <li>- focus on the real economy, these projects are rare compare Defi...,</li>
+                <li>- decentralized as as much as possible.</li>
+              </ul>
+            </p>
+            <p style={{paddingTop: '1rem'}}>
+              About, my general vision about the blockchain, we are going to respond to the major challenges of the 
+              blockchain, such as:
+              <ul>
+                <li>- scalability,</li>
+                <li>- onboarding and the experience of (new) users,</li>
+                <li>- governance of the protocol and decentralized applications,</li>
+                <li>- and the security of smart contracts,</li>
+              </ul>
+              to make the blockchain the new generation of the internet.
+            </p>
           </div>
         </section>
         <section className="social-links">
