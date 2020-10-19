@@ -19,21 +19,24 @@
 }
 
 .content-text {
+  width: 80%;
+  margin: 0 auto;
   margin-top: 120px;
-  padding: 0 3rem;
 }
 
 .blogs {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
   margin-top: 20px;
-  padding: 3rem;
+  width: 80%;
 }
 
 .blog {
   background-color: #dcdcdc;
-  padding: 0.5rem;
-  margin: 1rem auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .blog h4 {
@@ -54,7 +57,7 @@
   }
 
   .blog {
-    margin: 1rem auto;
+    margin-bottom: 1rem;
     width: 45%;
   }
 }
@@ -62,7 +65,6 @@
 @media screen and (min-width: 1025px) {
   .blog {
     width: 30%;
-    margin: 1rem;
   }
 }
 
