@@ -4,11 +4,11 @@ import { slide as Menu } from 'react-burger-menu'
 
 import Button from './elements/button'
 
-function Scroll({setTop, isTop}) {
+function Scroll({ setTop, isTop }) {
   useEffect(function onFirstMount() {
     function onScroll() {
       window.document.addEventListener('scroll', () => {
-        if ((window.scrollY < 30) !== isTop) {
+        if (window.scrollY < 30 !== isTop) {
           setTop(false)
         } else {
           setTop(true)
@@ -16,7 +16,7 @@ function Scroll({setTop, isTop}) {
       })
     }
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll)
   }, []) // empty dependencies array means "run this once on first mount"
 
   return null
@@ -25,32 +25,70 @@ function Scroll({setTop, isTop}) {
 const Layout = ({ children }) => {
   const [isTop, setTop] = useState(true)
 
-  Scroll({setTop, isTop})
+  Scroll({ setTop, isTop })
 
   return (
     <>
-      <nav suppressHydrationWarning={true}>{/* FIXME: remove this props to mute warning. */}
+      <nav suppressHydrationWarning={true}>
+        {/* FIXME: remove this props to mute warning. */}
         <div className="mobile-layout">
           <div className="header-menu-small">
             <Link href="/">
-              <img  style={{paddingLeft: '20px'}} className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" />
+              <img
+                style={{ paddingLeft: '20px' }}
+                className="header-menu-logo"
+                src="/RECOVER-logo.svg"
+                alt="Recover Logo"
+              />
             </Link>
             <Menu>
-              <a href="https://app.recover.ws/" target="_blank">APPLICATION</a>
-              <a><Link href="/blog"><a>BLOG</a></Link></a>
-              <a><Link href="/about"><a>ABOUT</a></Link></a>
+              <a href="https://app.recover.ws/" target="_blank">
+                APPLICATION
+              </a>
+              <a>
+                <Link href="/blog">
+                  <a>BLOG</a>
+                </Link>
+              </a>
+              <a>
+                <Link href="/about">
+                  <a>ABOUT</a>
+                </Link>
+              </a>
             </Menu>
           </div>
         </div>
         <div className="desktop-layout">
           <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
-            <div><img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" /></div>
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <div style={{padding: '0 40px'}}><a href="https://app.recover.ws/" target="_blank">APPLICATION</a></div>
-              <div style={{padding: '0 40px'}}><Link href="/blog"><a>BLOG</a></Link></div>
-              <div style={{padding: '0 40px'}}><Link href="/about"><a>ABOUT</a></Link></div>
+            <div>
+              <img
+                className="header-menu-logo"
+                src="/RECOVER-logo.svg"
+                alt="Recover Logo"
+              />
             </div>
-            <div><Link href="/about"><Button isPrimary={true}>Get Your Loser Box</Button></Link></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ padding: '0 40px' }}>
+                <a href="https://app.recover.ws/" target="_blank">
+                  APPLICATION
+                </a>
+              </div>
+              <div style={{ padding: '0 40px' }}>
+                <Link href="/blog">
+                  <a>BLOG</a>
+                </Link>
+              </div>
+              <div style={{ padding: '0 40px' }}>
+                <Link href="/about">
+                  <a>ABOUT</a>
+                </Link>
+              </div>
+            </div>
+            <div>
+              <Link href="/about">
+                <Button isPrimary={true}>Get Your Loser Box</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -60,49 +98,102 @@ const Layout = ({ children }) => {
       </main>
 
       <div className="mobile-layout">
-        <div style={{marginTop: '40px'}}>
-          <footer style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{ marginTop: '40px' }}>
+          <footer
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}
+          >
             <div>
               <Link href="/">
-                <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" role="presentation" />
+                <img
+                  className="header-menu-logo"
+                  src="/RECOVER-logo.svg"
+                  alt="Recover Logo"
+                  role="presentation"
+                />
               </Link>
-              <p style={{marginTop: '10px', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
-              <p style={{marginTop: '10px', textAlign: 'center'}}>@ RECOVER 2020</p>
+              <p style={{ marginTop: '10px', textAlign: 'center' }}>
+                <strong>Use it, or Lose it</strong>
+              </p>
+              <p style={{ marginTop: '10px', textAlign: 'center' }}>
+                @ RECOVER 2020
+              </p>
             </div>
-            <div style={{display: 'flex', width: '100vw', flexDirection: 'row', justifyContent: 'space-between', padding: '30px 14%'}}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100vw',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                padding: '30px 14%'
+              }}
+            >
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Protocol</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="https://kleros.io/">Kleros</a></li>
-                  <li style={{padding: '2px 0'}}><a href="https://ethereum.org/en/">Ethereum</a></li>
-                  <li style={{padding: '2px 0'}}><a href="https://ipfs.io/">IPFS</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://kleros.io/">Kleros</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="https://ethereum.org/en/">Ethereum</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="https://ipfs.io/">IPFS</a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Incubator</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Incubator</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="https://stationf.co/">StationF</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://stationf.co/">StationF</a>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div style={{display: 'flex', width: '100vw', flexDirection: 'row', justifyContent: 'space-between', padding: '0 14%'}}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100vw',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                padding: '0 14%'
+              }}
+            >
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Social</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Social</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="https://github.com/blockchain-mafia/">Github</a></li>
-                  <li style={{padding: '2px 0'}}><a href="mailto: contact@wagner-nicolas.com">Mail</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://github.com/blockchain-mafia/">Github</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="mailto: contact@wagner-nicolas.com">Mail</a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Last Posts</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Last Posts</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="/">Escrow</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="/">Escrow</a>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div style={{height: '140px'}}>
-              <img 
-                style={{height: '140px'}}
+            <div style={{ height: '140px' }}>
+              <img
+                style={{ height: '140px' }}
                 className="footer-cryptokitty-recover"
                 src="/cryptokitty-recover.png"
                 alt="Cryptokitty with Recover"
@@ -113,13 +204,31 @@ const Layout = ({ children }) => {
         </div>
       </div>
       <div className="desktop-layout">
-        <div style={{marginTop: '120px', padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'}}>
-          <footer style={{display: 'flex'}}>
-            <div  style={{display: 'flex', flex: '1', paddingTop: '20px', justifyContent: 'space-between'}}>
-              <div style={{width: '191px'}}>
+        <div
+          style={{
+            marginTop: '120px',
+            padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'
+          }}
+        >
+          <footer style={{ display: 'flex' }}>
+            <div
+              style={{
+                display: 'flex',
+                flex: '1',
+                paddingTop: '20px',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div style={{ width: '191px' }}>
                 <Link href="/">
-                  <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" role="presentation" />
+                  <img
+                    className="header-menu-logo"
+                    src="/RECOVER-logo.svg"
+                    alt="Recover Logo"
+                    role="presentation"
+                  />
                 </Link>
+<<<<<<< HEAD
                 <p style={{width: '191px', marginTop: '10px', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
                 {/* <div style={{textAlign: 'center'}}>
                   <Link href="/"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇺🇸</a></Link>
@@ -127,38 +236,80 @@ const Layout = ({ children }) => {
                   <Link href="/fr"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇫🇷</a></Link>
                 </div> */}
                 <p style={{width: '191px', marginTop: '50px', textAlign: 'center'}}>@ RECOVER 2020</p>
+=======
+                <p
+                  style={{
+                    width: '191px',
+                    marginTop: '10px',
+                    textAlign: 'center'
+                  }}
+                >
+                  <strong>Use it, or Lose it</strong>
+                </p>
+                <p
+                  style={{
+                    width: '191px',
+                    marginTop: '50px',
+                    textAlign: 'center'
+                  }}
+                >
+                  @ RECOVER 2020
+                </p>
+>>>>>>> f83d758... added escrow article page and styles
               </div>
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Protocol</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="https://kleros.io/">Kleros</a></li>
-                  <li style={{padding: '2px 0'}}><a href="https://ethereum.org/en/">Ethereum</a></li>
-                  <li style={{padding: '2px 0'}}><a href="https://ipfs.io/">IPFS</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://kleros.io/">Kleros</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="https://ethereum.org/en/">Ethereum</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="https://ipfs.io/">IPFS</a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Incubator</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Incubator</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="https://stationf.co/">StationF</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://stationf.co/">StationF</a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Social</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Social</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="https://github.com/blockchain-mafia/">Github</a></li>
-                  <li style={{padding: '2px 0'}}><a href="mailto: contact@wagner-nicolas.com">Mail</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://github.com/blockchain-mafia/">Github</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="mailto: contact@wagner-nicolas.com">Mail</a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Last Posts</strong></p>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Last Posts</strong>
+                </p>
                 <ul>
-                  <li style={{paddingBottom: '2px'}}><a href="/">Escrow</a></li>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="/">Escrow</a>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div style={{height: '180px'}}>
-              <img 
-                style={{height: '180px'}}
+            <div style={{ height: '180px' }}>
+              <img
+                style={{ height: '180px' }}
                 className="footer-cryptokitty-recover"
                 src="/cryptokitty-recover.png"
                 alt="Cryptokitty with Recover"
@@ -174,14 +325,17 @@ const Layout = ({ children }) => {
           @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
           @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
-          body, html {
+          body,
+          html {
             padding: 0;
             margin: 0;
             min-width: 100vw;
             min-height: 100hw;
           }
 
-          *, *::after, *::before {
+          *,
+          *::after,
+          *::before {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
@@ -221,7 +375,7 @@ const Layout = ({ children }) => {
             background: #fff;
             z-index: 1000;
           }
-          
+
           .header-menu__isTop {
             position: absolute;
             margin-top: 30px;
@@ -312,7 +466,7 @@ const Layout = ({ children }) => {
             padding-top: 150px;
           }
 
-          div[id^="rcc"] {
+          div[id^='rcc'] {
             padding: 8px 0;
             border-bottom: 1px solid #efefef;
           }
@@ -346,17 +500,19 @@ const Layout = ({ children }) => {
             margin: 0;
             padding: 0;
           }
-  
-          .additionalClassForHead:hover, .active-accordion {
+
+          .additionalClassForHead:hover,
+          .active-accordion {
             color: #444 !important;
             background: #fff !important;
           }
 
-          .additionalClassForHeadMobile:hover, .active-accordion {
+          .additionalClassForHeadMobile:hover,
+          .active-accordion {
             color: #444 !important;
             background: #fff !important;
           }
-  
+
           .additionalClassForContent {
             background: #fff !important;
             margin: 0 !important;
@@ -372,5 +528,5 @@ const Layout = ({ children }) => {
     </>
   )
 }
-  
+
 export default Layout

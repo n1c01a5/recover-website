@@ -33,7 +33,16 @@
   width: 80%;
 }
 
+.blogs a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .blog {
+  height: 10rem;
   background-color: #dcdcdc;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -62,6 +71,52 @@
   .blog {
     width: 30%;
   }
+}
+
+/* Blog-Escrow */
+
+.escrow-container {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4;
+  word-spacing: 0.3rem;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.escrow-container h1,
+h3 {
+  font-weight: 600;
+}
+
+.escrow-header {
+  margin-bottom: 4rem;
+}
+
+.blog__section {
+  margin-bottom: 3rem;
+}
+
+.blog__section h3 {
+  margin-bottom: 1rem;
+}
+
+.blog__section p {
+  margin-bottom: 1rem;
+}
+
+.blog__list {
+  margin-top: 1rem;
+}
+
+.blog__list li {
+  margin: 0.6rem 0 0.6rem 2rem;
+  list-style-type: decimal;
+}
+
+.blog_link {
+  margin-left: 0.3rem;
+  color: #4fc2e9;
 }
 
 /* About */
