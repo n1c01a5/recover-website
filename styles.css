@@ -46,7 +46,6 @@
   height: 10rem;
   background-color: #dcdcdc;
   padding: 1rem;
-  margin: 0 auto;
   margin-bottom: 1rem;
   background-image: url("/doge.png");
   background-position: top;
@@ -67,7 +66,7 @@
 @media (min-width: 481px) and (max-width: 1024px) {
   .blog {
     margin-bottom: 1rem;
-    width: 49%;
+    width: 45%;
   }
 }
 
