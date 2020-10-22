@@ -120,8 +120,13 @@ const Layout = ({ children }) => {
                 <Link href="/">
                   <img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" role="presentation" />
                 </Link>
-                <p style={{width: '191px', marginTop: '10px', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
-                <p style={{width: '191px', marginTop: '50px', textAlign: 'center'}}>@ RECOVER 2020</p>
+                <p style={{width: '191px', margin: '10px 0', textAlign: 'center'}}><strong>Use it, or Lose it</strong></p>
+                <div style={{textAlign: 'center'}}>
+                  <Link href="/"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇺🇸</a></Link>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Link href="/fr"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇫🇷</a></Link>
+                </div>
+                <p style={{width: '191px', marginTop: '10px', textAlign: 'center'}}>@ RECOVER 2020</p>
               </div>
               <div>
                 <p style={{padding: '8px 0 10px 0', fontSize: '18px'}}><strong>Protocol</strong></p>

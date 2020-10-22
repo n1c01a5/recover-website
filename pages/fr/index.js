@@ -5,22 +5,21 @@ import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
 
 const Faq = dynamic(
-  () => import('../components/faq'),
+  () => import('../../components/faq'),
   { ssr: false }
 )
 
-import Layout from '../components/layout'
-import Button from '../components/elements/button'
+import Layout from '../../components/layout'
+import Button from '../../components/elements/button'
 
-import EthereumLogo from '../public/ethereum-logo.svg'
-import KlerosLogo from '../public/kleros-logo.svg'
-import IpfsLogo from '../public/ipfs-logo.svg'
-import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
-import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
-import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
-import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escrow.svg'
-import IllustrationTraceabilityBlockchain from '../public/illustration_traceability-blockchain.svg'
-import BackgroundLoserBox from '../public/background_loser-box.svg'
+import EthereumLogo from '../../public/ethereum-logo.svg'
+import KlerosLogo from '../../public/kleros-logo.svg'
+import IpfsLogo from '../../public/ipfs-logo.svg'
+import IllustrationUserExperienceBlockchain from '../../public/illustration_user-experience-blockchain.svg'
+import IllustrationBlockchainBusinessModel from '../../public/illustration_blockchain-business-model.svg'
+import IllustrationBlockchainEscrow from '../../public/illustration_blockchain-escrow.svg'
+import IllustrationTraceabilityBlockchain from '../../public/illustration_traceability-blockchain.svg'
+import BackgroundLoserBox from '../../public/background_loser-box.svg'
 
 export default function Home() {
   const isDesktopOrLaptop = useMediaQuery({
@@ -32,7 +31,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Recover.ws - Lost and Found service based on the Ethereum Blockchain</title>
+        <title>Recover.ws - Service d'objets trouvés basé sur Ethereum</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -47,23 +46,22 @@ export default function Home() {
             }}>
               <div>
                 <h1>
-                  Blockchain Friendly Gadget,
-                  <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
+                  Service d'<span style={{color: '#12c2e9'}}>Objets Trouvés</span>,<br />pour retrouver&nbsp;
                   <TextLoop mask={true} interval={1400}>
-                    <span>Phone</span>
-                    <span>Pets</span>
-                    <span>Keys</span>
-                    <span>Wallet</span>
-                    <span>Bag</span>
-                    <span>Laptop</span>
-                    <span>Ledger</span>
-                    <span>Luggage</span>
-                    <span>AirPods</span>
+                    <span>ton Smartphone</span>
+                    <span>ton Porte-monnaie</span>
+                    <span>ton Animal de compagnie</span>
+                    <span>tes Clés</span>
+                    <span>ton Sac</span>
+                    <span>ta Tablette</span>
+                    <span>ton Ledger</span>
+                    <span>ta Valise</span>
+                    <span>tes Airpods</span>
                   </TextLoop>
                 </h1>
                 <div style={{display: 'flex', justifyContent: 'space-between', width: '500px', marginTop: '50px'}}>
-                  <div><Button>How it Works</Button></div>
-                  <div><Button isPrimary={true}>Get your Loser Box</Button></div>
+                  <div><Button>Comment ca marche?</Button></div>
+                  <div><Button isPrimary={true}>Obtenir sa Loser Box</Button></div>
                 </div>
               </div>
               <div><img src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
@@ -79,7 +77,7 @@ export default function Home() {
             }}>
               <div style={{display: 'flex', alignItems: 'center'}}>
                 <div>
-                  <p><a href="https://consensys.net/developers/buidlnetwork/" style={{color: 'rgba(0, 0, 0, 0.4)', textDecoration: 'none'}}>BUIDL</a> top on</p>
+                  <p><a href="https://consensys.net/developers/buidlnetwork/" style={{color: 'rgba(0, 0, 0, 0.4)', textDecoration: 'none'}}>BUIDL*</a> sur</p>
                 </div>
                 <div style={{
                 }}>
@@ -112,7 +110,7 @@ export default function Home() {
                 </div>
               </div>
               <div style={{display: 'flex', alignItems: 'center'}}>
-                <div><p>Hosted By</p></div>
+                <div><p>Hébergé par</p></div>
                 <div><a href="https://stationf.co/"><img src='./stationf-logo.png' style={{width: '130px', marginLeft: '50px'}} /></a></div>
               </div>
             </div>
@@ -123,22 +121,21 @@ export default function Home() {
               <div style={{textAlign: 'center'}}><img style={{width: '80vw'}} src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>
               <div style={{marginTop: '20px'}}>
                 <h1 style={{textAlign: 'center', fontSize: '22px'}}>
-                  Blockchain Friendly Gadget,
-                  <br /><span style={{color: '#12c2e9'}}>Lost & Found</span> Service for&nbsp;
+                  Service d'<span style={{color: '#12c2e9'}}>Objets Trouvés</span>,<br />pour retrouver&nbsp;
                   <TextLoop mask={true} interval={1400}>
-                    <span>Phone</span>
-                    <span>Pets</span>
-                    <span>Keys</span>
-                    <span>Wallet</span>
-                    <span>Bag</span>
-                    <span>Laptop</span>
-                    <span>Ledger</span>
-                    <span>Luggage</span>
-                    <span>AirPods</span>
-                  </TextLoop>
+                    <span>ton Smartphone</span>
+                    <span>ton Porte-monnaie</span>
+                    <span>ton Animal de compagnie</span>
+                    <span>tes Clés</span>
+                    <span>ton Sac</span>
+                    <span>ta Tablette</span>
+                    <span>ton Ledger</span>
+                    <span>ta Valise</span>
+                    <span>tes Airpods</span>
+                   </TextLoop>
                 </h1>
               </div>
-              <div style={{textAlign: 'center', marginTop: '20px'}}><Button isPrimary={true} isSmallFormat={true}>Get your Loser Box</Button></div>
+              <div style={{textAlign: 'center', marginTop: '20px'}}><Button isPrimary={true} isSmallFormat={true}>Obtenir sa Loser Box</Button></div>
             </div>
           </div>
         </header>
@@ -148,7 +145,7 @@ export default function Home() {
         <section>
           <div className="desktop-layout">     
             <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>
-              <span style={{color: '#12c2e9'}}>How</span> I can Protect my Valuables from Loss?
+              <span style={{color: '#12c2e9'}}>Comment</span> retrouver mes objets de valeur?
             </h2>
             <div style={{display: 'flex', flexDirection: 'column'}}>
               <div style={{
@@ -162,7 +159,7 @@ export default function Home() {
                 }}>
                   <div>
                     <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px', lineHeight: '34px'}}>
-                      Put the QrCode with your personal details and a reward on your valuables to ensure its return in case of loss.
+                      Ajouter un QrCode Recover avec une récompense sur vos objets de valeur pour inciter la personne qui le trouve à te le retourner.
                     </p>
                   </div>
                   <div style={{
@@ -196,7 +193,7 @@ export default function Home() {
                 }}>
                   <div>
                     <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px', lineHeight: '34px'}}>
-                      If your valuable is lost, the finder is incentivized to return it to the owner.
+                      Si l'objet est perdu, celui qui l'a trouvé est incité à le rendre pour avoir la récompense.
                     </p>
                   </div>
                   <div style={{
@@ -224,7 +221,7 @@ export default function Home() {
                 }}>
                   <div>
                     <p style={{width: '450px', paddingLeft: '30px', fontSize: '22px', lineHeight: '34px'}}>
-                      If the finder returns your valuable, you give back the reward for his good deed.
+                      Après une prise de contact, vous pouvez échanger la récompense contre l'object perdu.
                     </p>
                   </div>
                   <div style={{
@@ -248,7 +245,7 @@ export default function Home() {
           </div>
           <div className="mobile-layout">
             <h2 style={{fontWeight: '600', fontSize: '22px', textAlign: 'center', margin: '40px 18px'}}>
-              <span style={{color: '#12c2e9'}}>How</span> I can Protect my Valuables from Loss?
+              <span style={{color: '#12c2e9'}}>Comment</span> protéger ses objets de valeur de la perte?
             </h2>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
               <div style={{position: 'relative'}}>
@@ -269,7 +266,7 @@ export default function Home() {
 
               <div>
                 <p style={{padding: '20px', fontSize: '14px', lineHeight: '17px', textAlign: 'center'}}>
-                  Put the QrCode with your personal details and a reward on your valuables to ensure its return in case of loss.
+                  Ajouter un QrCode Recover avec une récompense sur vos objets de valeur pour inciter la personne qui le trouve à te le retourner.
                 </p>
               </div>
               <div style={{position: 'relative', marginTop: '20px'}}>
@@ -289,7 +286,7 @@ export default function Home() {
               </div>
               <div>
                 <p style={{padding: '20px', fontSize: '14px', lineHeight: '17px', textAlign: 'center'}}>
-                  If your valuable is lost, the finder is incentivized to return it to the owner.
+                  Si l'objet est perdu, celui qui l'a trouvé est incité à le rendre pour avoir la récompense.
                 </p>
               </div>
 
@@ -310,49 +307,48 @@ export default function Home() {
               </div>
               <div>
                 <p style={{padding: '20px', fontSize: '14px', lineHeight: '17px', textAlign: 'center'}}>
-                  If the finder returns your valuable, you give back the reward for his good deed.
+                  Après une prise de contact, vous pouvez échanger la récompense contre l'object perdu.
                 </p>
               </div>
             </div>
             <h2 style={{fontWeight: '600', fontSize: '22px', textAlign: 'center', margin: '30px 18px 10px 18px'}}>
-              <span style={{color: '#12c2e9'}}>Why</span> Choose the Recover Lost and Found Service?
+              <span style={{color: '#12c2e9'}}>Pourquoi</span> Choisir Recover comme service d'Objets Perdus?
             </h2>
             <div style={{display: 'flex', flexDirection: 'column', margin: '0 20px'}}>
               <div>
                 <h3>
                   <img style={{position: 'relative', width: '40px', top: '12px', left: '-4px'}} src="/icon-qrcode.png" alt="Incentive people to give back your item" role="presentation" />
-                  <span style={{paddingLeft: '5px'}}>Convenient</span>
+                  <span style={{paddingLeft: '5px'}}>Simple</span>
                 </h3>
                 <p style={{padding: '20px 0'}}>
-                  Simply Put your QrCode on your Valuable to Protect it in case of Loss.
+                  Ajouter un simple QrCode pour Retrouver plus facilement vos Objets de valeur.
                 </p>
               </div>
               <div style={{textAlign: 'right'}}>
                 <h3>
-                  <span style={{paddingRight: '10px'}}>Incentive</span>
+                  <span style={{paddingRight: '10px'}}>Incitation</span>
                   <img style={{position: 'relative', width: '40px', top: '12px'}} src="/icon-incentive.png" alt="Incentive people to give back your item" role="presentation" />
                 </h3>
                 <p style={{padding: '20px 0'}}>
-                  A Reward is linked with the QrCode to incentivize the finder to return your valuable.
+                  Grâce à une Récompense, tu as plus de chance de Retrouver ton Objet de valeur.
                 </p>
               </div>
               <div>
                 <h3>
                   <img style={{position: 'relative', width: '40px', top: '12px', left: '-4px'}} src="/icon-secure.png" alt="Keep private your personal details" role="presentation" />
-                  <span style={{paddingLeft: '5px'}}>Privacy</span>
+                  <span style={{paddingLeft: '5px'}}>Confidentialité</span>
                 </h3>
                 <p style={{padding: '20px 0'}}>
-                  Your Personal details are accessible only to the finder and no other third party services.
+                  Tes données personnelles sont seulement accessibles par le propriétaire et celui qui le trouve, et par personne d'autre.
                 </p>
               </div>
               <div style={{marginTop: '40px'}}>
                 <h3 style={{textAlign: 'center'}}>
                   <img style={{position: 'relative', width: '40px', top: '-10px'}} src="/icon-blockchain.png" alt="Blockchain for a lost a found service" role="presentation" />
-                  <br />
-                  Experiment the Blockchain Ecosystem
+                  <br />Expérimenter la Blockchain avec Recover
                 </h3>
                 <p style={{padding: '20px 0'}}>
-                  Recover is a blockchain sandbox to improve:
+                  Recover est un projet qui te permet de tester certaines possibilités de la Blockchain:
                 </p>
                 <p style={{borderLeft: '2px solid #a6ffcb', paddingLeft: '10px'}}>
                   The Blockchain User Experience (workflow, tools, libraries...) for regular and cryptoenthousiast user.
@@ -368,19 +364,19 @@ export default function Home() {
                 </p>
               </div>
               <h2 style={{fontWeight: '600', fontSize: '22px', textAlign: 'center', margin: '60px 18px 30px 18px'}}>
-                Take a look on the <span style={{color: '#12c2e9'}}>Loser Box</span>!
+                Voir la <span style={{color: '#12c2e9'}}>Loser Box</span> maintenant!
               </h2>
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <img src='loser-box.png' style={{position: 'relative', width: '240px', top: '-40px', transform: 'rotate(-1.1deg)'}} />
-                <div style={{textAlign: 'center', marginTop: '-40px'}}><Button isPrimary={true} isSmallFormat={true}>Get your Loser Box</Button></div>
-                <div><p style={{marginTop: '20px'}}><a style={{textDecoration: 'underline'}}>Or test for free</a></p></div>
+                <div style={{textAlign: 'center', marginTop: '-40px'}}><Button isPrimary={true} isSmallFormat={true}>Obtenir ta Loser Box</Button></div>
+                <div><p style={{marginTop: '20px'}}><a style={{textDecoration: 'underline'}}>Ou tester gratuitement</a></p></div>
               </div>
             </div>
           </div>
         </section>
         <section className="mobile-layout">
           <h2 style={{fontWeight: '600', fontSize: '22px', padding: '60px 18px 0 18px', textAlign: 'center'}}>
-            Frequently Asked <span style={{color: '#12c2e9'}}>Questions</span>
+            Foire aux <span style={{color: '#12c2e9'}}>Questions</span>
           </h2>
           <div style={{padding: '20px', height: 'min-content'}}>
             <Faq />
@@ -392,46 +388,48 @@ export default function Home() {
         <section>
           <div style={{marginTop: '140px'}} className="desktop-layout">
             <h2 style={{fontWeight: '600', fontSize: '28px', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>
-              <span style={{color: '#12c2e9'}}>Why</span> Choose the Recover Lost and Found Service?
+              <span style={{color: '#12c2e9'}}>Pourquoi</span> choisir Recover pour Retrouver ses Objets?
             </h2>
             <div style={{display: 'flex', flexDirection: 'column', padding: '0 calc((100vw - 1250px + 160px) / 2)'}}>
               <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '80px'}}>
                 <div style={{flex: '1'}}>
                   <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
                     <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-incentive.png" alt="Incentive people to give back your item" role="presentation" />
-                    <span style={{fontSize: '24px'}}>Incentive</span>
+                    <span style={{fontSize: '24px'}}>Incitation</span>
                   </h3>
                   <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
-                    A Reward is linked with the QrCode to incentivize the finder to return your valuable.
+                    Grâce à une Récompense, tu as plus de chance de Retrouver ton Objet de valeur.
                   </p>
                 </div>
                 <div style={{flex: '1'}}>
                   <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
                     <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-qrcode.png" alt="Easy to use this lost and found service" role="presentation" />
-                    <span style={{fontSize: '24px'}}>Convenient</span>
+                    <span style={{fontSize: '24px'}}>Simple</span>
                   </h3>
                   <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
-                    Simply Put your QrCode on your Valuable to Protect it in case of Loss.
+                    Ajouter un simple QrCode pour Retrouver plus facilement vos Objets de valeur.
                   </p>
                 </div>  
                 <div style={{flex: '1'}}>
                   <h3 style={{textAlign: 'center', position: 'relative', left: '-10px'}}>
                     <img style={{position: 'relative', width: '40px', top: '12px', left: '-20px'}} src="/icon-secure.png" alt="Keep private your personal details" role="presentation" />
-                    <span style={{fontSize: '24px'}}>Privacy</span>
+                    <span style={{fontSize: '24px'}}>Confidentialité</span>
                   </h3>
                   <p style={{margin: '38px auto', fontSize: '22px', width: '300px', lineHeight: '34px'}}>
-                    Your Personal details are accessible only to the finder and no other third party services.
+                    Tes données personnelles sont seulement accessibles par le propriétaire et celui qui le trouve, et par personne d'autre.
                   </p>
                 </div>
               </div>
               <div style={{margin: '78px 0'}}>
                 <h3>
                   <img style={{position: 'relative', width: '40px', top: '12px'}} src="/icon-blockchain.png" alt="Blockchain for a lost a found service" role="presentation" />
-                  <span style={{paddingLeft: '20px', fontSize: '24px'}}>Experiment the Blockchain Ecosystem</span>
+                  <span style={{paddingLeft: '20px', fontSize: '24px'}}>Expérimenter la Blockchain avec Recover</span>
                 </h3>
                 <div style={{display: 'flex'}}>
                   <div style={{flex: '1'}}>
-                    <p style={{margin: '38px auto 18px auto', fontSize: '22px', lineHeight: '34px'}}>Recover is a blockchain sandbox to improve:</p>
+                    <p style={{margin: '38px auto 18px auto', fontSize: '22px', lineHeight: '34px'}}>
+                      Recover est un projet qui te permet de tester certaines possibilités de la Blockchain:
+                    </p>
                     <ul style={{listStyle: 'none'}}>
                       <li onMouseEnter={() => setWhyBlockchainIllustration(IllustrationUserExperienceBlockchain)} className="why-blockchain">The Blockchain User Experience (workflow, tools, libraries...) for regular and cryptoenthousiast user.</li>
                       <li onMouseEnter={() => setWhyBlockchainIllustration(IllustrationBlockchainBusinessModel)} className="why-blockchain">A viable Business Model that does not interfere with the decentralization of the project.</li>
