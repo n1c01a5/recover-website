@@ -1,5 +1,5 @@
-import Head from "next/head";
-import Layout from "../../components/layout";
+import Head from 'next/head'
+import Layout from '../../components/layout'
 
 export default function Blog() {
   return (
@@ -14,7 +14,7 @@ export default function Blog() {
         </h1>
         <div>
           <section className="blog__section">
-            <h3>What is a generic Escrow?</h3>
+            <h2>What is a generic Escrow?</h2>
             <p>
               In traditional transactions, both the parties (payee and the
               payer) are always concerned about foul play or mistrust. The payer
@@ -43,7 +43,7 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h3>How escrow financial transaction works</h3>
+            <h2>How escrow financial transaction works</h2>
             <p>
               Initially, either the payee or the payer approaches Escrow which
               acts as an arbitrator, the terms and conditions should be agreed
@@ -66,7 +66,7 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h3>What is an Escrow Smart contract?</h3>
+            <h2>What is an Escrow Smart contract?</h2>
             <p>
               A smart contract is a program that is smart enough to execute a
               piece of code instructions when conditions are met. Also, smart
@@ -92,81 +92,81 @@ export default function Blog() {
                 href="https://searchcio.techtarget.com/definition/distributed-ledger"
               >
                 distributed ledger
-              </a>{" "}
+              </a>{' '}
               can also store and make a copy of the document which provides
               added security and immutability.
             </p>
           </section>
           <section className="blog__section">
-            <h3>Main Advantages of using Escrow Smart Contracts</h3>
+            <h2>Main Advantages of using Escrow Smart Contracts</h2>
             <div>
               <p>
-                <u>
+                <strong>
                   Main Advantages of using Escrow Smart Contracts Smart Contract
-                  enforcement
-                </u>
-                : Smart contracts are enforced the same way as normal programs
-                are done. Smart contracts are similar to real-world contracts
-                but not exactly. In the real world, if a contract is broken you
-                can take the person to court but in the case of smart contracts,
+                  enforcement:
+                </strong>{' '}
+                Smart contracts are enforced the same way as normal programs are
+                done. Smart contracts are similar to real-world contracts but
+                not exactly. In the real world, if a contract is broken you can
+                take the person to court but in the case of smart contracts,
                 there are predefined rules that are defined by parties and
                 enforced by the blockchain. It’s smart contract enforcement.
               </p>
               <p>
-                <u>
-                  Arbitration Decentralized (reduce conflict interest) with{" "}
+                <strong>
+                  Arbitration Decentralized (reduce conflict interest) with{' '}
                   <a className="blog_link" href="https://kleros.io/">
-                    {" "}
+                    {' '}
                     Kleros
-                  </a>{" "}
-                  /{" "}
+                  </a>{' '}
+                  /{' '}
                   <a
                     className="blog_link"
                     href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
                   >
                     Aragon
                   </a>
-                </u>
+                </strong>
                 : The arbitration is decentralized and if any conflict of
-                interest arises, it is being dealt with{" "}
+                interest arises, it is being dealt with{' '}
                 <a className="blog_link" href="https://kleros.io/">
                   Kleros
-                </a>{" "}
+                </a>{' '}
                 , a Decentralized Autonomous Organisation (DOA) to solve
                 disputes.
               </p>
               <p>
-                <u>Interoperable (switch the arbitrator)</u>: Escrow smart
-                contracts are Interoperable that means if you don’t trust the
-                arbitrator you can easily change the arbitrator, being said the
-                smart contract follows the arbitrator standard. It allows a{" "}
+                <strong>Interoperable (switch the arbitrator)</strong>: Escrow
+                smart contracts are Interoperable that means if you don’t trust
+                the arbitrator you can easily change the arbitrator, being said
+                the smart contract follows the arbitrator standard. It allows a{' '}
                 <a
                   className="blog_link"
                   href="https://blog.kleros.io/kleros-layer-2/"
                 >
                   decentralized arbitrator
-                </a>{" "}
+                </a>{' '}
                 to easily switch from one arbitration service to another one. Or
                 to allow their users to choose themselves their arbitration
                 services.
               </p>
               <p>
-                <u>Resilient</u>: The service is resilient and is here to stay.
-                In other words, the service is always up. With an escrow smart
-                contract, you can be sure that your fund is never lost because
-                it uses blockchain protocol with high availability.
+                <strong>Resilient</strong>: The service is resilient and is here
+                to stay. In other words, the service is always up. With an
+                escrow smart contract, you can be sure that your fund is never
+                lost because it uses blockchain protocol with high availability.
               </p>
               <p>
-                <u>Cheap</u>: Smart contracts act as a less expensive way of
-                doing business between two or more parties. In case of any
-                dispute, you just have to pay the arbitration fee. Also,
+                <strong>Cheap</strong>: Smart contracts act as a less expensive
+                way of doing business between two or more parties. In case of
+                any dispute, you just have to pay the arbitration fee. Also,
                 decentralized arbitrators like Kleros are cheap and affordable
                 as they use a crowd of jurors to reduce the cost of arbitration.
               </p>
             </div>
           </section>
           <section className="blog__section">
-            <h3>Escrow Smart Contract implementation with Recover</h3>
+            <h2>Escrow Smart Contract implementation with Recover</h2>
             <p>
               <ul className="blog__list">
                 <li>The finder finds your lost valuable.</li>
@@ -185,7 +185,7 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h3>Conclusion</h3>
+            <h2>Conclusion</h2>
             <p>
               Now that we have learned briefly how blockchain escrow works, let
               us discover Recover.
@@ -194,5 +194,5 @@ export default function Blog() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
