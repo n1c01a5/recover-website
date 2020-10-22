@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
         </div>
         <div className="desktop-layout">
           <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
-            <div><img className="header-menu-logo" src="RECOVER-logo.svg" alt="Recover Logo" /></div>
+            <div><img className="header-menu-logo" src="/RECOVER-logo.svg" alt="Recover Logo" /></div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <div style={{padding: '0 40px'}}><a href="https://app.recover.ws/" target="_blank">APPLICATION</a></div>
               <div style={{padding: '0 40px'}}><Link href="/blog"><a>BLOG</a></Link></div>
