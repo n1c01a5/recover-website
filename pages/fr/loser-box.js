@@ -5,22 +5,22 @@ import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
 
 const Faq = dynamic(
-  () => import('../components/faq'),
+  () => import('../../components/faq'),
   { ssr: false }
 )
 
-import Layout from '../components/layout'
-import Button from '../components/elements/button'
+import Layout from '../../components/layout'
+import Button from '../../components/elements/button'
 
-import EthereumLogo from '../public/ethereum-logo.svg'
-import KlerosLogo from '../public/kleros-logo.svg'
-import IpfsLogo from '../public/ipfs-logo.svg'
-import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
-import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
-import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
-import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escrow.svg'
-import IllustrationTraceabilityBlockchain from '../public/illustration_traceability-blockchain.svg'
-import BackgroundLoserBox from '../public/background_loser-box.svg'
+import EthereumLogo from '../../public/ethereum-logo.svg'
+import KlerosLogo from '../../public/kleros-logo.svg'
+import IpfsLogo from '../../public/ipfs-logo.svg'
+import IllustrationTestEthereum from '../../public/illustration_test-ethereum.svg' // TODO: improve this
+import IllustrationUserExperienceBlockchain from '../../public/illustration_user-experience-blockchain.svg'
+import IllustrationBlockchainBusinessModel from '../../public/illustration_blockchain-business-model.svg'
+import IllustrationBlockchainEscrow from '../../public/illustration_blockchain-escrow.svg'
+import IllustrationTraceabilityBlockchain from '../../public/illustration_traceability-blockchain.svg'
+import BackgroundLoserBox from '../../public/background_loser-box.svg'
 
 export default function LoserBox() {
   const isDesktopOrLaptop = useMediaQuery({
