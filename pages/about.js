@@ -49,6 +49,7 @@ export default function About() {
             </p>
           </div>
         </section>
+        {/* TODO: put icons under the picture */}
         <section className="social-links">
           <ul>
             <li>
