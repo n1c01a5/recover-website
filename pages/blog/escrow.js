@@ -43,7 +43,7 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h2>How escrow financial transaction works</h2>
+            <h2>How escrow financial transaction works?</h2>
             <p>
               Initially, either the payee or the payer approaches Escrow which
               acts as an arbitrator, the terms and conditions should be agreed
