@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 
-export default function Blog() {
+export default function EscrowBlog() {
   return (
     <Layout>
       <Head>
