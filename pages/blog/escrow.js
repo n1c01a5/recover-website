@@ -43,11 +43,11 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h2>How escrow financial transaction works?</h2>
+            <h2>How Escrow financial transaction works?</h2>
             <p>
               Initially, either the payee or the payer approaches Escrow which
               acts as an arbitrator, the terms and conditions should be agreed
-              before the transaction is started.
+              upon before the transaction is started.
               <ul className="blog__list">
                 <li>
                   The buyer puts the payment to escrow to purchase a product or
@@ -101,16 +101,13 @@ export default function Blog() {
             <h2>Main Advantages of using Escrow Smart Contracts</h2>
             <div>
               <p>
-                <strong>
-                  Main Advantages of using Escrow Smart Contracts Smart Contract
-                  enforcement:
-                </strong>{' '}
-                Smart contracts are enforced the same way as normal programs are
-                done. Smart contracts are similar to real-world contracts but
-                not exactly. In the real world, if a contract is broken you can
-                take the person to court but in the case of smart contracts,
-                there are predefined rules that are defined by parties and
-                enforced by the blockchain. It’s smart contract enforcement.
+                <strong>Smart Contract enforcement:</strong> Smart contracts are
+                enforced the same way as normal programs are done. Smart
+                contracts are similar to real-world contracts but not exactly.
+                In the real world, if a contract is broken you can take the
+                person to court but in the case of smart contracts, there are
+                predefined rules that are defined by parties and enforced by the
+                blockchain. It’s smart contract enforcement.
               </p>
               <p>
                 <strong>
@@ -187,7 +184,11 @@ export default function Blog() {
             <h2>Conclusion</h2>
             <p>
               Now that we have learned briefly how blockchain escrow works, let
-              us discover Recover.
+              us discover
+              <a className="blog_link" href="/">
+                Recover
+              </a>
+              .
             </p>
           </section>
         </div>
