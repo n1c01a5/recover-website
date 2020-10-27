@@ -150,6 +150,12 @@ h2 {
   }
 }
 
+@media (min-width: 481px) and (max-width: 1024px) {
+  .escrow-container {
+    font-size: 26px;
+  }
+}
+
 /* About */
 
 .about__hero {
