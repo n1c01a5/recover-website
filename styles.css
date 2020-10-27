@@ -47,7 +47,7 @@
   background-color: #dcdcdc;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-image: url("/doge.png");
+  background-image: url('/doge.png');
   background-position: top;
 }
 
@@ -124,6 +124,30 @@ h2 {
 .blog_link {
   margin-left: 0.3rem;
   color: #4fc2e9;
+}
+
+/* Blog-Escrow-Media-queries */
+
+@media screen and (max-width: 1024px) {
+  .escrow-container {
+    width: 80%;
+    word-spacing: 0.1rem;
+  }
+
+  .escrow-container h1,
+  h2 {
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .escrow-container h1 {
+    font-weight: 600;
+    font-size: 28px;
+  }
+
+  .escrow-header {
+    margin-bottom: 2.5rem;
+  }
 }
 
 /* About */
