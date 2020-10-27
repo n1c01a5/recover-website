@@ -116,10 +116,9 @@ export default function Blog() {
                 <strong>
                   Arbitration Decentralized (reduce conflict interest) with{' '}
                   <a className="blog_link" href="https://kleros.io/">
-                    {' '}
                     Kleros
-                  </a>{' '}
-                  /{' '}
+                  </a>
+                  /
                   <a
                     className="blog_link"
                     href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
@@ -131,7 +130,7 @@ export default function Blog() {
                 interest arises, it is being dealt with{' '}
                 <a className="blog_link" href="https://kleros.io/">
                   Kleros
-                </a>{' '}
+                </a>
                 , a Decentralized Autonomous Organisation (DOA) to solve
                 disputes.
               </p>
