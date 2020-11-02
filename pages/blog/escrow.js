@@ -43,7 +43,7 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h2>How Escrow financial transaction works?</h2>
+            <h2>How Escrow Financial Transaction Works?</h2>
             <p>
               Initially, either the payee or the payer approaches Escrow which
               acts as an arbitrator, the terms and conditions should be agreed
@@ -117,7 +117,7 @@ export default function Blog() {
                   </a>
                   /
                   <a
-                    className="blog_link"
+                    className="blog_link no_left_margin"
                     href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
                   >
                     Aragon

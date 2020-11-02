@@ -126,6 +126,10 @@ h2 {
   color: #4fc2e9;
 }
 
+.no_left_margin {
+  margin-left: 0rem;
+}
+
 /* Blog-Escrow-Media-queries */
 
 @media screen and (max-width: 1024px) {
