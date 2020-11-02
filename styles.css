@@ -89,7 +89,7 @@
 
 .escrow-container h1,
 h2 {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .escrow-header {
@@ -130,29 +130,30 @@ h2 {
 
 @media screen and (max-width: 1024px) {
   .escrow-container {
-    width: 80%;
-    word-spacing: 0.1rem;
+    width: 85%;
+    word-spacing: -0.08rem;
+    font-weight: 200;
+    line-height: 26px;
+    font-size: 18px;
   }
 
   .escrow-container h1,
   h2 {
-    font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 500;
   }
 
   .escrow-container h1 {
-    font-weight: 600;
     font-size: 28px;
+    line-height: 36px;
+  }
+
+  .blog__section strong {
+    font-weight: 500;
   }
 
   .escrow-header {
     margin-bottom: 2.5rem;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 1024px) {
-  .escrow-container {
-    font-size: 26px;
   }
 }
 
