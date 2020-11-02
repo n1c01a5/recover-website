@@ -66,7 +66,7 @@ export default function Blog() {
             </p>
           </section>
           <section className="blog__section">
-            <h2>What is an Escrow Smart contract?</h2>
+            <h2>What is an Escrow Smart Contract?</h2>
             <p>
               A smart contract is a program that is smart enough to execute a
               piece of code instructions when conditions are met. Also, smart
