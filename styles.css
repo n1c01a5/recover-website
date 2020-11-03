@@ -33,10 +33,22 @@
   width: 80%;
 }
 
+.blogs a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #4fc2e9;
+}
+
 .blog {
+  height: 10rem;
   background-color: #dcdcdc;
   padding: 1rem;
   margin-bottom: 1rem;
+  background-image: url('/doge.png');
+  background-position: top;
 }
 
 .blog h4 {
@@ -45,13 +57,13 @@
 
 /* Blog - media queries */
 
-@media (min-width: 480) and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .blog {
-    width: 80%;
+    width: 100%;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .blog {
     margin-bottom: 1rem;
     width: 45%;
@@ -61,6 +73,91 @@
 @media screen and (min-width: 1025px) {
   .blog {
     width: 30%;
+  }
+}
+
+/* Blog-Escrow */
+
+.escrow-container {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4;
+  word-spacing: 0.3rem;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.escrow-container h1,
+h2 {
+  font-weight: 500;
+}
+
+.escrow-header {
+  margin-bottom: 4rem;
+}
+
+.blog__section {
+  margin-bottom: 3rem;
+}
+
+.blog__section h2 {
+  margin-bottom: 1rem;
+}
+
+.blog__section strong {
+  font-weight: 600;
+}
+
+.blog__section p {
+  margin-bottom: 1rem;
+}
+
+.blog__list {
+  margin-top: 1rem;
+}
+
+.blog__list li {
+  margin: 0.6rem 0 0.6rem 2rem;
+  list-style-type: decimal;
+}
+
+.blog_link {
+  margin-left: 0.3rem;
+  color: #4fc2e9;
+}
+
+.no_left_margin {
+  margin-left: 0rem;
+}
+
+/* Blog-Escrow-Media-queries */
+
+@media screen and (max-width: 1024px) {
+  .escrow-container {
+    width: 85%;
+    word-spacing: -0.08rem;
+    font-weight: 200;
+    line-height: 26px;
+    font-size: 18px;
+  }
+
+  .escrow-container h1,
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .escrow-container h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .blog__section strong {
+    font-weight: 500;
+  }
+
+  .escrow-header {
+    margin-bottom: 2.5rem;
   }
 }
 
