@@ -10,7 +10,7 @@ export default function RecoverPhoneBlog() {
       </Head>
       <div className="recover_phone_container">
         <section className="hero-section">
-          <h1>How can I Recover my phone if it is lost?</h1>
+          <h1>How can I Recover my Phone if it is lost?</h1>
           <p>
             Smartphones have taken place as one of the most personal and
             important tools in today's world. They contain a large part of your
@@ -33,7 +33,7 @@ export default function RecoverPhoneBlog() {
           <p> Here is what you should do immediately after the phone is lost</p>
         </section>
         <section className="section-1">
-          <h2>What measures to take right after the phone is lost? </h2>
+          <h2>What measures to take right after the Phone is lost? </h2>
 
           <h3>1. Call or text your phone</h3>
           <p>
@@ -66,7 +66,7 @@ export default function RecoverPhoneBlog() {
             phone or give your number for the employee to call to have a safe
             return.
           </p>
-          <h3>3. Locate your phone - location tracking service</h3>
+          <h3>3. Locate your Phone - location tracking service</h3>
           <p>
             If you were unable to get someone on the other side then try finding
             it with phone GPS service. For this feature to run smoothly you
@@ -135,7 +135,7 @@ export default function RecoverPhoneBlog() {
             </ul>
           </div>
           <div className="windows">
-            <h2>Know how to find a phone - Windows OS:</h2>
+            <h2>Know how to find a Phone - Windows OS:</h2>
             <ul>
               <li>
                 The phones running Windows 8.1 and later have built-in
@@ -215,7 +215,7 @@ export default function RecoverPhoneBlog() {
             incentivize the finder to return you lost valuables. See 2 main
             applications of this.
           </p>
-          <h3>1. Tile, a Bluetooth solution to find your phone</h3>
+          <h3>1. Tile, a Bluetooth solution to find your Phone</h3>
           <p>
             Tile is one organization that helps users around the world locate
             lost items using Bluetooth trackers or where they were last seen.{' '}
@@ -271,14 +271,14 @@ export default function RecoverPhoneBlog() {
               physical location of the person.
             </li>
           </ul>
-          <h3>2. Recover, a blockchain solution to find your phone</h3>
+          <h3>2. Recover, a blockchain solution to find your Phone</h3>
           <p>
             Recover is a Lost and Found service for valuables powered by
             Blockchain technology to incentivize people to return your items. It
             offers a Loser box using the technology which is used to safeguard
             the valuables.
           </p>
-          <h3>What do they offer to find your phone?</h3>
+          <h3>What do they offer to find your Phone?</h3>
           <p>
             Recover offers a Loser box that provides the user access to QR codes
             which can be used to secure a phone or any other valuable you own.
