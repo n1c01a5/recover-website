@@ -180,6 +180,7 @@ h4 {
 }
 
 .recover_phone_container h1 {
+  font-size: 2.3rem;
   margin-bottom: 3rem;
 }
 
@@ -234,6 +235,10 @@ h4 {
   }
   .recover_phone_container li {
     margin: 0.6rem 0 0.6rem 2rem;
+  }
+
+  .recover_phone_container h1 {
+    font-size: 1.6rem;
   }
 }
 
