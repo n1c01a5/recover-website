@@ -159,6 +159,8 @@ h2 {
   .escrow-header {
     margin-bottom: 2.5rem;
   }
+}
+
 /* Blog - Recover phone */
 
 .recover_phone_container {
@@ -174,7 +176,7 @@ h2 {
 h2,
 h3,
 h4 {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .recover_phone_container h1 {
@@ -218,6 +220,21 @@ h4 {
 .section-4 h4 {
   font-size: 1.3rem;
   margin-bottom: 0.9rem;
+}
+
+/* Blog - Recover phone - Media-queries */
+
+@media screen and (max-width: 1024px) {
+  .recover_phone_container {
+    width: 85%;
+    word-spacing: -0.08rem;
+    font-weight: 200;
+    line-height: 26px;
+    font-size: 18px;
+  }
+  .recover_phone_container li {
+    margin: 0.6rem 0 0.6rem 2rem;
+  }
 }
 
 /* About */
