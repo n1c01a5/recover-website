@@ -61,11 +61,13 @@ const Layout = ({ children }) => {
         <div className="desktop-layout">
           <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
             <div>
-              <img
-                className="header-menu-logo"
-                src="/RECOVER-logo.svg"
-                alt="Recover Logo"
-              />
+              <Link href="/">
+                <img
+                  className="header-menu-logo"
+                  src="/RECOVER-logo.svg"
+                  alt="Recover Logo"
+                />
+              </Link>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <div style={{ padding: '0 40px' }}>
@@ -381,6 +383,7 @@ const Layout = ({ children }) => {
           .header-menu-logo {
             position: relative;
             top: 7px;
+            cursor: pointer;
           }
 
           .header-menu-small {
