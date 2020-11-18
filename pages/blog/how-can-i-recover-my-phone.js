@@ -247,7 +247,7 @@ export default function RecoverPhoneBlog() {
             Bluetooth works well within a shorter range and is dependent on a
             connection to a Bluetooth enabled device.
           </p>
-          <h4>Advantages of Bluetooth based tracking systems</h4>
+          <h4>Advantages of Bluetooth based tracking systems:</h4>
           <ul>
             <li>
               It avoids interference from other wireless devices and is only
