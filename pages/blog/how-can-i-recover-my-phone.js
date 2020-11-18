@@ -66,7 +66,7 @@ export default function RecoverPhoneBlog() {
             phone or give your number for the employee to call to have a safe
             return.
           </p>
-          <h3>3. Locate your Phone - location tracking service</h3>
+          <h3>3. Locate your Phone - Location tracking service</h3>
           <p>
             If you were unable to get someone on the other side then try finding
             it with phone GPS service. For this feature to run smoothly you
@@ -74,14 +74,14 @@ export default function RecoverPhoneBlog() {
             accessed from another machine. Android device manager and Find my
             iPhone helps you do this as well.
           </p>
-          <p>
+          <h2>
             Here is the detailed description of how you can use the location
             service on Android and IOS devices
-          </p>
+          </h2>
         </section>
         <section className="section-2">
           <div className="android">
-            <h2>Learn how to locate an Android phone</h2>
+            <h3>Learn how to locate an Android phone:</h3>
             <p>There are 2 ways to find an Android phone.</p>
             <ul>
               <li>
@@ -92,7 +92,7 @@ export default function RecoverPhoneBlog() {
                 If it is off and off-grid, you can still locate its last known
                 location from a computer.
               </li>
-              <h3>To use Device Manager:</h3>
+              <p>To use Device Manager:</p>
               <ul>
                 <li>
                   Sign in to your Google Account from a computer or other
@@ -111,7 +111,7 @@ export default function RecoverPhoneBlog() {
             </ul>
           </div>
           <div className="iphone">
-            <h2>Learn how to locate an iPhone</h2>
+            <h3>Learn how to locate an iPhone (IOS):</h3>
             <ul>
               <li>
                 The Find My iPhone app is the best way to locate a lost iPhone.
@@ -135,7 +135,7 @@ export default function RecoverPhoneBlog() {
             </ul>
           </div>
           <div className="windows">
-            <h2>Know how to find a Phone - Windows OS:</h2>
+            <h3>Know how to find a Phone - Windows OS:</h3>
             <ul>
               <li>
                 The phones running Windows 8.1 and later have built-in
@@ -278,7 +278,7 @@ export default function RecoverPhoneBlog() {
             offers a Loser box using the technology which is used to safeguard
             the valuables.
           </p>
-          <h3>What do they offer to find your Phone?</h3>
+          <h4>What do they offer to find your Phone?</h4>
           <p>
             Recover offers a Loser box that provides the user access to QR codes
             which can be used to secure a phone or any other valuable you own.
@@ -296,7 +296,7 @@ export default function RecoverPhoneBlog() {
             For a user, Recover provides service with an added incentive which
             acts as a reward for the finder.
           </p>
-          <h3>Technology behind Recover</h3>
+          <h4>Technology behind Recover</h4>
           <p>
             Recover is the first lost and found service provider which uses
             Blockchain technology for product insurance. It ensures the Recovery
@@ -306,7 +306,7 @@ export default function RecoverPhoneBlog() {
             uses smart contracts to add more privacy, security and transparency
             to the transactions.
           </p>
-          <h3>How it works - three easy steps</h3>
+          <h4>How it works - three easy steps</h4>
           <p>
             Recover offer it services with Loser Box which can be set up in
             three easy steps:
