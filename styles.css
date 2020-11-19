@@ -49,20 +49,17 @@
   margin-bottom: 1rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('/doge.png');
-  /* background-position: top; */
   background-size: cover;
 }
 
 .blog_tile_1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('/Blog_1_Escrow.jpg');
-  /* background-position: center; */
 }
 
 .blog_tile_2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('/Blog_2_Lostphone.jpg');
-  /* background-position: center; */
 }
 
 .blog h4 {
