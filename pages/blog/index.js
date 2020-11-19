@@ -18,12 +18,12 @@ export default function Blog() {
           minim veniam, quis nostrud exercitation ullamco laboris
         </p>
         <section className="blogs">
-          <div className="blog">
+          <div className="blog blog_tile_1">
             <a href="/blog/escrow">
               <h4>What is a generic Escrow?</h4>
             </a>
           </div>
-          <div className="blog">
+          <div className="blog blog_tile_2">
             <a href="/blog/how-can-i-recover-my-phone">
               <h4>How can I Recover my phone if it is lost?</h4>
             </a>

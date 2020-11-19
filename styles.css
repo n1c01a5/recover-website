@@ -39,7 +39,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: #4fc2e9;
+  color: #51c4e9;
 }
 
 .blog {
@@ -47,8 +47,22 @@
   background-color: #dcdcdc;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-image: url('/doge.png');
-  background-position: top;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/doge.png');
+  /* background-position: top; */
+  background-size: cover;
+}
+
+.blog_tile_1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/Blog_1_Escrow.jpg');
+  /* background-position: center; */
+}
+
+.blog_tile_2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/Blog_2_Lostphone.jpg');
+  /* background-position: center; */
 }
 
 .blog h4 {
