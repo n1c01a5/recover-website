@@ -190,6 +190,12 @@ h4 {
   font-weight: 500;
 }
 
+.recover_phone_container li {
+  list-style-type: decimal;
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+}
+
 .recover_phone_container h1 {
   font-size: 2.4rem;
   margin-bottom: 3rem;
@@ -207,12 +213,6 @@ h4 {
 
 .recover_phone_container p {
   margin-bottom: 0.8rem;
-}
-
-.recover_phone_container li {
-  list-style-type: decimal;
-  margin-left: 3rem;
-  margin-bottom: 1rem;
 }
 
 .recover_phone_container .hero-section {
@@ -233,6 +233,16 @@ h4 {
 
 .section-4 h3 {
   margin: 3rem 0 1.5rem 0;
+}
+
+.section-3 li {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.section-3 li p {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .section-4 h4 {
