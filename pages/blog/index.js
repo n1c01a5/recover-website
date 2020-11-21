@@ -1,5 +1,5 @@
-import Head from "next/head";
-import Layout from "../../components/layout";
+import Head from 'next/head'
+import Layout from '../../components/layout'
 
 export default function Blog() {
   return (
@@ -18,14 +18,14 @@ export default function Blog() {
           minim veniam, quis nostrud exercitation ullamco laboris
         </p>
         <section className="blogs">
-          <div className="blog">
+          <div className="blog blog_tile_1">
             <a href="/blog/escrow">
               <h4>What is a generic Escrow?</h4>
             </a>
           </div>
-          <div className="blog">
-            <a href="#">
-              <h4>Lorem ipsum</h4>
+          <div className="blog blog_tile_2">
+            <a href="/blog/how-can-i-recover-my-phone">
+              <h4>How can I Recover my phone if it is lost?</h4>
             </a>
           </div>
           <div className="blog">
@@ -51,5 +51,5 @@ export default function Blog() {
         </section>
       </div>
     </Layout>
-  );
+  )
 }

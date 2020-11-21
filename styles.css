@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: #4fc2e9;
+  color: #51c4e9;
 }
 
 .blog {
@@ -51,8 +51,19 @@
   background-color: #dcdcdc;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-image: url('/doge.png');
-  background-position: top;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/doge.png');
+  background-size: cover;
+}
+
+.blog_tile_1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/Blog_1_Escrow.jpg');
+}
+
+.blog_tile_2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/Blog_2_Lostphone.jpg');
 }
 
 .blog h4 {
@@ -162,6 +173,115 @@ h2 {
 
   .escrow-header {
     margin-bottom: 2.5rem;
+  }
+}
+
+/* Blog - Recover phone */
+
+.recover_phone_container {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4;
+  word-spacing: 0.3rem;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.recover_phone_container h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+.recover_phone_container li {
+  list-style-type: decimal;
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+}
+
+.recover_phone_container h1 {
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+}
+
+.recover_phone_container h2 {
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.recover_phone_container h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.recover_phone_container p {
+  margin-bottom: 0.8rem;
+}
+
+.recover_phone_container .hero-section {
+  margin-bottom: 2rem;
+}
+
+.recover_phone_container .section-1 h2 {
+  margin-bottom: 1.4rem;
+}
+
+.recover_phone_container .section-1 h3 {
+  margin-bottom: 0.8rem;
+}
+
+.section-2 h3 {
+  font-weight: 600;
+}
+
+.section-4 h3 {
+  margin: 3rem 0 1.5rem 0;
+}
+
+.section-3 li {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.section-3 li p {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.section-4 h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.9rem;
+}
+
+/* Blog - Recover phone - Media-queries */
+
+@media screen and (max-width: 1024px) {
+  .recover_phone_container {
+    width: 85%;
+    word-spacing: -0.08rem;
+    font-weight: 200;
+    line-height: 26px;
+    font-size: 18px;
+  }
+  .recover_phone_container li {
+    margin: 0.6rem 0 0.6rem 2rem;
+  }
+
+  .recover_phone_container h1 {
+    font-size: 1.8rem;
+  }
+
+  .recover_phone_container h2 {
+    font-size: 1.6rem;
+  }
+
+  .recover_phone_container h3 {
+    font-size: 1.4rem;
+  }
+
+  .recover_phone_container h4 {
+    font-size: 1.2rem;
   }
 }
 
