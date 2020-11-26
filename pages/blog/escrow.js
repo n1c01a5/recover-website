@@ -128,7 +128,7 @@ export default function EscrowBlog() {
                 <a className="blog_link" href="https://kleros.io/">
                   Kleros
                 </a>
-                , a Decentralized Autonomous Organisation (DOA) to solve
+                , a Decentralized Autonomous Organisation (DAO) to solve
                 disputes.
               </p>
               <p>
