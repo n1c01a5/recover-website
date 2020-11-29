@@ -10,43 +10,126 @@ export default function Blog() {
       </Head>
       <div className="main-container">
         <section className="hero">
-          <section className="hero-overlay"></section>
-        </section>
-        <p className="content-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris
-        </p>
-        <section className="blogs">
-          <div className="blog blog_tile_1">
-            <a href="/blog/escrow">
-              <h4>What is a generic Escrow?</h4>
-            </a>
-          </div>
-          <div className="blog blog_tile_2">
+          <section className="hero-overlay">
+          <div className="highlighted_blog">
+          <div className="blog_image blog_tile_2"></div>
+          <div className="info">
             <a href="/blog/how-can-i-recover-my-phone">
               <h4>How can I Recover my phone if it is lost?</h4>
             </a>
+            <p>
+              Lorem ipsum dolor sit amet, labore et dolore
+              magna temporsit amet, consectetur adipiscing ut labore et dolore magna
+            </p>
+          </div>
+          </div>
+          </section>
+        </section>
+        <section className="blogs">
+          <div className="blog">
+            <div className="blog_image blog_tile_1"></div>
+            <div>
+              <div className="blog_topic">
+                <a href="/blog/escrow">
+                  <h4>What is a generic Escrow?</h4>
+                </a>
+              </div>
+              <p className="blog_title">
+                Lorem ipsum dolor sit amet consectetur adipiscing
+              </p>
+              <p className="blog_resume">
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit sed do eiusmod tempor ut labore et dolore magna
+              </p>
+            </div>
           </div>
           <div className="blog">
-            <a href="#">
-              <h4>Lorem ipsum</h4>
-            </a>
+            <div className="blog_image"></div>
+            <div>
+            <div className="blog_topic">
+                  <a href="/blog/escrow">
+                    <h4>Lorem ipsum</h4>
+                  </a>
+                </div>
+              <p className="blog_title">
+                Lorem ipsum dolor sit amet consectetur adipiscing
+              </p>
+              <p className="blog_resume">
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit sed do eiusmod tempor ut labore et dolore magna
+              </p>
+            </div>
           </div>
           <div className="blog">
-            <a href="#">
-              <h4>Lorem ipsum</h4>
-            </a>
+          <div className="blog_image"></div>
+            <div>
+            <div className="blog_topic">
+                  <a href="/blog/escrow">
+                    <h4>Lorem ipsum</h4>
+                  </a>
+                </div>
+              <p className="blog_title">
+                Lorem ipsum dolor sit amet consectetur adipiscing
+              </p>
+              <p className="blog_resume">
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit sed do eiusmod tempor ut labore et dolore magna
+              </p>
+            </div>
+          </div>
+          <div className="divider">
+            <hr />
           </div>
           <div className="blog">
-            <a href="#">
-              <h4>Lorem ipsum</h4>
-            </a>
+            <div className="blog_image"></div>
+              <div>
+              <div className="blog_topic">
+                  <a href="/blog/escrow">
+                    <h4>Lorem ipsum</h4>
+                  </a>
+                </div>
+                <p className="blog_title">
+                  Lorem ipsum dolor sit amet consectetur adipiscing
+                </p>
+                <p className="blog_resume">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit sed do eiusmod tempor ut labore et dolore magna
+                </p>
+            </div>
           </div>
           <div className="blog">
-            <a href="#">
-              <h4>Lorem ipsum</h4>
-            </a>
+            <div className="blog_image"></div>
+              <div>
+              <div className="blog_topic">
+                  <a href="/blog/escrow">
+                    <h4>Lorem ipsum</h4>
+                  </a>
+                </div>
+                <p className="blog_title">
+                  Lorem ipsum dolor sit amet consectetur adipiscing
+                </p>
+                <p className="blog_resume">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit sed do eiusmod tempor ut labore et dolore magna
+                </p>
+              </div>
+          </div>
+          <div className="blog">
+            <div className="blog_image"></div>
+              <div>
+                <div className="blog_topic">
+                  <a href="/blog/escrow">
+                    <h4>Lorem ipsum</h4>
+                  </a>
+                </div>
+                <p className="blog_title">
+                  Lorem ipsum dolor sit amet consectetur adipiscing
+                </p>
+                <p className="blog_resume">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit sed do eiusmod tempor ut labore et dolore magna
+                </p>
+              </div>
           </div>
         </section>
       </div>
