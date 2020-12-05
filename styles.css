@@ -10,12 +10,14 @@
 
 .hero {
   height: 400px;
-  background: #dcdcdc;
+  background-image: url('/undraw_posting_photo_v65l.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-overlay {
   padding: 2rem;
-  width: 75%;
+  width: 80%;
   height: 150px;
   margin: 0 auto;
   position: relative;
@@ -38,10 +40,11 @@
   width: 35%;
 }
 
-.highlighted_blog .info h4 {
+.highlighted_blog .info h2 {
   font-size: 1.7rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  margin-top: 0.7rem;
 }
 
 .highlighted_blog .info p {
@@ -54,7 +57,7 @@
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 23rem;
-  width: 75%;
+  width: 80%;
   padding: 2rem;
 }
 
@@ -86,10 +89,11 @@
   border-radius: 5px;
 }
 
-.blog_topic a h4 {
+a h4 {
   font-size: 0.9rem;
   font-weight: 400;
   text-transform: uppercase;
+  color: #51c4e9;
 }
 
 .blog_title {
@@ -407,15 +411,14 @@ h4 {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "about__img-container"
-    "about__hero-text"
-    "about__social-links";
+    'about__img-container'
+    'about__hero-text'
+    'about__social-links';
 }
 
 .about__img-container {
   width: 100vw;
   grid-area: about__img-container;
-
 }
 
 .about__hero-text {
@@ -444,23 +447,21 @@ h4 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      "about__img-container about__hero-text"
-      "about__social-links about__hero-text";
+      'about__img-container about__hero-text'
+      'about__social-links about__hero-text';
   }
 
   .about__img-container {
     width: 500px;
     padding: 0;
     grid-area: about__img-container;
-  
   }
-  
+
   .about__hero-text {
     padding: 0;
     grid-area: about__hero-text;
-    
   }
-  
+
   .about__social-links {
     grid-area: about__social-links;
     width: 500px;

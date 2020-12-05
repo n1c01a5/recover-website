@@ -14,8 +14,11 @@ export default function Blog() {
           <div className="highlighted_blog">
           <div className="blog_image blog_tile_2"></div>
           <div className="info">
+            <a href="/blog/escrow">
+              <h4>lost and found</h4>
+            </a>
             <a href="/blog/how-can-i-recover-my-phone">
-              <h4>How can I Recover my phone if it is lost?</h4>
+              <h2>How can I Recover my phone if it is lost?</h2>
             </a>
             <p>
               Lorem ipsum dolor sit amet, labore et dolore
@@ -31,7 +34,7 @@ export default function Blog() {
             <div>
               <div className="blog_topic">
                 <a href="/blog/escrow">
-                  <h4>What is a generic Escrow?</h4>
+                  <h4>Escrow</h4>
                 </a>
               </div>
               <p className="blog_title">
