@@ -14,7 +14,7 @@ export default function Blog() {
           <div className="highlighted_blog">
           <div className="blog_image blog_tile_2"></div>
           <div className="info">
-            <a href="/blog/escrow">
+            <a href="/blog/how-can-i-recover-my-phone">
               <h4>lost and found</h4>
             </a>
             <a href="/blog/how-can-i-recover-my-phone">

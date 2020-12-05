@@ -10,7 +10,7 @@
 
 .hero {
   height: 400px;
-  background-image: url('/undraw_posting_photo_v65l.png');
+  background-image: url('/nasa-Q1p7bh3SHj8-unsplash (1).jpg');
   background-size: cover;
   background-position: center;
 }
@@ -154,6 +154,7 @@ a h4 {
   }
 
   .blogs {
+    margin-top: 26rem;
     width: 95%;
     padding: 0.8rem;
   }
