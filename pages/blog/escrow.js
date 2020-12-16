@@ -1,5 +1,5 @@
-import Head from "next/head"
-import Layout from "../../components/layout"
+import Head from 'next/head'
+import Layout from '../../components/layout'
 
 export default function EscrowBlog() {
   return (
@@ -120,7 +120,7 @@ export default function EscrowBlog() {
                 href="https://searchcio.techtarget.com/definition/distributed-ledger"
               >
                 distributed ledger
-              </a>{" "}
+              </a>{' '}
               can also store and make a copy of the document which provides
               added security and immutability.
             </p>
@@ -139,7 +139,7 @@ export default function EscrowBlog() {
               </p>
               <p>
                 <strong>
-                  Arbitration Decentralized (reduce conflict interest) with{" "}
+                  Arbitration Decentralized (reduce conflict interest) with{' '}
                   <a className="blog_link" href="https://kleros.io/">
                     Kleros
                   </a>
@@ -152,7 +152,7 @@ export default function EscrowBlog() {
                   </a>
                 </strong>
                 : The arbitration is decentralized and if any conflict of
-                interest arises, it is being dealt with{" "}
+                interest arises, it is being dealt with{' '}
                 <a className="blog_link" href="https://kleros.io/">
                   Kleros
                 </a>
@@ -163,13 +163,13 @@ export default function EscrowBlog() {
                 <strong>Interoperable (switch the arbitrator)</strong>: Escrow
                 smart contracts are Interoperable that means if you don’t trust
                 the arbitrator you can easily change the arbitrator, being said
-                the smart contract follows the arbitrator standard. It allows a{" "}
+                the smart contract follows the arbitrator standard. It allows a{' '}
                 <a
                   className="blog_link"
                   href="https://blog.kleros.io/kleros-layer-2/"
                 >
                   decentralized arbitrator
-                </a>{" "}
+                </a>{' '}
                 to easily switch from one arbitration service to another one. Or
                 to allow their users to choose themselves their arbitration
                 services.

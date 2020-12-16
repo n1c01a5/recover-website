@@ -1,5 +1,5 @@
-import Head from "next/head"
-import Layout from "../../components/layout"
+import Head from 'next/head'
+import Layout from '../../components/layout'
 
 export default function RecoverPhoneBlog() {
   return (
@@ -246,7 +246,7 @@ export default function RecoverPhoneBlog() {
           <h3>1. Tile, a Bluetooth solution to find your Phone</h3>
           <p>
             Tile is one organization that helps users around the world locate
-            lost items using Bluetooth trackers or where they were last seen.{" "}
+            lost items using Bluetooth trackers or where they were last seen.{' '}
           </p>
           <h4>What does it offer?</h4>
           <p>
