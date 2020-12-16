@@ -22,8 +22,39 @@ function Scroll({ setTop, isTop }) {
   return null
 }
 
+
 const Layout = ({ children }) => {
   const [isTop, setTop] = useState(true)
+
+  // const [metamaskInstalled, setmetamaskInstalled] = useState(false)
+
+  // useEffect(() => {
+  //   // Update the document title using the browser API
+  //   // document.title = `You clicked ${count} times`;
+  //   const metamaskInstalled = typeof window.web3 !== 'undefined'
+  //   // this.setState({ metamaskInstalled })
+  //   setmetamaskInstalled(metamaskInstalled)
+  //   if (metamaskInstalled) {
+  //     (async function anyNameFunction() {
+  //       // await loadWeb3()
+  //       // await loadBlockchainData()
+  //     })();
+
+  //   }
+  // }, []);
+
+  // async function loadWeb3() {
+  //   if (window.ethereum) {
+  //     window.web3 = new Web3(window.ethereum)
+  //     await window.ethereum.enable()
+  //   }
+  //   else if (window.web3) {
+  //     window.web3 = new Web3(window.web3.currentProvider)
+  //   }
+  //   else {
+  //     // DO NOTHING...
+  //   }
+  // }
 
   Scroll({ setTop, isTop })
 
@@ -87,9 +118,12 @@ const Layout = ({ children }) => {
               </div>
             </div>
             <div>
+             
+              {/* <Button isPrimary={true} style={{marginRight:10}} onClick={()=>{connectMetamask()}}>Connect Wallet</Button> */}
               <Link href="/about">
                 <Button isPrimary={true}>Get Your Loser Box</Button>
               </Link>
+              
             </div>
           </div>
         </div>
@@ -528,3 +562,11 @@ const Layout = ({ children }) => {
 }
 
 export default Layout
+
+
+
+// Tasks:
+// - move "connect wallet"
+// - remove form for approve in modal
+// - remove modal for createTx
+// - get all txId from smart contract and show one button pay to pay all
