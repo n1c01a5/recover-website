@@ -10,7 +10,7 @@
 
 .hero {
   height: 400px;
-  background-image: url('/nasa-Q1p7bh3SHj8-unsplash (1).jpg');
+  background-image: url("/nasa-Q1p7bh3SHj8-unsplash (1).jpg");
   background-size: cover;
   background-position: center;
 }
@@ -87,7 +87,7 @@
   width: 100%;
   height: 12rem;
   background-color: #dcdcdc;
-  background-image: url('/doge.png');
+  background-image: url("/doge.png");
   background-size: cover;
   margin-bottom: 1rem;
   border-radius: 5px;
@@ -116,11 +116,11 @@ a h4 {
 }
 
 .blog_tile_1 {
-  background-image: url('/Blog_1_Escrow.jpg');
+  background-image: url("/Blog_1_Escrow.jpg");
 }
 
 .blog_tile_2 {
-  background-image: url('/Blog_2_Lostphone.jpg');
+  background-image: url("/Blog_2_Lostphone.jpg");
 }
 
 .blog h4 {
@@ -218,6 +218,64 @@ a h4 {
   margin: 0 auto;
 }
 
+.blog-info .authors {
+  display: flex;
+  justify-content: space-between;
+  width: 35rem;
+  margin-top: 1.5rem;
+}
+
+.blog-info hr {
+  margin-top: 3rem;
+}
+
+.authors .author {
+  width: 15rem;
+  background-color: gainsboro;
+  border-radius: 35px;
+  padding: 0.5rem;
+  display: flex;
+}
+
+.author p {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.author-image {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.author-nico .author-image {
+  background-image: url("/nico.jpg");
+}
+
+.author-bhavesh .author-image {
+  background-image: url("/bhavesh.jpg");
+}
+
+.blog-info .time-info {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.blog-cover {
+  width: 100%;
+  height: 15rem;
+  background-image: url("/Blog_1_Escrow.jpg");
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 2rem;
+}
+
 .escrow-container h1,
 h2 {
   font-weight: 500;
@@ -303,6 +361,15 @@ h2 {
   margin: 0 auto;
 }
 
+.recover_phone_container .blog-info {
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.recover_phone_container .blog-cover {
+  background-image: url("/Blog_2_Lostphone.jpg");
+}
+
 .recover_phone_container h1,
 h2,
 h3,
@@ -333,6 +400,14 @@ h4 {
 
 .recover_phone_container p {
   margin-bottom: 0.8rem;
+}
+
+.recover_phone_container .blog-info p {
+  margin-bottom: 0.5rem;
+}
+
+.recover_phone_container .blog-info .last-para {
+  margin-bottom: 0.1rem;
 }
 
 .recover_phone_container .hero-section {
@@ -434,9 +509,9 @@ h4 {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    'about__img-container'
-    'about__hero-text'
-    'about__social-links';
+    "about__img-container"
+    "about__hero-text"
+    "about__social-links";
 }
 
 .about__img-container {
@@ -470,8 +545,8 @@ h4 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      'about__img-container about__hero-text'
-      'about__social-links about__hero-text';
+      "about__img-container about__hero-text"
+      "about__social-links about__hero-text";
   }
 
   .about__img-container {

@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Layout from '../../components/layout'
+import Head from "next/head"
+import Layout from "../../components/layout"
 
 export default function RecoverPhoneBlog() {
   return (
@@ -9,6 +9,30 @@ export default function RecoverPhoneBlog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="recover_phone_container">
+        <div className="blog-info">
+          <p>Topic</p> <p>Title</p> <p>Resume</p>
+          <hr />
+          <div className="authors">
+            <div className="author author-nico">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Wagner Nicolas</p>
+                <p className="last-para">CEO</p>
+              </div>
+            </div>
+            <div className="author author-bhavesh">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Bhavesh pandey</p>
+                <p className="last-para">Product manager</p>
+              </div>
+            </div>
+          </div>
+          <div className="time-info">
+            <p>6 MIN READ - 15th december, 2020</p>
+          </div>
+        </div>
+        <div className="blog-cover"></div>
         <section className="hero-section">
           <h1>How can I Recover my Phone if it is lost?</h1>
           <p>
@@ -218,7 +242,7 @@ export default function RecoverPhoneBlog() {
           <h3>1. Tile, a Bluetooth solution to find your Phone</h3>
           <p>
             Tile is one organization that helps users around the world locate
-            lost items using Bluetooth trackers or where they were last seen.{' '}
+            lost items using Bluetooth trackers or where they were last seen.{" "}
           </p>
           <h4>What does it offer?</h4>
           <p>

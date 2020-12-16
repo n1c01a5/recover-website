@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Layout from '../../components/layout'
+import Head from "next/head"
+import Layout from "../../components/layout"
 
 export default function EscrowBlog() {
   return (
@@ -9,6 +9,30 @@ export default function EscrowBlog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="escrow-container">
+        <div className="blog-info">
+          <p>Topic</p> <p>Title</p> <p>Resume</p>
+          <hr />
+          <div className="authors">
+            <div className="author author-nico">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Wagner Nicolas</p>
+                <p>CEO</p>
+              </div>
+            </div>
+            <div className="author author-bhavesh">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Bhavesh pandey</p>
+                <p>Product manager</p>
+              </div>
+            </div>
+          </div>
+          <div className="time-info">
+            <p>4 MIN READ - 15th december, 2020</p>
+          </div>
+        </div>
+        <div className="blog-cover"></div>
         <h1 className="escrow-header">
           Securing valuables with Escrow Smart Contracts
         </h1>
@@ -92,7 +116,7 @@ export default function EscrowBlog() {
                 href="https://searchcio.techtarget.com/definition/distributed-ledger"
               >
                 distributed ledger
-              </a>{' '}
+              </a>{" "}
               can also store and make a copy of the document which provides
               added security and immutability.
             </p>
@@ -111,7 +135,7 @@ export default function EscrowBlog() {
               </p>
               <p>
                 <strong>
-                  Arbitration Decentralized (reduce conflict interest) with{' '}
+                  Arbitration Decentralized (reduce conflict interest) with{" "}
                   <a className="blog_link" href="https://kleros.io/">
                     Kleros
                   </a>
@@ -124,7 +148,7 @@ export default function EscrowBlog() {
                   </a>
                 </strong>
                 : The arbitration is decentralized and if any conflict of
-                interest arises, it is being dealt with{' '}
+                interest arises, it is being dealt with{" "}
                 <a className="blog_link" href="https://kleros.io/">
                   Kleros
                 </a>
@@ -135,13 +159,13 @@ export default function EscrowBlog() {
                 <strong>Interoperable (switch the arbitrator)</strong>: Escrow
                 smart contracts are Interoperable that means if you don’t trust
                 the arbitrator you can easily change the arbitrator, being said
-                the smart contract follows the arbitrator standard. It allows a{' '}
+                the smart contract follows the arbitrator standard. It allows a{" "}
                 <a
                   className="blog_link"
                   href="https://blog.kleros.io/kleros-layer-2/"
                 >
                   decentralized arbitrator
-                </a>{' '}
+                </a>{" "}
                 to easily switch from one arbitration service to another one. Or
                 to allow their users to choose themselves their arbitration
                 services.
