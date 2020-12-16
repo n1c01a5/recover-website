@@ -220,8 +220,7 @@ a h4 {
 
 .blog-info .authors {
   display: flex;
-  justify-content: space-between;
-  width: 35rem;
+  width: 100%;
   margin-top: 1.5rem;
 }
 
@@ -235,6 +234,7 @@ a h4 {
   border-radius: 35px;
   padding: 0.5rem;
   display: flex;
+  margin-right: 2rem;
 }
 
 .author p {
@@ -330,6 +330,18 @@ h2 {
     font-size: 18px;
   }
 
+  .escrow-container .blog-info {
+    line-height: 1;
+  }
+
+  .escrow-container .blog-info p {
+    margin-bottom: 0.4rem;
+  }
+
+  .escrow-container .blog-info .last-para {
+    margin-bottom: 0.1rem;
+  }
+
   .escrow-container h1,
   h2 {
     font-size: 20px;
@@ -347,6 +359,14 @@ h2 {
 
   .escrow-header {
     margin-bottom: 2.5rem;
+  }
+
+  .blog-info .authors {
+    flex-direction: column;
+  }
+
+  .authors .author {
+    margin-bottom: 1rem;
   }
 }
 
@@ -455,6 +475,7 @@ h4 {
     line-height: 26px;
     font-size: 18px;
   }
+
   .recover_phone_container li {
     margin: 0.6rem 0 0.6rem 2rem;
   }

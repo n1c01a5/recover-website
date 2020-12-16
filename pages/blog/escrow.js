@@ -17,14 +17,14 @@ export default function EscrowBlog() {
               <div className="author-image"></div>
               <div className="author-desc">
                 <p>Wagner Nicolas</p>
-                <p>CEO</p>
+                <p className="last-para">CEO</p>
               </div>
             </div>
             <div className="author author-bhavesh">
               <div className="author-image"></div>
               <div className="author-desc">
                 <p>Bhavesh pandey</p>
-                <p>Product manager</p>
+                <p className="last-para">Product manager</p>
               </div>
             </div>
           </div>
