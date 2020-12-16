@@ -218,6 +218,14 @@ a h4 {
   margin: 0 auto;
 }
 
+.escrow-container .blog-info {
+  line-height: 1;
+}
+
+.blog-info {
+  margin-bottom: 5rem;
+}
+
 .blog-info .authors {
   display: flex;
   width: 100%;
@@ -226,6 +234,18 @@ a h4 {
 
 .blog-info hr {
   margin-top: 3rem;
+  border-color: lightgrey;
+}
+
+.blog-info .topic {
+  font-size: 0.8rem;
+  color: #4fc2e9;
+}
+
+.blog-info .resume {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #9cacb3;
 }
 
 .authors .author {
@@ -282,7 +302,8 @@ h2 {
 }
 
 .escrow-header {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  font-size: 3.4rem;
 }
 
 .blog__section {
@@ -383,7 +404,7 @@ h2 {
 
 .recover_phone_container .blog-info {
   line-height: 1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 5rem;
 }
 
 .recover_phone_container .blog-cover {
@@ -404,8 +425,8 @@ h4 {
 }
 
 .recover_phone_container h1 {
-  font-size: 2.4rem;
-  margin-bottom: 3rem;
+  font-size: 3.4rem;
+  margin-bottom: 2rem;
 }
 
 .recover_phone_container h2 {

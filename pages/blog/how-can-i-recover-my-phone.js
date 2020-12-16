@@ -10,7 +10,12 @@ export default function RecoverPhoneBlog() {
       </Head>
       <div className="recover_phone_container">
         <div className="blog-info">
-          <p>Topic</p> <p>Title</p> <p>Resume</p>
+          <p className="topic">LOST AND FOUND</p>
+          <h1>How can I Recover my Phone if it is lost?</h1>
+          <p className="resume">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt
+          </p>
           <hr />
           <div className="authors">
             <div className="author author-nico">
@@ -34,7 +39,6 @@ export default function RecoverPhoneBlog() {
         </div>
         <div className="blog-cover"></div>
         <section className="hero-section">
-          <h1>How can I Recover my Phone if it is lost?</h1>
           <p>
             Smartphones have taken place as one of the most personal and
             important tools in today's world. They contain a large part of your

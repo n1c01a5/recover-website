@@ -10,7 +10,14 @@ export default function EscrowBlog() {
       </Head>
       <div className="escrow-container">
         <div className="blog-info">
-          <p>Topic</p> <p>Title</p> <p>Resume</p>
+          <p className="topic">ESCROW</p>
+          <h1 className="escrow-header">
+            Securing valuables with Escrow Smart Contracts
+          </h1>
+          <p className="resume">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt
+          </p>
           <hr />
           <div className="authors">
             <div className="author author-nico">
@@ -33,9 +40,6 @@ export default function EscrowBlog() {
           </div>
         </div>
         <div className="blog-cover"></div>
-        <h1 className="escrow-header">
-          Securing valuables with Escrow Smart Contracts
-        </h1>
         <div>
           <section className="blog__section">
             <h2>What is a generic Escrow?</h2>
