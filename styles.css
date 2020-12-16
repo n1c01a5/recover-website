@@ -306,6 +306,14 @@ h2 {
   font-size: 3.4rem;
 }
 
+.escrow-container .author-desc p {
+  margin-bottom: 0.3rem;
+}
+
+.escrow-container .author-desc .last-para {
+  margin-bottom: 0.1rem;
+}
+
 .blog__section {
   margin-bottom: 3rem;
 }
