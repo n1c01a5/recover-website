@@ -1,16 +1,13 @@
 import Head from 'next/head'
 
-export default ({ title = 'This is the default title', content = 'content' }) => (
+export default ({ title , content }) => (
   <>
-    <Head>
-      <title>{ title }</title>  
-    </Head>
-    <header>{ title }</header>
+    <Head><title>{title}</title></Head>
 
-    <main>{ content }</main>
+    <header>{title}</header>
 
-    <footer>
-      Footer
-    </footer>
+    <main>{content}</main>
+
+    <footer>Footer</footer>
   </>
 )
