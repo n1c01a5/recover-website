@@ -6,7 +6,7 @@ export function getPosts() {
             title: 'How-can-i-recover-my-phone-if-it-is-lost',
             teaser: 'Lorem-ipsum',
             cover: '<img.blog-2_lostphone.jpg>',
-            content: 'lorem-ipsum'
+            content: 'lorem-ipsum-content'
         },
         {
             slug: 'securing-valuables-with-escrow-smart-contracts',
@@ -14,7 +14,7 @@ export function getPosts() {
             title: 'securing-valuables-with-escrow-smart-contracts',
             teaser: 'Lorem-ipsum',
             cover: '<img.blog-1_escrow.jpg>',
-            content: 'lorem-ipsum'
+            content: 'lorem-ipsum-content'
         }
     ]
   }
