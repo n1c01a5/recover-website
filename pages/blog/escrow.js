@@ -183,6 +183,13 @@ export default function EscrowBlog() {
           <section className="blog__section">
             <h2>Conclusion</h2>
             <p>
+              Escrow financial agreement not only helps make the transaction secure but also 
+              adds more trust among two parties. On the other hand, Escrow smart contracts 
+              provide advantages like smart contract enforcement, interoperability, resilience, 
+              and better cost to name a few. Additionally, the Recover Loser box comes with all 
+              the advantages of escrow smart contracts with easy implementation to make sure your 
+              valuable is returned, the next time you lose it.
+              
               Now that we have learned briefly how blockchain escrow works, let
               us discover
               <a className="blog_link" href="/">
