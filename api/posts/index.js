@@ -14,7 +14,7 @@ export function getPosts() {
             title: 'securing-valuables-with-escrow-smart-contracts',
             teaser: 'Lorem-ipsum',
             cover: '<img.blog-1_escrow.jpg>',
-            content: 'lorem-ipsum-content'
+            content: 'lorem-ipsum-content l\'escaping'
         }
     ]
   }
