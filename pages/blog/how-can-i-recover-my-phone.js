@@ -34,7 +34,7 @@ export default function RecoverPhoneBlog() {
             </div>
           </div>
           <div className="time-info">
-            <p>6 MIN READ - 15th december, 2020</p>
+            <p>6 MIN READ - 15th DEC, 2020</p>
           </div>
         </div>
         <div className="blog-cover"></div>

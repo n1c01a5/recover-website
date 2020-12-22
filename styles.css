@@ -238,7 +238,7 @@ a h4 {
 }
 
 .blog-info .topic {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #4fc2e9;
 }
 
@@ -249,10 +249,10 @@ a h4 {
 }
 
 .authors .author {
-  width: 15rem;
+  width: 13rem;
   background-color: gainsboro;
   border-radius: 35px;
-  padding: 0.5rem;
+  padding: 0.3rem;
   display: flex;
   margin-right: 2rem;
 }
@@ -284,7 +284,8 @@ a h4 {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 400;
+  color: gray;
 }
 
 .blog-cover {
@@ -311,7 +312,9 @@ h2 {
 }
 
 .escrow-container .author-desc .last-para {
+  font-style: italic;
   margin-bottom: 0.1rem;
+  font-size: 0.6rem;
 }
 
 .blog__section {
@@ -368,7 +371,9 @@ h2 {
   }
 
   .escrow-container .blog-info .last-para {
+    font-style: italic;
     margin-bottom: 0.1rem;
+    font-size: 0.6rem;
   }
 
   .escrow-container h1,
@@ -415,6 +420,10 @@ h2 {
   margin-bottom: 5rem;
 }
 
+.recover_phone_container .topic {
+  margin-left: 0.2rem;
+}
+
 .recover_phone_container .blog-cover {
   background-image: url('/Blog_2_Lostphone.jpg');
 }
@@ -456,7 +465,9 @@ h4 {
 }
 
 .recover_phone_container .blog-info .last-para {
+  font-style: italic;
   margin-bottom: 0.1rem;
+  font-size: 0.6rem;
 }
 
 .recover_phone_container .hero-section {
