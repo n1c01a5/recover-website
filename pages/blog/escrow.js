@@ -189,7 +189,7 @@ export default function EscrowBlog() {
               and better cost to name a few. Additionally, the Recover Loser box comes with all 
               the advantages of escrow smart contracts with easy implementation to make sure your 
               valuable is returned, the next time you lose it.
-              
+              <br>
               Now that we have learned briefly how blockchain escrow works, let
               us discover
               <a className="blog_link" href="/">
