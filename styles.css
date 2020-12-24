@@ -21,7 +21,7 @@
   height: 150px;
   margin: 0 auto;
   position: relative;
-  top: 340px;
+  top: 270px;
   background-color: #fff;
 }
 
@@ -135,7 +135,7 @@ a h4 {
   }
 
   .hero {
-    height: 400px;
+    height: 250px;
   }
 
   .hero-overlay {
@@ -171,12 +171,13 @@ a h4 {
     font-weight: 400;
     text-transform: uppercase;
     color: #51c4e9;
+    margin-bottom: 0.6rem;
   }
 
   .highlighted_blog .info h2 {
     font-size: 1.3rem;
     font-weight: 500;
-    margin-bottom: 0.1rem;
+    margin-bottom: 1rem;
     color: black;
     margin-top: 0rem;
   }
@@ -187,7 +188,7 @@ a h4 {
   }
 
   .blogs {
-    margin-top: 20rem;
+    margin-top: 26rem;
     width: 95%;
     padding: 0.8rem;
   }
