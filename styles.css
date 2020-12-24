@@ -130,12 +130,17 @@ a h4 {
 /* Blog - media queries */
 
 @media screen and (max-width: 720px) {
+  .main-container {
+    margin-top: -6rem;
+  }
+
   .hero {
     height: 400px;
   }
 
   .hero-overlay {
-    width: 95%;
+    width: 100%;
+    padding: 1.5rem;
   }
 
   .highlighted_blog {
@@ -162,11 +167,27 @@ a h4 {
   }
 
   .highlighted_blog .info h4 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #51c4e9;
+  }
+
+  .highlighted_blog .info h2 {
     font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.1rem;
+    color: black;
+    margin-top: 0rem;
+  }
+
+  .highlighted_blog .info p {
+    color: gray;
+    font-size: 16px;
   }
 
   .blogs {
-    margin-top: 28rem;
+    margin-top: 20rem;
     width: 95%;
     padding: 0.8rem;
   }
@@ -360,6 +381,7 @@ h2 {
     font-weight: 200;
     line-height: 26px;
     font-size: 18px;
+    margin-top: -3rem;
   }
 
   .escrow-container .blog-info {
@@ -412,7 +434,7 @@ h2 {
   line-height: 1.4;
   word-spacing: 0.3rem;
   width: 60%;
-  margin: 0 auto;
+  margin: -3rem auto 0 auto;
 }
 
 .recover_phone_container .blog-info {
@@ -598,10 +620,16 @@ h4 {
 
 /* About - media queries */
 
+@media screen and (max-width: 720px) {
+  .about__hero {
+    margin-top: -6rem;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .about__hero {
     width: 1250px;
-    margin: 0 auto;
+    margin: -6rem auto 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
