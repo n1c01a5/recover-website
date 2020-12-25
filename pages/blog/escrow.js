@@ -9,9 +9,37 @@ export default function EscrowBlog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="escrow-container">
-        <h1 className="escrow-header">
-          Securing valuables with Escrow Smart Contracts
-        </h1>
+        <div className="blog-info">
+          <p className="topic">ESCROW</p>
+          <h1 className="escrow-header">
+            Securing valuables with Escrow Smart Contracts
+          </h1>
+          <p className="resume">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt
+          </p>
+          <hr />
+          <div className="authors">
+            <div className="author author-nico">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Wagner Nicolas</p>
+                <p className="last-para">CEO</p>
+              </div>
+            </div>
+            <div className="author author-bhavesh">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Bhavesh pandey</p>
+                <p className="last-para">Product manager</p>
+              </div>
+            </div>
+          </div>
+          <div className="time-info">
+            <p>4 MIN READ - 15th DEC, 2020</p>
+          </div>
+        </div>
+        <div className="blog-cover"></div>
         <div>
           <section className="blog__section">
             <h2>What is a generic Escrow?</h2>
