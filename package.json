@@ -18,6 +18,6 @@
     "react-text-loop": "^2.3.0"
   },
   "devDependencies": {
-    "next-images": "^1.4.0"
+    "next-images": "^1.6.2"
   }
 }
