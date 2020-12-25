@@ -1,6 +1,6 @@
 {
   "name": "recover-website",
-  "version": "v0.1-alpha",
+  "version": "0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
