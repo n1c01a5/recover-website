@@ -9,8 +9,36 @@ export default function RecoverPhoneBlog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="recover_phone_container">
-        <section className="hero-section">
+        <div className="blog-info">
+          <p className="topic">LOST AND FOUND</p>
           <h1>How can I Recover my Phone if it is lost?</h1>
+          <p className="resume">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt
+          </p>
+          <hr />
+          <div className="authors">
+            <div className="author author-nico">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Wagner Nicolas</p>
+                <p className="last-para">CEO</p>
+              </div>
+            </div>
+            <div className="author author-bhavesh">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Bhavesh pandey</p>
+                <p className="last-para">Product manager</p>
+              </div>
+            </div>
+          </div>
+          <div className="time-info">
+            <p>6 MIN READ - 15th DEC, 2020</p>
+          </div>
+        </div>
+        <div className="blog-cover"></div>
+        <section className="hero-section">
           <p>
             Smartphones have taken place as one of the most personal and
             important tools in today's world. They contain a large part of your

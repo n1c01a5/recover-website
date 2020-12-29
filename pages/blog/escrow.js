@@ -9,9 +9,37 @@ export default function EscrowBlog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="escrow-container">
-        <h1 className="escrow-header">
-          Securing valuables with Escrow Smart Contracts
-        </h1>
+        <div className="blog-info">
+          <p className="topic">ESCROW</p>
+          <h1 className="escrow-header">
+            Securing valuables with Escrow Smart Contracts
+          </h1>
+          <p className="resume">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt
+          </p>
+          <hr />
+          <div className="authors">
+            <div className="author author-nico">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Wagner Nicolas</p>
+                <p className="last-para">CEO</p>
+              </div>
+            </div>
+            <div className="author author-bhavesh">
+              <div className="author-image"></div>
+              <div className="author-desc">
+                <p>Bhavesh pandey</p>
+                <p className="last-para">Product manager</p>
+              </div>
+            </div>
+          </div>
+          <div className="time-info">
+            <p>4 MIN READ - 15th DEC, 2020</p>
+          </div>
+        </div>
+        <div className="blog-cover"></div>
         <div>
           <section className="blog__section">
             <h2>What is a generic Escrow?</h2>
@@ -183,6 +211,13 @@ export default function EscrowBlog() {
           <section className="blog__section">
             <h2>Conclusion</h2>
             <p>
+              Escrow financial agreement not only helps make the transaction secure but also 
+              adds more trust among two parties. On the other hand, Escrow smart contracts 
+              provide advantages like smart contract enforcement, interoperability, resilience, 
+              and better cost to name a few. Additionally, the Recover Loser box comes with all 
+              the advantages of escrow smart contracts with easy implementation to make sure your 
+              valuable is returned, the next time you lose it.
+              
               Now that we have learned briefly how blockchain escrow works, let
               us discover
               <a className="blog_link" href="/">
