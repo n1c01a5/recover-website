@@ -1,6 +1,27 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 
+import Avatar from '../../components/elements/Avatar'
+import TimeInfo from '../../components/elements/TimeInfo'
+
+const Header = ({ topic, blogHeading, resume }) => (
+  <header className="blog-info">
+    <p className="topic">{topic}</p>
+    <h1 className="escrow-header">{blogHeading}</h1>
+    <p className="resume">{resume}</p>
+    <hr />
+    <div className="authors">
+      <Avatar title="nico" name="Wagner Nicolas" designation="CEO" />
+      <Avatar
+        title="bhavesh"
+        name="Bhavesh Pandey"
+        designation="Product manager"
+      />
+    </div>
+    <TimeInfo readTime={6} date="15th DEC, 2020" />
+  </header>
+)
+
 export default function RecoverPhoneBlog() {
   return (
     <Layout>
@@ -9,34 +30,12 @@ export default function RecoverPhoneBlog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="recover_phone_container">
-        <div className="blog-info">
-          <p className="topic">LOST AND FOUND</p>
-          <h1>How can I Recover my Phone if it is lost?</h1>
-          <p className="resume">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt
-          </p>
-          <hr />
-          <div className="authors">
-            <div className="author author-nico">
-              <div className="author-image"></div>
-              <div className="author-desc">
-                <p>Wagner Nicolas</p>
-                <p className="last-para">CEO</p>
-              </div>
-            </div>
-            <div className="author author-bhavesh">
-              <div className="author-image"></div>
-              <div className="author-desc">
-                <p>Bhavesh pandey</p>
-                <p className="last-para">Product manager</p>
-              </div>
-            </div>
-          </div>
-          <div className="time-info">
-            <p>6 MIN READ - 15th DEC, 2020</p>
-          </div>
-        </div>
+        <Header
+          topic="LOST AND FOUND"
+          blogHeading="How can I Recover my Phone if it is lost?"
+          resume="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt"
+        />
         <div className="blog-cover"></div>
         <section className="hero-section">
           <p>
