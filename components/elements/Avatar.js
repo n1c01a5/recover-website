@@ -1,5 +1,5 @@
-const Avatar = ({ title, name, designation }) => (
-  <div className={`author author-${title}`}>
+const Avatar = ({ tag, name, designation }) => (
+  <div className={`author author-${tag}`}>
     <div className="author-image"></div>
     <div className="author-desc">
       <p>{name.toUpperCase()}</p>

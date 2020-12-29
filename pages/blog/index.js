@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 
-export default function Blog() {
+import { getPosts } from '../../pages/api/posts'
+
+export default function Blog({ posts }) {
   return (
     <Layout>
       <Head>
@@ -11,15 +13,15 @@ export default function Blog() {
       <div className="main-container">
         <section className="hero">
           <section className="hero-overlay">
-            <a href="/blog/how-can-i-recover-my-phone">
+            <a href="/blog/lost-and-found-iphone">
               <div className="highlighted_blog">
                 <div className="blog_image blog_tile_2"></div>
                 <div className="info">
                   <div>
-                    <a href="/blog/how-can-i-recover-my-phone">
+                    <a href="/blog/lost-and-found-iphone">
                       <h4>lost and found</h4>
                     </a>
-                    <a href="/blog/how-can-i-recover-my-phone">
+                    <a href="/blog/lost-and-found-iphone">
                       <h2>How can I Recover my phone if it is lost?</h2>
                     </a>
                     <p>
@@ -34,17 +36,17 @@ export default function Blog() {
           </section>
         </section>
         <section className="blogs">
-          <a href="/blog/escrow">
+          <a href="/blog/securing-valuables-with-escrow-smart-contracts">
             <div className="blog">
               <div className="blog_image blog_tile_1"></div>
               <div>
                 <div className="blog_topic">
-                  <a href="/blog/escrow">
+                  <a href="/blog/securing-valuables-with-escrow-smart-contracts">
                     <h4>Escrow</h4>
                   </a>
                 </div>
                 <p className="blog_title">
-                  <a href="/blog/escrow">
+                  <a href="/blog/securing-valuables-with-escrow-smart-contracts">
                     Securing valuables with Escrow Smart Contracts
                   </a>
                 </p>
@@ -157,4 +159,10 @@ export default function Blog() {
       </div>
     </Layout>
   )
+}
+
+Blog.getInitialProps = async ({ req }) => {
+  const res = getPosts()
+
+  return { posts: res }
 }
