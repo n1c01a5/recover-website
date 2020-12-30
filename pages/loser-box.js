@@ -1,5 +1,6 @@
 
 import Head from 'next/head'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -191,13 +192,13 @@ export default function LoserBox() {
                   draggable: true,
                   progress: undefined,
                 });
-               })
+              })
 
-          }).on('error', () => { 
+          }).on('error', () => {
             const varError = `createTransaction function Failed`
             console.error();
             onCloseModalSpinner();
-            
+
             toast.error(`Transaction Failed, ${varError}`, {
               position: "bottom-right",
               autoClose: 5000,
@@ -207,33 +208,33 @@ export default function LoserBox() {
               draggable: true,
               progress: undefined,
             });
-           
-           })
-            
+
+          })
+
       }).on('error', () => {
         const varError = `Approve Token function Failed`
 
-         console.error();
-          onCloseModalSpinner();
-          
-          toast.error(`Transaction Failed, ${varError}`, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        })
+        console.error();
+        onCloseModalSpinner();
+
+        toast.error(`Transaction Failed, ${varError}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
 
   }
 
   const CustomToastWithLink = (TxHash) => (
     <p>
-    Transaction Successful <a style={{ color: "blue" }} href={`https://kovan.etherscan.io/tx/${TxHash}`} target='_blank' rel='noopener noreferrer'> Click to see on Etherscan</a>.
+      Transaction Successful <a style={{ color: "blue" }} href={`https://kovan.etherscan.io/tx/${TxHash}`} target='_blank' rel='noopener noreferrer'> Click to see on Etherscan</a>.
     </p>
-    );
+  );
 
   return (
     <Layout>
@@ -306,16 +307,21 @@ export default function LoserBox() {
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <div>
                     {
-                      metamaskInstalled ? 
-                      metamaskConnected ? null : <Button isPrimary={true} style={{ marginRight: 10 }} onClick={() => { findMetamaskAccounts() }}>Connect Wallet</Button>
-                      : <Button isPrimary={true} style={{ marginRight: 10 }} > <a target="_blank" href= "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"> Install Metamask </a> </Button>
+                      metamaskInstalled ?
+                        metamaskConnected ? null : <Button isPrimary={true} style={{ marginRight: 10 }} onClick={() => { findMetamaskAccounts() }}>Connect Wallet</Button>
+                        : <Button isPrimary={true} style={{ marginRight: 10 }} > <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"> Install Metamask </a> </Button>
                     }
                     {/* {
                       metamaskConnected ? null : <Button isPrimary={true} style={{ marginRight: 10 }} onClick={() => { findMetamaskAccounts() }}>Connect Wallet</Button>
                     } */}
 
                   </div>
-                  <div><Button isPrimary={true} style={{ width: '300px' }} onClick={onOpenModalPay}>BUY YOUR LOSER BOX</Button></div>
+                  <div>
+                    <Link href="/loserbox-stepper">
+                    <Button isPrimary={true} style={{ width: '300px' }}>BUY YOUR LOSER BOX</Button>
+                      {/* <a>content</a> */}
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -349,9 +355,9 @@ export default function LoserBox() {
         </div>
       </Modal>
       <Modal open={openSpinner} onClose={onCloseModalSpinner} closeOnOverlayClick={false} showCloseIcon={false} center>
-        <div style={{ minWidth: 300, maxWidth:500 }} >
+        <div style={{ minWidth: 300, maxWidth: 500 }} >
           <div style={{ marginTop: 20, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div className='loader'></div>
+            <div className='loader'></div>
           </div>
         </div>
       </Modal>
