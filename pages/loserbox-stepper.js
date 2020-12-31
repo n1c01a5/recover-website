@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function getSteps() {
-  return ['Personal Details', 'Connect to Web3', 'Approve DAI Transfer', 'Transfer DAI to the Escrow', 'Confirmation'];
+  return ['Personal Details', 'Connect to Web3', `Swap Token`, 'Approve DAI Transfer', 'Transfer DAI to the Escrow', 'Confirmation'];
 }
 
 // function getStepContent(stepIndex) {
@@ -89,7 +90,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [web3, setWeb3] = useState(null)
   const [txId, setTxId] = useState('')
   const [buttonView, setbuttonView] = useState(false)
-  const [isPending, setisPending] = useState(true);
+  const [isPending, setisPending] = useState(false);
   const [isOngoing, setIsOngoing] = useState(false)
   const [issuccess, setIssuccess] = useState(false)
   const [tokenBalanceApproved, settokenBalanceApproved] = useState(false)
@@ -124,7 +125,7 @@ export default function HorizontalLabelPositionBelowStepper() {
     setisValidate(false)
     setbuttonView(true)
     setIssuccess(false)
-    setisPending(true)
+    setisPending(false)
     setIsOngoing(false)
   };
 
@@ -151,14 +152,14 @@ export default function HorizontalLabelPositionBelowStepper() {
         />
       case 1:
         return < ConnectWeb3 />
-        swapToken
+      // swapToken
       case 2:
-        return < ApproveDAI />
-      // case 2:
-      // return < SwapToken />
+        return < SwapToken />
       case 3:
-        return < TransferDAI />
+        return < ApproveDAI />
       case 4:
+        return < TransferDAI />
+      case 5:
         return < Confirmation />
 
       default:
@@ -341,42 +342,54 @@ export default function HorizontalLabelPositionBelowStepper() {
       let amount = web3.utils.toBN(tokenAmount);
       let value = amount.mul(web3.utils.toBN(10).pow(decimals));
 
-      const tokenBalance = await erc20Contract.methods.balanceOf(accounts[0])
+      const tokenBalance = await erc20Contract.methods.balanceOf(accounts[0]).call()
+      console.log("settokenBalanceApproved", tokenBalance)
 
-      if (tokenBalance > 50) {
+      if (tokenBalance > 50000000000000000000n) {
+        console.log("settokenBalanceApproved")
         settokenBalanceApproved(true)
+        handleNext();
+      }
+      else {
+        handleNext();
       }
     }
   };
 
   const SwapToken = () => {
 
-    const swap = async () => {
+    if (tokenBalanceApproved) {
+      console.log("Ddddddddddddddddd")
+      handleNext();
+    } else {
+      const swap = async () => {
 
-      const sdk = DEXAG.fromProvider(window.ethereum);
-      // console.log('WINDOW', window.ethereum);
-      // console.log('DEXAG', DEXAG);
-      console.log('sdk', sdk);
+        const sdk = DEXAG.fromProvider(window.ethereum);
+        // console.log('WINDOW', window.ethereum);
+        // console.log('DEXAG', DEXAG);
+        console.log('sdk', sdk);
 
-      // receive status messages as the client executes the trade
-      sdk.registerStatusHandler((status, data) => {
-        console.log('status, data ===> ', status, data);
-        // console.log(status, data)
-      });
-      const price = sdk.getPrice({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' })
-      console.log('price', price);
+        // receive status messages as the client executes the trade
+        sdk.registerStatusHandler((status, data) => {
+          console.log('status, data ===> ', status, data);
+          // console.log(status, data)
+        });
+        const price = sdk.getPrice({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' })
+        console.log('price', price);
 
-      // get trade
-      const tx = await sdk.getTrade({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' });
-      console.log('tx', tx);
+        // get trade
+        const tx = await sdk.getTrade({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' });
+        console.log('tx', tx);
 
-      // checkout
-      const valid = await sdk.validate(tx);
-      console.log('valid', valid);
-      if (valid) {
-        // transaction data is valid, make a trade
-        sdk.trade(tx);
+        // checkout
+        const valid = await sdk.validate(tx);
+        console.log('valid', valid);
+        if (valid) {
+          // transaction data is valid, make a trade
+          sdk.trade(tx);
+        }
       }
+      swap()
     }
 
     return (
@@ -398,62 +411,54 @@ export default function HorizontalLabelPositionBelowStepper() {
   }
 
   const ApproveDAI = () => {
-    // const [isPending, setisPending] = useState(true);
-    // const [isOngoing, setIsOngoing] = useState(false)
-    // const [issuccess, setIssuccess] = useState(false)
 
     const approve = async () => {
-      setisPending(false)
-      setIsOngoing(true)
+      setisPending(true)
+      setIsOngoing(false)
+      setIssuccess(false)
       // setisValidate(false)
       console.log('Approved');
       // setbuttonView(false)
 
-      const erc20ContractAddress = '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2';
+      const erc20ContractAddress = process.env.REACT_APP_ERC20TOKEN
+      //  '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2';
 
       const erc20Contract = new web3.eth.Contract(erc20Abi, erc20ContractAddress)
       console.log(erc20Contract);
 
-      const tokenAmount = 10;
+      const tokenAmount = 10
+      // process.env.REACT_APP_TOKENAMOUNT
+      console.log('tokenAmount', tokenAmount);
 
       // Use BigNumber
       let decimals = web3.utils.toBN(18);
       let amount = web3.utils.toBN(tokenAmount);
       let value = amount.mul(web3.utils.toBN(10).pow(decimals));
+      var data = erc20Contract.methods.approve('0xdC73A27c2A81De8646937EAc26Fa34A870322874', value).encodeABI();
 
+      const transactionParameters = {
+        to: '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2', // Required except during contract publications.
+        from: account, // must match user's active address.
+        data: data,
+      };
 
-      erc20Contract.methods.approve('0xdC73A27c2A81De8646937EAc26Fa34A870322874', value)
-        .send({ from: account })
-        .on('receipt', (receipt) => {
-          console.log('receipt', receipt);
-          toast.success(CustomToastWithLink(receipt.transactionHash), {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+      web3.eth.sendTransaction(transactionParameters)
+        .on('transactionHash', function (hash) {
+          console.log('transactionHash', hash);
+          setIsOngoing(true)
+          setIssuccess(false)
+          setTxId(hash);
 
-          setisValidate(true)
-          // setbuttonView(true)
+        })
+        .once('confirmation', function (confirmationNumber, receipt) {
+          console.log('confirmation', receipt);
           setIsOngoing(false)
           setIssuccess(true)
-        }).on('error', () => {
-          const varError = `Approve Token function Failed`
-          console.error();
-          toast.error(`Transaction Failed, ${varError} `, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          setisPending(false)
+          setisValidate(true)
+          handleNext();
         })
-
+        .on('error', console.error);
 
     };
 
@@ -464,9 +469,6 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-
-            {/* <button className="btn btn-lg btn-primary" onClick={approve} >Approve DAI</button>
-            <br /><br /> */}
             <div className="alert btns" role="alert">
               <p>Confirm the DAI transfer to pay for your Loser Box</p>
             </div>
@@ -476,30 +478,26 @@ export default function HorizontalLabelPositionBelowStepper() {
             <br></br>
             <br />
             <br />
-            <div className="col-md-12" >
-              <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
-                <div style={{ display: "flex" }}>
-                  <div >
-                    {isPending || isOngoing ?
-                      <p className="trans">Transaction pending...</p>
-                      : null}
-                    {/* {isOngoing ?
-                      <p className="trans">Transaction ongoing... </p>
-                      : null
-                    } */}
-                    {issuccess ?
-                      <p className="trans">Transaction Successful </p> : null
-                    }
+            {
+              isPending ?
+                <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://kovan.etherscan.io/tx/${txId}`)} >
+                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
+                    <div style={{ display: "flex" }}>
+                      <div >
+                        {isPending || isOngoing ?
+                          <p className="trans">Transaction pending...</p>
+                          : null}
+                      </div>
+                      <div style={{ marginLeft: "50%" }}>
+                        {
+                          isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null
+                        }
+                      </div>
+                    </div>
                   </div>
-                  <div style={{ justifyContent: "flex-end" }}>
-                    {
-                      isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null
-                    }
-                  </div>
-
                 </div>
-              </div>
-            </div>
+                : null
+            }
           </div>
         </div>
       </div >
@@ -510,9 +508,10 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const TransferDAI = () => {
 
-    const transfer = () => {
-      setisPending(false)
-      setIsOngoing(true)
+    const transfer = async () => {
+      setisPending(true)
+      setIsOngoing(false)
+      setIssuccess(false)
       console.log('Transfered');
 
       const mattAddress = '0xdc73a27c2a81de8646937eac26fa34a870322874'
@@ -530,46 +529,69 @@ export default function HorizontalLabelPositionBelowStepper() {
       let decimals = web3.utils.toBN(18);
       let amount = web3.utils.toBN(tokenAmount);
       let value = amount.mul(web3.utils.toBN(10).pow(decimals));
+      var data = contract.methods.createTransaction(value, erc20ContractAddress, timeoutPayment.toString(), receiver, metaEvidence).encodeABI();
+      console.log('data', data);
+      const transactionParameters = {
+        to: '0xdc73a27c2a81de8646937eac26fa34a870322874', // Required except during contract publications.
+        from: account, // must match user's active address.
+        data: data,
+      };
 
-      contract.methods.createTransaction(value, erc20ContractAddress, timeoutPayment.toString(), receiver, metaEvidence)
-        .send({ from: account })
-        .once('receipt', (receipt) => {
-
-          console.log('receipt', receipt);
-          const txId = receipt.events.MetaEvidence.returnValues[0]
-          console.log("TXID", txId);
-          setTxId(txId);
-
-
-          toast.success(CustomToastWithLink(receipt.transactionHash), {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-
+      web3.eth.sendTransaction(transactionParameters)
+        .on('transactionHash', function (hash) {
+          console.log('transactionHash', hash);
+          setIsOngoing(true)
+          setIssuccess(false)
+          setTxId(hash);
+        })
+        .once('confirmation', function (confirmationNumber, receipt) {
+          console.log('confirmation', receipt);
           setIsOngoing(false)
           setIssuccess(true)
+          setisPending(false)
           setisValidate(true)
-
-        }).on('error', () => {
-          const varError = `createTransaction function Failed`
-          console.error();
-
-          toast.error(`Transaction Failed, ${varError} `, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-
+          handleNext();
         })
+        .on('error', console.error);
+      // contract.methods.createTransaction(value, erc20ContractAddress, timeoutPayment.toString(), receiver, metaEvidence)
+      //   .send({ from: account })
+      //   .once('receipt', (receipt) => {
+
+      //     console.log('receipt', receipt);
+      //     const txId = receipt.events.MetaEvidence.returnValues[0]
+      //     console.log("TXID", txId);
+      //     setTxId(txId);
+
+
+      //     toast.success(CustomToastWithLink(receipt.transactionHash), {
+      //       position: "bottom-right",
+      //       autoClose: 5000,
+      //       hideProgressBar: false,
+      //       closeOnClick: true,
+      //       pauseOnHover: true,
+      //       draggable: true,
+      //       progress: undefined,
+      //     });
+
+      //     setIsOngoing(false)
+      //     setIssuccess(true)
+      //     setisValidate(true)
+
+      //   }).on('error', () => {
+      //     const varError = `createTransaction function Failed`
+      //     console.error();
+
+      //     toast.error(`Transaction Failed, ${varError} `, {
+      //       position: "bottom-right",
+      //       autoClose: 5000,
+      //       hideProgressBar: false,
+      //       closeOnClick: true,
+      //       pauseOnHover: true,
+      //       draggable: true,
+      //       progress: undefined,
+      //     });
+
+      //   })
 
     }
     return (
@@ -581,33 +603,32 @@ export default function HorizontalLabelPositionBelowStepper() {
           <div className="col-md-12">
             <br /> <br />
             <div className="alert btns" role="alert">
-              {/* <button onClick={transfer} >Transfer</button> */}
-              <p>To trnsfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
+             <p>To trnsfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
             </div>
             <button className="btn btns" onClick={transfer} style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Transfer DAI To Escrow</strong></button>
             <br /><br />
-            <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
-              <div style={{ display: "flex" }}>
-                <div >
-                  {isPending || isOngoing ?
-                    <p className="trans">Transaction pending...</p>
-                    : null}
-                  {/* {isOngoing ?
-                      <p className="trans">Transaction ongoing... </p>
-                      : null
-                    } */}
-                  {issuccess ?
-                    <p className="trans">Transaction Successful </p> : null
-                  }
-                </div>
-                <div style={{ justifyContent: "flex-end" }}>
-                  {
-                    isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null
-                  }
-                </div>
+            {
+              isPending ?
+                <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://kovan.etherscan.io/tx/${txId}`)} >
+                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
+                    <div style={{ display: "flex" }}>
+                      <div >
+                        {isPending || isOngoing ?
+                          <p className="trans">Transaction pending...</p>
+                          : null}
+                      </div>
+                      <div style={{ marginLeft: "50%" }}>
+                        {
+                          isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null
+                        }
+                      </div>
 
-              </div>
-            </div>
+                    </div>
+                  </div>
+                </div>
+                : null
+            }
+
           </div>
         </div>
       </div>
@@ -622,50 +643,6 @@ export default function HorizontalLabelPositionBelowStepper() {
       setisPending(false)
       setIsOngoing(true)
       console.log('Confirmed');
-
-      const mattAddress = '0xdc73a27c2a81de8646937eac26fa34a870322874'
-      const contract = new web3.eth.Contract(mattAbi, mattAddress)
-      setContract(contract)
-
-      const tokenAmount = 10;
-
-      // Use BigNumber
-      let decimals = web3.utils.toBN(18);
-      let amount = web3.utils.toBN(tokenAmount);
-      let value = amount.mul(web3.utils.toBN(10).pow(decimals));
-
-      contract.methods.pay(txId, value)
-        .send({ from: account })
-        .once('receipt', (receipt) => {
-          console.log('receipt', receipt);
-
-          toast.success(CustomToastWithLink(receipt.transactionHash), {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }); setIsOngoing(false)
-          setIssuccess(true)
-          setisValidate(true)
-          // submitPersonalDetails()
-
-        }).on('error', () => {
-          const varError = `Pay function Failed`
-          console.error();
-
-          toast.error(`Transaction Failed, ${varError} `, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        })
     }
 
 
@@ -674,33 +651,12 @@ export default function HorizontalLabelPositionBelowStepper() {
         <div className="row">
           <div className="col-md-12">
             <br /> <br />
-            <button className="btn btns" onClick={confirm} style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Confirm</strong></button>
+            <Link href="/">
+            <button className="btn btns" style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Confirm</strong></button>
+                    {/* <Button isPrimary={true} style={{ width: '300px' }}>BUY YOUR LOSER BOX</Button> */}
+            </Link>
             <br></br>
             <br></br>
-            <div className="alert btns" role="alert" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} >
-              {/* <button onClick={confirm} >Confirm</button> */}
-
-              <div style={{ display: "flex" }}>
-                <div >
-                  {isPending || isOngoing ?
-                    <p className="trans">Transaction pending...</p>
-                    : null}
-                  {/* {isOngoing ?
-                      <p className="trans">Transaction ongoing... </p>
-                      : null
-                    } */}
-                  {issuccess ?
-                    <p className="trans">Transaction Successful </p> : null
-                  }
-                </div>
-                <div style={{ justifyContent: "flex-end" }}>
-                  {
-                    isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null
-                  }
-                </div>
-
-              </div>
-            </div>
             <br />
             <br />
             <div className="d-grid gap-8">
@@ -722,9 +678,13 @@ export default function HorizontalLabelPositionBelowStepper() {
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
+        {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
+            { label === "Swap Token" ?
+              <Typography variant="caption" style={{ marginLeft: "40%" }}>Optional</Typography> : null
+            }
+
           </Step>
         ))}
       </Stepper>
