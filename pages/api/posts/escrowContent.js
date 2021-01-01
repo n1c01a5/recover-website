@@ -1,6 +1,4 @@
-const EscrowBlog = () => (
-  <>
-    <div className="blog-cover"></div>
+export const EscrowBlogContent = `
     <div>
       <section className="blog__section">
         <h2>What is a generic Escrow?</h2>
@@ -182,7 +180,4 @@ const EscrowBlog = () => (
         </p>
       </section>
     </div>
-  </>
-)
-
-export default EscrowBlog
+`

@@ -1,6 +1,4 @@
-const RecoverBlog = () => (
-  <>
-    <div className="blog-cover"></div>
+export const RecoverBlogContent = `
     <section className="hero-section">
       <p>
         Smartphones have taken place as one of the most personal and important
@@ -311,7 +309,4 @@ const RecoverBlog = () => (
         Recover helps in Recovery, Click here.
       </p>
     </section>
-  </>
-)
-
-export default RecoverBlog
+`

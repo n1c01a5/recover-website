@@ -1,19 +1,20 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
-import BlogHeader from '../../components/elements/BlogHeader'
+import BlogHeader from '../../components/blog/BlogHeader'
 import { getPosts } from '../api/posts'
-
-import RecoverBlog from '../api/posts/recover'
-import EscrowBlog from '../api/posts/escrow'
-
-const blogsMap = {
-  'lost-and-found-iphone': RecoverBlog,
-  'securing-valuables-with-escrow-smart-contracts': EscrowBlog
-}
-
 export default function Post({ post }) {
-  const { slug } = post
-  const BlogComponent = blogsMap[slug]
+  const { slug, content, cover } = post
+
+  const createMarkup = () => {
+    return { __html: content }
+  }
+
+  const BlogCover = () => (
+    <div
+      className="blog-cover"
+      style={{ backgroundImage: `url(${cover})` }}
+    ></div>
+  )
 
   return (
     <Layout>
@@ -21,6 +22,7 @@ export default function Post({ post }) {
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <BlogHeader post={post} />
       <div
         className={
           slug == 'lost-and-found-iphone'
@@ -28,8 +30,8 @@ export default function Post({ post }) {
             : 'escrow-container'
         }
       >
-        <BlogHeader post={post} />
-        <BlogComponent />
+        {BlogCover()}
+        <div dangerouslySetInnerHTML={createMarkup()} />
       </div>
     </Layout>
   )
@@ -37,8 +39,6 @@ export default function Post({ post }) {
 
 Post.getInitialProps = async (ctx) => {
   const posts = getPosts()
-  const post = posts.find((post) => post.slug === ctx.query.slug) || {
-    authors: []
-  }
+  const post = posts.find((post) => post.slug === ctx.query.slug)
   return { post }
 }

@@ -1,4 +1,4 @@
-import Avatar from './Avatar'
+import Avatar from '../elements/Avatar'
 import TimeInfo from './TimeInfo'
 
 const BlogHeader = ({ post }) => {
@@ -11,8 +11,15 @@ const BlogHeader = ({ post }) => {
       <hr />
       <div className="authors">
         {authors.map((author) => {
-          const { name, tag, designation } = author
-          return <Avatar name={name} tag={tag} designation={designation} />
+          const { name, tag, designation, image } = author
+          return (
+            <Avatar
+              name={name}
+              tag={tag}
+              designation={designation}
+              image={image}
+            />
+          )
         })}
       </div>
       <TimeInfo readTime={readTime} date={date} />

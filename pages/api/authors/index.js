@@ -1,12 +1,17 @@
-export const authors = {
-  nico: {
+import nicoImage from '../../../public/nico.jpg'
+import bhaveshImage from '../../../public/bhavesh.jpg'
+
+export const authors = [
+  {
     name: 'Wagner Nicolas',
     designation: 'CEO',
-    tag: 'nico'
+    tag: 'nico',
+    image: nicoImage
   },
-  bhavesh: {
+  {
     name: 'Bhavesh Pandey',
     designation: 'Product Manager',
-    tag: 'bhavesh'
+    tag: 'bhavesh',
+    image: bhaveshImage
   }
-}
+]
