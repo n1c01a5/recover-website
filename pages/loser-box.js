@@ -3,10 +3,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useMediaQuery } from 'react-responsive'
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Faq = dynamic(
   () => import('../components/faq'),
@@ -19,12 +15,6 @@ import Button from '../components/elements/button'
 import EthereumLogo, { length } from '../public/ethereum-logo.svg'
 import KlerosLogo from '../public/kleros-logo.svg'
 import IpfsLogo from '../public/ipfs-logo.svg'
-import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
-import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
-import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
-import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escrow.svg'
-import IllustrationTraceabilityBlockchain from '../public/illustration_traceability-blockchain.svg'
-import BackgroundLoserBox from '../public/background_loser-box.svg'
 
 export default function LoserBox() {
   const isDesktopOrLaptop = useMediaQuery({
@@ -60,49 +50,37 @@ export default function LoserBox() {
               </div>
               <div>
                 <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
-                  LOSER BOX prototype - Lost and Found Pack to prevent your valuables from Loss - Limited Edition (only 42 items)
+                  LOSER BOX - Lost and Found Pack to prevent your valuables from Loss - Limited Edition (only 42 items)
                 </h1>
-                <p style={{ margin: '20px 0', lineHeight: '26px' }}>
+                <p style={{ margin: '20px 0', lineHeight: '26px', fontWeight: 'bold' }}>
                   A crafted box with pre-printed QR-code on :
                   <ul>
-                    <li>- 2 sets of stickers</li>
-                    <li>- 2 PVC cards</li>
-                    <li>- 1 key-ring</li>
+                    <li style={{ fontWeight: 'bold' }}>- 2 sets of stickers</li>
+                    <li style={{ fontWeight: 'bold' }}>- 2 PVC cards</li>
+                    <li style={{ fontWeight: 'bold' }}>- 1 key-ring</li>
                   </ul>
                 </p>
                 <hr />
-                <div>
-                  <p style={{ lineHeight: '50px' }}>Payment only in DAI or ETH secured by an escrow smart contract:</p>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                  <p style={{ lineHeight: '50px', fontWeight: 'bold', justifyContent: 'center' }}>Payment secured by an escrow smart contract</p>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                <div style={{ margin: '20px 100px', display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                  <img src={EthereumLogo} alt="Ethereum logo svg" style={{ width: '26px' }} />
+                  <img src={KlerosLogo} alt="Kleros logo svg" style={{ width: '45px' }} />
+                  <img src={IpfsLogo} alt="IPFS logo svg" style={{ width: '35px' }} />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px', marginBottom: '20px' }}>
                   <div style={{ display: 'flex' }}>
-                    <div style={{ background: '#f2f2f2', width: '120px', height: '60px', marginRight: '10px', boxSizing: 'border-box', border: '2px solid gray' }}>
-                      <p style={{ lineHeight: '56px', textAlign: 'center', fontSize: '20px' }}>50.00DAI</p>
-                    </div>
-                    <div style={{ background: '#f2f2f2', width: '120px', height: '60px', boxSizing: 'border-box' }}>
-                      <p style={{ lineHeight: '60px', textAlign: 'center', fontSize: '20px' }}>0.17ETH</p>
+                    <div style={{ background: '#f2f2f2', width: '300px', height: '60px', marginRight: '10px', boxSizing: 'border-box', border: '2px solid gray' }}>
+                      <p style={{ lineHeight: '56px', textAlign: 'center', fontSize: '20px' }}>50.00 DAI</p>
                     </div>
                   </div>
-
-                  <div style={{ display: 'flex' }}>
-                    <div style={{ background: '#f2f2f2', width: '70px', height: '60px' }}><p style={{ lineHeight: '60px', textAlign: 'center', fontSize: '20px' }}>-</p></div>
-                    <div style={{ background: '#f7f9fa', width: '80px', height: '60px' }}><p style={{ lineHeight: '60px', textAlign: 'center', fontSize: '20px' }}>1</p></div>
-                    <div style={{ background: '#f2f2f2', width: '70px', height: '60px' }}><p style={{ lineHeight: '60px', textAlign: 'center', fontSize: '20px' }}>+</p></div>
-                  </div>
                 </div>
-                <hr />
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-                  <div>
-                    <p style={{ fontWeight: 'bold', fontSize: '20px' }}>Price</p>
-                  </div>
-                  <div>
-                    <p style={{ fontWeight: 'bold', fontSize: '20px' }}>50.00DAI</p>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <br />
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <div>
                     <Link href="/loserbox-stepper">
-                    <Button isPrimary={true} style={{ width: '300px' }}>BUY YOUR LOSER BOX</Button>
+                      <Button isPrimary={true} style={{ width: '300px' }}>BUY LOSER BOX</Button>
                     </Link>
                   </div>
                 </div>

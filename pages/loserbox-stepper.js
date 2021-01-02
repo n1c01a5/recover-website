@@ -1,6 +1,6 @@
-import Head from 'next/head'
 import Link from 'next/link'
 
+import { slide as Menu } from 'react-burger-menu'
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -10,38 +10,15 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DEXAG from 'dexag-sdk'
 import { BounceLoader } from 'react-spinners'
+import Layout from '../components/layout'
 
 
 import Web3 from 'web3';
 const ipfsClient = require('ipfs-http-client')
 const mattAbi = require('../contracts/MultipleArbitrationToken.json')
 const erc20Abi = require('../contracts/ERC20.json')
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import etherscanBg from '../asset/etherscan-bg.png'
-
-// const Box = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-top: 50px;
-//   color: #444;
-//   background-color: #a6ffcb;
-//   background-image: url(${etherscanBg});
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   overflow: hidden;
-//   font-family: Roboto;
-//   padding: 0 40px;
-//   border-radius: 10px;
-//   font-size: 24px;
-//   height: 100px;
-//   overflow: hidden;
-//   &:hover {
-//     cursor: pointer;
-//   }`
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,49 +38,23 @@ function getSteps() {
   return ['Personal Details', 'Connect to Web3', `Swap Token`, 'Approve DAI Transfer', 'Transfer DAI to the Escrow', 'Confirmation'];
 }
 
-// function getStepContent(stepIndex) {
-//   switch (stepIndex) {
-//     case 0:
-//       return < PersonalDetails />
-//     case 1:
-//       return < Connectweb />
-//     case 2:
-//       return ApproveDai();
-//     case 3:
-//       return transferDAI();
-//     case 4:
-//       return confirmation();
-
-//     default:
-//       return 'Unknown stepIndex';
-//   }
-// }
-
 export default function HorizontalLabelPositionBelowStepper() {
 
   const [account, setAccount] = useState('')
-  const [contract, setContract] = useState('')
-  const [erc20Contract, setErc20Contract] = useState('')
-  const [metamaskInstalled, setmetamaskInstalled] = useState(false)
-  const [metamaskConnected, setmetamaskConnected] = useState(false)
-  const [isValidate, setisValidate] = useState(false)
+  const [mattContract, setmattContract] = useState(null)
+  const [tokenContract, settokenContract] = useState(null)
   const [web3, setWeb3] = useState(null)
   const [txId, setTxId] = useState('')
-  const [buttonView, setbuttonView] = useState(false)
+  const [tokenAmount, settokenAmount] = useState()
+  const [networkName, setnetworkName] = useState('')
+
+  const [metamaskConnected, setmetamaskConnected] = useState(false)
+  const [isValidate, setisValidate] = useState(false)
+  const [buttonView, setbuttonView] = useState(true)
   const [isPending, setisPending] = useState(false);
   const [isOngoing, setIsOngoing] = useState(false)
   const [issuccess, setIssuccess] = useState(false)
   const [tokenBalanceApproved, settokenBalanceApproved] = useState(false)
-
-
-  // const [recepientName, setRecepientName] = useState("");
-  // const [address, setaddress] = useState("")
-  // const [addressCp, setaddressCp] = useState("");
-  // const [city, setcity] = useState("")
-  // const [zip, setzip] = useState("")
-  // const [country, setcountry] = useState("")
-  // const [email, setemail] = useState("")
-  // const [phone, setphone] = useState("")
 
   const [recepientNameL, setRecepientNameL] = useState("");
   const [addressL, setaddressL] = useState("")
@@ -120,7 +71,6 @@ export default function HorizontalLabelPositionBelowStepper() {
   const steps = getSteps();
 
   const handleNext = () => {
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setisValidate(false)
     setbuttonView(true)
@@ -200,9 +150,9 @@ export default function HorizontalLabelPositionBelowStepper() {
             </div>
 
             <div className="form-group" >
-              <div classNameName="col-md-12">
+              <div className="col-md-12">
                 <div className="mb-3">
-                  <label for="Recipient's name" className="form-label">Recipient's name</label>
+                  <label htmlFor="Recipient's name" className="form-label">Recipient's name</label>
                   <input type="text"
                     className="form-control"
                     id="recepientName"
@@ -213,13 +163,13 @@ export default function HorizontalLabelPositionBelowStepper() {
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label for="AddresTextarea1" className="form-label">Addres</label>
+                  <label htmlFor="AddresTextarea1" className="form-label">Addres</label>
                   <input type="text" className="form-control" id="address" placeholder="" value={address} onChange={e => setaddress(e.target.value)} />
                 </div>
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label for="AddresComplementTextarea1" className="form-label">Address Complement</label>
+                  <label htmlFor="AddresComplementTextarea1" className="form-label">Address Complement</label>
                   <input type="text" className="form-control" id="addressCp" placeholder="" value={addressCp} onChange={e => setaddressCp(e.target.value)} />
                 </div>
               </div>
@@ -227,34 +177,33 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div className="row form-group">
               <div className="col-md-4">
                 <div className="mb-3 ">
-                  <label for="City" className="form-label">City</label>
+                  <label htmlFor="City" className="form-label">City</label>
                   <input type="text" className="form-control" id="city" placeholder="" value={city} onChange={e => setcity(e.target.value)} />
                 </div>
               </div>
               <div className="col-md-2">
                 <div className="mb-3">
-                  <label for="Zip Code" className="form-label">Zip Code</label>
+                  <label htmlFor="Zip Code" className="form-label">Zip Code</label>
                   <input type="text" className="form-control" id="zip" placeholder="" value={zip} onChange={e => setzip(e.target.value)} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label for="Recipient's name" className="form-label">Country</label>
+                  <label htmlFor="Recipient's name" className="form-label">Country</label>
                   <input type="text" className="form-control" id="country" placeholder="" value={country} onChange={e => setcountry(e.target.value)} />
                 </div>
               </div>
             </div>
-
             <div className="row form-group">
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label for="email" className="form-label">Mail</label>
+                  <label htmlFor="email" className="form-label">Mail</label>
                   <input type="email" className="form-control" id="email" placeholder="" value={email} onChange={e => setemail(e.target.value)} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label for="Phone" className="form-label">Phone</label>
+                  <label htmlFor="Phone" className="form-label">Phone</label>
                   <input type="text" className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
                 </div>
               </div>
@@ -274,8 +223,10 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const submitPersonalDetails = async () => {
     console.log("Hello");
-    const data = recepientName.concat(address, addressCp, city, zip, country, email, phone)
-    console.log('data', data);
+
+    // const data = recepientName.concat(address, addressCp, city, zip, country, email, phone)
+    // console.log('data', data);
+
     // const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' });
     // const { cid } = await ipfs.add({ path: recepientName, content: data });
     // console.log(cid.toString());
@@ -294,9 +245,6 @@ export default function HorizontalLabelPositionBelowStepper() {
 
 
   const ConnectWeb3 = () => {
-    useEffect(() => {
-      // findMetamaskAccounts();
-    }, [])
     return (
       <div className="container">
         <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
@@ -306,9 +254,9 @@ export default function HorizontalLabelPositionBelowStepper() {
           <div className="col-md-12">
             <div className="alert btns" role="alert">
               <p>A pop up will open to connect to your Metamask wallet.</p>
-              <p>If you don’t have metamask you can install it in clicking on this link: metamask.io .</p>
+              <p>If you don’t have metamask you can install it in clicking on this link <a target='_blank' href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'>Metamask</a></p>
             </div>
-            <button className="btn btns" style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" onClick={findMetamaskAccounts} ><strong>Connect to Web3</strong></button>
+            <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" onClick={findMetamaskAccounts} ><strong>Connect to Web3</strong></button>
           </div>
         </div>
       </div>
@@ -321,58 +269,62 @@ export default function HorizontalLabelPositionBelowStepper() {
     // const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     await window.ethereum.enable();
     const web3 = window.web3 = new Web3(window.ethereum);
-    // const web3 = window.web3;
     setWeb3(web3)
     const accounts = await web3.eth.getAccounts()
     if (accounts && accounts.length > 0) {
-      // console.log(accounts[0]);
       setAccount(accounts[0]);
       setmetamaskConnected(true);
       setisValidate(true)
 
-      const erc20ContractAddress = '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2';
+      const networkId = await web3.eth.net.getId()
+      switch (networkId) {
+        case 1:
+          setnetworkName('')
+          break;
+        case 3:
+          setnetworkName('ropsten')
+          break;
+        case 4:
+          setnetworkName('rinkeby')
+          break;
+        case 42:
+          setnetworkName('kovan')
+          break;
+        default:
+          break;
+      }
 
-      const erc20Contract = new web3.eth.Contract(erc20Abi, erc20ContractAddress)
-      console.log(erc20Contract);
-
-      const tokenAmount = 10;
+      const tokenContract = new web3.eth.Contract(erc20Abi, process.env.NEXT_PUBLIC_ERCTOKEN)
+      settokenContract(tokenContract)
+      const mattContract = new web3.eth.Contract(mattAbi, process.env.NEXT_PUBLIC_MATTADDRESS)
+      setmattContract(mattContract)
 
       // Use BigNumber
-      let decimals = web3.utils.toBN(18);
-      let amount = web3.utils.toBN(tokenAmount);
+      let decimals = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENDECIMALS);
+      let amount = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENAMOUNT);
       let value = amount.mul(web3.utils.toBN(10).pow(decimals));
+      settokenAmount(value)
 
-      const tokenBalance = await erc20Contract.methods.balanceOf(accounts[0]).call()
-      console.log("settokenBalanceApproved", tokenBalance)
+      const userTokenBalance = await tokenContract.methods.balanceOf(accounts[0]).call()
 
-      if (tokenBalance > 50000000000000000000n) {
-        console.log("settokenBalanceApproved")
+      if (userTokenBalance > value) {
         settokenBalanceApproved(true)
-        handleNext();
       }
-      else {
-        handleNext();
-      }
+      handleNext();
     }
   };
 
   const SwapToken = () => {
-
     if (tokenBalanceApproved) {
-      console.log("Ddddddddddddddddd")
       handleNext();
     } else {
       const swap = async () => {
 
         const sdk = DEXAG.fromProvider(window.ethereum);
-        // console.log('WINDOW', window.ethereum);
-        // console.log('DEXAG', DEXAG);
-        console.log('sdk', sdk);
 
         // receive status messages as the client executes the trade
         sdk.registerStatusHandler((status, data) => {
           console.log('status, data ===> ', status, data);
-          // console.log(status, data)
         });
         const price = sdk.getPrice({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' })
         console.log('price', price);
@@ -389,7 +341,9 @@ export default function HorizontalLabelPositionBelowStepper() {
           sdk.trade(tx);
         }
       }
-      swap()
+      swap();
+      handleNext();
+
     }
 
     return (
@@ -417,40 +371,24 @@ export default function HorizontalLabelPositionBelowStepper() {
       setIsOngoing(false)
       setIssuccess(false)
       // setisValidate(false)
-      console.log('Approved');
-      // setbuttonView(false)
+      setbuttonView(false)
 
-      const erc20ContractAddress = process.env.REACT_APP_ERC20TOKEN
-      //  '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2';
-
-      const erc20Contract = new web3.eth.Contract(erc20Abi, erc20ContractAddress)
-      console.log(erc20Contract);
-
-      const tokenAmount = 10
-      // process.env.REACT_APP_TOKENAMOUNT
-      console.log('tokenAmount', tokenAmount);
-
-      // Use BigNumber
-      let decimals = web3.utils.toBN(18);
-      let amount = web3.utils.toBN(tokenAmount);
-      let value = amount.mul(web3.utils.toBN(10).pow(decimals));
-      var data = erc20Contract.methods.approve('0xdC73A27c2A81De8646937EAc26Fa34A870322874', value).encodeABI();
+      var data = tokenContract.methods.approve(process.env.NEXT_PUBLIC_MATTADDRESS, tokenAmount).encodeABI();
 
       const transactionParameters = {
-        to: '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2', // Required except during contract publications.
+        to: process.env.NEXT_PUBLIC_ERCTOKEN, // Required except during contract publications.
         from: account, // must match user's active address.
         data: data,
       };
 
       web3.eth.sendTransaction(transactionParameters)
-        .on('transactionHash', function (hash) {
+        .on('transactionHash', (hash) => {
           console.log('transactionHash', hash);
           setIsOngoing(true)
           setIssuccess(false)
           setTxId(hash);
-
         })
-        .once('confirmation', function (confirmationNumber, receipt) {
+        .once('confirmation', (confirmationNumber, receipt) => {
           console.log('confirmation', receipt);
           setIsOngoing(false)
           setIssuccess(true)
@@ -459,7 +397,6 @@ export default function HorizontalLabelPositionBelowStepper() {
           handleNext();
         })
         .on('error', console.error);
-
     };
 
     return (
@@ -472,15 +409,14 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div className="alert btns" role="alert">
               <p>Confirm the DAI transfer to pay for your Loser Box</p>
             </div>
-            <br />
-            <br />
-            <button className="btn btns" style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" onClick={approve} ><strong>Approve DAI Transfer</strong></button>
-            <br></br>
-            <br />
-            <br />
+            {buttonView ?
+              <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" onClick={approve} ><strong>Approve DAI Transfer</strong></button>
+              : null
+            }
+            <br /><br /><br /><br />
             {
               isPending ?
-                <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://kovan.etherscan.io/tx/${txId}`)} >
+                <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://${networkName}.etherscan.io/tx/${txId}`)} >
                   <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
                     <div style={{ display: "flex" }}>
                       <div >
@@ -512,40 +448,24 @@ export default function HorizontalLabelPositionBelowStepper() {
       setisPending(true)
       setIsOngoing(false)
       setIssuccess(false)
-      console.log('Transfered');
+      setbuttonView(false)
 
-      const mattAddress = '0xdc73a27c2a81de8646937eac26fa34a870322874'
-      const contract = new web3.eth.Contract(mattAbi, mattAddress)
-      setContract(contract)
 
-      const timeoutPayment = 3600
-      const erc20ContractAddress = '0x75A27fa3F7ec1ECB1fd05618DB5Fab78de0755D2';
-      const receiver = '0xA5D82471A12FBd6fD1412e5eb5850d9d6aC5d525'
-      const metaEvidence = "Mobiloitte Org"
-
-      const tokenAmount = 10;
-
-      // Use BigNumber
-      let decimals = web3.utils.toBN(18);
-      let amount = web3.utils.toBN(tokenAmount);
-      let value = amount.mul(web3.utils.toBN(10).pow(decimals));
-      var data = contract.methods.createTransaction(value, erc20ContractAddress, timeoutPayment.toString(), receiver, metaEvidence).encodeABI();
+      var data = mattContract.methods.createTransaction(tokenAmount, process.env.NEXT_PUBLIC_ERCTOKEN, (process.env.NEXT_PUBLIC_TIMEOUTPAYMENT).toString(), process.env.NEXT_PUBLIC_RECEIVER, process.env.NEXT_PUBLIC_METAEVIDENCE).encodeABI();
       console.log('data', data);
       const transactionParameters = {
-        to: '0xdc73a27c2a81de8646937eac26fa34a870322874', // Required except during contract publications.
+        to: process.env.NEXT_PUBLIC_MATTADDRESS,// Required except during contract publications.
         from: account, // must match user's active address.
         data: data,
       };
 
       web3.eth.sendTransaction(transactionParameters)
-        .on('transactionHash', function (hash) {
-          console.log('transactionHash', hash);
+        .on('transactionHash', (hash) => {
           setIsOngoing(true)
           setIssuccess(false)
           setTxId(hash);
         })
-        .once('confirmation', function (confirmationNumber, receipt) {
-          console.log('confirmation', receipt);
+        .once('confirmation', (confirmationNumber, receipt) => {
           setIsOngoing(false)
           setIssuccess(true)
           setisPending(false)
@@ -553,46 +473,6 @@ export default function HorizontalLabelPositionBelowStepper() {
           handleNext();
         })
         .on('error', console.error);
-      // contract.methods.createTransaction(value, erc20ContractAddress, timeoutPayment.toString(), receiver, metaEvidence)
-      //   .send({ from: account })
-      //   .once('receipt', (receipt) => {
-
-      //     console.log('receipt', receipt);
-      //     const txId = receipt.events.MetaEvidence.returnValues[0]
-      //     console.log("TXID", txId);
-      //     setTxId(txId);
-
-
-      //     toast.success(CustomToastWithLink(receipt.transactionHash), {
-      //       position: "bottom-right",
-      //       autoClose: 5000,
-      //       hideProgressBar: false,
-      //       closeOnClick: true,
-      //       pauseOnHover: true,
-      //       draggable: true,
-      //       progress: undefined,
-      //     });
-
-      //     setIsOngoing(false)
-      //     setIssuccess(true)
-      //     setisValidate(true)
-
-      //   }).on('error', () => {
-      //     const varError = `createTransaction function Failed`
-      //     console.error();
-
-      //     toast.error(`Transaction Failed, ${varError} `, {
-      //       position: "bottom-right",
-      //       autoClose: 5000,
-      //       hideProgressBar: false,
-      //       closeOnClick: true,
-      //       pauseOnHover: true,
-      //       draggable: true,
-      //       progress: undefined,
-      //     });
-
-      //   })
-
     }
     return (
       <div className="container">
@@ -601,15 +481,17 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <br /> <br />
             <div className="alert btns" role="alert">
-             <p>To trnsfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
+              <p>To trnsfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
             </div>
-            <button className="btn btns" onClick={transfer} style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Transfer DAI To Escrow</strong></button>
-            <br /><br />
+            {buttonView ?
+              <button className="btn btns" onClick={transfer} style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Transfer DAI To Escrow</strong></button>
+              : null
+            }
+            <br /><br /><br /><br />
             {
               isPending ?
-                <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://kovan.etherscan.io/tx/${txId}`)} >
+                <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://${networkName}.etherscan.io/tx/${txId}`)} >
                   <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
                     <div style={{ display: "flex" }}>
                       <div >
@@ -622,13 +504,11 @@ export default function HorizontalLabelPositionBelowStepper() {
                           isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null
                         }
                       </div>
-
                     </div>
                   </div>
                 </div>
                 : null
             }
-
           </div>
         </div>
       </div>
@@ -638,51 +518,60 @@ export default function HorizontalLabelPositionBelowStepper() {
 
 
   const Confirmation = () => {
-
-    const confirm = () => {
-      setisPending(false)
-      setIsOngoing(true)
-      console.log('Confirmed');
-    }
-
-
     return (
       <div className="container">
+        <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
+          <h4><span style={{ color: "#13a2dc" }}>Order</span> Confirmation</h4>
+        </div>
         <div className="row">
           <div className="col-md-12">
-            <br /> <br />
-            <Link href="/">
-            <button className="btn btns" style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Confirm</strong></button>
-                    {/* <Button isPrimary={true} style={{ width: '300px' }}>BUY YOUR LOSER BOX</Button> */}
-            </Link>
-            <br></br>
-            <br></br>
-            <br />
-            <br />
-            <div className="d-grid gap-8">
-              <button className="btn btns" type="button" style={{ width: "100%", backgroundColor: "#A6FFCC" }}><strong>Return to the Homepage</strong></button>
+            <div className="alert btns" role="alert">
+              <p>Your order is on preparation</p>
             </div>
+            <Link href="/">
+              <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Return to the Homepage</strong></button>
+            </Link>
+            <br /> <br />
           </div>
         </div>
       </div>
     )
   }
 
-
-  const CustomToastWithLink = (TxHash) => (
-    <p>
-      Transaction Successful <a style={{ color: "blue" }} href={`https://kovan.etherscan.io/tx/${TxHash}`} target='_blank' rel='noopener noreferrer'> Click to see on Etherscan</a>.
-    </p >
-  );
-
   return (
+
     <div className={classes.root}>
+      <nav className="">
+        <Link href="/">
+          <img
+            style={{ paddingLeft: '20px' }}
+            className="header-menu-logo"
+            src="/RECOVER-logo.svg"
+            alt="Recover Logo"
+          />
+        </Link>
+        {/* <Menu> */}
+          <a href="https://app.recover.ws/" target="_blank">
+            APPLICATION
+              </a>
+          <a>
+            <Link href="/blog">
+              <a>BLOG</a>
+            </Link>
+          </a>
+          <a>
+            <Link href="/about">
+              <a>ABOUT</a>
+            </Link>
+          </a>
+        {/* </Menu> */}
+      </nav>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             { label === "Swap Token" ?
-              <Typography variant="caption" style={{ marginLeft: "40%" }}>Optional</Typography> : null
+              <Typography variant="caption" style={{ marginLeft: "40%", fontWeight: 'bold' }}>Optional</Typography> : null
             }
 
           </Step>
@@ -699,7 +588,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
               {activeStep === 0 ? null :
                 <div style={{ paddingLeft: "15%" }}>
-                  {
+                  {/* {
                     false ? null :
                       <Button
                         disabled={activeStep === 0}
@@ -708,23 +597,21 @@ export default function HorizontalLabelPositionBelowStepper() {
                       >
                         Back
                       </Button>
-                  }
-                  {activeStep === 1 ? <Button variant="contained" color="primary" onClick={handleNext}
+                  } */}
+                  {/* {activeStep === 1 ? <Button variant="contained" color="primary" onClick={handleNext}
                     // disabled={!isValidate} 
                     style={{ marginRight: "1%" }}
-                  >Skip</Button> : null}
-                  <Button variant="contained" color="primary" onClick={handleNext}
+                  >Skip</Button> : null} */}
+                  {/* <Button variant="contained" color="primary" onClick={handleNext}
                     disabled={!isValidate}
                   >
                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                  </Button>
+                  </Button> */}
                 </div>
               }
             </div>
-
           )}
       </div>
-      <ToastContainer />
     </div>
   );
 }
