@@ -16,13 +16,14 @@ export default function Post({ post }) {
     ></div>
   )
 
+  const BlogContent = () => <div dangerouslySetInnerHTML={createMarkup()} />
+
   return (
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BlogHeader post={post} />
       <div
         className={
           slug == 'lost-and-found-iphone'
@@ -30,8 +31,9 @@ export default function Post({ post }) {
             : 'escrow-container'
         }
       >
-        {BlogCover()}
-        <div dangerouslySetInnerHTML={createMarkup()} />
+        <BlogHeader post={post} />
+        <BlogCover />
+        <BlogContent />
       </div>
     </Layout>
   )

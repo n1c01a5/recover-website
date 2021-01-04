@@ -87,7 +87,6 @@
   width: 100%;
   height: 12rem;
   background-color: #dcdcdc;
-  /* background-image: url('/doge.png'); */
   background-size: cover;
   margin-bottom: 1rem;
   border-radius: 5px;
@@ -114,14 +113,6 @@ a h4 {
 .blog_resume {
   color: gray;
 }
-/* 
-.blog_tile_1 {
-  background-image: url('/Blog_1_Escrow.jpg');
-}
-
-.blog_tile_2 {
-  background-image: url('/Blog_2_Lostphone.jpg');
-} */
 
 .blog h4 {
   margin-bottom: 0.7rem;
