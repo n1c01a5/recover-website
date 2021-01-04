@@ -1,17 +1,12 @@
 import Link from 'next/link'
-
-import { slide as Menu } from 'react-burger-menu'
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DEXAG from 'dexag-sdk'
 import { BounceLoader } from 'react-spinners'
-import Layout from '../components/layout'
-
 
 import Web3 from 'web3';
 const ipfsClient = require('ipfs-http-client')
@@ -55,17 +50,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [isOngoing, setIsOngoing] = useState(false)
   const [issuccess, setIssuccess] = useState(false)
   const [tokenBalanceApproved, settokenBalanceApproved] = useState(false)
-
-  const [recepientNameL, setRecepientNameL] = useState("");
-  const [addressL, setaddressL] = useState("")
-  const [addressCpL, setaddressCpL] = useState("");
-  const [cityL, setcityL] = useState("")
-  const [zipL, setzipL] = useState("")
-  const [countryL, setcountryL] = useState("")
-  const [emailL, setemailL] = useState("")
-  const [phoneL, setphoneL] = useState("")
-
-
+  const [personalDetails, setPersonalDetails] = useState()
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -79,27 +64,10 @@ export default function HorizontalLabelPositionBelowStepper() {
     setIsOngoing(false)
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return < PersonalDetails
-          recepientNameL={recepientNameL}
-          addressL={addressL}
-          addressCpL={addressCpL}
-          cityL={cityL}
-          zipL={zipL}
-          countryL={countryL}
-          emailL={emailL}
-          phoneL={phoneL}
-        />
+        return < PersonalDetails/>
       case 1:
         return < ConnectWeb3 />
       // swapToken
@@ -117,26 +85,29 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
   };
 
-  const PersonalDetails = ({ recepientNameL, addressL, addressCpL, cityL, zipL, countryL, emailL, phoneL }) => {
-    const [recepientName, setRecepientName] = useState(recepientNameL);
-    const [address, setaddress] = useState(addressL)
-    const [addressCp, setaddressCp] = useState(addressCpL);
-    const [city, setcity] = useState(cityL)
-    const [zip, setzip] = useState(zipL)
-    const [country, setcountry] = useState(countryL)
-    const [email, setemail] = useState(emailL)
-    const [phone, setphone] = useState(phoneL)
+  const PersonalDetails = () => {
+    const [recepientName, setRecepientName] = useState();
+    const [address, setaddress] = useState()
+    const [addressCp, setaddressCp] = useState();
+    const [city, setcity] = useState()
+    const [zip, setzip] = useState()
+    const [country, setcountry] = useState()
+    const [email, setemail] = useState()
+    const [phone, setphone] = useState()
 
     const handleNextLocal = () => {
       if (recepientName != '' && address != '' && addressCp != '' && city != '' && zip != '' && country != '' && email != '' && phone != '') {
-        setRecepientNameL(recepientName)
-        setaddressL(address)
-        setaddressCpL(addressCp)
-        setcityL(city)
-        setzipL(zip)
-        setcountryL(country)
-        setemailL(email)
-        setphoneL(phone)
+        const data = {
+          recepientName : recepientName,
+          address : address,
+          addressCp : addressCp,
+          city : city,
+          zip : zip,
+          country : country,
+          email : email,
+          phone : phone
+        }
+        setPersonalDetails(data);
         handleNext();
       }
     }
@@ -150,15 +121,10 @@ export default function HorizontalLabelPositionBelowStepper() {
             </div>
 
             <div className="form-group" >
-              <div className="col-md-12">
+              <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label htmlFor="Recipient's name" className="form-label">Recipient's name</label>
-                  <input type="text"
-                    className="form-control"
-                    id="recepientName"
-                    placeholder=""
-                    value={recepientName}
-                    onChange={(e) => setRecepientName(e.target.value)} />
+                  <label className="form-label">Recipient's name</label>
+                  <input type="text" className="form-control" id="recepientName" placeholder="" value={recepientName} onChange={(e) => setRecepientName(e.target.value)} />
                 </div>
               </div>
               <div classNameName="col-md-12">
@@ -221,29 +187,6 @@ export default function HorizontalLabelPositionBelowStepper() {
     )
   }
 
-  const submitPersonalDetails = async () => {
-    console.log("Hello");
-
-    // const data = recepientName.concat(address, addressCp, city, zip, country, email, phone)
-    // console.log('data', data);
-
-    // const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' });
-    // const { cid } = await ipfs.add({ path: recepientName, content: data });
-    // console.log(cid.toString());
-
-    setRecepientName("")
-    setaddress("")
-    setaddressCp("")
-    setcity("")
-    setzip("")
-    setcountry("")
-    setemail("")
-    setphone("")
-    setisValidate(true)
-
-  }
-
-
   const ConnectWeb3 = () => {
     return (
       <div className="container">
@@ -265,7 +208,6 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const findMetamaskAccounts = async () => {
 
-    // setisValidate(false)
     // const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     await window.ethereum.enable();
     const web3 = window.web3 = new Web3(window.ethereum);
@@ -343,7 +285,6 @@ export default function HorizontalLabelPositionBelowStepper() {
       }
       swap();
       handleNext();
-
     }
 
     return (
@@ -440,8 +381,6 @@ export default function HorizontalLabelPositionBelowStepper() {
     )
   };
 
-
-
   const TransferDAI = () => {
 
     const transfer = async () => {
@@ -449,7 +388,6 @@ export default function HorizontalLabelPositionBelowStepper() {
       setIsOngoing(false)
       setIssuccess(false)
       setbuttonView(false)
-
 
       var data = mattContract.methods.createTransaction(tokenAmount, process.env.NEXT_PUBLIC_ERCTOKEN, (process.env.NEXT_PUBLIC_TIMEOUTPAYMENT).toString(), process.env.NEXT_PUBLIC_RECEIVER, process.env.NEXT_PUBLIC_METAEVIDENCE).encodeABI();
       console.log('data', data);
@@ -482,7 +420,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         <div className="row">
           <div className="col-md-12">
             <div className="alert btns" role="alert">
-              <p>To trnsfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
+              <p>To transfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
             </div>
             {buttonView ?
               <button className="btn btns" onClick={transfer} style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Transfer DAI To Escrow</strong></button>
@@ -518,6 +456,17 @@ export default function HorizontalLabelPositionBelowStepper() {
 
 
   const Confirmation = () => {
+
+    const submitPersonalDetails = async () => {
+    try {
+      const ipfs = ipfsClient({ host: process.env.NEXT_PUBLIC_IPFSNODE, port: process.env.NEXT_PUBLIC_IPFSPORT, protocol: process.env.NEXT_PUBLIC_IPFSPROTOCOL });
+      const { cid } = await ipfs.add({ path: account, content: JSON.stringify(personalDetails) });
+      console.log(cid.toString());
+    } catch (error) {
+      console.log('Unable to publish to IPFS',error);
+    }
+
+  }
     return (
       <div className="container">
         <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
@@ -529,7 +478,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               <p>Your order is on preparation</p>
             </div>
             <Link href="/">
-              <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Return to the Homepage</strong></button>
+              <button className="btn btns" onClick={submitPersonalDetails} style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Return to the Homepage</strong></button>
             </Link>
             <br /> <br />
           </div>
@@ -544,29 +493,15 @@ export default function HorizontalLabelPositionBelowStepper() {
       <nav className="">
         <Link href="/">
           <img
-            style={{ paddingLeft: '20px' }}
+            style={{ paddingLeft: '50px', paddingTop: '20px' }}
             className="header-menu-logo"
             src="/RECOVER-logo.svg"
             alt="Recover Logo"
           />
         </Link>
-        {/* <Menu> */}
-          <a href="https://app.recover.ws/" target="_blank">
-            APPLICATION
-              </a>
-          <a>
-            <Link href="/blog">
-              <a>BLOG</a>
-            </Link>
-          </a>
-          <a>
-            <Link href="/about">
-              <a>ABOUT</a>
-            </Link>
-          </a>
-        {/* </Menu> */}
       </nav>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <br /> <br />
+      <Stepper activeStep={activeStep} >
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
@@ -581,34 +516,10 @@ export default function HorizontalLabelPositionBelowStepper() {
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>All steps completed</Typography>
-            <Button onClick={handleReset}>Reset</Button>
           </div>
         ) : (
             <div>
               <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              {activeStep === 0 ? null :
-                <div style={{ paddingLeft: "15%" }}>
-                  {/* {
-                    false ? null :
-                      <Button
-                        disabled={activeStep === 0}
-                        onClick={handleBack}
-                        className={classes.backButton}
-                      >
-                        Back
-                      </Button>
-                  } */}
-                  {/* {activeStep === 1 ? <Button variant="contained" color="primary" onClick={handleNext}
-                    // disabled={!isValidate} 
-                    style={{ marginRight: "1%" }}
-                  >Skip</Button> : null} */}
-                  {/* <Button variant="contained" color="primary" onClick={handleNext}
-                    disabled={!isValidate}
-                  >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                  </Button> */}
-                </div>
-              }
             </div>
           )}
       </div>
