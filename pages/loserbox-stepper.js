@@ -28,6 +28,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function isValidEmail(value) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(value).toLowerCase());
+}
+
+function checkSpecialChar(value) {
+  if (value.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/) || value === '') {
+    // alert("false")
+    return false
+  } else {
+    // alert("True")
+    return true
+  }
+
+
+}
 
 function getSteps() {
   return ['Personal Details', 'Connect to Web3', `Swap Token`, 'Approve DAI Transfer', 'Transfer DAI to the Escrow', 'Confirmation'];
@@ -67,7 +83,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return < PersonalDetails/>
+        return < PersonalDetails />
       case 1:
         return < ConnectWeb3 />
       // swapToken
@@ -86,26 +102,36 @@ export default function HorizontalLabelPositionBelowStepper() {
   };
 
   const PersonalDetails = () => {
-    const [recepientName, setRecepientName] = useState();
-    const [address, setaddress] = useState()
-    const [addressCp, setaddressCp] = useState();
-    const [city, setcity] = useState()
-    const [zip, setzip] = useState()
-    const [country, setcountry] = useState()
-    const [email, setemail] = useState()
-    const [phone, setphone] = useState()
+    const [recepientName, setRecepientName] = useState('');
+    const [address, setaddress] = useState('')
+    const [addressCp, setaddressCp] = useState('');
+    const [city, setcity] = useState('')
+    const [zip, setzip] = useState('')
+    const [country, setcountry] = useState('')
+    const [email, setemail] = useState('')
+    const [phone, setphone] = useState('')
+    const [submit, setSubmit] = useState(false)
 
     const handleNextLocal = () => {
-      if (recepientName != '' && address != '' && addressCp != '' && city != '' && zip != '' && country != '' && email != '' && phone != '') {
+      setSubmit(true)
+      if (recepientName != '' &&
+        address != '' &&
+        city != '' &&
+        zip != '' &&
+        country != '' &&
+        email != '' &&
+        phone != '' &&
+        isValidEmail(email) &&
+        !recepientName.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)) {
         const data = {
-          recepientName : recepientName,
-          address : address,
-          addressCp : addressCp,
-          city : city,
-          zip : zip,
-          country : country,
-          email : email,
-          phone : phone
+          recepientName: recepientName,
+          address: address,
+          addressCp: addressCp,
+          city: city,
+          zip: zip,
+          country: country,
+          email: email,
+          phone: phone
         }
         setPersonalDetails(data);
         handleNext();
@@ -126,18 +152,30 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label className="form-label">Recipient's name</label>
                   <input type="text" className="form-control" id="recepientName" placeholder="" value={recepientName} onChange={(e) => setRecepientName(e.target.value)} />
                 </div>
+                {
+                  submit && recepientName.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/) ? <span style={{ color: "red" }}> The format of the name is not valid.</span> : null
+                }
+                {
+                  submit && recepientName === '' ? <span style={{ color: "red" }}> The format of the name is not valid.</span> : null
+                }
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label htmlFor="AddresTextarea1" className="form-label">Addres</label>
+                  <label htmlFor="AddresTextarea1" className="form-label">Address</label>
                   <input type="text" className="form-control" id="address" placeholder="" value={address} onChange={e => setaddress(e.target.value)} />
                 </div>
+                {
+                  submit && address === '' ? <span style={{ color: "red" }}> The address is not valid.</span> : null
+                }
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label htmlFor="AddresComplementTextarea1" className="form-label">Address Complement</label>
+                  <label htmlFor="AddresComplementTextarea1" className="form-label">Address Line 2</label>
                   <input type="text" className="form-control" id="addressCp" placeholder="" value={addressCp} onChange={e => setaddressCp(e.target.value)} />
                 </div>
+                {/* {
+                  submit && addressCp === '' ? <span style={{ color: "red" }}> The address is not valid.</span> : null
+                } */}
               </div>
             </div>
             <div className="row form-group">
@@ -146,18 +184,27 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="City" className="form-label">City</label>
                   <input type="text" className="form-control" id="city" placeholder="" value={city} onChange={e => setcity(e.target.value)} />
                 </div>
+                {
+                  submit && city === '' ? <span style={{ color: "red" }}> The format of the city is not valid.</span> : null
+                }
               </div>
               <div className="col-md-2">
                 <div className="mb-3">
                   <label htmlFor="Zip Code" className="form-label">Zip Code</label>
-                  <input type="text" className="form-control" id="zip" placeholder="" value={zip} onChange={e => setzip(e.target.value)} />
+                  <input type="number" className="form-control" id="zip" placeholder="" value={zip} onChange={e => setzip(e.target.value)} />
                 </div>
+                {
+                  submit && zip === '' ? <span style={{ color: "red" }}>The zip not valid.</span> : null
+                }
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
                   <label htmlFor="Recipient's name" className="form-label">Country</label>
                   <input type="text" className="form-control" id="country" placeholder="" value={country} onChange={e => setcountry(e.target.value)} />
                 </div>
+                {
+                  submit && country === '' ? <span style={{ color: "red" }}> The format of the country is not valid.</span> : null
+                }
               </div>
             </div>
             <div className="row form-group">
@@ -166,12 +213,18 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="email" className="form-label">Mail</label>
                   <input type="email" className="form-control" id="email" placeholder="" value={email} onChange={e => setemail(e.target.value)} />
                 </div>
+                {
+                  submit && !isValidEmail(email) ? <span style={{ color: "red" }}> The email format is not valid.</span> : null
+                }
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
                   <label htmlFor="Phone" className="form-label">Phone</label>
-                  <input type="text" className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
+                  <input type="number" className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
                 </div>
+                {
+                  submit && phone === '' ? <span style={{ color: "red" }}>The format of the country is not valid.</span> : null
+                }
               </div>
             </div>
             <div className="row form-group">
@@ -195,7 +248,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="alert btns" role="alert">
+            <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
               <p>A pop up will open to connect to your Metamask wallet.</p>
               <p>If you don’t have metamask you can install it in clicking on this link <a target='_blank' href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'>Metamask</a></p>
             </div>
@@ -294,7 +347,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="alert btns" role="alert">
+            <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
               <p>To buy the Loser Box, you need to swap your Ether to 50 DAI.</p>
             </div>
             <button className="btn btns" style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Swap</strong></button>
@@ -347,7 +400,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="alert btns" role="alert">
+            <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
               <p>Confirm the DAI transfer to pay for your Loser Box</p>
             </div>
             {buttonView ?
@@ -358,7 +411,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             {
               isPending ?
                 <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://${networkName}.etherscan.io/tx/${txId}`)} >
-                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
+                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener", background: "#A6FFCC" }} role="alert">
                     <div style={{ display: "flex" }}>
                       <div >
                         {isPending || isOngoing ?
@@ -419,7 +472,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="alert btns" role="alert">
+            <div className="alert btns" style={{ background: "#A6FFCC" }} role="alert">
               <p>To transfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
             </div>
             {buttonView ?
@@ -430,7 +483,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             {
               isPending ?
                 <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://${networkName}.etherscan.io/tx/${txId}`)} >
-                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener" }} role="alert">
+                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener", background: "#A6FFCC" }} role="alert">
                     <div style={{ display: "flex" }}>
                       <div >
                         {isPending || isOngoing ?
@@ -458,15 +511,15 @@ export default function HorizontalLabelPositionBelowStepper() {
   const Confirmation = () => {
 
     const submitPersonalDetails = async () => {
-    try {
-      const ipfs = ipfsClient({ host: process.env.NEXT_PUBLIC_IPFSNODE, port: process.env.NEXT_PUBLIC_IPFSPORT, protocol: process.env.NEXT_PUBLIC_IPFSPROTOCOL });
-      const { cid } = await ipfs.add({ path: account, content: JSON.stringify(personalDetails) });
-      console.log(cid.toString());
-    } catch (error) {
-      console.log('Unable to publish to IPFS',error);
-    }
+      try {
+        const ipfs = ipfsClient({ host: process.env.NEXT_PUBLIC_IPFSNODE, port: process.env.NEXT_PUBLIC_IPFSPORT, protocol: process.env.NEXT_PUBLIC_IPFSPROTOCOL });
+        const { cid } = await ipfs.add({ path: account, content: JSON.stringify(personalDetails) });
+        console.log(cid.toString());
+      } catch (error) {
+        console.log('Unable to publish to IPFS', error);
+      }
 
-  }
+    }
     return (
       <div className="container">
         <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
@@ -474,7 +527,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="alert btns" role="alert">
+            <div className="alert btns" style={{ background: "#A6FFCC" }} role="alert">
               <p>Your order is on preparation</p>
             </div>
             <Link href="/">
@@ -490,7 +543,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   return (
 
     <div className={classes.root}>
-      <nav className="">
+      <nav className="" style={{ marginLeft: "10%", marginRight: "10%" }}>
         <Link href="/">
           <img
             style={{ paddingLeft: '50px', paddingTop: '20px' }}
@@ -499,18 +552,50 @@ export default function HorizontalLabelPositionBelowStepper() {
             alt="Recover Logo"
           />
         </Link>
+          <a href="https://app.recover.ws/" target="_blank">
+            APPLICATION
+              </a>
+            <Link href="/blog">
+              <a>BLOG</a>
+            </Link>
+            <Link href="/about">
+              <a>ABOUT</a>
+            </Link>
+          {/* <a>
+          </a>
+          <a>
+          </a> */}
       </nav>
       <br /> <br />
-      <Stepper activeStep={activeStep} >
+      {/* <Stepper activeStep={activeStep} >
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             { label === "Swap Token" ?
-              <Typography variant="caption" style={{ marginLeft: "40%", fontWeight: 'bold' }}>Optional</Typography> : null
+              <StepLabel>{ 'optional'}</StepLabel>
+              : null
+              // <Typography variant="caption" style={{ marginLeft: "40%", fontWeight: 'bold' }}>Optional</Typography> : null
             }
 
           </Step>
         ))}
+      </Stepper> */}
+      <Stepper activeStep={activeStep} style={{ marginLeft: "13%", marginRight: "13%" }}>
+        {steps.map((label, index) => {
+          const stepProps = {};
+          const labelProps = {};
+          if (label === "Swap Token") {
+            labelProps.optional = <Typography variant="caption">Optional</Typography>;
+          }
+          // if (isStepSkipped(index)) {
+          //   stepProps.completed = false;
+          // }
+          return (
+            <Step key={label} {...stepProps}>
+              <StepLabel {...labelProps}>{label}</StepLabel>
+            </Step>
+          );
+        })}
       </Stepper>
       <div>
         {activeStep === steps.length ? (
@@ -522,6 +607,117 @@ export default function HorizontalLabelPositionBelowStepper() {
               <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             </div>
           )}
+      </div>
+      <div className="desktop-layout">
+        <div
+          style={{
+            marginTop: '120px',
+            padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'
+          }}
+        >
+          <footer style={{ display: 'flex' }}>
+            <div
+              style={{
+                display: 'flex',
+                flex: '1',
+                paddingTop: '20px',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div style={{ width: '191px' }}>
+                <Link href="/">
+                  <img
+                    className="header-menu-logo"
+                    src="/RECOVER-logo.svg"
+                    alt="Recover Logo"
+                    role="presentation"
+                  />
+                </Link>
+                <p
+                  style={{
+                    width: '191px',
+                    marginTop: '10px',
+                    textAlign: 'center'
+                  }}
+                >
+                  <strong>Use it, or Lose it</strong>
+                </p>
+                {/* <div style={{textAlign: 'center'}}>
+                  <Link href="/"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇺🇸</a></Link>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Link href="/fr"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇫🇷</a></Link>
+                </div> */}
+                <p
+                  style={{
+                    width: '191px',
+                    marginTop: '50px',
+                    textAlign: 'center'
+                  }}
+                >
+                  @ RECOVER 2020
+                </p>
+              </div>
+              <div>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Protocol</strong>
+                </p>
+                <ul>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://kleros.io/">Kleros</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="https://ethereum.org/en/">Ethereum</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="https://ipfs.io/">IPFS</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Incubator</strong>
+                </p>
+                <ul>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://stationf.co/">StationF</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Social</strong>
+                </p>
+                <ul>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="https://github.com/blockchain-mafia/">Github</a>
+                  </li>
+                  <li style={{ padding: '2px 0' }}>
+                    <a href="mailto: contact@wagner-nicolas.com">Mail</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
+                  <strong>Last Posts</strong>
+                </p>
+                <ul>
+                  <li style={{ paddingBottom: '2px' }}>
+                    <a href="/">Escrow</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div style={{ height: '180px' }}>
+              <img
+                style={{ height: '180px' }}
+                className="footer-cryptokitty-recover"
+                src="/cryptokitty-recover.png"
+                alt="Cryptokitty with Recover"
+                role="presentation"
+              />
+            </div>
+          </footer>
+        </div>
       </div>
     </div>
   );

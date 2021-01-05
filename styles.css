@@ -431,36 +431,20 @@ h4 {
   cursor: pointer;
 }
 
-.navbar-right{margin-left:400px !important;}
+/* / Chrome, Safari, Edge, Opera / */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
 
-section#parl{position: relative;top:50px;left:0px;}
-
-#parl ol.stt{list-style: block;}
-
-#parl ol.stt li{position:relative;margin-right: 65px;}
-
-.btns{background:#A6FFCC;}
-
-.nav-link{margin-left:20px;}
+/* / Firefox / */
+input[type="number"] {
+-moz-appearance: textfield;
+}
 
 .alert p{font-weight: 400;}
 
 .alert p.trans{font-size:25px; font-weight: 600;margin-left:60px;}
 
 .nav-item{padding-left: 40px;color:#020202;font-weight: bold;}
-
-@media(max-width:767px){
-    ul.doted {
-        display: block;
-    }
-    ul.doted li {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    ul.doted li::after{
-        display: none;
-    }
-}
-
-
-
