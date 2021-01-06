@@ -7,6 +7,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
 import DEXAG from 'dexag-sdk'
 import { BounceLoader } from 'react-spinners'
+import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import Web3 from 'web3';
 const ipfsClient = require('ipfs-http-client')
@@ -34,7 +35,7 @@ function isValidEmail(value) {
 }
 
 function checkSpecialChar(value) {
-  if (value.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/) || value === '') {
+  if (value.match(/^[a-zA-Z\s]*$/) || value === '') {
     // alert("false")
     return false
   } else {
@@ -67,6 +68,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [issuccess, setIssuccess] = useState(false)
   const [tokenBalanceApproved, settokenBalanceApproved] = useState(false)
   const [personalDetails, setPersonalDetails] = useState()
+  const [isagree, setIsagree] = useState(false)
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -112,17 +114,30 @@ export default function HorizontalLabelPositionBelowStepper() {
     const [phone, setphone] = useState('')
     const [submit, setSubmit] = useState(false)
 
+    const [formValue, setFormValue] = useState({
+      recepientNameValidation: false,
+      addressValidation: false,
+      cityValidation: false,
+      zipValidation: false,
+      countryValidation: false,
+      emailValidation: false,
+      phoneValidation: false,
+    });
+
     const handleNextLocal = () => {
-      setSubmit(true)
+      setFormValue({
+        recepientNameValidation: true,
+        addressValidation: true,
+        cityValidation: true,
+        zipValidation: true,
+        countryValidation: true
+      })
       if (recepientName != '' &&
         address != '' &&
         city != '' &&
         zip != '' &&
         country != '' &&
-        email != '' &&
-        phone != '' &&
-        isValidEmail(email) &&
-        !recepientName.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)) {
+        recepientName.match(/^[a-zA-Z\s]*$/)) {
         const data = {
           recepientName: recepientName,
           address: address,
@@ -138,6 +153,14 @@ export default function HorizontalLabelPositionBelowStepper() {
       }
     }
 
+    const onblurChangeValue = (e) => {
+      const name = e.target.name;
+      const value = e.target.value;
+      const temp = { ...formValue, [name]: true };
+      console.log("temptemptemp", temp)
+      setFormValue(temp);
+    }
+
     return (
       <div>
         <form>
@@ -150,23 +173,20 @@ export default function HorizontalLabelPositionBelowStepper() {
               <div classNameName="col-md-12">
                 <div className="mb-3">
                   <label className="form-label">Recipient's name</label>
-                  <input type="text" className="form-control" id="recepientName" placeholder="" value={recepientName} onChange={(e) => setRecepientName(e.target.value)} />
+                  <input name="recepientNameValidation" type="text" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="recepientName" placeholder="" value={recepientName} onChange={e => setRecepientName(e.target.value)} />
+                  {
+                    formValue.recepientNameValidation && checkSpecialChar(recepientName) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the name is not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && recepientName.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/) ? <span style={{ color: "red" }}> The format of the name is not valid.</span> : null
-                }
-                {
-                  submit && recepientName === '' ? <span style={{ color: "red" }}> The format of the name is not valid.</span> : null
-                }
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
                   <label htmlFor="AddresTextarea1" className="form-label">Address</label>
-                  <input type="text" className="form-control" id="address" placeholder="" value={address} onChange={e => setaddress(e.target.value)} />
+                  <input type="text" name="addressValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="address" placeholder="" value={address} onChange={e => setaddress(e.target.value)} />
+                  {
+                    formValue.addressValidation && address == '' ? <span style={{ color: "red", fontSize: "14px" }}> The address is not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && address === '' ? <span style={{ color: "red" }}> The address is not valid.</span> : null
-                }
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
@@ -182,49 +202,52 @@ export default function HorizontalLabelPositionBelowStepper() {
               <div className="col-md-4">
                 <div className="mb-3 ">
                   <label htmlFor="City" className="form-label">City</label>
-                  <input type="text" className="form-control" id="city" placeholder="" value={city} onChange={e => setcity(e.target.value)} />
+                  <input type="text" name="cityValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="city" placeholder="" value={city} onChange={e => setcity(e.target.value)} />
+                  {
+                    formValue.cityValidation && checkSpecialChar(city) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the city is not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && city === '' ? <span style={{ color: "red" }}> The format of the city is not valid.</span> : null
-                }
+
               </div>
               <div className="col-md-2">
                 <div className="mb-3">
                   <label htmlFor="Zip Code" className="form-label">Zip Code</label>
-                  <input type="number" className="form-control" id="zip" placeholder="" value={zip} onChange={e => setzip(e.target.value)} />
+                  <input type="number" name="zipValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="zip" placeholder="" value={zip} onChange={e => setzip(e.target.value)} />
+                  {
+                    formValue.zipValidation && zip === '' ? <span style={{ color: "red", fontSize: "14px" }}>The zip not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && zip === '' ? <span style={{ color: "red" }}>The zip not valid.</span> : null
-                }
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
                   <label htmlFor="Recipient's name" className="form-label">Country</label>
-                  <input type="text" className="form-control" id="country" placeholder="" value={country} onChange={e => setcountry(e.target.value)} />
+                  <input type="text" name="countryValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="country" placeholder="" value={country} onChange={e => setcountry(e.target.value)} />
+                  {
+                    formValue.countryValidation && country === '' ? <span style={{ color: "red", fontSize: "14px" }}> The format of the country is not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && country === '' ? <span style={{ color: "red" }}> The format of the country is not valid.</span> : null
-                }
+
               </div>
             </div>
             <div className="row form-group">
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Mail</label>
-                  <input type="email" className="form-control" id="email" placeholder="" value={email} onChange={e => setemail(e.target.value)} />
+                  <label htmlFor="email" className="form-label">Mail (Optional)*</label>
+                  <input type="email" name="emailValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="email" placeholder="" value={email} onChange={e => setemail(e.target.value)} />
+                  {
+                    formValue.emailValidation && !isValidEmail(email) ? <span style={{ color: "red", fontSize: "14px" }}> The email format is not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && !isValidEmail(email) ? <span style={{ color: "red" }}> The email format is not valid.</span> : null
-                }
+
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label htmlFor="Phone" className="form-label">Phone</label>
-                  <input type="number" className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
+                  <label htmlFor="Phone" className="form-label">Phone (Optional)*</label>
+                  <input type="number" name="phoneValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
+                  {
+                    formValue.phoneValidation && phone === '' ? <span style={{ color: "red", fontSize: "14px" }}>The format of the phone is not valid.</span> : null
+                  }
                 </div>
-                {
-                  submit && phone === '' ? <span style={{ color: "red" }}>The format of the country is not valid.</span> : null
-                }
               </div>
             </div>
             <div className="row form-group">
@@ -348,9 +371,9 @@ export default function HorizontalLabelPositionBelowStepper() {
         <div className="row">
           <div className="col-md-12">
             <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
-              <p>To buy the Loser Box, you need to swap your Ether to 50 DAI.</p>
+              <p style={{ paddingTop: "15px" }}>To buy the Loser Box, you need to swap your Ether to 50 DAI.</p>
             </div>
-            <button className="btn btns" style={{ width: "100%", backgroundColor: "#A6FFCC" }} type="button" ><strong>Swap</strong></button>
+            <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Swap</strong></button>
           </div>
         </div>
       </div>
@@ -401,7 +424,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         <div className="row">
           <div className="col-md-12">
             <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
-              <p>Confirm the DAI transfer to pay for your Loser Box</p>
+              <p style={{ paddingTop: "15px" }}>Confirm the DAI transfer to pay for your Loser Box</p>
             </div>
             {buttonView ?
               <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" onClick={approve} ><strong>Approve DAI Transfer</strong></button>
@@ -437,43 +460,56 @@ export default function HorizontalLabelPositionBelowStepper() {
   const TransferDAI = () => {
 
     const transfer = async () => {
-      setisPending(true)
-      setIsOngoing(false)
-      setIssuccess(false)
-      setbuttonView(false)
+      if (isagree) {
+        setisPending(true)
+        setIsOngoing(false)
+        setIssuccess(false)
+        setbuttonView(false)
 
-      var data = mattContract.methods.createTransaction(tokenAmount, process.env.NEXT_PUBLIC_ERCTOKEN, (process.env.NEXT_PUBLIC_TIMEOUTPAYMENT).toString(), process.env.NEXT_PUBLIC_RECEIVER, process.env.NEXT_PUBLIC_METAEVIDENCE).encodeABI();
-      console.log('data', data);
-      const transactionParameters = {
-        to: process.env.NEXT_PUBLIC_MATTADDRESS,// Required except during contract publications.
-        from: account, // must match user's active address.
-        data: data,
-      };
+        var data = mattContract.methods.createTransaction(tokenAmount, process.env.NEXT_PUBLIC_ERCTOKEN, (process.env.NEXT_PUBLIC_TIMEOUTPAYMENT).toString(), process.env.NEXT_PUBLIC_RECEIVER, process.env.NEXT_PUBLIC_METAEVIDENCE).encodeABI();
+        console.log('data', data);
+        const transactionParameters = {
+          to: process.env.NEXT_PUBLIC_MATTADDRESS,// Required except during contract publications.
+          from: account, // must match user's active address.
+          data: data,
+        };
 
-      web3.eth.sendTransaction(transactionParameters)
-        .on('transactionHash', (hash) => {
-          setIsOngoing(true)
-          setIssuccess(false)
-          setTxId(hash);
-        })
-        .once('confirmation', (confirmationNumber, receipt) => {
-          setIsOngoing(false)
-          setIssuccess(true)
-          setisPending(false)
-          setisValidate(true)
-          handleNext();
-        })
-        .on('error', console.error);
+        web3.eth.sendTransaction(transactionParameters)
+          .on('transactionHash', (hash) => {
+            setIsOngoing(true)
+            setIssuccess(false)
+            setTxId(hash);
+          })
+          .once('confirmation', (confirmationNumber, receipt) => {
+            setIsOngoing(false)
+            setIssuccess(true)
+            setisPending(false)
+            setisValidate(true)
+            handleNext();
+          })
+          .on('error', console.error);
+      }
     }
     return (
       <div className="container">
         <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
           <h4><span style={{ color: "#13a2dc" }}>Tranfer</span> DAI to the Escrow</h4>
         </div>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isagree}
+              onChange={() => setIsagree(!isagree)}
+              name="isagree"
+              color="primary"
+            />
+          }
+          label="I agree the terms of the contract."
+        />
         <div className="row">
           <div className="col-md-12">
             <div className="alert btns" style={{ background: "#A6FFCC" }} role="alert">
-              <p>To transfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
+              <p style={{ paddingTop: "15px" }}>To transfer the fund to the escrow you have to approve the escrow smart contract to handle the fund.</p>
             </div>
             {buttonView ?
               <button className="btn btns" onClick={transfer} style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Transfer DAI To Escrow</strong></button>
@@ -543,28 +579,43 @@ export default function HorizontalLabelPositionBelowStepper() {
   return (
 
     <div className={classes.root}>
-      <nav className="" style={{ marginLeft: "10%", marginRight: "10%" }}>
-        <Link href="/">
-          <img
-            style={{ paddingLeft: '50px', paddingTop: '20px' }}
-            className="header-menu-logo"
-            src="/RECOVER-logo.svg"
-            alt="Recover Logo"
-          />
-        </Link>
-          <a href="https://app.recover.ws/" target="_blank">
-            APPLICATION
-              </a>
+      <nav className="" style={{ paddingLeft: "14%", paddingRight: "10%" }}>
+        {/* <div className="desktop-layout"> */}
+        {/* <div className={`header-menu`}> */}
+        <div style={{ marginTop: "2%" }}>
+          <Link href="/">
+            <img
+              className="header-menu-logo"
+              src="/RECOVER-logo.svg"
+              alt="Recover Logo"
+              style={{ top: "20px" }}
+            />
+          </Link>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div style={{ padding: '0 40px' }}>
+            <a href="https://app.recover.ws/" target="_blank">
+              APPLICATION
+                </a>
+          </div>
+          <div style={{ padding: '0 40px' }}>
+            <Link href="/blog">
+              <a>Loser Box</a>
+            </Link>
+          </div>
+          <div style={{ padding: '0 40px' }}>
             <Link href="/blog">
               <a>BLOG</a>
             </Link>
+          </div>
+          <div style={{ padding: '0 20px' }}>
             <Link href="/about">
               <a>ABOUT</a>
             </Link>
-          {/* <a>
-          </a>
-          <a>
-          </a> */}
+          </div>
+        </div>
+        {/* </div> */}
+        {/* </div> */}
       </nav>
       <br /> <br />
       {/* <Stepper activeStep={activeStep} >
@@ -582,18 +633,23 @@ export default function HorizontalLabelPositionBelowStepper() {
       </Stepper> */}
       <Stepper activeStep={activeStep} style={{ marginLeft: "13%", marginRight: "13%" }}>
         {steps.map((label, index) => {
+
           const stepProps = {};
           const labelProps = {};
           if (label === "Swap Token") {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
+            labelProps.optional = <Typography variant="caption" style={{ color: "rgba(0, 0, 0, 0.54)" }}>Optional</Typography>;
           }
           // if (isStepSkipped(index)) {
           //   stepProps.completed = false;
           // }
           return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
+
+            label === 'Confirmation' ? null :
+
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+
           );
         })}
       </Stepper>
@@ -608,14 +664,14 @@ export default function HorizontalLabelPositionBelowStepper() {
             </div>
           )}
       </div>
-      <div className="desktop-layout">
+      <div className="desktop-layout" style={{ paddingLeft: "3%", paddingRight: "1%" }}>
         <div
           style={{
             marginTop: '120px',
             padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'
           }}
         >
-          <footer style={{ display: 'flex' }}>
+          <footer style={{ display: 'flex', marginTop: "50%" }}>
             <div
               style={{
                 display: 'flex',
@@ -636,22 +692,25 @@ export default function HorizontalLabelPositionBelowStepper() {
                 <p
                   style={{
                     width: '191px',
-                    marginTop: '10px',
-                    textAlign: 'center'
+                    marginTop: '30px',
+                    textAlign: 'center',
+                    marginBottom: "0rem"
                   }}
                 >
                   <strong>Use it, or Lose it</strong>
                 </p>
-                {/* <div style={{textAlign: 'center'}}>
-                  <Link href="/"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇺🇸</a></Link>
+                <div style={{ textAlign: 'center' }}>
+                  <Link href="/"><a style={{ fontSize: '20px', cursor: 'pointer' }}>🇺🇸</a></Link>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link href="/fr"><a style={{fontSize: '30px', cursor: 'pointer'}}>🇫🇷</a></Link>
-                </div> */}
+                  <Link href="/fr"><a style={{ fontSize: '20px', cursor: 'pointer' }}>🇫🇷</a></Link>
+                </div>
                 <p
                   style={{
                     width: '191px',
-                    marginTop: '50px',
-                    textAlign: 'center'
+                    marginTop: '10px',
+                    textAlign: 'center',
+                    color: "black",
+                    fontFamily: "bold"
                   }}
                 >
                   @ RECOVER 2020
@@ -719,6 +778,214 @@ export default function HorizontalLabelPositionBelowStepper() {
           </footer>
         </div>
       </div>
+
+      <style jsx global>
+        {`
+          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+          @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+          body,
+          html {
+            padding: 0;
+            margin: 0;
+            min-width: 100vw;
+            min-height: 100hw;
+          }
+
+          *,
+          *::after,
+          *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+          }
+
+          // body {
+          //   font-family: Montserrat, Roboto, sans-serif;
+          //   text-rendering: optimizeLegibility;
+          //   color: #444;
+          // }
+
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+          }
+
+          strong {
+            font-weight: 700;
+          }
+
+          .header-menu {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            min-width: 100vw;
+            padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
+            line-height: 58px;
+            color: #444;
+            box-shadow: 0px 1px 10px #999;
+            background: #fff;
+            z-index: 1000;
+          }
+
+          .header-menu__isTop {
+            position: absolute;
+            margin-top: 30px;
+            box-shadow: 0 0 0 #fff;
+            z-index: 1000;
+          }
+
+          .header-menu-logo {
+            position: relative;
+            top: 7px;
+            cursor: pointer;
+          }
+
+          .header-menu-small {
+            position: fixed;
+            box-shadow: 0px 1px 10px #999;
+            background: #fff;
+            line-height: 60px;
+            min-width: 100%;
+            color: #444;
+            z-index: 100;
+          }
+
+          /* Position and sizing of burger button */
+          .bm-burger-button {
+            position: fixed;
+            width: 36px;
+            height: 30px;
+            right: 36px;
+            top: 16px;
+          }
+
+          /* Color/shape of burger icon bars */
+          .bm-burger-bars {
+            background: #444;
+          }
+
+          /* Color/shape of burger icon bars on hover*/
+          .bm-burger-bars-hover {
+            background: #444;
+          }
+
+          /* Position and sizing of clickable cross button */
+          .bm-cross-button {
+            height: 24px;
+            width: 24px;
+          }
+
+          /* Color/shape of close button cross */
+          .bm-cross {
+            background: #444;
+          }
+
+          /*
+          Sidebar wrapper styles
+          Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+          */
+          .bm-menu-wrap {
+            position: fixed;
+            height: 100%;
+          }
+
+          /* General sidebar styles */
+          .bm-menu {
+            background: #fff;
+            padding: 2.5em 1.5em 0;
+            font-size: 1.15em;
+          }
+
+          /* Wrapper for item list */
+          .bm-item-list {
+            color: #444;
+            padding: 0.8em;
+          }
+
+          /* Individual item */
+          .bm-item {
+            display: inline-block;
+          }
+
+          /* Styling of overlay */
+          .bm-overlay {
+            background: rgba(0, 0, 0, 0.3);
+          }
+
+          .container {
+            display: flex;
+            flex-direction: column;
+            padding-top: 150px;
+          }
+
+          div[id^='rcc'] {
+            padding: 8px 0;
+            border-bottom: 1px solid #efefef;
+          }
+
+          .additionalClassForHead {
+            padding: 5px 0;
+            background: #fff !important;
+            color: #444 !important;
+            font-weight: 300 !important;
+          }
+
+          .additionalClassForHeadMobile {
+            padding: 5px 0;
+            background: #fff !important;
+            color: #444 !important;
+            font-weight: 300 !important;
+          }
+
+          .additionalClassForHead h3 {
+            font-family: Montserrat;
+            font-size: 22px !important;
+            font-weight: 200 !important;
+            margin: 0;
+            padding: 0;
+          }
+
+          .additionalClassForHeadMobile h3 {
+            font-family: Montserrat;
+            font-size: 18px !important;
+            font-weight: 200 !important;
+            margin: 0;
+            padding: 0;
+          }
+
+          .additionalClassForHead:hover,
+          .active-accordion {
+            color: #444 !important;
+            background: #fff !important;
+          }
+
+          .additionalClassForHeadMobile:hover,
+          .active-accordion {
+            color: #444 !important;
+            background: #fff !important;
+          }
+
+          .additionalClassForContent {
+            background: #fff !important;
+            margin: 0 !important;
+            padding: 17px 0 !important;
+            line-height: 24px !important;
+          }
+
+          .additionalClassForContent p {
+            padding: 7px 0;
+          }
+        `}
+      </style>
+
     </div>
   );
 }
