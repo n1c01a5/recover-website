@@ -35,14 +35,18 @@ function isValidEmail(value) {
 }
 
 function checkSpecialChar(value) {
-  if (value.match(/^[a-zA-Z\s]*$/) || value === '') {
-    // alert("false")
-    return false
-  } else {
-    // alert("True")
+  if (value === '') {
     return true
   }
-
+  else {
+    if (value.match(/^[a-zA-Z\s]*$/)) {
+      // alert("false")
+      return false
+    } else {
+      // alert("True")
+      return true
+    }
+  }
 
 }
 
@@ -158,6 +162,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       const value = e.target.value;
       const temp = { ...formValue, [name]: true };
       console.log("temptemptemp", temp)
+      console.log("checkSpecialChar(recepientName)", checkSpecialChar(recepientName))
       setFormValue(temp);
     }
 
@@ -335,31 +340,31 @@ export default function HorizontalLabelPositionBelowStepper() {
   const SwapToken = () => {
     if (tokenBalanceApproved) {
       handleNext();
-    } else {
-      const swap = async () => {
+    }
+    const swap = async () => {
 
-        const sdk = DEXAG.fromProvider(window.ethereum);
+      const sdk = DEXAG.fromProvider(window.ethereum);
 
-        // receive status messages as the client executes the trade
-        sdk.registerStatusHandler((status, data) => {
-          console.log('status, data ===> ', status, data);
-        });
-        const price = sdk.getPrice({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' })
-        console.log('price', price);
+      // receive status messages as the client executes the trade
+      sdk.registerStatusHandler((status, data) => {
+        console.log('status, data ===> ', status, data);
+      });
+      const price = sdk.getPrice({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' })
+      console.log('price', price);
 
-        // get trade
-        const tx = await sdk.getTrade({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' });
-        console.log('tx', tx);
+      // get trade
+      const tx = await sdk.getTrade({ to: 'DAI', from: 'ETH', toAmount: 1, dex: 'ag' });
+      console.log('tx', tx);
 
-        // checkout
-        const valid = await sdk.validate(tx);
-        console.log('valid', valid);
-        if (valid) {
-          // transaction data is valid, make a trade
-          sdk.trade(tx);
-        }
+      // checkout
+      const valid = await sdk.validate(tx);
+      console.log('valid', valid);
+      if (valid) {
+        // transaction data is valid, make a trade
+        sdk.trade(tx);
       }
-      swap();
+
+      // swap();
       handleNext();
     }
 
@@ -373,7 +378,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
               <p style={{ paddingTop: "15px" }}>To buy the Loser Box, you need to swap your Ether to 50 DAI.</p>
             </div>
-            <button className="btn btns" style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Swap</strong></button>
+            <button className="btn btns" onClick={swap} style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Swap</strong></button>
           </div>
         </div>
       </div>
@@ -418,7 +423,7 @@ export default function HorizontalLabelPositionBelowStepper() {
 
     return (
       <div className="container">
-        <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
+        <div className="row form-group" style={{ padding: ".375rem .80rem" }}>
           <h4><span style={{ color: "#13a2dc" }}>Approve</span> DAI Transfer</h4>
         </div>
         <div className="row">
@@ -434,11 +439,11 @@ export default function HorizontalLabelPositionBelowStepper() {
             {
               isPending ?
                 <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://${networkName}.etherscan.io/tx/${txId}`)} >
-                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener", background: "#A6FFCC" }} role="alert">
+                  <div className="alert btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "center", background: "#A6FFCC" }} role="alert">
                     <div style={{ display: "flex" }}>
                       <div >
                         {isPending || isOngoing ?
-                          <p className="trans">Transaction pending...</p>
+                          <p style = {{  paddingTop: "10px"}} className="trans">Transaction pending...</p>
                           : null}
                       </div>
                       <div style={{ marginLeft: "50%" }}>
@@ -490,6 +495,12 @@ export default function HorizontalLabelPositionBelowStepper() {
           .on('error', console.error);
       }
     }
+
+    const linkFun = () => {
+      return (
+        <a href="#" style={{ color: "black", textDecoration: 'underline' }}> I agree the terms of the contract.</a>
+      )
+    }
     return (
       <div className="container">
         <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
@@ -504,7 +515,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               color="primary"
             />
           }
-          label="I agree the terms of the contract."
+          label={linkFun()}
         />
         <div className="row">
           <div className="col-md-12">
@@ -519,11 +530,11 @@ export default function HorizontalLabelPositionBelowStepper() {
             {
               isPending ?
                 <div className="col-md-12" className="pendingBox" onClick={() => window.open(`https://${networkName}.etherscan.io/tx/${txId}`)} >
-                  <div className="alert btns btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener", background: "#A6FFCC" }} role="alert">
+                  <div className="alert btnsimg" style={{ backgroundImage: "url(" + etherscanBg + ")", backgroundRepeat: 'no-repeat', backgroundPosition: "cener", background: "#A6FFCC" }} role="alert">
                     <div style={{ display: "flex" }}>
                       <div >
                         {isPending || isOngoing ?
-                          <p className="trans">Transaction pending...</p>
+                          <p style = {{  paddingTop: "10px"}} className="trans">Transaction pending...</p>
                           : null}
                       </div>
                       <div style={{ marginLeft: "50%" }}>
@@ -564,7 +575,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         <div className="row">
           <div className="col-md-12">
             <div className="alert btns" style={{ background: "#A6FFCC" }} role="alert">
-              <p>Your order is on preparation</p>
+              <p style={{ paddingTop: "15px" }}>Your order is on preparation</p>
             </div>
             <Link href="/">
               <button className="btn btns" onClick={submitPersonalDetails} style={{ width: "100%", marginTop: '20px', backgroundColor: "#A6FFCC" }} type="button" ><strong>Return to the Homepage</strong></button>
@@ -595,7 +606,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div style={{ padding: '0 40px' }}>
             <a href="https://app.recover.ws/" target="_blank">
-              APPLICATION
+              Application
                 </a>
           </div>
           <div style={{ padding: '0 40px' }}>
@@ -605,12 +616,12 @@ export default function HorizontalLabelPositionBelowStepper() {
           </div>
           <div style={{ padding: '0 40px' }}>
             <Link href="/blog">
-              <a>BLOG</a>
+              <a>Blog</a>
             </Link>
           </div>
           <div style={{ padding: '0 20px' }}>
             <Link href="/about">
-              <a>ABOUT</a>
+              <a>About</a>
             </Link>
           </div>
         </div>
@@ -664,14 +675,14 @@ export default function HorizontalLabelPositionBelowStepper() {
             </div>
           )}
       </div>
-      <div className="desktop-layout" style={{ paddingLeft: "3%", paddingRight: "1%" }}>
+      <div className="desktop-layout" style={{ paddingLeft: "5%", paddingRight: "1%" }}>
         <div
           style={{
             marginTop: '120px',
             padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'
           }}
         >
-          <footer style={{ display: 'flex', marginTop: "50%" }}>
+          <footer style={{ display: 'flex', marginTop: "10%" }}>
             <div
               style={{
                 display: 'flex',
@@ -781,8 +792,8 @@ export default function HorizontalLabelPositionBelowStepper() {
 
       <style jsx global>
         {`
-          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
-          @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+          // @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
+          // @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
           body,
           html {
@@ -819,7 +830,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           }
 
           strong {
-            font-weight: 700;
+            // font-weight: 700;
           }
 
           .header-menu {
