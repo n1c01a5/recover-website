@@ -90,7 +90,7 @@ const Layout = ({ children }) => {
             <div>
              
               {/* <Button isPrimary={true} style={{marginRight:10}} onClick={()=>{connectMetamask()}}>Connect Wallet</Button> */}
-              <Link href="/about">
+              <Link href="/loser-box">
                 <Button isPrimary={true}>Get Your Loser Box</Button>
               </Link>
               
