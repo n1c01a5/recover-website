@@ -30,8 +30,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function isValidEmail(value) {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(value).toLowerCase());
+  if (value.length !== '') {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(value).toLowerCase());
+  }
+  else {
+    return false
+  }
+
+
 }
 
 function checkSpecialChar(value) {
@@ -46,6 +53,44 @@ function checkSpecialChar(value) {
       // alert("True")
       return true
     }
+  }
+
+}
+
+function checkNumber(value) {
+  if (value === '') {
+    return true
+  }
+  else {
+    if (value.match(/^[0-9]+$/)) {
+      // alert("false")
+      return false
+    } else {
+      // alert("True")
+      return true
+    }
+  }
+
+}
+
+function checkPhone(value) {
+  if (value !== '') {
+    if (value.match(/^[0-9 ()+-]+$/)) {
+      if (value.length === 14) {
+        // alert("false")
+        return false
+      }
+      else {
+        // alert("True")
+        return true
+      }
+    } else {
+      // alert("True")
+      return true
+    }
+  }
+  else {
+    return false
   }
 
 }
@@ -129,19 +174,27 @@ export default function HorizontalLabelPositionBelowStepper() {
     });
 
     const handleNextLocal = () => {
-      setFormValue({
-        recepientNameValidation: true,
-        addressValidation: true,
-        cityValidation: true,
-        zipValidation: true,
-        countryValidation: true
-      })
+      // setFormValue({
+      //   recepientNameValidation: true,
+      //   addressValidation: true,
+      //   cityValidation: true,
+      //   zipValidation: true,
+      //   countryValidation: true
+      // })
+      console.log("isValidEmail(email)", (email === '' || isValidEmail(email)))
+      // console.log(" checkPhone(phone)", !checkPhone(phone))
+
+      setSubmit(true)
       if (recepientName != '' &&
         address != '' &&
         city != '' &&
         zip != '' &&
         country != '' &&
-        recepientName.match(/^[a-zA-Z\s]*$/)) {
+        !checkSpecialChar(recepientName) &&
+        !checkSpecialChar(country) &&
+        !checkPhone(phone) &&
+        (email === '' || isValidEmail(email))
+      ) {
         const data = {
           recepientName: recepientName,
           address: address,
@@ -158,12 +211,14 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
 
     const onblurChangeValue = (e) => {
+      setSubmit(false)
       const name = e.target.name;
       const value = e.target.value;
       const temp = { ...formValue, [name]: true };
       console.log("temptemptemp", temp)
       console.log("checkSpecialChar(recepientName)", checkSpecialChar(recepientName))
       setFormValue(temp);
+
     }
 
     return (
@@ -180,7 +235,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label className="form-label">Recipient's name</label>
                   <input name="recepientNameValidation" type="text" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="recepientName" placeholder="" value={recepientName} onChange={e => setRecepientName(e.target.value)} />
                   {
-                    formValue.recepientNameValidation && checkSpecialChar(recepientName) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the name is not valid.</span> : null
+                    submit && checkSpecialChar(recepientName) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the name is not valid.</span> : null
                   }
                 </div>
               </div>
@@ -189,7 +244,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="AddresTextarea1" className="form-label">Address</label>
                   <input type="text" name="addressValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="address" placeholder="" value={address} onChange={e => setaddress(e.target.value)} />
                   {
-                    formValue.addressValidation && address == '' ? <span style={{ color: "red", fontSize: "14px" }}> The address is not valid.</span> : null
+                    submit && address == '' ? <span style={{ color: "red", fontSize: "14px" }}> The address is not valid.</span> : null
                   }
                 </div>
               </div>
@@ -209,7 +264,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="City" className="form-label">City</label>
                   <input type="text" name="cityValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="city" placeholder="" value={city} onChange={e => setcity(e.target.value)} />
                   {
-                    formValue.cityValidation && checkSpecialChar(city) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the city is not valid.</span> : null
+                    submit && checkSpecialChar(city) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the city is not valid.</span> : null
                   }
                 </div>
 
@@ -219,7 +274,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="Zip Code" className="form-label">Zip Code</label>
                   <input type="number" name="zipValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="zip" placeholder="" value={zip} onChange={e => setzip(e.target.value)} />
                   {
-                    formValue.zipValidation && zip === '' ? <span style={{ color: "red", fontSize: "14px" }}>The zip not valid.</span> : null
+                    submit && checkNumber(zip) ? <span style={{ color: "red", fontSize: "14px" }}>The zip not valid.</span> : null
                   }
                 </div>
               </div>
@@ -228,7 +283,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="Recipient's name" className="form-label">Country</label>
                   <input type="text" name="countryValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="country" placeholder="" value={country} onChange={e => setcountry(e.target.value)} />
                   {
-                    formValue.countryValidation && country === '' ? <span style={{ color: "red", fontSize: "14px" }}> The format of the country is not valid.</span> : null
+                    submit && checkSpecialChar(country) ? <span style={{ color: "red", fontSize: "14px" }}> The format of the country is not valid.</span> : null
                   }
                 </div>
 
@@ -240,7 +295,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <label htmlFor="email" className="form-label">Mail (Optional)*</label>
                   <input type="email" name="emailValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="email" placeholder="" value={email} onChange={e => setemail(e.target.value)} />
                   {
-                    formValue.emailValidation && !isValidEmail(email) ? <span style={{ color: "red", fontSize: "14px" }}> The email format is not valid.</span> : null
+                    (email.length > 0) && submit && formValue.emailValidation && !isValidEmail(email) ? <span style={{ color: "red", fontSize: "14px" }}> The email format is not valid.</span> : null
                   }
                 </div>
 
@@ -248,9 +303,9 @@ export default function HorizontalLabelPositionBelowStepper() {
               <div className="col-md-6">
                 <div className="mb-3">
                   <label htmlFor="Phone" className="form-label">Phone (Optional)*</label>
-                  <input type="number" name="phoneValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
+                  <input maxLength={14} type="number" pattern="[+]?\d*" name="phoneValidation" onBlur={(e) => onblurChangeValue(e)} className="form-control" id="phone" placeholder="" value={phone} onChange={e => setphone(e.target.value)} />
                   {
-                    formValue.phoneValidation && phone === '' ? <span style={{ color: "red", fontSize: "14px" }}>The format of the phone is not valid.</span> : null
+                    submit && formValue.phoneValidation && checkPhone(phone) ? <span style={{ color: "red", fontSize: "14px" }}>The format of the phone is not valid.</span> : null
                   }
                 </div>
               </div>
@@ -443,7 +498,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                     <div style={{ display: "flex" }}>
                       <div >
                         {isPending || isOngoing ?
-                          <p style = {{  paddingTop: "10px"}} className="trans">Transaction pending...</p>
+                          <p style={{ paddingTop: "10px" }} className="trans">Transaction pending...</p>
                           : null}
                       </div>
                       <div style={{ marginLeft: "50%" }}>
@@ -534,7 +589,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                     <div style={{ display: "flex" }}>
                       <div >
                         {isPending || isOngoing ?
-                          <p style = {{  paddingTop: "10px"}} className="trans">Transaction pending...</p>
+                          <p style={{ paddingTop: "10px" }} className="trans">Transaction pending...</p>
                           : null}
                       </div>
                       <div style={{ marginLeft: "50%" }}>
