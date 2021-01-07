@@ -76,7 +76,7 @@ function checkNumber(value) {
 function checkPhone(value) {
   if (value !== '') {
     if (value.match(/^[0-9 ()+-]+$/)) {
-      if (value.length === 14) {
+      if (value.length <= 10 && value.length >= 7) {
         // alert("false")
         return false
       }
@@ -559,7 +559,7 @@ export default function HorizontalLabelPositionBelowStepper() {
     return (
       <div className="container">
         <div className="row form-group" style={{ padding: ".375rem .75rem" }}>
-          <h4><span style={{ color: "#13a2dc" }}>Tranfer</span> DAI to the Escrow</h4>
+          <h4><span style={{ color: "#13a2dc" }}>Transfer</span> DAI to the Escrow</h4>
         </div>
         <FormControlLabel
           control={
@@ -779,7 +779,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                     fontFamily: "bold"
                   }}
                 >
-                  @ RECOVER 2020
+                  @recover 2020
                 </p>
               </div>
               <div>
