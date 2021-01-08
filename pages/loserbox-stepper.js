@@ -652,11 +652,13 @@ export default function HorizontalLabelPositionBelowStepper() {
         })
         .once("confirmation", (confirmationNumber, receipt) => {
           console.log("confirmation", receipt);
-          setIsOngoing(false);
-          setIssuccess(true);
-          setisPending(false);
-          setisValidate(true);
-          handleNext();
+          if(receipt.status){
+            setIsOngoing(false);
+            setIssuccess(true);
+            setisPending(false);
+            setisValidate(true);
+            handleNext();
+          }
         })
         .on("error", console.error);
     };
@@ -768,12 +770,13 @@ export default function HorizontalLabelPositionBelowStepper() {
             setTxId(hash);
           })
           .once("confirmation", (confirmationNumber, receipt) => {
-            if(receipt.status)
-            setIsOngoing(false);
-            setIssuccess(true);
-            setisPending(false);
-            setisValidate(true);
-            handleNext();
+            if(receipt.status) {
+              setIsOngoing(false);
+              setIssuccess(true);
+              setisPending(false);
+              setisValidate(true);
+              handleNext();
+            }
           })
           .on("error", console.error);
       }
