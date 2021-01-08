@@ -768,6 +768,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             setTxId(hash);
           })
           .once("confirmation", (confirmationNumber, receipt) => {
+            if(receipt.status)
             setIsOngoing(false);
             setIssuccess(true);
             setisPending(false);
