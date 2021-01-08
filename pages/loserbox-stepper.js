@@ -112,6 +112,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [isPending, setisPending] = useState(false);
   const [isOngoing, setIsOngoing] = useState(false);
   const [issuccess, setIssuccess] = useState(false);
+  const [txerror, settxerror] = useState(false)
   const [tokenBalanceApproved, settokenBalanceApproved] = useState(false);
   const [personalDetails, setPersonalDetails] = useState();
   const [isagree, setIsagree] = useState(false);
@@ -660,7 +661,9 @@ export default function HorizontalLabelPositionBelowStepper() {
             handleNext();
           }
         })
-        .on("error", console.error);
+        .on("error", (error) => {
+          settxerror(true)
+        }) 
     };
 
     return (
@@ -722,6 +725,11 @@ export default function HorizontalLabelPositionBelowStepper() {
                           Transaction pending...
                         </p>
                       ) : null}
+                      {/* { txerror ? (
+                        <p style={{ paddingTop: "10px" }} className="trans">
+                          Transaction failed. <span>[Click] to see more details</span>
+                        </p>
+                      ) : null} */}
                     </div>
                     <div style={{ marginLeft: "50%" }}>
                       {isOngoing ? (

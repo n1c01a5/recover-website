@@ -162,11 +162,11 @@ const Layout = ({ children, noRightButton }) => {
                 <p style={{ padding: "8px 0 10px 0", fontSize: "18px" }}>
                   <strong>Incubator</strong>
                 </p>
-                <ul>
+                {/* <ul>
                   <li style={{ paddingBottom: "2px" }}>
                     <a href="https://stationf.co/">StationF</a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
             <div
@@ -284,11 +284,11 @@ const Layout = ({ children, noRightButton }) => {
                 <p style={{ padding: "8px 0 10px 0", fontSize: "18px" }}>
                   <strong>Incubator</strong>
                 </p>
-                <ul>
+                {/* <ul>
                   <li style={{ paddingBottom: "2px" }}>
                     <a href="https://stationf.co/">StationF</a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
               <div>
                 <p style={{ padding: "8px 0 10px 0", fontSize: "18px" }}>
