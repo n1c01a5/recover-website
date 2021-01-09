@@ -417,12 +417,6 @@ h4 {
   100% { transform: rotate(360deg); }
 }
 
-.react-responsive-modal-modal{
-  min-height: 225px !important;
-}
-
-
-
 /* ####################################################### */
 
 *{margin:0;padding:0;}
@@ -443,8 +437,25 @@ input[type="number"] {
 -moz-appearance: textfield;
 }
 
-.alert p{font-weight: 400;}
+.pdetails {
+  font-weight: 300 !important;
+  font-size: 16px !important;
+
+}
+
+.errordetails {
+  font-weight: 600;
+  fontSize: 14px;
+}
+
+@media only screen and (max-width: 992px) {
+  .hideOnMobile .MuiStepLabel-labelContainer {
+    display: none !important;
+  }
+}
+
+/* .alert p{font-weight: 400;}
 
 .alert p.trans{font-size:25px; font-weight: 600;margin-left:60px;}
 
-.nav-item{padding-left: 40px;color:#020202;font-weight: bold;}
+.nav-item{padding-left: 40px;color:#020202;font-weight: bold;} */

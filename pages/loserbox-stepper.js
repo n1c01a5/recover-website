@@ -44,10 +44,8 @@ function checkSpecialChar(value) {
     return true;
   } else {
     if (value.match(/^[a-zA-Z\s]*$/)) {
-      // alert("false")
       return false;
     } else {
-      // alert("True")
       return true;
     }
   }
@@ -58,10 +56,8 @@ function checkNumber(value) {
     return true;
   } else {
     if (value.match(/^[0-9]+$/)) {
-      // alert("false")
       return false;
     } else {
-      // alert("True")
       return true;
     }
   }
@@ -71,14 +67,11 @@ function checkPhone(value) {
   if (value !== "") {
     if (value.match(/^[0-9 ()+-]+$/)) {
       if (value.length <= 14 && value.length >= 7) {
-        // alert("false")
         return false;
       } else {
-        // alert("True")
         return true;
       }
     } else {
-      // alert("True")
       return true;
     }
   } else {
@@ -105,6 +98,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [txId, setTxId] = useState("");
   const [tokenAmount, settokenAmount] = useState();
   const [networkName, setnetworkName] = useState("");
+  const [isnetworkWarning, setisnetworkWarning] = useState(false);
 
   const [metamaskConnected, setmetamaskConnected] = useState(false);
   const [isValidate, setisValidate] = useState(false);
@@ -112,21 +106,107 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [isPending, setisPending] = useState(false);
   const [isOngoing, setIsOngoing] = useState(false);
   const [issuccess, setIssuccess] = useState(false);
-  const [txerror, settxerror] = useState(false)
+  const [txerror, settxerror] = useState(false);
   const [tokenBalanceApproved, settokenBalanceApproved] = useState(false);
-  const [personalDetails, setPersonalDetails] = useState();
   const [isagree, setIsagree] = useState(false);
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+  // localStorage.getItem("userDetails");
+  // if (localStorage.getItem("step1Check")) {
+  // }
+
+  useEffect(() => {
+    if (localStorage.getItem("userDetails")) {
+      setActiveStep(1);
+    }
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", findMetamaskAccounts);
+      window.ethereum.on("chainChanged", () => {
+        window.location.reload();
+      });
+    }
+  });
+
+  const findMetamaskAccounts = async () => {
+    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+    await window.ethereum.enable();
+    const web3 = (window.web3 = new Web3(window.ethereum));
+    setWeb3(web3);
+    const accounts = await web3.eth.getAccounts();
+    if (accounts && accounts.length > 0) {
+      setAccount(accounts[0]);
+      setmetamaskConnected(true);
+      setisValidate(true);
+      console.log("HEllO");
+      const networkId = await web3.eth.net.getId();
+      switch (networkId) {
+        case 1:
+          setnetworkName("");
+          break;
+        case 3:
+          setnetworkName("ropsten");
+          setisnetworkWarning(true);
+          break;
+        case 4:
+          setnetworkName("rinkeby");
+          setisnetworkWarning(true);
+          break;
+        case 42:
+          setnetworkName("kovan");
+          break;
+        default:
+          break;
+      }
+
+      console.log("HEllO");
+      if (networkId == 1 || networkId == 42) {
+        const tokenContract = new web3.eth.Contract(
+          erc20Abi,
+          process.env.NEXT_PUBLIC_ERCTOKEN
+        );
+        settokenContract(tokenContract);
+        const mattContract = new web3.eth.Contract(
+          mattAbi,
+          process.env.NEXT_PUBLIC_MATTADDRESS
+        );
+        setmattContract(mattContract);
+
+        console.log("HEllO");
+        // Use BigNumber
+        let decimals = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENDECIMALS);
+        let amount = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENAMOUNT);
+        let value = amount.mul(web3.utils.toBN(10).pow(decimals));
+        settokenAmount(value);
+
+        const userTokenBalance = await tokenContract.methods
+          .balanceOf(accounts[0])
+          .call();
+        console.log("HEllO");
+
+        if (userTokenBalance > value) {
+          settokenBalanceApproved(true);
+          console.log("HEllO");
+        }
+        handleNext();
+      }
+    }
+  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // if (localStorage.getItem("userDetails")){
+    //   prevActiveStep + 2
+    // }
+    //   // return 1
+    // })
+
     setisValidate(false);
     setbuttonView(true);
     setIssuccess(false);
     setisPending(false);
     setIsOngoing(false);
+    setTxId("");
   };
 
   function getStepContent(stepIndex) {
@@ -204,7 +284,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           email: email,
           phone: phone,
         };
-        setPersonalDetails(data);
+        localStorage.setItem("userDetails", data);
         handleNext();
       }
     };
@@ -238,7 +318,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div className="form-group">
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label className="form-label">Recipient's name</label>
+                  <label className="pdetails">Recipient's name</label>
                   <input
                     name="recepientNameValidation"
                     type="text"
@@ -457,96 +537,55 @@ export default function HorizontalLabelPositionBelowStepper() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div
-              className="alert"
-              style={{ background: "#A6FFCC" }}
-              role="alert"
-            >
-              <p>A pop up will open to connect to your Metamask wallet.</p>
-              <p>
-                If you don’t have metamask you can install it in clicking on
-                this link{" "}
-                <a
-                  target="_blank"
-                  href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
+            {isnetworkWarning ? (
+              <div
+                className="alert"
+                style={{ background: "#A6FFCC" }}
+                role="alert"
+              >
+                <p style={{ paddingTop: "15px" }}>
+                  {`You are on ${networkName} testnet, please switch to Mainnet
+                  or Kovan tesnet`}
+                </p>
+              </div>
+            ) : null}
+            {!metamaskConnected ? (
+              <div>
+                <div
+                  className="alert"
+                  style={{ background: "#A6FFCC" }}
+                  role="alert"
                 >
-                  Metamask
-                </a>
-              </p>
-            </div>
-            <button
-              className="btn btns"
-              style={{
-                width: "100%",
-                marginTop: "20px",
-                backgroundColor: "#A6FFCC",
-              }}
-              type="button"
-              onClick={findMetamaskAccounts}
-            >
-              <strong>Connect to Web3</strong>
-            </button>
+                  <p>A pop up will open to connect to your Metamask wallet.</p>
+                  <p>
+                    If you don’t have metamask you can install it in clicking on
+                    this link{" "}
+                    <a
+                      target="_blank"
+                      href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
+                    >
+                      Metamask
+                    </a>
+                  </p>
+                </div>
+                <button
+                  className="btn btns"
+                  style={{
+                    width: "100%",
+                    marginTop: "20px",
+                    backgroundColor: "#A6FFCC",
+                  }}
+                  type="button"
+                  onClick={findMetamaskAccounts}
+                >
+                  <strong>Connect to Web3</strong>
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
     );
-  };
-
-  const findMetamaskAccounts = async () => {
-    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    await window.ethereum.enable();
-    const web3 = (window.web3 = new Web3(window.ethereum));
-    setWeb3(web3);
-    const accounts = await web3.eth.getAccounts();
-    if (accounts && accounts.length > 0) {
-      setAccount(accounts[0]);
-      setmetamaskConnected(true);
-      setisValidate(true);
-
-      const networkId = await web3.eth.net.getId();
-      switch (networkId) {
-        case 1:
-          setnetworkName("");
-          break;
-        case 3:
-          setnetworkName("ropsten");
-          break;
-        case 4:
-          setnetworkName("rinkeby");
-          break;
-        case 42:
-          setnetworkName("kovan");
-          break;
-        default:
-          break;
-      }
-
-      const tokenContract = new web3.eth.Contract(
-        erc20Abi,
-        process.env.NEXT_PUBLIC_ERCTOKEN
-      );
-      settokenContract(tokenContract);
-      const mattContract = new web3.eth.Contract(
-        mattAbi,
-        process.env.NEXT_PUBLIC_MATTADDRESS
-      );
-      setmattContract(mattContract);
-
-      // Use BigNumber
-      let decimals = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENDECIMALS);
-      let amount = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENAMOUNT);
-      let value = amount.mul(web3.utils.toBN(10).pow(decimals));
-      settokenAmount(value);
-
-      const userTokenBalance = await tokenContract.methods
-        .balanceOf(accounts[0])
-        .call();
-
-      if (userTokenBalance > value) {
-        settokenBalanceApproved(true);
-      }
-      handleNext();
-    }
   };
 
   const SwapToken = () => {
@@ -653,7 +692,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         })
         .once("confirmation", (confirmationNumber, receipt) => {
           console.log("confirmation", receipt);
-          if(receipt.status){
+          if (receipt.status) {
             setIsOngoing(false);
             setIssuccess(true);
             setisPending(false);
@@ -662,8 +701,8 @@ export default function HorizontalLabelPositionBelowStepper() {
           }
         })
         .on("error", (error) => {
-          settxerror(true)
-        }) 
+          settxerror(true);
+        });
     };
 
     return (
@@ -720,16 +759,34 @@ export default function HorizontalLabelPositionBelowStepper() {
                 >
                   <div style={{ display: "flex" }}>
                     <div>
-                      {isPending || isOngoing ? (
+                      {(isPending || isOngoing) && !txerror ? (
                         <p style={{ paddingTop: "10px" }} className="trans">
                           Transaction pending...
                         </p>
                       ) : null}
-                      {/* { txerror ? (
-                        <p style={{ paddingTop: "10px" }} className="trans">
-                          Transaction failed. <span>[Click] to see more details</span>
+                      {txerror ? (
+                        <p
+                          style={{
+                            paddingTop: "10px",
+                            fontSize: "25px",
+                            fontWeight: "600",
+                            marginLeft: "60px",
+                          }}
+                          className="trans"
+                        >
+                          Transaction{" "}
+                          <mark
+                            style={{
+                              color: "red",
+                              fontSize: "18px",
+                              background: "none",
+                            }}
+                          >
+                            Failed.{" "}
+                          </mark>
+                          <p>[Click] to see more details</p>
                         </p>
-                      ) : null} */}
+                      ) : null}
                     </div>
                     <div style={{ marginLeft: "50%" }}>
                       {isOngoing ? (
@@ -778,7 +835,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             setTxId(hash);
           })
           .once("confirmation", (confirmationNumber, receipt) => {
-            if(receipt.status) {
+            if (receipt.status) {
               setIsOngoing(false);
               setIssuccess(true);
               setisPending(false);
@@ -864,9 +921,17 @@ export default function HorizontalLabelPositionBelowStepper() {
                 >
                   <div style={{ display: "flex" }}>
                     <div>
-                      {isPending || isOngoing ? (
+                      {(isPending || isOngoing) && !txerror ? (
                         <p style={{ paddingTop: "10px" }} className="trans">
                           Transaction pending...
+                        </p>
+                      ) : null}
+                      {txerror ? (
+                        <p style={{ paddingTop: "10px" }} className="trans">
+                          Transaction{" "}
+                          <span style={{ color: "red", fontSize: "14px" }}>
+                            failed.[Click] to see more details
+                          </span>
                         </p>
                       ) : null}
                     </div>
@@ -895,9 +960,10 @@ export default function HorizontalLabelPositionBelowStepper() {
         });
         const { cid } = await ipfs.add({
           path: account,
-          content: JSON.stringify(personalDetails),
+          content: JSON.stringify(localStorage.getItem("userDetails")),
         });
         console.log(cid.toString());
+        localStorage.clear();
       } catch (error) {
         console.log("Unable to publish to IPFS", error);
       }
@@ -945,6 +1011,11 @@ export default function HorizontalLabelPositionBelowStepper() {
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet"
+      />
       <div className={classes.root}>
         {/* <Stepper activeStep={activeStep} >
         {steps.map((label, index) => (
@@ -979,7 +1050,9 @@ export default function HorizontalLabelPositionBelowStepper() {
             // }
             return label === "Confirmation" ? null : (
               <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
+                <StepLabel className="hideOnMobile" {...labelProps}>
+                  {label}
+                </StepLabel>
               </Step>
             );
           })}
