@@ -52,18 +52,18 @@
   padding: 1rem;
   margin-bottom: 1rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/doge.png');
+    url("/doge.png");
   background-size: cover;
 }
 
 .blog_tile_1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/Blog_1_Escrow.jpg');
+    url("/Blog_1_Escrow.jpg");
 }
 
 .blog_tile_2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/Blog_2_Lostphone.jpg');
+    url("/Blog_2_Lostphone.jpg");
 }
 
 .blog h4 {
@@ -326,7 +326,6 @@ h4 {
 .about__img-container {
   width: 100vw;
   grid-area: about__img-container;
-
 }
 
 .about__hero-text {
@@ -363,15 +362,13 @@ h4 {
     width: 500px;
     padding: 0;
     grid-area: about__img-container;
-  
   }
-  
+
   .about__hero-text {
     padding: 0;
     grid-area: about__hero-text;
-    
   }
-  
+
   .about__social-links {
     grid-area: about__social-links;
     width: 500px;
@@ -413,13 +410,15 @@ h4 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ####################################################### */
-
-*{margin:0;padding:0;}
 
 .pendingBox :hover {
   cursor: pointer;
@@ -428,24 +427,18 @@ h4 {
 /* / Chrome, Safari, Edge, Opera / */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* / Firefox / */
 input[type="number"] {
--moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 .pdetails {
   font-weight: 300 !important;
   font-size: 16px !important;
-
-}
-
-.errordetails {
-  font-weight: 600;
-  fontSize: 14px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -453,9 +446,3 @@ input[type="number"] {
     display: none !important;
   }
 }
-
-/* .alert p{font-weight: 400;}
-
-.alert p.trans{font-size:25px; font-weight: 600;margin-left:60px;}
-
-.nav-item{padding-left: 40px;color:#020202;font-weight: bold;} */

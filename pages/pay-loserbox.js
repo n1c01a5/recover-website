@@ -1,55 +1,79 @@
+import Head from "next/head";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { useMediaQuery } from "react-responsive";
+const mattAbi = require("../contracts/MultipleArbitrationToken.json");
+import Web3 from "web3";
+import etherscanBg from "../asset/etherscan-bg.png";
+import { BounceLoader } from "react-spinners";
 
-import Head from 'next/head'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import { useMediaQuery } from 'react-responsive'
-const mattAbi = require('../contracts/MultipleArbitrationToken.json')
-import Web3 from 'web3';
+const Faq = dynamic(() => import("../components/faq"), { ssr: false });
 
-
-const Faq = dynamic(
-  () => import('../components/faq'),
-  { ssr: false }
-)
-
-import Layout from '../components/layout'
-import Button from '../components/elements/button'
-
-import EthereumLogo, { length } from '../public/ethereum-logo.svg'
-import KlerosLogo from '../public/kleros-logo.svg'
-import IpfsLogo from '../public/ipfs-logo.svg'
+import Layout from "../components/layout";
 
 export default function LoserBox() {
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1024px)'
-  })
+    query: "(min-device-width: 1024px)",
+  });
 
-  const confirm = async () => {
+  const [txHash, settxHash] = useState("");
+  const [isValidate, setisValidate] = useState(false);
+  const [buttonView, setbuttonView] = useState(true);
+  const [isPending, setisPending] = useState(false);
+  const [isOngoing, setIsOngoing] = useState(false);
+  const [issuccess, setIssuccess] = useState(false);
+  const [txerror, settxerror] = useState(false);
+  const [networkName, setnetworkName] = useState("");
 
-    // setisPending(false)
-    // setIsOngoing(true)
-    console.log('Confirmed');
+  const pay = async () => {
+    setisPending(true);
+    setIsOngoing(false);
+    setIssuccess(false);
+    // setisValidate(false)
+    setbuttonView(false);
 
-
-
-    const mattAddress = '0xdc73a27c2a81de8646937eac26fa34a870322874'
+    const mattAddress = "0xdc73a27c2a81de8646937eac26fa34a870322874";
     // setContract(contract)
 
-    
     // Use BigNumber
     // let decimals = web3.utils.toBN(18);
     // let amount = web3.utils.toBN(tokenAmount);
     // let value = amount.mul(web3.utils.toBN(10).pow(decimals));
-    
+
     await window.ethereum.enable();
-    const web3 = window.web3 = new Web3(window.ethereum);
-    const contract = new web3.eth.Contract(mattAbi, mattAddress)
-    const accounts = await web3.eth.getAccounts()
+    const web3 = (window.web3 = new Web3(window.ethereum));
+    const contract = new web3.eth.Contract(mattAbi, mattAddress);
+    const networkId = await web3.eth.net.getId();
+    switch (networkId) {
+      case 1:
+        setnetworkName("");
+        break;
+      case 3:
+        setnetworkName("ropsten");
+        setisnetworkWarning(true);
+        break;
+      case 4:
+        setnetworkName("rinkeby");
+        setisnetworkWarning(true);
+        break;
+      case 5:
+        setnetworkName("goerli");
+        setisnetworkWarning(true);
+        break;
+      case 42:
+        setnetworkName("kovan");
+        break;
+      default:
+        break;
+    }
+    const accounts = await web3.eth.getAccounts();
     if (accounts && accounts.length > 0) {
-      const TxId = await contract.methods.getTransactionIDsByAddress(accounts[0]).call()
-      console.log('TxId', TxId);
-
-
+      const TxId = await contract.methods
+        .getTransactionIDsByAddress(accounts[0])
+        .call();
+      console.log("TxId", TxId);
+      setnetworkName("");
       // Use BigNumber
       const tokenAmount = 10;
       let decimals = web3.utils.toBN(18);
@@ -57,156 +81,162 @@ export default function LoserBox() {
       let value = amount.mul(web3.utils.toBN(10).pow(decimals));
 
       var data = contract.methods.pay(TxId[TxId.length - 1], value).encodeABI();
-      console.log('data', data);
+      console.log("data", data);
       const transactionParameters = {
-        to: '0xdc73a27c2a81de8646937eac26fa34a870322874', // Required except during contract publications.
+        to: "0xdc73a27c2a81de8646937eac26fa34a870322874", // Required except during contract publications.
         from: accounts[0], // must match user's active address.
         data: data,
       };
 
-      web3.eth.sendTransaction(transactionParameters)
-        .on('transactionHash', function (hash) {
-          console.log('transactionHash', hash);
+      web3.eth
+        .sendTransaction(transactionParameters)
+        .on("transactionHash", function (hash) {
+          console.log("transactionHash", hash);
+          setIsOngoing(true);
+          setIssuccess(false);
+          settxHash(hash);
         })
-        .once('confirmation', function (confirmationNumber, receipt) {
-          console.log('confirmation', receipt);
+        .once("confirmation", function (confirmationNumber, receipt) {
+          console.log("confirmation", receipt);
+          if (receipt.status) {
+            setIsOngoing(false);
+            setIssuccess(true);
+            setisPending(false);
+            setisValidate(true);
+          }
         })
-        .on('error', console.error);
+        .on("error", (error) => {
+          settxerror(true);
+        });
     }
-
-    // contract.methods.pay(txId, value)
-    //     .send({ from: account })
-    //     .once('receipt', (receipt) => {
-    //         console.log('receipt', receipt);
-
-    //         toast.success(CustomToastWithLink(receipt.transactionHash), {
-    //             position: "bottom-right",
-    //             autoClose: 5000,
-    //             hideProgressBar: false,
-    //             closeOnClick: true,
-    //             pauseOnHover: true,
-    //             draggable: true,
-    //             progress: undefined,
-    //         }); setIsOngoing(false)
-    //         setIssuccess(true)
-    //         setisValidate(true)
-    //         // submitPersonalDetails()
-
-    //     }).on('error', () => {
-    //         const varError = `Pay function Failed`
-    //         console.error();
-
-    //         toast.error(`Transaction Failed, ${varError} `, {
-    //             position: "bottom-right",
-    //             autoClose: 5000,
-    //             hideProgressBar: false,
-    //             closeOnClick: true,
-    //             pauseOnHover: true,
-    //             draggable: true,
-    //             progress: undefined,
-    //         });
-    //     })
-  }
-
+  };
 
   return (
-    <Layout>
+    <Layout noRightButton>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <header>
-          <div className="desktop-layout">
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '1250px',
-              margin: '0 auto 0 auto'
-            }}>
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '128px', height: '128px', overflow: 'hidden', border: '3px solid #ccc', marginBottom: '20px' }}><img src="loser-box-buy.png" style={{ width: '64px' }} /></div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '128px', height: '128px', overflow: 'hidden', border: '3px solid #ccc', marginBottom: '20px' }}><img src="loser-box-pvc-card-keyring-square.jpg" style={{ objectFix: 'cover', width: '128px' }} /></div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '128px', height: '128px', overflow: 'hidden', border: '3px solid #ccc', marginBottom: '20px' }}><img src="loser-box-pvc-card-square.png" style={{ objectFix: 'cover', width: '128px' }} /></div>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '1000px' }}>
-                <img src="loser-box-buy.png" style={{ width: '320px' }} />
-              </div>
-              <div>
-                <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
-                  LOSER BOX - Lost and Found Pack to prevent your valuables from Loss - Limited Edition (only 42 items)
-                  </h1>
-                <p style={{ margin: '20px 0', lineHeight: '26px', fontWeight: 'bold' }}>
-                  A crafted box with pre-printed QR-code on :
-                    <ul>
-                    <li style={{ fontWeight: 'bold' }}>- 2 sets of stickers</li>
-                    <li style={{ fontWeight: 'bold' }}>- 2 PVC cards</li>
-                    <li style={{ fontWeight: 'bold' }}>- 1 key-ring</li>
-                  </ul>
-                </p>
-                <hr />
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                  <p style={{ lineHeight: '50px', fontWeight: 'bold', justifyContent: 'center' }}>Payment secured by an escrow smart contract</p>
-                </div>
-                <div style={{ margin: '20px 100px', display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-                  <img src={EthereumLogo} alt="Ethereum logo svg" style={{ width: '26px' }} />
-                  <img src={KlerosLogo} alt="Kleros logo svg" style={{ width: '45px' }} />
-                  <img src={IpfsLogo} alt="IPFS logo svg" style={{ width: '35px' }} />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px', marginBottom: '20px' }}>
-                  <div style={{ display: 'flex' }}>
-                    <div style={{ background: '#f2f2f2', width: '300px', height: '60px', marginRight: '10px', boxSizing: 'border-box', border: '2px solid gray' }}>
-                      <p style={{ lineHeight: '56px', textAlign: 'center', fontSize: '20px' }}>50.00 DAI</p>
+      <div style={{ paddingTop: 50 }}>
+        <div className="row form-group" style={{ padding: ".375rem .80rem" }}>
+          <h4>
+            <span style={{ color: "#13a2dc" }}>Pay</span> order
+          </h4>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div
+              className="alert"
+              style={{ background: "#A6FFCC" }}
+              role="alert"
+            >
+              <p style={{ paddingTop: "15px" }}>
+                Finish the transaction with the Pay button.
+              </p>
+            </div>
+            {buttonView ? (
+              <button
+                className="btn btns"
+                style={{
+                  width: "100%",
+                  marginTop: "20px",
+                  backgroundColor: "#A6FFCC",
+                }}
+                type="button"
+                onClick={pay}
+              >
+                <strong>Pay</strong>
+              </button>
+            ) : null}
+            <br />
+            <br />
+            {isPending ? (
+              <div
+                className="col-md-12"
+                className="pendingBox"
+                onClick={() =>
+                  window.open(
+                    `https://${networkName}.etherscan.io/tx/${txHash}`
+                  )
+                }
+              >
+                <div
+                  className="alert btnsimg"
+                  style={{
+                    backgroundImage: "url(" + etherscanBg + ")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    background: "#A6FFCC",
+                  }}
+                  role="alert"
+                >
+                  <div style={{ display: "flex" }}>
+                    <div>
+                      {(isPending || isOngoing) && !txerror ? (
+                        <p style={{ paddingTop: "10px" }} className="trans">
+                          Transaction pending...
+                        </p>
+                      ) : null}
+                      {txerror ? (
+                        <div>
+                          <p
+                            style={{
+                              paddingTop: "10px",
+                              fontSize: "25px",
+                              fontWeight: "600",
+                              marginLeft: "60px",
+                            }}
+                            className="trans"
+                          >
+                            Transaction
+                            <span
+                              style={{
+                                color: "red",
+                                fontSize: "25px",
+                              }}
+                            >
+                              &nbsp;Failed.
+                              <span
+                                style={{
+                                  color: "red",
+                                  fontSize: "16px",
+                                }}
+                              >
+                                &nbsp;[Click] to see more details
+                              </span>
+                            </span>
+                          </p>
+                        </div>
+                      ) : null}
+                      {issuccess ? (
+                        <Link href="/">
+                          <button
+                            className="btn btns"
+                            style={{
+                              width: "100%",
+                              marginTop: "20px",
+                              backgroundColor: "#A6FFCC",
+                            }}
+                            type="button"
+                          >
+                            <strong>Return to the Homepage</strong>
+                          </button>
+                        </Link>
+                      ) : null}
+                    </div>
+                    <div style={{ marginLeft: "50%" }}>
+                      {isOngoing ? (
+                        <BounceLoader size={50} color={"#fff"} />
+                      ) : null}
                     </div>
                   </div>
                 </div>
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div>
-                    <Button isPrimary={true} onClick={confirm} style={{ width: '300px' }}>BUY LOSER BOX</Button>
-                  </div>
-                </div>
               </div>
-            </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '1250px',
-              margin: '50px auto 0 auto'
-            }}>
-              <h2>Items Description</h2>
-            </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '1250px',
-              margin: '50px auto 0 auto'
-            }}>
-              <h2>Loser Box Gallery</h2>
-            </div>
+            ) : null}
           </div>
-
-          <div className="mobile-layout">
-
-          </div>
-        </header>
+        </div>
       </div>
-      <style jsx>{`
-          h1 {
-            font-weight: 700;
-          }
-          .form-group{
-            display:block
-          }
-        `}</style>
     </Layout>
-  )
-
+  );
 }
-
-
-// loser-box?network=kovan

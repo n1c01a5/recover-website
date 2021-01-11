@@ -83,7 +83,7 @@ function getSteps() {
   return [
     "Personal Details",
     "Connect to Web3",
-    `Swap Token`,
+    `Swap ETH to 50 DAI`,
     "Approve DAI Transfer",
     "Transfer DAI to the Escrow",
     "Confirmation",
@@ -112,19 +112,15 @@ export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-  // localStorage.getItem("userDetails");
-  // if (localStorage.getItem("step1Check")) {
-  // }
 
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
       setActiveStep(1);
-      setmetamaskConnected(false);
     }
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", () => {
-        findMetamaskAccounts;
         setActiveStep(1);
+        settokenBalanceApproved(false);
       });
       window.ethereum.on("chainChanged", () => {
         window.location.reload();
@@ -153,6 +149,10 @@ export default function HorizontalLabelPositionBelowStepper() {
           break;
         case 4:
           setnetworkName("rinkeby");
+          setisnetworkWarning(true);
+          break;
+        case 5:
+          setnetworkName("goerli");
           setisnetworkWarning(true);
           break;
         case 42:
@@ -342,9 +342,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label htmlFor="AddresTextarea1" className="form-label">
-                    Address
-                  </label>
+                  <label className="pdetails">Address</label>
                   <input
                     type="text"
                     name="addressValidation"
@@ -365,12 +363,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               </div>
               <div classNameName="col-md-12">
                 <div className="mb-3">
-                  <label
-                    htmlFor="AddresComplementTextarea1"
-                    className="form-label"
-                  >
-                    Address Line 2
-                  </label>
+                  <label className="pdetails">Address Line 2</label>
                   <input
                     type="text"
                     className="form-control"
@@ -388,9 +381,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div className="row form-group">
               <div className="col-md-4">
                 <div className="mb-3 ">
-                  <label htmlFor="City" className="form-label">
-                    City
-                  </label>
+                  <label className="pdetails">City</label>
                   <input
                     type="text"
                     name="cityValidation"
@@ -411,9 +402,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               </div>
               <div className="col-md-2">
                 <div className="mb-3">
-                  <label htmlFor="Zip Code" className="form-label">
-                    Zip Code
-                  </label>
+                  <label className="pdetails">Zip Code</label>
                   <input
                     type="number"
                     name="zipValidation"
@@ -433,9 +422,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label htmlFor="Recipient's name" className="form-label">
-                    Country
-                  </label>
+                  <label className="pdetails">Country</label>
                   <input
                     type="text"
                     name="countryValidation"
@@ -448,7 +435,6 @@ export default function HorizontalLabelPositionBelowStepper() {
                   />
                   {submit && checkSpecialChar(country) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
-                      {" "}
                       The format of the country is not valid
                     </span>
                   ) : null}
@@ -458,9 +444,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div className="row form-group">
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Mail (optional)
-                  </label>
+                  <label className="pdetails">Mail (optional)</label>
                   <input
                     type="email"
                     name="emailValidation"
@@ -484,9 +468,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               </div>
               <div className="col-md-6">
                 <div className="mb-3">
-                  <label htmlFor="Phone" className="form-label">
-                    Phone (optional)
-                  </label>
+                  <label className="pdetails">Phone (optional)</label>
                   <input
                     maxLength={14}
                     type="number"
@@ -547,43 +529,43 @@ export default function HorizontalLabelPositionBelowStepper() {
                 role="alert"
               >
                 <p style={{ paddingTop: "15px" }}>
-                  {`You are on ${networkName} testnet, please switch to Mainnet`}
+                  {`You are on ${networkName[0].toUpperCase()}${networkName.slice(
+                    1
+                  )} testnet, please switch to Mainnet`}
                 </p>
               </div>
             ) : null}
-            {!metamaskConnected ? (
-              <div>
-                <div
-                  className="alert"
-                  style={{ background: "#A6FFCC" }}
-                  role="alert"
-                >
-                  <p>A pop up will open to connect to your Metamask wallet.</p>
-                  <p>
-                    If you don’t have metamask you can install it in clicking on
-                    this link{" "}
-                    <a
-                      target="_blank"
-                      href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
-                    >
-                      Metamask
-                    </a>
-                  </p>
-                </div>
-                <button
-                  className="btn btns"
-                  style={{
-                    width: "100%",
-                    marginTop: "20px",
-                    backgroundColor: "#A6FFCC",
-                  }}
-                  type="button"
-                  onClick={findMetamaskAccounts}
-                >
-                  <strong>Connect to Web3</strong>
-                </button>
+            <div>
+              <div
+                className="alert"
+                style={{ background: "#A6FFCC" }}
+                role="alert"
+              >
+                <p>A pop up will open to connect to your Metamask wallet.</p>
+                <p>
+                  If you don’t have metamask you can install it in clicking on
+                  this link{" "}
+                  <a
+                    target="_blank"
+                    href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
+                  >
+                    Metamask
+                  </a>
+                </p>
               </div>
-            ) : null}
+              <button
+                className="btn btns"
+                style={{
+                  width: "100%",
+                  marginTop: "20px",
+                  backgroundColor: "#A6FFCC",
+                }}
+                type="button"
+                onClick={findMetamaskAccounts}
+              >
+                <strong>Connect to Web3</strong>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -592,9 +574,16 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const SwapToken = () => {
     if (tokenBalanceApproved) {
+      console.log("BALANCE APPROVED");
       handleNext();
     }
     const swap = async () => {
+      setisPending(true);
+      setIsOngoing(false);
+      setIssuccess(false);
+      // setisValidate(false)
+      setbuttonView(false);
+
       const sdk = DEXAG.fromProvider(window.ethereum);
 
       // receive status messages as the client executes the trade
@@ -624,6 +613,10 @@ export default function HorizontalLabelPositionBelowStepper() {
       if (valid) {
         // transaction data is valid, make a trade
         sdk.trade(tx);
+        setIsOngoing(false);
+        setIssuccess(true);
+        setisPending(false);
+        setisValidate(true);
         handleNext();
       }
 
@@ -648,18 +641,88 @@ export default function HorizontalLabelPositionBelowStepper() {
                 To buy the Loser Box, you need to swap your Ether to 50 DAI.
               </p>
             </div>
-            <button
-              className="btn btns"
-              onClick={swap}
-              style={{
-                width: "100%",
-                marginTop: "20px",
-                backgroundColor: "#A6FFCC",
-              }}
-              type="button"
-            >
-              <strong>Swap</strong>
-            </button>
+            {buttonView ? (
+              <button
+                className="btn btns"
+                onClick={swap}
+                style={{
+                  width: "100%",
+                  marginTop: "20px",
+                  backgroundColor: "#A6FFCC",
+                }}
+                type="button"
+              >
+                <strong>Swap</strong>
+              </button>
+            ) : null}
+            <br />
+            <br />
+            {isPending ? (
+              <div
+                className="col-md-12"
+                className="pendingBox"
+                onClick={() =>
+                  window.open(`https://${networkName}.etherscan.io/tx/${txId}`)
+                }
+              >
+                <div
+                  // className="alert btnsimg"
+                  style={{
+                    backgroundImage: "url(" + etherscanBg + ")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    background: "#A6FFCC",
+                  }}
+                  role="alert"
+                >
+                  <div style={{ display: "flex" }}>
+                    <div>
+                      {(isPending || isOngoing) && !txerror ? (
+                        <p style={{ paddingTop: "10px" }} className="trans">
+                          Transaction pending...
+                        </p>
+                      ) : null}
+                      {txerror ? (
+                        <div>
+                          <p
+                            style={{
+                              paddingTop: "10px",
+                              fontSize: "25px",
+                              fontWeight: "600",
+                              marginLeft: "60px",
+                            }}
+                            className="trans"
+                          >
+                            Transaction
+                            <span
+                              style={{
+                                color: "red",
+                                fontSize: "25px",
+                              }}
+                            >
+                              &nbsp;Failed.
+                              <span
+                                style={{
+                                  color: "red",
+                                  fontSize: "16px",
+                                }}
+                              >
+                                &nbsp;[Click] to see more details
+                              </span>
+                            </span>
+                          </p>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div style={{ marginLeft: "50%" }}>
+                      {isOngoing ? (
+                        <BounceLoader size={50} color={"#fff"} />
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -860,7 +923,6 @@ export default function HorizontalLabelPositionBelowStepper() {
     const linkFun = () => {
       return (
         <a href="#" style={{ color: "black", textDecoration: "underline" }}>
-          {" "}
           I agree the terms of the contract.
         </a>
       );
@@ -1050,24 +1112,11 @@ export default function HorizontalLabelPositionBelowStepper() {
         rel="stylesheet"
       />
       <div className={classes.root}>
-        {/* <Stepper activeStep={activeStep} >
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-            { label === "Swap Token" ?
-              <StepLabel>{ 'optional'}</StepLabel>
-              : null
-              // <Typography variant="caption" style={{ marginLeft: "40%", fontWeight: 'bold' }}>Optional</Typography> : null
-            }
-
-          </Step>
-        ))}
-      </Stepper> */}
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
-            if (label === "Swap Token") {
+            if (label === "Swap ETH to 50 DAI") {
               labelProps.optional = (
                 <Typography
                   variant="caption"
