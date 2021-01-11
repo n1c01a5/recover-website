@@ -31,6 +31,17 @@
   margin-top: 120px;
 }
 
+.highlighted_blog .info h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 0.7rem;
+}
+
+.highlighted_blog .info p {
+  font-size: 1.1rem;
+}
+
 .blogs {
   display: flex;
   flex-wrap: wrap;
@@ -67,7 +78,7 @@ a h4 {
 .blog_title {
   margin-bottom: 1rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/doge.png");
+    url('/doge.png');
   background-size: cover;
 }
 
@@ -435,9 +446,9 @@ h4 {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "about__img-container"
-    "about__hero-text"
-    "about__social-links";
+    'about__img-container'
+    'about__hero-text'
+    'about__social-links';
 }
 
 .about__img-container {
@@ -477,8 +488,8 @@ h4 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      "about__img-container about__hero-text"
-      "about__social-links about__hero-text";
+      'about__img-container about__hero-text'
+      'about__social-links about__hero-text';
   }
 
   .about__img-container {
@@ -585,7 +596,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* / Firefox / */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 

@@ -1,17 +1,19 @@
+import styles from '../../styles/blogs/FeaturedBlog.module.scss'
+
 export const FeaturedBlogTile = ({ featuredBlog }) => {
   const { topic, title, teaser, slug, cover } = featuredBlog
   return (
-    <a href={`/blog/${slug}`}>
-      <div className="highlighted_blog">
+    <a className={styles.linkWrapper} href={`/blog/${slug}`}>
+      <div className={styles.highlightedBlog}>
         <div
-          className="blog_image"
+          className={styles.blogImage}
           style={{ backgroundImage: `url(${cover})` }}
         ></div>
-        <div className="info">
+        <div className={styles.info}>
           <div>
             <h4>{topic}</h4>
-            <h2>{title}</h2>
-            <p>{teaser}</p>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.teaser}>{teaser}</p>
           </div>
         </div>
       </div>
