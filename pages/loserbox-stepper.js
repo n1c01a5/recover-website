@@ -119,14 +119,18 @@ export default function HorizontalLabelPositionBelowStepper() {
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
       setActiveStep(1);
+      setmetamaskConnected(false);
     }
     if (window.ethereum) {
-      window.ethereum.on("accountsChanged", findMetamaskAccounts);
+      window.ethereum.on("accountsChanged", () => {
+        findMetamaskAccounts;
+        setActiveStep(1);
+      });
       window.ethereum.on("chainChanged", () => {
         window.location.reload();
       });
     }
-  });
+  }, []);
 
   const findMetamaskAccounts = async () => {
     // const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -138,7 +142,6 @@ export default function HorizontalLabelPositionBelowStepper() {
       setAccount(accounts[0]);
       setmetamaskConnected(true);
       setisValidate(true);
-      console.log("HEllO");
       const networkId = await web3.eth.net.getId();
       switch (networkId) {
         case 1:
@@ -159,8 +162,10 @@ export default function HorizontalLabelPositionBelowStepper() {
           break;
       }
 
-      console.log("HEllO");
       if (networkId == 1 || networkId == 42) {
+        // localStorage.setItem("networkAllowed", true);
+        console.log("NETWORK ALLOWED");
+        // setActiveStep(2);
         const tokenContract = new web3.eth.Contract(
           erc20Abi,
           process.env.NEXT_PUBLIC_ERCTOKEN
@@ -172,7 +177,6 @@ export default function HorizontalLabelPositionBelowStepper() {
         );
         setmattContract(mattContract);
 
-        console.log("HEllO");
         // Use BigNumber
         let decimals = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENDECIMALS);
         let amount = web3.utils.toBN(process.env.NEXT_PUBLIC_TOKENAMOUNT);
@@ -182,11 +186,8 @@ export default function HorizontalLabelPositionBelowStepper() {
         const userTokenBalance = await tokenContract.methods
           .balanceOf(accounts[0])
           .call();
-        console.log("HEllO");
-
         if (userTokenBalance > value) {
           settokenBalanceApproved(true);
-          console.log("HEllO");
         }
         handleNext();
       }
@@ -195,6 +196,7 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // localStorage.getItem()
     // if (localStorage.getItem("userDetails")){
     //   prevActiveStep + 2
     // }
@@ -285,6 +287,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           phone: phone,
         };
         localStorage.setItem("userDetails", data);
+        // localStorage.setItem("networkAllowed", true);
         handleNext();
       }
     };
@@ -544,8 +547,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 role="alert"
               >
                 <p style={{ paddingTop: "15px" }}>
-                  {`You are on ${networkName} testnet, please switch to Mainnet
-                  or Kovan tesnet`}
+                  {`You are on ${networkName} testnet, please switch to Mainnet`}
                 </p>
               </div>
             ) : null}
@@ -622,10 +624,10 @@ export default function HorizontalLabelPositionBelowStepper() {
       if (valid) {
         // transaction data is valid, make a trade
         sdk.trade(tx);
+        handleNext();
       }
 
       // swap();
-      handleNext();
     };
 
     return (
@@ -765,27 +767,35 @@ export default function HorizontalLabelPositionBelowStepper() {
                         </p>
                       ) : null}
                       {txerror ? (
-                        <p
-                          style={{
-                            paddingTop: "10px",
-                            fontSize: "25px",
-                            fontWeight: "600",
-                            marginLeft: "60px",
-                          }}
-                          className="trans"
-                        >
-                          Transaction{" "}
-                          <mark
+                        <div>
+                          <p
                             style={{
-                              color: "red",
-                              fontSize: "18px",
-                              background: "none",
+                              paddingTop: "10px",
+                              fontSize: "25px",
+                              fontWeight: "600",
+                              marginLeft: "60px",
                             }}
+                            className="trans"
                           >
-                            Failed.{" "}
-                          </mark>
-                          <p>[Click] to see more details</p>
-                        </p>
+                            Transaction
+                            <span
+                              style={{
+                                color: "red",
+                                fontSize: "25px",
+                              }}
+                            >
+                              &nbsp;Failed.
+                              <span
+                                style={{
+                                  color: "red",
+                                  fontSize: "16px",
+                                }}
+                              >
+                                &nbsp;[Click] to see more details
+                              </span>
+                            </span>
+                          </p>
+                        </div>
                       ) : null}
                     </div>
                     <div style={{ marginLeft: "50%" }}>
@@ -927,12 +937,35 @@ export default function HorizontalLabelPositionBelowStepper() {
                         </p>
                       ) : null}
                       {txerror ? (
-                        <p style={{ paddingTop: "10px" }} className="trans">
-                          Transaction{" "}
-                          <span style={{ color: "red", fontSize: "14px" }}>
-                            failed.[Click] to see more details
-                          </span>
-                        </p>
+                        <div>
+                          <p
+                            style={{
+                              paddingTop: "10px",
+                              fontSize: "25px",
+                              fontWeight: "600",
+                              marginLeft: "60px",
+                            }}
+                            className="trans"
+                          >
+                            Transaction
+                            <span
+                              style={{
+                                color: "red",
+                                fontSize: "25px",
+                              }}
+                            >
+                              &nbsp;Failed.
+                              <span
+                                style={{
+                                  color: "red",
+                                  fontSize: "16px",
+                                }}
+                              >
+                                &nbsp;[Click] to see more details
+                              </span>
+                            </span>
+                          </p>
+                        </div>
                       ) : null}
                     </div>
                     <div style={{ marginLeft: "50%" }}>
