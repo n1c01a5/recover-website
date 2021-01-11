@@ -9,12 +9,8 @@ export const FeaturedBlogTile = ({ featuredBlog }) => {
         ></div>
         <div className="info">
           <div>
-            <a href={`/blog/${slug}`}>
-              <h4>{topic}</h4>
-            </a>
-            <a href={`/blog/${slug}`}>
-              <h2>{title}</h2>
-            </a>
+            <h4>{topic}</h4>
+            <h2>{title}</h2>
             <p>{teaser}</p>
           </div>
         </div>

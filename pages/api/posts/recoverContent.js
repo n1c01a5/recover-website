@@ -1,4 +1,5 @@
 export const RecoverBlogContent = `
+<div className="recover_phone_container">
     <section className="hero-section">
       <p>
         Smartphones have taken place as one of the most personal and important
@@ -309,4 +310,5 @@ export const RecoverBlogContent = `
         Recover helps in Recovery, Click here.
       </p>
     </section>
+  </div>  
 `

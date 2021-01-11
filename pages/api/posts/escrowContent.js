@@ -1,5 +1,5 @@
 export const EscrowBlogContent = `
-    <div>
+    <div className="escrow-container">
       <section className="blog__section">
         <h2>What is a generic Escrow?</h2>
         <p>

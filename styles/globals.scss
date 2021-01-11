@@ -174,50 +174,10 @@ a h4 {
   margin-bottom: 5rem;
 }
 
-.blog-info .authors {
-  display: flex;
-  width: 100%;
-  margin-top: 1.5rem;
-}
-
-.blog-info hr {
-  margin-top: 3rem;
-  border-color: lightgrey;
-}
-
-.blog-info .topic {
-  font-size: 1rem;
-  color: #4fc2e9;
-}
-
-.blog-info .resume {
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: #9cacb3;
-}
-
-.authors .author {
-  width: 13rem;
-  background-color: #efefef;
-  border-radius: 35px;
-  padding: 0.3rem;
-  display: flex;
-  margin-right: 2rem;
-}
-
 .author p {
   font-size: 0.7rem;
   text-transform: uppercase;
   font-weight: 600;
-}
-
-.author-image {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 1rem;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center;
 }
 
 .blog-info .time-info {
@@ -228,14 +188,6 @@ a h4 {
   color: gray;
 }
 
-.blog-cover {
-  width: 100%;
-  height: 15rem;
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 2rem;
-}
-
 .escrow-container h1,
 h2 {
   font-weight: 500;
@@ -244,16 +196,6 @@ h2 {
 .escrow-header {
   margin-bottom: 2rem;
   font-size: 3.4rem;
-}
-
-.escrow-container .author-desc p {
-  margin-bottom: 0.3rem;
-}
-
-.escrow-container .author-desc .last-para {
-  font-style: italic;
-  margin-bottom: 0.1rem;
-  font-size: 0.6rem;
 }
 
 .blog__section {
@@ -316,17 +258,6 @@ h2 {
     font-size: 0.6rem;
   }
 
-  .escrow-container h1,
-  h2 {
-    font-size: 20px;
-    font-weight: 500;
-  }
-
-  .escrow-container h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
-
   .blog__section strong {
     font-weight: 500;
   }
@@ -334,10 +265,6 @@ h2 {
   .escrow-header {
     margin-bottom: 1.5rem;
     line-height: 0.5;
-  }
-
-  .blog-info .authors {
-    flex-direction: column;
   }
 
   .authors .author {

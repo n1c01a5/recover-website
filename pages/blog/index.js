@@ -8,7 +8,7 @@ import { getPosts } from '../../pages/api/posts'
 
 import { getFeaturedBlog } from '../../utils/blogs'
 
-export default function Blog({ posts }) {
+export default function BlogIndex({ posts }) {
   const featuredBlog = getFeaturedBlog(posts)
 
   const Hero = () => (
@@ -33,7 +33,7 @@ export default function Blog({ posts }) {
   )
 }
 
-Blog.getInitialProps = async ({ req }) => {
+BlogIndex.getInitialProps = async ({ req }) => {
   const res = getPosts()
   return { posts: res }
 }
