@@ -1,8 +1,11 @@
 import { BlogTile } from './BlogTile'
 import { getNonFeaturedBlogs } from '../../utils/blogs'
 
+import styles from '../../styles/blogs/Blogs.module.scss'
+import dividerStyles from '../../styles/elements/Divider.module.scss'
+
 const Divider = () => (
-  <div className="divider">
+  <div className={dividerStyles.divider}>
     <hr />
   </div>
 )
@@ -20,5 +23,5 @@ export const Blogs = ({ posts }) => {
 
   const blogTilesWithDivider = () => insertDivider(nonFeaturedBlogTiles)
 
-  return <section className="blogs">{blogTilesWithDivider()}</section>
+  return <section className={styles.blogs}>{blogTilesWithDivider()}</section>
 }

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
+import styles from '../../styles/blogs/BlogIndex.module.scss'
 
 import { FeaturedBlogTile } from '../../components/blog/FeaturedBlogTile'
 import { Blogs } from '../../components/blog/Blogs'
@@ -12,8 +13,8 @@ export default function BlogIndex({ posts }) {
   const featuredBlog = getFeaturedBlog(posts)
 
   const Hero = () => (
-    <section className="hero">
-      <section className="hero-overlay">
+    <section className={styles.hero}>
+      <section className={styles.heroOverlay}>
         <FeaturedBlogTile featuredBlog={featuredBlog} />
       </section>
     </section>

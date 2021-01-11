@@ -11,7 +11,7 @@ export const FeaturedBlogTile = ({ featuredBlog }) => {
         ></div>
         <div className={styles.info}>
           <div>
-            <h4>{topic}</h4>
+            <h4 className={styles.topic}>{topic}</h4>
             <h2 className={styles.title}>{title}</h2>
             <p className={styles.teaser}>{teaser}</p>
           </div>

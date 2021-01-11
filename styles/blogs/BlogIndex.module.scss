@@ -1,0 +1,15 @@
+.hero {
+  height: 400px;
+  background-image: url('../../public//nasa-Q1p7bh3SHj8-unsplash (1).jpg');
+  background-size: cover;
+  background-position: center;
+  .heroOverlay {
+    padding: 2rem;
+    width: 80%;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    top: 270px;
+    background-color: #fff;
+  }
+}
