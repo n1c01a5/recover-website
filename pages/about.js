@@ -12,9 +12,6 @@ export default function About() {
         <img className="about__img-container" src="/wagner-nicolas.jpg" alt="Wagner Nicolas biography - blockchain developer" />
         <div className="about__hero-text">
           <p className="p-indent">
-          <span style={color: blue; font-size: 1.5rem; marginBottom: 2rem;}>
-Nicolas 
-</span>
             I am a self-taught developer who has worked as Freelance since 2014 for different startups 
             and corporates (Tradelab, Novactive, Air France, SNCF...).
             Beginning in June 2016, he became interested in blockchain technology. The transparent
