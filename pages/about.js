@@ -11,6 +11,9 @@ export default function About() {
       <section className="about__hero">
         <img className="about__img-container" src="/wagner-nicolas.jpg" alt="Wagner Nicolas biography - blockchain developer" />
         <div className="about__hero-text">
+          <span style={{color: blue; font-size: 1.5rem; marginBottom: 2rem;}}>
+            Nicolas 
+          </span>
           <p className="p-indent">
             I am a self-taught developer who has worked as Freelance since 2014 for different startups 
             and corporates (Tradelab, Novactive, Air France, SNCF...).
