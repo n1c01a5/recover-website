@@ -11,7 +11,7 @@ export default function About() {
       <section className="about__hero">
         <img className="about__img-container" src="/wagner-nicolas.jpg" alt="Wagner Nicolas biography - blockchain developer" />
         <div className="about__hero-text">
-          <h1 style={{color: 'blue', fontSize: '1.5rem', marginBottom: '2rem'}}>
+          <h1 style={{color: '#51c4e9', fontSize: '1.5rem', marginBottom: '2rem'}}>
             Nicolas
           </h1>
           <p className="p-indent">
