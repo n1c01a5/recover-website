@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
-import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -91,6 +91,8 @@ function getSteps() {
   ];
 }
 
+let pageCount = 1;
+
 export default function HorizontalLabelPositionBelowStepper() {
   const router = useRouter();
   const [account, setAccount] = useState("");
@@ -113,49 +115,63 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [isagree, setIsagree] = useState(false);
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  // localStorage.getItem("activeStep") != 0
-  //   ? null
-  //   : localStorage.setItem("activeStep", 0);
   const steps = getSteps();
-
+  // router.push(`/loserbox-stepper?stepper=${activeStep}`, undefined, {
+  //   shallow: true,
+  // });
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", () => {
         if (localStorage.getItem("userDetails")) {
-          localStorage.setItem("activeStep", 1);
+          router.push({
+            pathname: "/loserbox-stepper",
+            query: { step: encodeURI(2) },
+          });
           setActiveStep(1);
           settokenBalanceApproved(false);
-          router.push(`/loserbox-stepper?stepper=${1}`, undefined, {
-            shallow: true,
-          });
         }
+        //  else {
+        //   router.push({
+        //     pathname: "/loserbox-stepper",
+        //     query: { step: encodeURI(1) },
+        //   });
+        //   // setActiveStep(0);
+        //   // settokenBalanceApproved(false);
+        // }
       });
       window.ethereum.on("chainChanged", () => {
         window.location.reload();
         if (localStorage.getItem("userDetails")) {
-          localStorage.setItem("activeStep", 1);
-
-          setActiveStep(1);
-          router.push(`/loserbox-stepper?stepper=${1}`, undefined, {
-            shallow: true,
+          router.push({
+            pathname: "/loserbox-stepper",
+            query: { step: encodeURI(2) },
           });
+          setActiveStep(1);
+          settokenBalanceApproved(false);
         }
+        // else {
+        //   router.push({
+        //     pathname: "/loserbox-stepper",
+        //     query: { step: encodeURI(1) },
+        //   });
+        //   // setActiveStep(0);
+        //   // settokenBalanceApproved(false);
+        // }
       });
-      const temp = localStorage.getItem("activeStep")
-        ? localStorage.getItem("activeStep")
-        : 0;
-      // localStorage.setItem("activeStep", activeStep + 1);
-      setActiveStep(parseInt(temp));
-      console.log("TEMP", temp);
-
-      router.push(
-        `/loserbox-stepper?stepper=${parseInt(temp) + 1}`,
-        undefined,
-        {
-          shallow: true,
-        }
-      );
+      console.log("activeStep", activeStep);
+      console.log("getItem", localStorage.getItem("userDetails"));
+      // router.push({
+      //   pathname: "/loserbox-stepper",
+      //   query: { step: encodeURI(pageCount) },
+      // });
     }
+  }, []);
+
+  useEffect(() => {
+    router.push({
+      pathname: "/loserbox-stepper",
+      query: { step: encodeURI(pageCount) },
+    });
   }, []);
 
   const findMetamaskAccounts = async () => {
@@ -225,33 +241,27 @@ export default function HorizontalLabelPositionBelowStepper() {
   };
 
   const handleNext = () => {
-    const temp = localStorage.getItem("activeStep")
-      ? localStorage.getItem("activeStep")
-      : 0;
-    localStorage.setItem("activeStep", activeStep + 1);
-    setActiveStep(parseInt(temp) + 1);
-    router.push(
-      `/loserbox-stepper?stepper=${parseInt(activeStep) + 1}`,
-      undefined,
-      {
-        shallow: true,
-      }
-    );
-    console.log("HELLOOOOOOOO");
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
     setisValidate(false);
     setbuttonView(true);
     setIssuccess(false);
     setisPending(false);
     setIsOngoing(false);
     setTxId("");
-    // router.push(`/loserbox-stepper?stepper=${parseInt(temp) + 1}`, undefined, {
+    // router.push(`/loserbox-stepper?stepper=${activeStep}`, undefined, {
     //   shallow: true,
     // });
+    pageCount = pageCount + 1;
+    router.push({
+      pathname: "/loserbox-stepper",
+      query: { step: encodeURI(pageCount) },
+    });
+    console.log("activeStepNext", activeStep + 1);
   };
 
   function getStepContent(stepIndex) {
-    console.log("StepIndex", stepIndex, typeof stepIndex);
-    switch (parseInt(stepIndex)) {
+    switch (stepIndex) {
       case 0:
         return <PersonalDetails />;
       case 1:
@@ -325,7 +335,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           email: email,
           phone: phone,
         };
-        localStorage.setItem("userDetails", data);
+        localStorage.setItem("userDetails", JSON.stringify(data));
         // localStorage.setItem("networkAllowed", true);
         handleNext();
       }
@@ -374,7 +384,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   {submit && checkSpecialChar(recepientName) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
                       {" "}
-                      The format of the name is not valid.
+                      The format of the name is not valid
                     </span>
                   ) : null}
                 </div>
@@ -395,7 +405,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   {submit && address == "" ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
                       {" "}
-                      The address is not valid.
+                      The address is not valid
                     </span>
                   ) : null}
                 </div>
@@ -434,7 +444,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   {submit && checkSpecialChar(city) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
                       {" "}
-                      The format of the city is not valid.
+                      The format of the city is not valid
                     </span>
                   ) : null}
                 </div>
@@ -454,7 +464,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   />
                   {submit && checkNumber(zip) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
-                      The zip not valid.
+                      The zip not valid
                     </span>
                   ) : null}
                 </div>
@@ -474,7 +484,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   />
                   {submit && checkSpecialChar(country) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
-                      The format of the country is not valid.
+                      The format of the country is not valid
                     </span>
                   ) : null}
                 </div>
@@ -500,7 +510,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   !isValidEmail(email) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
                       {" "}
-                      The email format is not valid.
+                      The email format is not valid
                     </span>
                   ) : null}
                 </div>
@@ -522,7 +532,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                   />
                   {submit && formValue.phoneValidation && checkPhone(phone) ? (
                     <span style={{ color: "red", fontSize: "14px" }}>
-                      The format of the phone is not valid.
+                      The format of the phone is not valid
                     </span>
                   ) : null}
                 </div>
@@ -570,7 +580,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 <p style={{ paddingTop: "15px" }}>
                   {`You are on ${networkName[0].toUpperCase()}${networkName.slice(
                     1
-                  )} testnet, please switch to Mainnet.`}
+                  )} testnet, please switch to Mainnet`}
                 </p>
               </div>
             ) : null}
@@ -583,7 +593,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 <p>A pop up will open to connect to your Metamask wallet.</p>
                 <p>
                   If you don’t have metamask you can install it in clicking on
-                  this link.
+                  this link{" "}
                   <a
                     target="_blank"
                     href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
@@ -1094,7 +1104,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         });
         const { cid } = await ipfs.add({
           path: account,
-          content: JSON.stringify(localStorage.getItem("userDetails")),
+          content: JSON.parse(localStorage.getItem("userDetails")),
         });
         console.log(cid.toString());
         localStorage.clear();
@@ -1145,11 +1155,11 @@ export default function HorizontalLabelPositionBelowStepper() {
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
         rel="stylesheet"
-      /> */}
+      />
       <div className={classes.root}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => {
