@@ -16,6 +16,7 @@ const BlogHeader = ({ post }) => {
           const { name, tag, designation, image } = author
           return (
             <Avatar
+              key={tag}
               name={name}
               tag={tag}
               designation={designation}
