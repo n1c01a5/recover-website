@@ -423,6 +423,13 @@ h4 {
 .pendingBox :hover {
   cursor: pointer;
 }
+/* .pendingBox {
+  background-image: url("./asset/etherscan-bg.png");
+  background-image: url(./asset/etherscan-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background: #a6ffcc;
+} */
 
 /* / Chrome, Safari, Edge, Opera / */
 input::-webkit-outer-spin-button,

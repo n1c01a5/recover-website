@@ -12,7 +12,6 @@ import { BounceLoader } from "react-spinners";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
 import Layout from "../components/layout";
 import Web3 from "web3";
-const ipfsClient = require("ipfs-http-client");
 const mattAbi = require("../contracts/MultipleArbitrationToken.json");
 const erc20Abi = require("../contracts/ERC20.json");
 
@@ -87,10 +86,10 @@ function getSteps() {
     `Swap ETH to 50 DAI`,
     "Approve DAI Transfer",
     "Transfer DAI to the Escrow",
-    "Confirmation",
   ];
 }
 
+// "Confirmation",
 let pageCount = 1;
 
 export default function HorizontalLabelPositionBelowStepper() {
@@ -116,9 +115,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-  // router.push(`/loserbox-stepper?stepper=${activeStep}`, undefined, {
-  //   shallow: true,
-  // });
+
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", () => {
@@ -129,18 +126,18 @@ export default function HorizontalLabelPositionBelowStepper() {
           });
           setActiveStep(1);
           settokenBalanceApproved(false);
+        } else {
+          router.push({
+            pathname: "/loserbox-stepper",
+            query: { step: encodeURI(1) },
+          });
+          setActiveStep(0);
+          // settokenBalanceApproved(false);
         }
-        //  else {
-        //   router.push({
-        //     pathname: "/loserbox-stepper",
-        //     query: { step: encodeURI(1) },
-        //   });
-        //   // setActiveStep(0);
-        //   // settokenBalanceApproved(false);
-        // }
       });
       window.ethereum.on("chainChanged", () => {
-        window.location.reload();
+        // localStorage.clear();
+        console.log("getItem", localStorage.getItem("userDetails"));
         if (localStorage.getItem("userDetails")) {
           router.push({
             pathname: "/loserbox-stepper",
@@ -148,15 +145,15 @@ export default function HorizontalLabelPositionBelowStepper() {
           });
           setActiveStep(1);
           settokenBalanceApproved(false);
+        } else {
+          router.push({
+            pathname: "/loserbox-stepper",
+            query: { step: encodeURI(1) },
+          });
+          setActiveStep(0);
+          // settokenBalanceApproved(false);
         }
-        // else {
-        //   router.push({
-        //     pathname: "/loserbox-stepper",
-        //     query: { step: encodeURI(1) },
-        //   });
-        //   // setActiveStep(0);
-        //   // settokenBalanceApproved(false);
-        // }
+        window.location.reload();
       });
       console.log("activeStep", activeStep);
       console.log("getItem", localStorage.getItem("userDetails"));
@@ -172,6 +169,22 @@ export default function HorizontalLabelPositionBelowStepper() {
       pathname: "/loserbox-stepper",
       query: { step: encodeURI(pageCount) },
     });
+
+    if (localStorage.getItem("userDetails")) {
+      router.push({
+        pathname: "/loserbox-stepper",
+        query: { step: encodeURI(2) },
+      });
+      setActiveStep(1);
+      settokenBalanceApproved(false);
+    } else {
+      router.push({
+        pathname: "/loserbox-stepper",
+        query: { step: encodeURI(1) },
+      });
+      setActiveStep(0);
+      // settokenBalanceApproved(false);
+    }
   }, []);
 
   const findMetamaskAccounts = async () => {
@@ -273,8 +286,8 @@ export default function HorizontalLabelPositionBelowStepper() {
         return <ApproveDAI />;
       case 4:
         return <TransferDAI />;
-      case 5:
-        return <Confirmation />;
+      // case 5:
+      //   return <Confirmation />;
 
       default:
         return "Unknown stepIndex";
@@ -834,7 +847,7 @@ export default function HorizontalLabelPositionBelowStepper() {
               role="alert"
             >
               <p style={{ paddingTop: "15px" }}>
-                Confirm the DAI transfer to pay for your Loser Box
+                Confirm the DAI transfer to pay for your Loser Box.
               </p>
             </div>
             {buttonView ? (
@@ -857,14 +870,19 @@ export default function HorizontalLabelPositionBelowStepper() {
               <div
                 className="col-md-12"
                 className="pendingBox"
+                // style={{
+                //   backgroundImage: "url(../asset/etherscan-bg.png)",
+                //   backgroundRepeat: "no-repeat",
+                //   backgroundPosition: "center",
+                //   background: "#A6FFCC",
+                // }}
                 onClick={() =>
                   window.open(`https://${networkName}.etherscan.io/tx/${txId}`)
                 }
               >
                 <div
-                  className="alert btnsimg"
                   style={{
-                    backgroundImage: "url(" + etherscanBg + ")",
+                    backgroundImage: "url(../asset/etherscan-bg.png)",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                     background: "#A6FFCC",
@@ -874,7 +892,14 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <div style={{ display: "flex" }}>
                     <div>
                       {(isPending || isOngoing) && !txerror ? (
-                        <p style={{ paddingTop: "10px" }} className="trans">
+                        <p
+                          style={{
+                            paddingTop: "10px",
+                            fontSize: "25px",
+                            fontWeight: "600",
+                            marginLeft: "60px",
+                          }}
+                        >
                           Transaction pending...
                         </p>
                       ) : null}
@@ -887,25 +912,8 @@ export default function HorizontalLabelPositionBelowStepper() {
                               fontWeight: "600",
                               marginLeft: "60px",
                             }}
-                            className="trans"
                           >
-                            Transaction
-                            <span
-                              style={{
-                                color: "red",
-                                fontSize: "25px",
-                              }}
-                            >
-                              &nbsp;Failed.
-                              <span
-                                style={{
-                                  color: "red",
-                                  fontSize: "16px",
-                                }}
-                              >
-                                &nbsp;[Click] to see more details
-                              </span>
-                            </span>
+                            Transaction rejected. Please try again.
                           </p>
                         </div>
                       ) : null}
@@ -1031,11 +1039,10 @@ export default function HorizontalLabelPositionBelowStepper() {
                 }
               >
                 <div
-                  className="alert btnsimg"
                   style={{
                     backgroundImage: "url(" + etherscanBg + ")",
                     backgroundRepeat: "no-repeat",
-                    backgroundPosition: "cener",
+                    backgroundPosition: "center",
                     background: "#A6FFCC",
                   }}
                   role="alert"
@@ -1043,7 +1050,14 @@ export default function HorizontalLabelPositionBelowStepper() {
                   <div style={{ display: "flex" }}>
                     <div>
                       {(isPending || isOngoing) && !txerror ? (
-                        <p style={{ paddingTop: "10px" }} className="trans">
+                        <p
+                          style={{
+                            paddingTop: "10px",
+                            fontSize: "25px",
+                            fontWeight: "600",
+                            marginLeft: "60px",
+                          }}
+                        >
                           Transaction pending...
                         </p>
                       ) : null}
@@ -1056,25 +1070,8 @@ export default function HorizontalLabelPositionBelowStepper() {
                               fontWeight: "600",
                               marginLeft: "60px",
                             }}
-                            className="trans"
                           >
-                            Transaction
-                            <span
-                              style={{
-                                color: "red",
-                                fontSize: "25px",
-                              }}
-                            >
-                              &nbsp;Failed.
-                              <span
-                                style={{
-                                  color: "red",
-                                  fontSize: "16px",
-                                }}
-                              >
-                                &nbsp;[Click] to see more details
-                              </span>
-                            </span>
+                            Transaction rejected. Please try again.
                           </p>
                         </div>
                       ) : null}
@@ -1179,7 +1176,7 @@ export default function HorizontalLabelPositionBelowStepper() {
             // if (isStepSkipped(index)) {
             //   stepProps.completed = false;
             // }
-            return label === "Confirmation" ? null : (
+            return (
               <Step key={label} {...stepProps}>
                 <StepLabel className="hideOnMobile" {...labelProps}>
                   {label}
