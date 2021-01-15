@@ -19,50 +19,43 @@ export default function LoserBox() {
 
   const [txHash, settxHash] = useState("");
   const [isValidate, setisValidate] = useState(false);
-  const [buttonView, setbuttonView] = useState(true);
-  const [isPending, setisPending] = useState(false);
+  const [buttonView, setButtonView] = useState(true);
+  const [isPending, setIsPending] = useState(false);
   const [isOngoing, setIsOngoing] = useState(false);
   const [issuccess, setIssuccess] = useState(false);
-  const [txerror, settxerror] = useState(false);
-  const [networkName, setnetworkName] = useState("");
+  const [txError, setTxError] = useState(false);
+  const [networkName, setNetworkName] = useState("");
 
   const pay = async () => {
-    setisPending(true);
+    setIsPending(true);
     setIsOngoing(false);
     setIssuccess(false);
     // setisValidate(false)
-    setbuttonView(false);
+    setButtonView(false);
 
     const mattAddress = "0xdc73a27c2a81de8646937eac26fa34a870322874";
-    // setContract(contract)
-
-    // Use BigNumber
-    // let decimals = web3.utils.toBN(18);
-    // let amount = web3.utils.toBN(tokenAmount);
-    // let value = amount.mul(web3.utils.toBN(10).pow(decimals));
-
     await window.ethereum.enable();
     const web3 = (window.web3 = new Web3(window.ethereum));
     const contract = new web3.eth.Contract(mattAbi, mattAddress);
     const networkId = await web3.eth.net.getId();
     switch (networkId) {
       case 1:
-        setnetworkName("");
+        setNetworkName("");
         break;
       case 3:
-        setnetworkName("ropsten");
+        setNetworkName("ropsten");
         setisnetworkWarning(true);
         break;
       case 4:
-        setnetworkName("rinkeby");
+        setNetworkName("rinkeby");
         setisnetworkWarning(true);
         break;
       case 5:
-        setnetworkName("goerli");
+        setNetworkName("goerli");
         setisnetworkWarning(true);
         break;
       case 42:
-        setnetworkName("kovan");
+        setNetworkName("kovan");
         break;
       default:
         break;
@@ -73,7 +66,7 @@ export default function LoserBox() {
         .getTransactionIDsByAddress(accounts[0])
         .call();
       console.log("TxId", TxId);
-      setnetworkName("");
+      setNetworkName("");
       // Use BigNumber
       const tokenAmount = 10;
       let decimals = web3.utils.toBN(18);
@@ -101,12 +94,12 @@ export default function LoserBox() {
           if (receipt.status) {
             setIsOngoing(false);
             setIssuccess(true);
-            setisPending(false);
+            setIsPending(false);
             setisValidate(true);
           }
         })
         .on("error", (error) => {
-          settxerror(true);
+          setTxError(true);
         });
     }
   };
@@ -173,12 +166,12 @@ export default function LoserBox() {
                 >
                   <div style={{ display: "flex" }}>
                     <div>
-                      {(isPending || isOngoing) && !txerror ? (
+                      {(isPending || isOngoing) && !txError ? (
                         <p style={{ paddingTop: "10px" }} className="trans">
                           Transaction pending...
                         </p>
                       ) : null}
-                      {txerror ? (
+                      {txError ? (
                         <div>
                           <p
                             style={{

@@ -1,35 +1,16 @@
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { useMediaQuery } from "react-responsive";
-const ipfsClient = require("ipfs-http-client");
-const Faq = dynamic(() => import("../components/faq"), { ssr: false });
-
 import Layout from "../components/layout";
 
 export default function LoserBox() {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-device-width: 1024px)",
   });
-
-  const submitPersonalDetails = async () => {
-    try {
-      const ipfs = ipfsClient({
-        host: process.env.NEXT_PUBLIC_IPFSNODE,
-        port: process.env.NEXT_PUBLIC_IPFSPORT,
-        protocol: process.env.NEXT_PUBLIC_IPFSPROTOCOL,
-      });
-      const { cid } = await ipfs.add({
-        path: account,
-        content: JSON.parse(localStorage.getItem("userDetails")),
-      });
-      console.log(cid.toString());
-      localStorage.clear();
-    } catch (error) {
-      console.log("Unable to publish to IPFS", error);
-    }
-  };
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   return (
     <Layout noRightButton>
@@ -55,8 +36,7 @@ export default function LoserBox() {
             </div>
             <Link href="/">
               <button
-                className="btn btns"
-                onClick={submitPersonalDetails}
+                className="new-button"
                 style={{
                   width: "100%",
                   marginTop: "20px",

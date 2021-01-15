@@ -93,7 +93,6 @@ const Layout = ({ children, noRightButton }) => {
               </div>
             </div>
             <div>
-              {/* <Button isPrimary={true} style={{marginRight:10}} onClick={()=>{connectMetamask()}}>Connect Wallet</Button> */}
               {noRightButton ? null : (
                 <Link href="/loser-box">
                   <Button isPrimary={true}>Get Your Loser Box</Button>
@@ -538,9 +537,3 @@ const Layout = ({ children, noRightButton }) => {
 };
 
 export default Layout;
-
-// Tasks:
-// - move "connect wallet"
-// - remove form for approve in modal
-// - remove modal for createTx
-// - get all txId from smart contract and show one button pay to pay all
