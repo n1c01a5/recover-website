@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { BounceLoader } from "react-spinners";
-const ipfsClient = require("ipfs-http-client");
+import React, { useState } from 'react'
+import { BounceLoader } from 'react-spinners'
+const ipfsClient = require('ipfs-http-client')
 export default function ApproveDAI({
   handleNext,
   tokenContract,
@@ -11,87 +11,86 @@ export default function ApproveDAI({
   envData,
   setCid,
 }) {
-  const [buttonView, setButtonView] = useState(true);
-  const [isPending, setIsPending] = useState(false);
-  const [isOngoing, setIsOngoing] = useState(false);
-  const [txerror, setTxerror] = useState(false);
-  const [txId, setTxId] = useState("");
+  const [buttonView, setButtonView] = useState(true)
+  const [isPending, setIsPending] = useState(false)
+  const [isOngoing, setIsOngoing] = useState(false)
+  const [txError, setTxerror] = useState(false)
+  const [txId, setTxId] = useState('')
 
   const submitPersonalDetails = async () => {
-    // setCid("gsudtsdsdtsudtsuydsydt");
-    // handleNext();
     try {
       const ipfs = ipfsClient({
         host: process.env.NEXT_PUBLIC_IPFSNODE,
         port: process.env.NEXT_PUBLIC_IPFSPORT,
         protocol: process.env.NEXT_PUBLIC_IPFSPROTOCOL,
-      });
+      })
       const { cid } = await ipfs.add({
         path: account,
-        content: localStorage.getItem("userDetails")
-      });
-      setCid(cid.toString());
-      handleNext();
+        content: localStorage.getItem('userDetails')
+      })
+      setCid(cid.toString())
+      console.log(cid.toString())
+      handleNext()
     } catch (error) {
-      console.error("Unable to publish to IPFS", error);
+      console.error('Unable to publish to IPFS', error)
     }
-  };
+  }
 
   const approve = async () => {
-    setTxerror(false);
-    setIsPending(true);
-    setIsOngoing(false);
-    setButtonView(false);
+    setTxerror(false)
+    setIsPending(true)
+    setIsOngoing(false)
+    setButtonView(false)
 
     var data = tokenContract.methods
       .approve(envData.MATTADDRESS, tokenAmount)
-      .encodeABI();
+      .encodeABI()
 
     const transactionParameters = {
       to: envData.ERCTOKEN, // Required except during contract publications.
       from: account, // must match user's active address.
       data: data,
-    };
+    }
 
     web3.eth
       .sendTransaction(transactionParameters)
-      .on("transactionHash", (hash) => {
-        setIsOngoing(true);
-        setTxId(hash);
+      .on('transactionHash', (hash) => {
+        setIsOngoing(true)
+        setTxId(hash)
       })
-      .once("confirmation", (confirmationNumber, receipt) => {
+      .once('confirmation', (confirmationNumber, receipt) => {
         if (receipt.status) {
-          submitPersonalDetails();
+          submitPersonalDetails()
         }
       })
-      .on("error", (error) => {
-        setTxerror(true);
-      });
-  };
+      .on('error', (error) => {
+        setTxerror(true)
+      })
+  }
 
   return (
     <div style={{ paddingTop: 50 }}>
-      <div className="row form-group" style={{ padding: ".375rem .80rem" }}>
+      <div className='row form-group' style={{ padding: '.375rem .80rem' }}>
         <h4>
-          <span style={{ color: "#13a2dc" }}>Approve</span> DAI Transfer
+          <span style={{ color: '#13a2dc' }}>Approve</span> DAI Transfer
         </h4>
       </div>
-      <div className="row">
-        <div className="col-md-12">
-          <div className="alert" style={{ background: "#A6FFCC" }} role="alert">
-            <p style={{ paddingTop: "15px" }}>
+      <div className='row'>
+        <div className='col-md-12'>
+          <div className='alert' style={{ background: '#A6FFCC' }} role='alert'>
+            <p style={{ paddingTop: '15px' }}>
               Confirm the DAI transfer to pay for your Loser Box.
             </p>
           </div>
-          {buttonView || txerror ? (
+          {buttonView || txError ? (
             <button
-              className="new-button"
+              className='new-button'
               style={{
-                width: "100%",
-                marginTop: "20px",
-                backgroundColor: "#A6FFCC",
+                width: '100%',
+                marginTop: '20px',
+                backgroundColor: '#A6FFCC',
               }}
-              type="button"
+              type='button'
               onClick={approve}
             >
               <strong>Approve DAI Transfer</strong>
@@ -100,21 +99,21 @@ export default function ApproveDAI({
 
           {isPending ? (
             <div
-              className="col-md-12"
-              className="pendingBox"
+              className='col-md-12'
+              className='pendingBox'
               onClick={() =>
-                window.open(`https://${networkName}.etherscan.io/tx/${txId}`)
+                window.open(`https://${networkName === '' ? '' : (networkName + '.')}etherscan.io/tx/${txId}`)
               }
             >
-              <div className="pending">
+              <div className='pending'>
                 <div>
-                  {(isPending || isOngoing) && !txerror
-                    ? "Transaction pending..."
+                  {(isPending || isOngoing) && !txError
+                    ? 'Transaction pending...'
                     : null}
-                  {txerror ? "Transaction rejected. Please try again." : null}
+                  {txError ? 'Transaction rejected. Please try again.' : null}
                 </div>
                 <div>
-                  {isOngoing ? <BounceLoader size={50} color={"#fff"} /> : null}
+                  {isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null}
                 </div>
               </div>
             </div>
@@ -122,5 +121,5 @@ export default function ApproveDAI({
         </div>
       </div>
     </div>
-  );
+  )
 }
