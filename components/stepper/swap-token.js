@@ -1,21 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DEXAG from 'dexag-sdk'
-export default function SwapToken({
+
+export default function SwapToken ({
   tokenBalanceApproved,
-  changeState,
-  handleNext,
-  buttonView,
-  isPending,
-  networkName,
-  isOngoing,
-  txerror,
+  handleNextStep,
+  networkName
 }) {
+  const [isLowBalanceWarning, setIsLowBalanceWarning] = useState(false)
+
   if (tokenBalanceApproved) {
-    console.log('BALANCE APPROVED')
-    handleNext()
+    handleNextStep()
   }
   const swap = async () => {
-    changeState()
     const sdk = DEXAG.fromProvider(window.ethereum)
 
     // receive status messages as the client executes the trade
@@ -25,8 +21,8 @@ export default function SwapToken({
     const price = sdk.getPrice({
       to: 'DAI',
       from: 'ETH',
-      toAmount: 1,
-      dex: 'ag',
+      toAmount: process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT,
+      dex: 'ag'
     })
     console.log('price', price)
 
@@ -34,8 +30,8 @@ export default function SwapToken({
     const tx = await sdk.getTrade({
       to: 'DAI',
       from: 'ETH',
-      toAmount: 1,
-      dex: 'ag',
+      toAmount: process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT,
+      dex: 'ag'
     })
     console.log('tx', tx)
 
@@ -45,11 +41,7 @@ export default function SwapToken({
     if (valid) {
       // transaction data is valid, make a trade
       sdk.trade(tx)
-      setIsOngoing(false)
-      setIssuccess(true)
-      setisPending(false)
-      setisValidate(true)
-      handleNext()
+      handleNextStep()
     }
   }
 
@@ -62,49 +54,38 @@ export default function SwapToken({
       </div>
       <div className='row'>
         <div className='col-md-12'>
+          {isLowBalanceWarning
+            ? (
+              <div
+                className='alert'
+                style={{ background: '#A6FFCC' }}
+                role='alert'
+              >
+                <p style={{ paddingTop: '15px' }}>
+                  Sorry, you don't have enough ETH in your account, to purchase some ETH go to your Metamask wallet.
+                </p>
+              </div>
+              )
+            : null}
           <div className='alert' style={{ background: '#A6FFCC' }} role='alert'>
             <p style={{ paddingTop: '15px' }}>
-              To buy the Loser Box, you need to swap your Ether to 50 DAI.
+              To buy the Loser Box, you need to swap your Ether to {process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI.
             </p>
           </div>
-          {buttonView ? (
-            <button
-              className='new-button'
-              onClick={swap}
-              style={{
-                width: '100%',
-                marginTop: '20px',
-                backgroundColor: '#A6FFCC',
-              }}
-              type='button'
-              disabled={!tokenBalanceApproved}
-            >
-              <strong>Swap</strong>
-            </button>
-          ) : null}
-          <br />
-          <br />
-          {isPending ? (
-            <div
-              className='col-md-12'
-              className='pendingBox'
-              onClick={() =>
-                window.open(`https://${networkName}.etherscan.io/tx/${txId}`)
-              }
-            >
-              <div className='pending'>
-                <div>
-                  {(isPending || isOngoing) && !txerror
-                    ? 'Transaction pending...'
-                    : null}
-                  {txerror ? 'Transaction rejected. Please try again.' : null}
-                </div>
-                <div>
-                  {isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null}
-                </div>
-              </div>
-            </div>
-          ) : null}
+          <button
+            className='new-button'
+            onClick={swap}
+            style={{
+              width: '100%',
+              marginTop: '20px',
+              backgroundColor: '#A6FFCC'
+            }}
+            type='button'
+            disabled={!tokenBalanceApproved && networkName !== ''}
+          >
+            <strong>Swap</strong>
+          </button>
+
         </div>
       </div>
     </div>

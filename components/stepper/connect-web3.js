@@ -1,8 +1,9 @@
 import React from 'react'
-export default function ConnectWeb3({
+
+export default function ConnectWeb3 ({
   isnetworkWarning,
   findMetamaskAccounts,
-  networkName,
+  networkName
 }) {
   return (
     <div style={{ paddingTop: 50 }}>
@@ -13,19 +14,21 @@ export default function ConnectWeb3({
       </div>
       <div className='row'>
         <div className='col-md-12'>
-          {isnetworkWarning ? (
-            <div
-              className='alert'
-              style={{ background: '#A6FFCC' }}
-              role='alert'
-            >
-              <p style={{ paddingTop: '15px' }}>
-                {`You are on ${networkName[0].toUpperCase()}${networkName.slice(
-                  1
-                )} testnet, please switch to Mainnet.`}
-              </p>
-            </div>
-          ) : null}
+          {isnetworkWarning
+            ? (
+              <div
+                className='alert'
+                style={{ background: '#A6FFCC' }}
+                role='alert'
+              >
+                <p style={{ paddingTop: '15px' }}>
+                  {`You are on ${networkName[0].toUpperCase()}${networkName.slice(
+                    1
+                  )} testnet, please switch to Mainnet.`}
+                </p>
+              </div>
+              )
+            : null}
           <div>
             <div
               className='alert'
@@ -38,6 +41,7 @@ export default function ConnectWeb3({
                 this link&nbsp;
                 <a
                   target='_blank'
+                  rel='noreferrer'
                   href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'
                 >
                   Metamask.
@@ -49,7 +53,7 @@ export default function ConnectWeb3({
               style={{
                 width: '100%',
                 marginTop: '20px',
-                backgroundColor: '#A6FFCC',
+                backgroundColor: '#A6FFCC'
               }}
               type='button'
               onClick={findMetamaskAccounts}

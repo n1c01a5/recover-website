@@ -1,24 +1,19 @@
 import Head from 'next/head'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
-import { useMediaQuery } from 'react-responsive'
 import Layout from '../components/layout'
 
-export default function LoserBox() {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1024px)',
-  })
+export default function LoserBox () {
   useEffect(() => {
     localStorage.clear()
   }, [])
 
   return (
-    <Layout noRightButton>
+    <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <div style={{ paddingTop: 50 }}>
         <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
           <h4>
@@ -34,7 +29,7 @@ export default function LoserBox() {
               }}
               role='alert'
             >
-              <p style={{ paddingTop: '15px' }}>Your order is on preparation</p>
+              <p style={{ paddingTop: '15px' }}>Your order is on preparation.</p>
             </div>
             <Link href='/'>
               <button
@@ -42,7 +37,7 @@ export default function LoserBox() {
                 style={{
                   width: '100%',
                   marginTop: '20px',
-                  backgroundColor: '#A6FFCC',
+                  backgroundColor: '#A6FFCC'
                 }}
                 type='button'
               >

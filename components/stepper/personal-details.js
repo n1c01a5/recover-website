@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../helpers/helper'
+import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../../src/helpers/helper'
 
-export default function PersonalDetails({ next }) {
+export default function PersonalDetailsFormData ({ handleNextStep }) {
   const [recepientName, setRecepientName] = useState('')
   const [address, setAddress] = useState('')
   const [addressCp, setAddressCp] = useState('')
@@ -19,18 +19,17 @@ export default function PersonalDetails({ next }) {
     zipValidation: false,
     countryValidation: false,
     emailValidation: false,
-    phoneValidation: false,
+    phoneValidation: false
   })
 
   const handleNextLocal = () => {
-    console.log('isValidEmail(email)', email === '' || isValidEmail(email))
     setSubmit(true)
     if (
-      recepientName != '' &&
-      address != '' &&
-      city != '' &&
-      zip != '' &&
-      country != '' &&
+      recepientName !== '' &&
+      address !== '' &&
+      city !== '' &&
+      zip !== '' &&
+      country !== '' &&
       !checkSpecialChar(recepientName) &&
       !checkSpecialChar(country) &&
       !checkPhone(phone) &&
@@ -44,23 +43,27 @@ export default function PersonalDetails({ next }) {
         zip: zip,
         country: country,
         email: email,
-        phone: phone,
+        phone: phone
       }
       localStorage.setItem('userDetails', JSON.stringify(data))
-      next()
+      handleNextStep()
     }
   }
 
   const onblurChangeValue = (e) => {
     setSubmit(false)
     const name = e.target.name
-    const value = e.target.value
     const temp = { ...formValue, [name]: true }
     setFormValue(temp)
   }
 
   return (
     <div>
+      <link rel='preconnect' href='https://fonts.gstatic.com' />
+      <link
+        href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap'
+        rel='stylesheet'
+      />
       <form>
         <div style={{ paddingTop: 50 }}>
           <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
@@ -82,11 +85,13 @@ export default function PersonalDetails({ next }) {
                 value={recepientName}
                 onChange={(e) => setRecepientName(e.target.value)}
               />
-              {submit && checkSpecialChar(recepientName) ? (
-                <span style={{ color: 'red', fontSize: '14px' }}>
-                  The format of the name is not valid.
-                </span>
-              ) : null}
+              {submit && checkSpecialChar(recepientName)
+                ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The format of the name is not valid.
+                  </span>
+                  )
+                : null}
             </div>
             <div classNameName='col-md-12'>
               <div className='mb-3'>
@@ -101,11 +106,13 @@ export default function PersonalDetails({ next }) {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
-                {submit && address == '' ? (
-                  <span style={{ color: 'red', fontSize: '14px' }}>
-                    The address is not valid.
-                  </span>
-                ) : null}
+                {submit && address === ''
+                  ? (
+                    <span style={{ color: 'red', fontSize: '14px' }}>
+                      The address is not valid.
+                    </span>
+                    )
+                  : null}
               </div>
             </div>
             <div classNameName='col-md-12'>
@@ -136,11 +143,13 @@ export default function PersonalDetails({ next }) {
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                 />
-                {submit && checkSpecialChar(city) ? (
-                  <span style={{ color: 'red', fontSize: '14px' }}>
-                    The format of the city is not valid.
-                  </span>
-                ) : null}
+                {submit && checkSpecialChar(city)
+                  ? (
+                    <span style={{ color: 'red', fontSize: '14px' }}>
+                      The format of the city is not valid.
+                    </span>
+                    )
+                  : null}
               </div>
             </div>
             <div className='col-md-2'>
@@ -156,11 +165,13 @@ export default function PersonalDetails({ next }) {
                   value={zip}
                   onChange={(e) => setZip(e.target.value)}
                 />
-                {submit && checkNumber(zip) ? (
-                  <span style={{ color: 'red', fontSize: '14px' }}>
-                    The zip not valid.
-                  </span>
-                ) : null}
+                {submit && checkNumber(zip)
+                  ? (
+                    <span style={{ color: 'red', fontSize: '14px' }}>
+                      The zip not valid.
+                    </span>
+                    )
+                  : null}
               </div>
             </div>
             <div className='col-md-6'>
@@ -176,11 +187,13 @@ export default function PersonalDetails({ next }) {
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                 />
-                {submit && checkSpecialChar(country) ? (
-                  <span style={{ color: 'red', fontSize: '14px' }}>
-                    The format of the country is not valid.
-                  </span>
-                ) : null}
+                {submit && checkSpecialChar(country)
+                  ? (
+                    <span style={{ color: 'red', fontSize: '14px' }}>
+                      The format of the country is not valid.
+                    </span>
+                    )
+                  : null}
               </div>
             </div>
           </div>
@@ -201,11 +214,13 @@ export default function PersonalDetails({ next }) {
                 {email.length > 0 &&
                   submit &&
                   formValue.emailValidation &&
-                  !isValidEmail(email) ? (
+                  !isValidEmail(email)
+                  ? (
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The email format is not valid.
                     </span>
-                  ) : null}
+                    )
+                  : null}
               </div>
             </div>
             <div className='col-md-6'>
@@ -223,11 +238,13 @@ export default function PersonalDetails({ next }) {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-                {submit && formValue.phoneValidation && checkPhone(phone) ? (
-                  <span style={{ color: 'red', fontSize: '14px' }}>
-                    The format of the phone is not valid.
-                  </span>
-                ) : null}
+                {submit && formValue.phoneValidation && checkPhone(phone)
+                  ? (
+                    <span style={{ color: 'red', fontSize: '14px' }}>
+                      The format of the phone is not valid.
+                    </span>
+                    )
+                  : null}
               </div>
             </div>
           </div>

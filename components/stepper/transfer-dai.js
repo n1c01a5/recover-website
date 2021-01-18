@@ -9,17 +9,18 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { useRouter } from 'next/router'
-export default function TransferDAI({
+
+export default function TransferDAI ({
   web3,
   tokenAmount,
   account,
-  mattContract,
+  multipleArbitrableTokenContract,
   networkName,
   envData,
-  cid,
+  cid
 }) {
   const router = useRouter()
   const [buttonView, setButtonView] = useState(true)
@@ -45,7 +46,7 @@ export default function TransferDAI({
       setIsOngoing(false)
       setButtonView(false)
 
-      var data = mattContract.methods
+      const data = multipleArbitrableTokenContract.methods
         .createTransaction(
           tokenAmount,
           envData.ERCTOKEN,
@@ -55,9 +56,9 @@ export default function TransferDAI({
         )
         .encodeABI()
       const transactionParameters = {
-        to: envData.MATTADDRESS, // Required except during contract publications.
+        to: envData.MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS, // Required except during contract publications.
         from: account, // must match user's active address.
-        data: data,
+        data: data
       }
 
       web3.eth
@@ -67,15 +68,15 @@ export default function TransferDAI({
           setTxId(hash)
         })
         .once('confirmation', (confirmationNumber, receipt) => {
-          console.log(receipt, 'hello')
           if (receipt.status) {
-            console.log(receipt, 'hello2')
-
             router.push('/loserbox-confirmation')
             localStorage.clear()
           }
         })
         .on('error', (error) => {
+          console.error('error', error)
+          setIsOngoing(false)
+          setIsPending(true)
           setTxError(true)
         })
     }
@@ -122,43 +123,45 @@ export default function TransferDAI({
               smart contract to handle the fund.
             </p>
           </div>
-          {buttonView || txError ? (
-            <button
-              className='new-button'
-              onClick={transfer}
-              style={{
-                width: '100%',
-                marginTop: '20px',
-                backgroundColor: '#A6FFCC',
-              }}
-              type='button'
-              disabled={!isagree}
-            >
-              <strong>Transfer DAI To Escrow</strong>
-            </button>
-          ) : null}
+          {buttonView || txError
+            ? (
+              <button
+                className='new-button'
+                onClick={transfer}
+                style={{
+                  width: '100%',
+                  marginTop: '20px',
+                  backgroundColor: '#A6FFCC'
+                }}
+                type='button'
+                disabled={!isagree}
+              >
+                <strong>Transfer DAI To Escrow</strong>
+              </button>
+              )
+            : null}
 
-          {isPending ? (
-            <div
-              className='col-md-12'
-              className='pendingBox'
-              onClick={() =>
-                window.open(`https://${networkName === '' ? '' : (networkName + '.')}etherscan.io/tx/${txId}`)
-              }
-            >
-              <div className='pending'>
-                <div>
-                  {(isPending || isOngoing) && !txError
-                    ? 'Transaction pending...'
-                    : null}
-                  {txError ? 'Transaction rejected. Please try again.' : null}
-                </div>
-                <div>
-                  {isOngoing ? <BounceLoader size={50} color={'#fff'} /> : null}
+          {isPending
+            ? (
+              <div
+                className='pendingBox'
+                onClick={() =>
+                  window.open(`https://${networkName === '' ? '' : (networkName + '.')}etherscan.io/tx/${txId}`)}
+              >
+                <div className='pending'>
+                  <div>
+                    {(isPending || isOngoing) && !txError
+                      ? 'Transaction pending...'
+                      : null}
+                    {txError ? 'Transaction rejected. Please try again.' : null}
+                  </div>
+                  <div>
+                    {isOngoing ? <BounceLoader size={50} color='#fff' /> : null}
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : null}
+              )
+            : null}
         </div>
       </div>
       {open && (
@@ -169,7 +172,7 @@ export default function TransferDAI({
           aria-describedby='alert-dialog-description'
         >
           <DialogTitle id='alert-dialog-title'>
-            {'Terms of the Contract'}
+            Terms of the Contract
           </DialogTitle>
           <DialogContent>
             <DialogContentText id='alert-dialog-description'>

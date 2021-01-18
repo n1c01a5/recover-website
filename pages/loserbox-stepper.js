@@ -8,7 +8,7 @@ import StepLabel from '@material-ui/core/StepLabel'
 import Typography from '@material-ui/core/Typography'
 import Layout from '../components/layout'
 import Web3 from 'web3'
-import PersonalDetails from '../components/stepper/personal-details'
+import PersonalDetailsFormData from '../components/stepper/personal-details'
 import ConnectWeb3 from '../components/stepper/connect-web3'
 import SwapToken from '../components/stepper/swap-token'
 import ApproveDAI from '../components/stepper/approve-dai'
@@ -18,42 +18,37 @@ const erc20Abi = require('../contracts/ERC20.json')
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '100%'
   },
   backButton: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   instructions: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
+    marginBottom: theme.spacing(1)
+  }
 }))
 
-function getSteps() {
+function getSteps () {
   return [
     'Personal Details',
     'Connect to Web3',
     `Swap ETH to ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI`,
     'Approve DAI Transfer',
-    'Transfer DAI to the Escrow',
+    'Transfer DAI to the Escrow'
   ]
 }
 let pageCount
 
-export default function LoserboxStepper() {
+export default function LoserboxStepper () {
   const router = useRouter()
   const [account, setAccount] = useState('')
-  const [mattContract, setMattContract] = useState(null)
+  const [multipleArbitrableTokenContract, setMattContract] = useState(null)
   const [tokenContract, setTokenContract] = useState(null)
   const [web3, setWeb3] = useState(null)
   const [tokenAmount, setTokenAmount] = useState()
   const [networkName, setNetworkName] = useState('')
   const [isnetworkWarning, setIsNetworkWarning] = useState(false)
-  const [buttonView, setbuttonView] = useState(true)
-  const [isPending, setisPending] = useState(false)
-  const [isOngoing, setIsOngoing] = useState(false)
-  const [issuccess, setIssuccess] = useState(false)
-  const [txerror, setTxerror] = useState(false)
   const [tokenBalanceApproved, setTokenBalanceApproved] = useState(false)
   const [cid, setCid] = useState('')
   const [envData, setEnvData] = useState({})
@@ -65,7 +60,7 @@ export default function LoserboxStepper() {
     if (localStorage.getItem('userDetails')) {
       router.push({
         pathname: '/loserbox-stepper',
-        query: { step: 2 },
+        query: { step: 2 }
       })
       pageCount = 2
       setActiveStep(1)
@@ -73,7 +68,7 @@ export default function LoserboxStepper() {
     } else {
       router.push({
         pathname: '/loserbox-stepper',
-        query: { step: 1 },
+        query: { step: 1 }
       })
       setActiveStep(0)
       pageCount = 1
@@ -89,8 +84,6 @@ export default function LoserboxStepper() {
         changeNet()
         window.location.reload()
       })
-      console.log('activeStep', activeStep)
-      console.log('getItem', localStorage.getItem('userDetails'))
     }
   }, [])
 
@@ -106,104 +99,112 @@ export default function LoserboxStepper() {
     const accounts = await web3.eth.getAccounts()
     if (accounts && accounts.length > 0) {
       setAccount(accounts[0])
-      const networkId = await web3.eth.net.getId()
-      switch (networkId) {
-        case 1:
-          setNetworkName('')
-          break
-        case 3:
-          setNetworkName('ropsten')
-          setIsNetworkWarning(true)
-          break
-        case 4:
-          setNetworkName('rinkeby')
-          setIsNetworkWarning(true)
-          break
-        case 5:
-          setNetworkName('goerli')
-          setIsNetworkWarning(true)
-          break
-        case 42:
-          setNetworkName('kovan')
-          break
-        default:
-          break
-      }
-
-      if (networkId == 1 || networkId == 42) {
-        let tokenContract
-        let mattContract
-        let decimals
-        let amount
-        if (networkId === 1) {
-          setEnvData({
-            ERCTOKEN: process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN,
-            MATTADDRESS:
-              process.env
-                .NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
-            TIMEOUTPAYMENT: process.env.NEXT_PUBLIC_MAINNET_TIMEOUT_PAYMENT,
-            RECEIVER: process.env.NEXT_PUBLIC_MAINNET_RECEIVER_ADDRESS,
-            METAEVIDENCE: process.env.NEXT_PUBLIC_MAINNET_METAEVIDENCE,
-          })
-
-          tokenContract = new web3.eth.Contract(
-            erc20Abi,
-            process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN
-          )
-          mattContract = new web3.eth.Contract(
-            mattAbi,
-            process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
-          )
-          // Use BigNumber
-          decimals = web3.utils.toBN(
-            process.env.NEXT_PUBLIC_MAINNET_TOKEN_DECIMALS
-          )
-          amount = web3.utils.toBN(
-            process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT
-          )
-        } else {
-          setEnvData({
-            ERCTOKEN: process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN,
-            MATTADDRESS:
-              process.env
-                .NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
-            TIMEOUTPAYMENT: process.env.NEXT_PUBLIC_KOVAN_TIMEOUT_PAYMENT,
-            RECEIVER: process.env.NEXT_PUBLIC_KOVAN_RECEIVER_ADDRESS,
-            METAEVIDENCE: process.env.NEXT_PUBLIC_KOVAN_METAEVIDENCE,
-          })
-          tokenContract = new web3.eth.Contract(
-            erc20Abi,
-            process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN
-          )
-          mattContract = new web3.eth.Contract(
-            mattAbi,
-            process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
-          )
-          // Use BigNumber
-          decimals = web3.utils.toBN(
-            process.env.NEXT_PUBLIC_KOVAN_TOKEN_DECIMALS
-          )
-          amount = web3.utils.toBN(process.env.NEXT_PUBLIC_KOVAN_TOKEN_AMOUNT)
-        }
-
-        setTokenContract(tokenContract)
-
-        setMattContract(mattContract)
-        let value = amount.mul(web3.utils.toBN(10).pow(decimals))
-        setTokenAmount(value)
-
-        const userTokenBalance = await tokenContract.methods
-          .balanceOf(accounts[0])
-          .call()
-        if (userTokenBalance > value) {
-          setTokenBalanceApproved(true)
-        }
-        handleNext(networkId)
-      }
+      findNetworks(web3, accounts)
     }
   }
 
-  const handleNext = (networkId) => {
+  const findNetworks = async (web3, accounts) => {
+    const networkId = await web3.eth.net.getId()
+    switch (networkId) {
+      case 1:
+        setNetworkName('')
+        break
+      case 3:
+        setNetworkName('ropsten')
+        setIsNetworkWarning(true)
+        break
+      case 4:
+        setNetworkName('rinkeby')
+        setIsNetworkWarning(true)
+        break
+      case 5:
+        setNetworkName('goerli')
+        setIsNetworkWarning(true)
+        break
+      case 42:
+        setNetworkName('kovan')
+        break
+      default:
+        break
+    }
+
+    if (networkId === 1 || networkId === 42) {
+      findContractData(web3, accounts, networkId)
+    }
+  }
+
+  const findContractData = async (web3, accounts, networkId) => {
+    let tokenContract
+    let multipleArbitrableTokenContract
+    let decimals
+    let amount
+    if (networkId === 1) {
+      setEnvData({
+        ERCTOKEN: process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN,
+        MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS:
+          process.env
+            .NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
+        TIMEOUTPAYMENT: process.env.NEXT_PUBLIC_MAINNET_TIMEOUT_PAYMENT,
+        RECEIVER: process.env.NEXT_PUBLIC_MAINNET_RECEIVER_ADDRESS
+      })
+
+      tokenContract = new web3.eth.Contract(
+        erc20Abi,
+        process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN
+      )
+      multipleArbitrableTokenContract = new web3.eth.Contract(
+        mattAbi,
+        process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
+      )
+      // Use BigNumber
+      decimals = web3.utils.toBN(
+        process.env.NEXT_PUBLIC_MAINNET_TOKEN_DECIMALS
+      )
+      amount = web3.utils.toBN(
+        process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT
+      )
+    } else {
+      setEnvData({
+        ERCTOKEN: process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN,
+        MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS:
+          process.env
+            .NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
+        TIMEOUTPAYMENT: process.env.NEXT_PUBLIC_KOVAN_TIMEOUT_PAYMENT,
+        RECEIVER: process.env.NEXT_PUBLIC_KOVAN_RECEIVER_ADDRESS
+      })
+      tokenContract = new web3.eth.Contract(
+        erc20Abi,
+        process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN
+      )
+      multipleArbitrableTokenContract = new web3.eth.Contract(
+        mattAbi,
+        process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
+      )
+      // Use BigNumber
+      decimals = web3.utils.toBN(
+        process.env.NEXT_PUBLIC_KOVAN_TOKEN_DECIMALS
+      )
+      amount = web3.utils.toBN(process.env.NEXT_PUBLIC_KOVAN_TOKEN_AMOUNT)
+    }
+
+    setTokenContract(tokenContract)
+    setMattContract(multipleArbitrableTokenContract)
+
+    const value = amount.mul(web3.utils.toBN(10).pow(decimals))
+    setTokenAmount(value)
+
+    let userTokenBalance = await tokenContract.methods
+      .balanceOf(accounts[0])
+      .call()
+    userTokenBalance = web3.utils.toBN(userTokenBalance)
+
+    if (userTokenBalance.sub(value) >= 0) {
+      setTokenBalanceApproved(true)
+    }
+    handleNextStep(networkId)
+  }
+
+  const handleNextStep = (networkId) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
     pageCount = pageCount + 1
     let queryName
@@ -214,26 +215,18 @@ export default function LoserboxStepper() {
     }
     router.push({
       pathname: '/loserbox-stepper',
-      query: queryName,
+      query: queryName
     })
-    console.log('activeStepNext', activeStep + 1)
-  }
-
-  const changeState = () => {
-    setisPending(true)
-    setIsOngoing(false)
-    setIssuccess(false)
-    setbuttonView(false)
   }
 
   const setCidDada = (data) => {
     setCid(data)
   }
 
-  function getStepContent(stepIndex) {
+  function getStepContent (stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <PersonalDetails next={handleNext} />
+        return <PersonalDetailsFormData handleNextStep={handleNextStep} />
       case 1:
         return (
           <ConnectWeb3
@@ -246,19 +239,14 @@ export default function LoserboxStepper() {
         return (
           <SwapToken
             tokenBalanceApproved={tokenBalanceApproved}
-            handleNext={handleNext}
-            changeState={changeState}
-            buttonView={buttonView}
-            isPending={isPending}
+            handleNextStep={handleNextStep}
             networkName={networkName}
-            isOngoing={isOngoing}
-            txerror={txerror}
           />
         )
       case 3:
         return (
           <ApproveDAI
-            handleNext={handleNext}
+            handleNextStep={handleNextStep}
             tokenContract={tokenContract}
             web3={web3}
             tokenAmount={tokenAmount}
@@ -271,7 +259,7 @@ export default function LoserboxStepper() {
       case 4:
         return (
           <TransferDAI
-            mattContract={mattContract}
+            multipleArbitrableTokenContract={multipleArbitrableTokenContract}
             web3={web3}
             tokenAmount={tokenAmount}
             account={account}
@@ -286,16 +274,12 @@ export default function LoserboxStepper() {
   }
 
   return (
-    <Layout noRightButton>
+    <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <link rel='preconnect' href='https://fonts.gstatic.com' />
-      <link
-        href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap'
-        rel='stylesheet'
-      />
+
       <div className={classes.root}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => {
@@ -322,19 +306,19 @@ export default function LoserboxStepper() {
           })}
         </Stepper>
         <div>
-          {activeStep === steps.length ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed
-              </Typography>
-            </div>
-          ) : (
+          {activeStep === steps.length
+            ? (
               <div>
-                <Typography className={classes.instructions}>
-                  {getStepContent(activeStep)}
-                </Typography>
+                <p className={classes.instructions}>
+                  All steps completed
+                </p>
               </div>
-            )}
+              )
+            : (
+              <div>
+                {getStepContent(activeStep)}
+              </div>
+              )}
         </div>
       </div>
     </Layout>
