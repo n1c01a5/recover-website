@@ -15,6 +15,7 @@ import Button from '../components/elements/button'
 import EthereumLogo from '../public/ethereum-logo.svg'
 import KlerosLogo from '../public/kleros-logo.svg'
 import IpfsLogo from '../public/ipfs-logo.svg'
+import DexLogo from '../public/dex-ag-logo.png' 
 import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
 import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
 import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
@@ -105,6 +106,14 @@ export default function Home() {
                         <figure style={{textAlign: 'center'}}>
                           <img src={IpfsLogo} alt="IPFS logo svg" style={{width: '35px'}} />
                           <figcaption style={{fontSize: '12px', color: 'rgba(0, 0, 0, 0.4)', textDecoration: 'none'}}>IPFS</figcaption>
+                        </figure>
+                      </a>
+                    </li>
+                    <li style={{display: 'inline-block', padding: '10px 20px 0 20px'}}>
+                      <a href="https://dex.ag/" style={{textDecoration: 'none'}}>
+                        <figure style={{textAlign: 'center'}}>
+                          <img src={DexLogo} alt="DexLogo logo png" style={{width: '35px'}} />
+                          <figcaption style={{fontSize: '12px', color: 'rgba(0, 0, 0, 0.4)', textDecoration: 'none'}}>DEX.AG</figcaption>
                         </figure>
                       </a>
                     </li>
