@@ -111,10 +111,6 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
-              <div style={{display: 'flex', alignItems: 'center'}}>
-                <div><p>Hosted By</p></div>
-                <div><a href="https://stationf.co/"><img src='./stationf-logo.png' style={{width: '130px', marginLeft: '50px'}} /></a></div>
-              </div>
             </div>
           </div>
 
