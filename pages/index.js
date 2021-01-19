@@ -122,7 +122,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           <div className="mobile-layout">
             <div style={{display: 'flex', flexDirection: 'column', width: '100vw', marginTop: '-40px'}}>
               <div style={{textAlign: 'center'}}><img style={{width: '80vw'}} src="/doge.png" alt="Doge with QrCode" role="presentation" /></div>

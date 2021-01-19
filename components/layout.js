@@ -149,17 +149,7 @@ const Layout = ({ children }) => {
                   </li>
                 </ul>
               </div>
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Incubator</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://stationf.co/">StationF</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+         </div>
             <div
               style={{
                 display: 'flex',
@@ -267,16 +257,6 @@ const Layout = ({ children }) => {
                   </li>
                   <li style={{ padding: '2px 0' }}>
                     <a href="https://ipfs.io/">IPFS</a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Incubator</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://stationf.co/">StationF</a>
                   </li>
                 </ul>
               </div>
