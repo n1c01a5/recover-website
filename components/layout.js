@@ -262,16 +262,6 @@ const Layout = ({ children }) => {
               </div>
               <div>
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Incubator</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://stationf.co/">StationF</a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
                   <strong>Social</strong>
                 </p>
                 <ul>
