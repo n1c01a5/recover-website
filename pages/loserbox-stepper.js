@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function getSteps () {
+function getSteps() {
   return [
     'Personal Details',
     'Connect to Web3',
@@ -38,9 +38,9 @@ function getSteps () {
     'Transfer DAI to the Escrow'
   ]
 }
-let pageCount
+let pageCount = 1
 
-export default function LoserboxStepper () {
+export default function LoserboxStepper() {
   const router = useRouter()
   const [account, setAccount] = useState('')
   const [multipleArbitrableTokenContract, setMattContract] = useState(null)
@@ -49,6 +49,7 @@ export default function LoserboxStepper () {
   const [tokenAmount, setTokenAmount] = useState()
   const [networkName, setNetworkName] = useState('')
   const [isnetworkWarning, setIsNetworkWarning] = useState(false)
+  const [userEthBalance, setUserEthBalance] = useState('')
   const [tokenBalanceApproved, setTokenBalanceApproved] = useState(false)
   const [cid, setCid] = useState('')
   const [envData, setEnvData] = useState({})
@@ -57,7 +58,10 @@ export default function LoserboxStepper () {
   const steps = getSteps()
 
   const changeNet = () => {
-    if (localStorage.getItem('userDetails')) {
+    // console.log(window.location.search.split('step='))
+    const step = window.location.search.split('step=')
+
+    if (localStorage.getItem('userDetails') && step[1] > 1) {
       router.push({
         pathname: '/loserbox-stepper',
         query: { step: 2 }
@@ -88,6 +92,7 @@ export default function LoserboxStepper () {
   }, [])
 
   useEffect(() => {
+
     changeNet()
   }, [])
 
@@ -193,6 +198,9 @@ export default function LoserboxStepper () {
     const value = amount.mul(web3.utils.toBN(10).pow(decimals))
     setTokenAmount(value)
 
+    const userEthBalance = await web3.eth.getBalance(accounts[0])
+    setUserEthBalance(userEthBalance)
+
     let userTokenBalance = await tokenContract.methods
       .balanceOf(accounts[0])
       .call()
@@ -223,7 +231,7 @@ export default function LoserboxStepper () {
     setCid(data)
   }
 
-  function getStepContent (stepIndex) {
+  function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
         return <PersonalDetailsFormData handleNextStep={handleNextStep} />
@@ -238,7 +246,9 @@ export default function LoserboxStepper () {
       case 2:
         return (
           <SwapToken
+            web3={web3}
             tokenBalanceApproved={tokenBalanceApproved}
+            userEthBalance={userEthBalance}
             handleNextStep={handleNextStep}
             networkName={networkName}
           />
@@ -313,12 +323,12 @@ export default function LoserboxStepper () {
                   All steps completed
                 </p>
               </div>
-              )
+            )
             : (
               <div>
                 {getStepContent(activeStep)}
               </div>
-              )}
+            )}
         </div>
       </div>
     </Layout>

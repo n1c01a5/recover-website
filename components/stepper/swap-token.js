@@ -1,12 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+const fetch = require('node-fetch')
 import DEXAG from 'dexag-sdk'
 
-export default function SwapToken ({
+export default function SwapToken({
+  web3,
   tokenBalanceApproved,
+  userEthBalance,
   handleNextStep,
   networkName
 }) {
   const [isLowBalanceWarning, setIsLowBalanceWarning] = useState(false)
+
+  useEffect(() => {
+    fetch(process.env.NEXT_PUBLIC_DEX_AG)
+      .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        userEthBalance = web3.utils.fromWei(userEthBalance)
+        const dexPrice = (json.price) * process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT;
+        console.log('dexPrice', dexPrice)
+        userEthBalance - (dexPrice) >= 0 ? setIsLowBalanceWarning(false) : setIsLowBalanceWarning(true)
+      })
+  }, [])
 
   if (tokenBalanceApproved) {
     handleNextStep()
@@ -65,7 +80,7 @@ export default function SwapToken ({
                   Sorry, you don't have enough ETH in your account, to purchase some ETH go to your Metamask wallet.
                 </p>
               </div>
-              )
+            )
             : null}
           <div className='alert' style={{ background: '#A6FFCC' }} role='alert'>
             <p style={{ paddingTop: '15px' }}>

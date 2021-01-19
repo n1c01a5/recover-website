@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../../src/helpers/helper'
 
-export default function PersonalDetailsFormData ({ handleNextStep }) {
+export default function PersonalDetails({ handleNextStep }) {
+
   const [recepientName, setRecepientName] = useState('')
   const [address, setAddress] = useState('')
   const [addressCp, setAddressCp] = useState('')
@@ -22,7 +23,23 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
     phoneValidation: false
   })
 
+  useEffect(() => {
+    if (localStorage.getItem('userDetails')) {
+      const personData = JSON.parse(localStorage.getItem('userDetails'))
+      setRecepientName(personData.recepientName)
+      setAddress(personData.address)
+      setAddressCp(personData.addressCp)
+      setCity(personData.city)
+      setZip(personData.zip)
+      setCountry(personData.country)
+      setEmail(personData.email)
+      setPhone(personData.phone)
+    }
+  }, [])
+
+
   const handleNextLocal = () => {
+    console.log('isValidEmail(email)', email === '' || isValidEmail(email))
     setSubmit(true)
     if (
       recepientName !== '' &&
@@ -59,11 +76,6 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
 
   return (
     <div>
-      <link rel='preconnect' href='https://fonts.gstatic.com' />
-      <link
-        href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap'
-        rel='stylesheet'
-      />
       <form>
         <div style={{ paddingTop: 50 }}>
           <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
@@ -90,7 +102,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                   <span style={{ color: 'red', fontSize: '14px' }}>
                     The format of the name is not valid.
                   </span>
-                  )
+                )
                 : null}
             </div>
             <div classNameName='col-md-12'>
@@ -111,7 +123,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The address is not valid.
                     </span>
-                    )
+                  )
                   : null}
               </div>
             </div>
@@ -148,7 +160,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The format of the city is not valid.
                     </span>
-                    )
+                  )
                   : null}
               </div>
             </div>
@@ -170,7 +182,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The zip not valid.
                     </span>
-                    )
+                  )
                   : null}
               </div>
             </div>
@@ -192,7 +204,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The format of the country is not valid.
                     </span>
-                    )
+                  )
                   : null}
               </div>
             </div>
@@ -219,7 +231,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The email format is not valid.
                     </span>
-                    )
+                  )
                   : null}
               </div>
             </div>
@@ -243,7 +255,7 @@ export default function PersonalDetailsFormData ({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The format of the phone is not valid.
                     </span>
-                    )
+                  )
                   : null}
               </div>
             </div>
