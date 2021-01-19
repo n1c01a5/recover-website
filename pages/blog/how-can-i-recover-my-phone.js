@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 
-export default function RecoverPhoneBlog() {
+export default function RecoverPhoneBlog () {
   return (
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className="recover_phone_container">
-        <section className="hero-section">
+      <div className='recover_phone_container'>
+        <section className='hero-section'>
           <h1>How can I Recover my Phone if it is lost?</h1>
           <p>
             Smartphones have taken place as one of the most personal and
@@ -32,7 +32,7 @@ export default function RecoverPhoneBlog() {
           </p>
           <p> Here is what you should do immediately after the phone is lost</p>
         </section>
-        <section className="section-1">
+        <section className='section-1'>
           <h2>What measures to take right after the Phone is lost? </h2>
 
           <h3>1. Call or text your phone</h3>
@@ -79,8 +79,8 @@ export default function RecoverPhoneBlog() {
             service on Android and IOS devices
           </h2>
         </section>
-        <section className="section-2">
-          <div className="android">
+        <section className='section-2'>
+          <div className='android'>
             <h3>Learn how to locate an Android phone:</h3>
             <p>There are 2 ways to find an Android phone.</p>
             <ul>
@@ -110,7 +110,7 @@ export default function RecoverPhoneBlog() {
               </ul>
             </ul>
           </div>
-          <div className="iphone">
+          <div className='iphone'>
             <h3>Learn how to locate an iPhone (IOS):</h3>
             <ul>
               <li>
@@ -134,7 +134,7 @@ export default function RecoverPhoneBlog() {
               </li>
             </ul>
           </div>
-          <div className="windows">
+          <div className='windows'>
             <h3>Know how to find a Phone - Windows OS:</h3>
             <ul>
               <li>
@@ -154,8 +154,8 @@ export default function RecoverPhoneBlog() {
             </ul>
           </div>
         </section>
-        <section className="section-3">
-          <div className="measures-div">
+        <section className='section-3'>
+          <div className='measures-div'>
             <h2>Immediate measures to take</h2>
             <ul>
               <li>
@@ -205,7 +205,7 @@ export default function RecoverPhoneBlog() {
             </p>
           </div>
         </section>
-        <section className="section-4">
+        <section className='section-4'>
           <h2>
             Market Solutions to find your lost Phone - Preventive measures to
             take in advance

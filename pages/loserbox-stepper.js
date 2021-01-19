@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function getSteps() {
+function getSteps () {
   return [
     'Personal Details',
     'Connect to Web3',
@@ -40,7 +40,7 @@ function getSteps() {
 }
 let pageCount = 1
 
-export default function LoserboxStepper() {
+export default function LoserboxStepper () {
   const router = useRouter()
   const [account, setAccount] = useState('')
   const [multipleArbitrableTokenContract, setMattContract] = useState(null)
@@ -58,7 +58,6 @@ export default function LoserboxStepper() {
   const steps = getSteps()
 
   const changeNet = () => {
-    // console.log(window.location.search.split('step='))
     const step = window.location.search.split('step=')
 
     if (localStorage.getItem('userDetails') && step[1] > 1) {
@@ -92,7 +91,6 @@ export default function LoserboxStepper() {
   }, [])
 
   useEffect(() => {
-
     changeNet()
   }, [])
 
@@ -231,7 +229,7 @@ export default function LoserboxStepper() {
     setCid(data)
   }
 
-  function getStepContent(stepIndex) {
+  function getStepContent (stepIndex) {
     switch (stepIndex) {
       case 0:
         return <PersonalDetailsFormData handleNextStep={handleNextStep} />
@@ -323,12 +321,12 @@ export default function LoserboxStepper() {
                   All steps completed
                 </p>
               </div>
-            )
+              )
             : (
               <div>
                 {getStepContent(activeStep)}
               </div>
-            )}
+              )}
         </div>
       </div>
     </Layout>

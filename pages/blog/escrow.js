@@ -1,19 +1,19 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 
-export default function EscrowBlog() {
+export default function EscrowBlog () {
   return (
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className="escrow-container">
-        <h1 className="escrow-header">
+      <div className='escrow-container'>
+        <h1 className='escrow-header'>
           Securing valuables with Escrow Smart Contracts
         </h1>
         <div>
-          <section className="blog__section">
+          <section className='blog__section'>
             <h2>What is a generic Escrow?</h2>
             <p>
               In traditional transactions, both the parties (payee and the
@@ -27,8 +27,8 @@ export default function EscrowBlog() {
               respected. It helps in the transaction being more secure as the
               funds are kept in an escrow account which is managed by the
               <a
-                className="blog_link"
-                href="https://en.wikipedia.org/wiki/Online_dispute_resolution"
+                className='blog_link'
+                href='https://en.wikipedia.org/wiki/Online_dispute_resolution'
               >
                 arbitrator
               </a>
@@ -42,13 +42,13 @@ export default function EscrowBlog() {
               play afterward.
             </p>
           </section>
-          <section className="blog__section">
+          <section className='blog__section'>
             <h2>How Escrow Financial Transaction Works?</h2>
             <p>
               Initially, either the payee or the payer approaches Escrow which
               acts as an arbitrator, the terms and conditions should be agreed
               upon before the transaction is started.
-              <ul className="blog__list">
+              <ul className='blog__list'>
                 <li>
                   The buyer puts the payment to escrow to purchase a product or
                   service.
@@ -65,7 +65,7 @@ export default function EscrowBlog() {
               </ul>
             </p>
           </section>
-          <section className="blog__section">
+          <section className='blog__section'>
             <h2>What is an Escrow Smart Contract?</h2>
             <p>
               A smart contract is a program that is smart enough to execute a
@@ -74,8 +74,8 @@ export default function EscrowBlog() {
               the basis of pre-programmed logic which is overseen by a
               distributed, decentralized network of computers that runs on
               <a
-                className="blog_link"
-                href="https://www.investopedia.com/terms/b/blockchain.asp#what-is-blockchain"
+                className='blog_link'
+                href='https://www.investopedia.com/terms/b/blockchain.asp#what-is-blockchain'
               >
                 blockchain
               </a>
@@ -88,8 +88,8 @@ export default function EscrowBlog() {
               one person or back to the person who sent it. It is interesting to
               know that during the process, the
               <a
-                className="blog_link"
-                href="https://searchcio.techtarget.com/definition/distributed-ledger"
+                className='blog_link'
+                href='https://searchcio.techtarget.com/definition/distributed-ledger'
               >
                 distributed ledger
               </a>{' '}
@@ -97,7 +97,7 @@ export default function EscrowBlog() {
               added security and immutability.
             </p>
           </section>
-          <section className="blog__section">
+          <section className='blog__section'>
             <h2>Main Advantages of using Escrow Smart Contracts</h2>
             <div>
               <p>
@@ -112,20 +112,20 @@ export default function EscrowBlog() {
               <p>
                 <strong>
                   Arbitration Decentralized (reduce conflict interest) with{' '}
-                  <a className="blog_link" href="https://kleros.io/">
+                  <a className='blog_link' href='https://kleros.io/'>
                     Kleros
                   </a>
                   /
                   <a
-                    className="blog_link no_left_margin"
-                    href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
+                    className='blog_link no_left_margin'
+                    href='https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82'
                   >
                     Aragon
                   </a>
                 </strong>
                 : The arbitration is decentralized and if any conflict of
                 interest arises, it is being dealt with{' '}
-                <a className="blog_link" href="https://kleros.io/">
+                <a className='blog_link' href='https://kleros.io/'>
                   Kleros
                 </a>
                 , a Decentralized Autonomous Organisation (DAO) to solve
@@ -137,8 +137,8 @@ export default function EscrowBlog() {
                 the arbitrator you can easily change the arbitrator, being said
                 the smart contract follows the arbitrator standard. It allows a{' '}
                 <a
-                  className="blog_link"
-                  href="https://blog.kleros.io/kleros-layer-2/"
+                  className='blog_link'
+                  href='https://blog.kleros.io/kleros-layer-2/'
                 >
                   decentralized arbitrator
                 </a>{' '}
@@ -161,10 +161,10 @@ export default function EscrowBlog() {
               </p>
             </div>
           </section>
-          <section className="blog__section">
+          <section className='blog__section'>
             <h2>Escrow Smart Contract implementation with Recover</h2>
             <p>
-              <ul className="blog__list">
+              <ul className='blog__list'>
                 <li>The finder finds your lost valuable.</li>
                 <li>
                   The honest finder will definitely return your valuable, but
@@ -180,12 +180,12 @@ export default function EscrowBlog() {
               </ul>
             </p>
           </section>
-          <section className="blog__section">
+          <section className='blog__section'>
             <h2>Conclusion</h2>
             <p>
               Now that we have learned briefly how blockchain escrow works, let
               us discover
-              <a className="blog_link" href="/">
+              <a className='blog_link' href='/'>
                 Recover
               </a>
               .

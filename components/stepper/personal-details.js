@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../../src/helpers/helper'
 
-export default function PersonalDetails({ handleNextStep }) {
-
+export default function PersonalDetails ({ handleNextStep }) {
   const [recepientName, setRecepientName] = useState('')
   const [address, setAddress] = useState('')
   const [addressCp, setAddressCp] = useState('')
@@ -37,9 +36,7 @@ export default function PersonalDetails({ handleNextStep }) {
     }
   }, [])
 
-
   const handleNextLocal = () => {
-    console.log('isValidEmail(email)', email === '' || isValidEmail(email))
     setSubmit(true)
     if (
       recepientName !== '' &&
@@ -102,7 +99,7 @@ export default function PersonalDetails({ handleNextStep }) {
                   <span style={{ color: 'red', fontSize: '14px' }}>
                     The format of the name is not valid.
                   </span>
-                )
+                  )
                 : null}
             </div>
             <div classNameName='col-md-12'>
@@ -123,7 +120,7 @@ export default function PersonalDetails({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The address is not valid.
                     </span>
-                  )
+                    )
                   : null}
               </div>
             </div>
@@ -160,7 +157,7 @@ export default function PersonalDetails({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The format of the city is not valid.
                     </span>
-                  )
+                    )
                   : null}
               </div>
             </div>
@@ -182,7 +179,7 @@ export default function PersonalDetails({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The zip not valid.
                     </span>
-                  )
+                    )
                   : null}
               </div>
             </div>
@@ -204,7 +201,7 @@ export default function PersonalDetails({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The format of the country is not valid.
                     </span>
-                  )
+                    )
                   : null}
               </div>
             </div>
@@ -231,7 +228,7 @@ export default function PersonalDetails({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The email format is not valid.
                     </span>
-                  )
+                    )
                   : null}
               </div>
             </div>
@@ -255,7 +252,7 @@ export default function PersonalDetails({ handleNextStep }) {
                     <span style={{ color: 'red', fontSize: '14px' }}>
                       The format of the phone is not valid.
                     </span>
-                  )
+                    )
                   : null}
               </div>
             </div>
