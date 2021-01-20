@@ -10,13 +10,13 @@
 
 .hero {
   height: 400px;
+  background: #dcdcdc;
   background-image: url('/blog-index-photo/guy-searching-for-his-valuable.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .hero-overlay {
-  padding: 2rem;
   width: 80%;
   height: 150px;
   margin: 0 auto;
@@ -25,34 +25,10 @@
   background-color: #fff;
 }
 
-.highlighted_blog {
-  display: flex;
-}
-
-.highlighted_blog .blog_image {
-  width: 100%;
-  height: 22rem;
-}
-
-.highlighted_blog .info {
-  padding-top: 4rem;
-  padding-left: 2rem;
-  width: 35%;
-}
-
-.highlighted_blog a {
-  width: 65%;
-}
-
-.highlighted_blog .info h2 {
-  font-size: 1.7rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 0.7rem;
-}
-
-.highlighted_blog .info p {
-  font-size: 1.1rem;
+.content-text {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 120px;
 }
 
 .blogs {
@@ -60,19 +36,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
-  margin-top: 23rem;
+  margin-top: 20px;
   width: 80%;
-  padding: 2rem;
 }
 
-.divider {
+.blogs a {
   width: 100%;
-  margin-bottom: 4rem;
-  color: #dcdcdc;
-}
-
-.blog a {
-  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -80,12 +50,7 @@
 }
 
 .blog {
-  margin-bottom: 3rem;
-}
-
-.blog_image {
-  width: 100%;
-  height: 12rem;
+  height: 10rem;
   background-color: #dcdcdc;
   background-size: cover;
   margin-bottom: 1rem;
@@ -101,17 +66,9 @@ a h4 {
 
 .blog_title {
   margin-bottom: 1rem;
-  font-size: 22px;
-  font-weight: 500;
-  color: #15171a;
-}
-
-.blog_title a {
-  color: black;
-}
-
-.blog_resume {
-  color: gray;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/doge.png");
+  background-size: cover;
 }
 
 .blog h4 {
@@ -185,38 +142,16 @@ a h4 {
   }
 }
 
-@media (min-width: 721px) and (max-width: 1024px) {
-  .hero-overlay {
-    width: 95%;
-  }
-
-  .blogs {
-    width: 95%;
-  }
-
-  .highlighted_blog {
-    margin-bottom: 2rem;
-  }
-
-  .highlighted_blog .info {
-    padding: 0;
-    margin-top: 2rem;
-    margin-left: 2rem;
-  }
-
-  .blogs > a {
-    margin-bottom: 5rem;
+@media (min-width: 481px) and (max-width: 1024px) {
+  .blog {
+    margin-bottom: 1rem;
     width: 45%;
-  }
-
-  .divider {
-    display: none;
   }
 }
 
 @media screen and (min-width: 1025px) {
-  .blogs > a {
-    width: 31%;
+  .blog {
+    width: 30%;
   }
 }
 
@@ -573,9 +508,9 @@ h4 {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    'about__img-container'
-    'about__hero-text'
-    'about__social-links';
+    "about__img-container"
+    "about__hero-text"
+    "about__social-links";
 }
 
 .about__img-container {
@@ -615,8 +550,8 @@ h4 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      'about__img-container about__hero-text'
-      'about__social-links about__hero-text';
+      "about__img-container about__hero-text"
+      "about__social-links about__hero-text";
   }
 
   .about__img-container {
@@ -658,5 +593,82 @@ h4 {
 @media screen and (max-width: 768px) {
   .desktop-layout {
     display: none;
+  }
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ####################################################### */
+
+.new-button {
+  width: 100%;
+  background: #a6ffcb;
+  color: #14213d;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid #a6ffcb;
+  box-shadow: 0px 0px 10px #a6ffcb;
+  border-radius: 10px;
+  line-height: 48px;
+  cursor: pointer;
+}
+.new-button:disabled {
+  background: #efefef !important ;
+  border: 1px solid #efefef;
+  box-shadow: 0px 0px 10px #efefef;
+  cursor: auto;
+}
+
+.pending {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 100px;
+  border-radius: 10px;
+  font-size: 25px;
+  margin-top: 30px;
+  background: url(/etherscan-bg.png) no-repeat #a6ffcc;
+}
+
+.pendingBox :hover {
+  cursor: pointer;
+}
+
+/* / Chrome, Safari, Edge, Opera / */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* / Firefox / */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.pdetails {
+  font-weight: 300 !important;
+  font-size: 16px !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .hideOnMobile .MuiStepLabel-labelContainer {
+    display: none !important;
   }
 }

@@ -4,9 +4,9 @@ import { slide as Menu } from 'react-burger-menu'
 
 import Button from './elements/button'
 
-function Scroll({ setTop, isTop }) {
-  useEffect(function onFirstMount() {
-    function onScroll() {
+function Scroll ({ setTop, isTop }) {
+  useEffect(function onFirstMount () {
+    function onScroll () {
       window.document.addEventListener('scroll', () => {
         if (window.scrollY < 30 !== isTop) {
           setTop(false)
@@ -22,84 +22,90 @@ function Scroll({ setTop, isTop }) {
   return null
 }
 
-const Layout = ({ children }) => {
+const Layout = ({ children, noRightButton }) => {
   const [isTop, setTop] = useState(true)
 
   Scroll({ setTop, isTop })
 
   return (
     <>
-      <nav suppressHydrationWarning={true}>
+      <nav suppressHydrationWarning>
         {/* FIXME: remove this props to mute warning. */}
-        <div className="mobile-layout">
-          <div className="header-menu-small">
-            <Link href="/">
+        <div className='mobile-layout'>
+          <div className='header-menu-small'>
+            <Link href='/'>
               <img
                 style={{ paddingLeft: '20px' }}
-                className="header-menu-logo"
-                src="/RECOVER-logo.svg"
-                alt="Recover Logo"
+                className='header-menu-logo'
+                src='/RECOVER-logo.svg'
+                alt='Recover Logo'
               />
             </Link>
             <Menu>
-              <a href="https://app.recover.ws/" target="_blank">
+              <a href='https://app.recover.ws/' target='_blank'>
                 APPLICATION
               </a>
               <a>
-                <Link href="/blog">
+                <Link href='/blog'>
                   <a>BLOG</a>
                 </Link>
               </a>
               <a>
-                <Link href="/about">
+                <Link href='/about'>
                   <a>ABOUT</a>
                 </Link>
               </a>
             </Menu>
           </div>
         </div>
-        <div className="desktop-layout">
+        <div className='desktop-layout'>
           <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
             <div>
-              <Link href="/">
+              <Link href='/'>
                 <img
-                  className="header-menu-logo"
-                  src="/RECOVER-logo.svg"
-                  alt="Recover Logo"
+                  className='header-menu-logo'
+                  src='/RECOVER-logo.svg'
+                  alt='Recover Logo'
                 />
               </Link>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                width: '100%'
+              }}
+            >
               <div style={{ padding: '0 40px' }}>
-                <a href="https://app.recover.ws/" target="_blank">
+                <a href='https://app.recover.ws/' target='_blank'>
                   APPLICATION
                 </a>
               </div>
               <div style={{ padding: '0 40px' }}>
-                <Link href="/blog">
+                <Link href='/blog'>
                   <a>BLOG</a>
                 </Link>
               </div>
               <div style={{ padding: '0 40px' }}>
-                <Link href="/about">
+                <Link href='/about'>
                   <a>ABOUT</a>
                 </Link>
               </div>
             </div>
             <div>
-              <Link href="/about">
-                <Button isPrimary={true}>Get Your Loser Box</Button>
+              <Link href='/loser-box'>
+                <Button isPrimary>Get Your Loser Box</Button>
               </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      <main role="main">
-        <div className="container">{children}</div>
+      <main role='main'>
+        <div className='container'>{children}</div>
       </main>
 
-      <div className="mobile-layout">
+      <div className='mobile-layout'>
         <div style={{ marginTop: '40px' }}>
           <footer
             style={{
@@ -109,12 +115,12 @@ const Layout = ({ children }) => {
             }}
           >
             <div>
-              <Link href="/">
+              <Link href='/'>
                 <img
-                  className="header-menu-logo"
-                  src="/RECOVER-logo.svg"
-                  alt="Recover Logo"
-                  role="presentation"
+                  className='header-menu-logo'
+                  src='/RECOVER-logo.svg'
+                  alt='Recover Logo'
+                  role='presentation'
                 />
               </Link>
               <p style={{ marginTop: '10px', textAlign: 'center' }}>
@@ -139,13 +145,13 @@ const Layout = ({ children }) => {
                 </p>
                 <ul>
                   <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://kleros.io/">Kleros</a>
+                    <a href='https://kleros.io/'>Kleros</a>
                   </li>
                   <li style={{ padding: '2px 0' }}>
-                    <a href="https://ethereum.org/en/">Ethereum</a>
+                    <a href='https://ethereum.org/en/'>Ethereum</a>
                   </li>
                   <li style={{ padding: '2px 0' }}>
-                    <a href="https://ipfs.io/">IPFS</a>
+                    <a href='https://ipfs.io/'>IPFS</a>
                   </li>
                 </ul>
               </div>
@@ -153,11 +159,11 @@ const Layout = ({ children }) => {
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
                   <strong>Incubator</strong>
                 </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
+                {/* <ul>
+                  <li style={{ paddingBottom: "2px" }}>
                     <a href="https://stationf.co/">StationF</a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
             <div
@@ -175,10 +181,10 @@ const Layout = ({ children }) => {
                 </p>
                 <ul>
                   <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://github.com/blockchain-mafia/">Github</a>
+                    <a href='https://github.com/blockchain-mafia/'>Github</a>
                   </li>
                   <li style={{ padding: '2px 0' }}>
-                    <a href="mailto: contact@wagner-nicolas.com">Mail</a>
+                    <a href='mailto: contact@wagner-nicolas.com'>Mail</a>
                   </li>
                 </ul>
               </div>
@@ -188,7 +194,7 @@ const Layout = ({ children }) => {
                 </p>
                 <ul>
                   <li style={{ paddingBottom: '2px' }}>
-                    <a href="/">Escrow</a>
+                    <a href='/'>Escrow</a>
                   </li>
                 </ul>
               </div>
@@ -196,20 +202,21 @@ const Layout = ({ children }) => {
             <div style={{ height: '140px' }}>
               <img
                 style={{ height: '140px' }}
-                className="footer-cryptokitty-recover"
-                src="/cryptokitty-recover.png"
-                alt="Cryptokitty with Recover"
-                role="presentation"
+                className='footer-cryptokitty-recover'
+                src='/cryptokitty-recover.png'
+                alt='Cryptokitty with Recover'
+                role='presentation'
               />
             </div>
           </footer>
         </div>
       </div>
-      <div className="desktop-layout">
+      <div className='desktop-layout'>
         <div
           style={{
             marginTop: '120px',
-            padding: '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'
+            padding:
+              '0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2)'
           }}
         >
           <footer style={{ display: 'flex' }}>
@@ -222,12 +229,12 @@ const Layout = ({ children }) => {
               }}
             >
               <div style={{ width: '191px' }}>
-                <Link href="/">
+                <Link href='/'>
                   <img
-                    className="header-menu-logo"
-                    src="/RECOVER-logo.svg"
-                    alt="Recover Logo"
-                    role="presentation"
+                    className='header-menu-logo'
+                    src='/RECOVER-logo.svg'
+                    alt='Recover Logo'
+                    role='presentation'
                   />
                 </Link>
                 <p
@@ -260,13 +267,13 @@ const Layout = ({ children }) => {
                 </p>
                 <ul>
                   <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://kleros.io/">Kleros</a>
+                    <a href='https://kleros.io/'>Kleros</a>
                   </li>
                   <li style={{ padding: '2px 0' }}>
-                    <a href="https://ethereum.org/en/">Ethereum</a>
+                    <a href='https://ethereum.org/en/'>Ethereum</a>
                   </li>
                   <li style={{ padding: '2px 0' }}>
-                    <a href="https://ipfs.io/">IPFS</a>
+                    <a href='https://ipfs.io/'>IPFS</a>
                   </li>
                 </ul>
               </div>
@@ -274,11 +281,11 @@ const Layout = ({ children }) => {
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
                   <strong>Incubator</strong>
                 </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
+                {/* <ul>
+                  <li style={{ paddingBottom: "2px" }}>
                     <a href="https://stationf.co/">StationF</a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
               <div>
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
@@ -286,10 +293,10 @@ const Layout = ({ children }) => {
                 </p>
                 <ul>
                   <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://github.com/blockchain-mafia/">Github</a>
+                    <a href='https://github.com/blockchain-mafia/'>Github</a>
                   </li>
                   <li style={{ padding: '2px 0' }}>
-                    <a href="mailto: contact@wagner-nicolas.com">Mail</a>
+                    <a href='mailto: contact@wagner-nicolas.com'>Mail</a>
                   </li>
                 </ul>
               </div>
@@ -299,7 +306,7 @@ const Layout = ({ children }) => {
                 </p>
                 <ul>
                   <li style={{ paddingBottom: '2px' }}>
-                    <a href="/">Escrow</a>
+                    <a href='/'>Escrow</a>
                   </li>
                 </ul>
               </div>
@@ -307,10 +314,10 @@ const Layout = ({ children }) => {
             <div style={{ height: '180px' }}>
               <img
                 style={{ height: '180px' }}
-                className="footer-cryptokitty-recover"
-                src="/cryptokitty-recover.png"
-                alt="Cryptokitty with Recover"
-                role="presentation"
+                className='footer-cryptokitty-recover'
+                src='/cryptokitty-recover.png'
+                alt='Cryptokitty with Recover'
+                role='presentation'
               />
             </div>
           </footer>
@@ -319,8 +326,8 @@ const Layout = ({ children }) => {
 
       <style jsx global>
         {`
-          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
-          @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+          @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
+          @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 
           body,
           html {
@@ -464,7 +471,7 @@ const Layout = ({ children }) => {
             padding-top: 150px;
           }
 
-          div[id^='rcc'] {
+          div[id^="rcc"] {
             padding: 8px 0;
             border-bottom: 1px solid #efefef;
           }

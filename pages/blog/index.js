@@ -23,7 +23,7 @@ export default function Blog({ posts }) {
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className="main-container">
         <Hero />
