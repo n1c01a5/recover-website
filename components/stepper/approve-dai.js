@@ -15,7 +15,7 @@ export default function ApproveDAI ({
   const [buttonView, setButtonView] = useState(true)
   const [isPending, setIsPending] = useState(false)
   const [isOngoing, setIsOngoing] = useState(false)
-  const [txError, setTxerror] = useState(false)
+  const [txError, setTXerror] = useState(false)
   const [txId, setTxId] = useState('')
 
   const submitPersonalDetails = async () => {
@@ -37,7 +37,7 @@ export default function ApproveDAI ({
   }
 
   const approve = async () => {
-    setTxerror(false)
+    setTXerror(false)
     setIsPending(true)
     setIsOngoing(false)
     setButtonView(false)
@@ -47,7 +47,7 @@ export default function ApproveDAI ({
       .encodeABI()
 
     const transactionParameters = {
-      to: envData.ERCTOKEN, // Required except during contract publications.
+      to: envData.ERC_TOKEN, // Required except during contract publications.
       from: account, // must match user's active address.
       data: data
     }
@@ -66,8 +66,8 @@ export default function ApproveDAI ({
       .on('error', (error) => {
         console.error('error', error)
         setIsOngoing(false)
-        setIsPending(false)
-        setTxerror(true)
+        setIsPending(true)
+        setTXerror(true)
       })
   }
 

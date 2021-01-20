@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ConnectWeb3 ({
-  isnetworkWarning,
+  isNetworkWarning,
   findMetamaskAccounts,
   networkName
 }) {
@@ -14,7 +14,7 @@ export default function ConnectWeb3 ({
       </div>
       <div className='row'>
         <div className='col-md-12'>
-          {isnetworkWarning
+          {isNetworkWarning
             ? (
               <div
                 className='alert'

@@ -48,7 +48,7 @@ export default function LoserboxStepper () {
   const [web3, setWeb3] = useState(null)
   const [tokenAmount, setTokenAmount] = useState()
   const [networkName, setNetworkName] = useState('')
-  const [isnetworkWarning, setIsNetworkWarning] = useState(false)
+  const [isNetworkWarning, setIsNetworkWarning] = useState(false)
   const [userEthBalance, setUserEthBalance] = useState('')
   const [tokenBalanceApproved, setTokenBalanceApproved] = useState(false)
   const [cid, setCid] = useState('')
@@ -143,7 +143,7 @@ export default function LoserboxStepper () {
     let amount
     if (networkId === 1) {
       setEnvData({
-        ERCTOKEN: process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN,
+        ERC_TOKEN: process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN,
         MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS:
           process.env
             .NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
@@ -168,7 +168,7 @@ export default function LoserboxStepper () {
       )
     } else {
       setEnvData({
-        ERCTOKEN: process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN,
+        ERC_TOKEN: process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN,
         MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS:
           process.env
             .NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
@@ -236,7 +236,7 @@ export default function LoserboxStepper () {
       case 1:
         return (
           <ConnectWeb3
-            isnetworkWarning={isnetworkWarning}
+            isNetworkWarning={isNetworkWarning}
             findMetamaskAccounts={findMetamaskAccounts}
             networkName={networkName}
           />

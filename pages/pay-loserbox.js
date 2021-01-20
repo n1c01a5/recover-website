@@ -13,7 +13,7 @@ export default function PayLoserBox () {
   const [buttonView, setButtonView] = useState(true)
   const [isPending, setIsPending] = useState(false)
   const [isOngoing, setIsOngoing] = useState(false)
-  const [txError, setTxError] = useState(false)
+  const [txError, setTXerror] = useState(false)
   const [networkName, setNetworkName] = useState('')
 
   const pay = async () => {
@@ -101,7 +101,7 @@ export default function PayLoserBox () {
           .on('error', (error) => {
             console.error('error', error)
             setIsOngoing(false)
-            setTxError(true)
+            setTXerror(true)
           })
       }
     }

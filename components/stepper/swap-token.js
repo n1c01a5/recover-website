@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import DEXAG from 'dexag-sdk'
-const fetch = require('node-fetch')
+const axios = require('axios')
 
 export default function SwapToken ({
   web3,
@@ -12,15 +12,20 @@ export default function SwapToken ({
   const [isLowBalanceWarning, setIsLowBalanceWarning] = useState(false)
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_DEX_AG)
-      .then(res => res.json())
-      .then(json => {
-        console.log(json)
-        userEthBalance = web3.utils.fromWei(userEthBalance)
-        const dexPrice = (json.price) * process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT
-        console.log('dexPrice', dexPrice)
-        userEthBalance - (dexPrice) >= 0 ? setIsLowBalanceWarning(false) : setIsLowBalanceWarning(true)
-      })
+    axios.get(process.env.NEXT_PUBLIC_DEX_AG_URL, {
+      params: {
+        from: process.env.NEXT_PUBLIC_DEX_AG_FROM_TOKEN,
+        to: process.env.NEXT_PUBLIC_DEX_AG_TO_TOKEN,
+        toAmount: process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT,
+        dex: process.env.NEXT_PUBLIC_DEX_AG_DEXTYPE
+      }
+    }).then(response => {
+      userEthBalance = web3.utils.fromWei(userEthBalance)
+      const dexPrice = (response.data.price) * process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT
+      userEthBalance - (dexPrice) >= 0 ? setIsLowBalanceWarning(false) : setIsLowBalanceWarning(true)
+    }).catch((error) => {
+      console.error(error)
+    })
   }, [])
 
   if (tokenBalanceApproved) {
@@ -31,28 +36,23 @@ export default function SwapToken ({
 
     // receive status messages as the client executes the trade
     sdk.registerStatusHandler((status, data) => {
-      console.log('status, data ===> ', status, data)
+      console.log('status, data', status, data)
     })
     const price = sdk.getPrice({
-      to: 'DAI',
-      from: 'ETH',
+      to: process.env.NEXT_PUBLIC_DEX_AG_TO_TOKEN,
+      from: process.env.NEXT_PUBLIC_DEX_AG_FROM_TOKEN,
       toAmount: process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT,
-      dex: 'ag'
+      dex: process.env.NEXT_PUBLIC_DEX_AG_DEXTYPE
     })
-    console.log('price', price)
-
     // get trade
     const tx = await sdk.getTrade({
-      to: 'DAI',
-      from: 'ETH',
+      to: process.env.NEXT_PUBLIC_DEX_AG_FROM_TOKEN,
+      from: process.env.NEXT_PUBLIC_DEX_AG_FROM_TOKEN,
       toAmount: process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT,
-      dex: 'ag'
+      dex: process.env.NEXT_PUBLIC_DEX_AG_DEXTYPE
     })
-    console.log('tx', tx)
-
     // checkout
     const valid = await sdk.validate(tx)
-    console.log('valid', valid)
     if (valid) {
       // transaction data is valid, make a trade
       sdk.trade(tx)

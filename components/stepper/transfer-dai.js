@@ -26,10 +26,10 @@ export default function TransferDAI ({
   const [buttonView, setButtonView] = useState(true)
   const [isPending, setIsPending] = useState(false)
   const [isOngoing, setIsOngoing] = useState(false)
-  const [txError, setTxError] = useState(false)
-  const [isagree, setIsagree] = useState(false)
+  const [txError, setTXerror] = useState(false)
+  const [isAgree, setIsagree] = useState(false)
   const [txId, setTxId] = useState('')
-  const [open, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(false)
 
   const handleClickOpen = (event) => {
     event.preventDefault()
@@ -40,8 +40,8 @@ export default function TransferDAI ({
     setOpen(false)
   }
   const transfer = async () => {
-    if (isagree) {
-      setTxError(false)
+    if (isAgree) {
+      setTXerror(false)
       setIsPending(true)
       setIsOngoing(false)
       setButtonView(false)
@@ -49,11 +49,10 @@ export default function TransferDAI ({
       const data = multipleArbitrableTokenContract.methods
         .createTransaction(
           tokenAmount,
-          envData.ERCTOKEN,
+          envData.ERC_TOKEN,
           envData.TIMEOUTPAYMENT.toString(),
           envData.RECEIVER,
-          cid
-        )
+          cid)
         .encodeABI()
       const transactionParameters = {
         to: envData.MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS, // Required except during contract publications.
@@ -70,14 +69,13 @@ export default function TransferDAI ({
         .once('confirmation', (confirmationNumber, receipt) => {
           if (receipt.status) {
             router.push('/loserbox-confirmation')
-            localStorage.clear()
           }
         })
         .on('error', (error) => {
           console.error('error', error)
           setIsOngoing(false)
           setIsPending(true)
-          setTxError(true)
+          setTXerror(true)
         })
     }
   }
@@ -103,9 +101,9 @@ export default function TransferDAI ({
       <FormControlLabel
         control={
           <Checkbox
-            checked={isagree}
-            onChange={() => setIsagree(!isagree)}
-            name='isagree'
+            checked={isAgree}
+            onChange={() => setIsagree(!isAgree)}
+            name='isAgree'
             color='primary'
           />
         }
@@ -134,7 +132,7 @@ export default function TransferDAI ({
                   backgroundColor: '#A6FFCC'
                 }}
                 type='button'
-                disabled={!isagree}
+                disabled={!isAgree}
               >
                 <strong>Transfer DAI To Escrow</strong>
               </button>
@@ -164,9 +162,9 @@ export default function TransferDAI ({
             : null}
         </div>
       </div>
-      {open && (
+      {isOpen && (
         <Dialog
-          open={open}
+          open={isOpen}
           onClose={handleClose}
           aria-labelledby='alert-dialog-title'
           aria-describedby='alert-dialog-description'
