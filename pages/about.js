@@ -8,11 +8,14 @@ export default function About () {
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <section className='about__hero'>
-        <img className='about__img-container' src='/wagner-nicolas.jpg' alt='Wagner Nicolas biography - blockchain developer' />
-        <div className='about__hero-text'>
-          <p className='p-indent'>
-            I am a self-taught developer who has worked as Freelance since 2014 for different startups
+      <section className="about__hero">
+        <img className="about__img-container" src="/wagner-nicolas.jpg" alt="Wagner Nicolas biography - blockchain developer" />
+        <div className="about__hero-text">
+          <h1 style={{color: '#51c4e9', fontSize: '1.5rem', marginBottom: '2rem'}}>
+            Nicolas
+          </h1>
+          <p className="p-indent">
+            I am a self-taught developer who has worked as Freelance since 2014 for different startups 
             and corporates (Tradelab, Novactive, Air France, SNCF...).
             Beginning in June 2016, he became interested in blockchain technology. The transparent
             and disintermediate dimension of this blockchain protocol convinced him that it would be the next
