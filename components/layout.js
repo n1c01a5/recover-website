@@ -155,16 +155,6 @@ const Layout = ({ children, noRightButton }) => {
                   </li>
                 </ul>
               </div>
-            </div>
-          <div
-              style={{
-                display: 'flex',
-                width: '100vw',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                padding: '30px 14%'
-              }}
-            >
               <div>
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
                   <strong>Products</strong>
@@ -174,7 +164,7 @@ const Layout = ({ children, noRightButton }) => {
                     <a href='/loser-box'>Loser Box</a>
                   </li>
                 </ul>
-              </div>
+            </div>
             </div>
             <div
               style={{
