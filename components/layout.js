@@ -271,11 +271,11 @@ const Layout = ({ children, noRightButton }) => {
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
                   <strong>Products</strong>
                 </p>
-                {/* <ul>
+                <ul>
                   <li style={{ paddingBottom: "2px" }}>
-                    <a href="#">Loser Box</a>
+                    <a href="/loser-box">Loser Box</a>
                   </li>
-                </ul> */}
+                </ul>
               </div>
               <div>
                 <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
