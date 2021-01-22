@@ -1,17 +1,21 @@
 .highlightedBlog {
   display: flex;
+  background-color: #fff;
+  width: 84%;
+  margin: 0 auto;
   .blogImage {
-    width: 100%;
+    width: 70%;
     height: 22rem;
-    background-color: #dcdcdc;
     background-size: cover;
+    margin: 2rem;
+    margin-right: 0;
     margin-bottom: 1rem;
     border-radius: 5px;
   }
   .info {
-    width: 35%;
-    padding-top: 4rem;
-    padding-left: 2rem;
+    width: 30%;
+    padding: 2rem;
+    padding-top: 7rem;
   }
   .topic {
     color: #51c4e9;
@@ -27,5 +31,6 @@
   }
   .teaser {
     font-size: 1.1rem;
+    line-height: 1.1;
   }
 }

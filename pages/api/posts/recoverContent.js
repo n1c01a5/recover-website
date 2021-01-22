@@ -1,6 +1,6 @@
 export const RecoverBlogContent = `
-<div className="recover_phone_container">
-    <section className="hero-section">
+<div className="recoverPhoneContainer">
+    <section className="heroSection">
       <p>
         Smartphones have taken place as one of the most personal and important
         tools in today's world. They contain a large part of your private and
@@ -21,8 +21,8 @@ export const RecoverBlogContent = `
       </p>
       <p> Here is what you should do immediately after the phone is lost</p>
     </section>
-    <section className="section-1">
-      <h2>What measures to take right after the Phone is lost? </h2>
+    <section className="section1">
+      <h2 style={{margin:"0"}}>What measures to take right after the Phone is lost? </h2>
 
       <h3>1. Call or text your phone</h3>
       <p>
@@ -67,7 +67,7 @@ export const RecoverBlogContent = `
         on Android and IOS devices
       </h2>
     </section>
-    <section className="section-2">
+    <section className="section2">
       <div className="android">
         <h3>Learn how to locate an Android phone:</h3>
         <p>There are 2 ways to find an Android phone.</p>
