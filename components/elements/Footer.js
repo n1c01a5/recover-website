@@ -5,22 +5,22 @@ export default function () {
   return (
     <div className={styles.footerContainer}>
       <footer className={styles.footer}>
+        <div className={styles.logoContainer}>
+          <Link href="/">
+            <img
+              className="header-menu-logo"
+              src="/RECOVER-logo.svg"
+              alt="Recover Logo"
+              role="presentation"
+            />
+          </Link>
+          <p className={styles.logoPara}>
+            <strong className={styles.strong}>Use it, or Lose it</strong>
+          </p>
+          <p className={styles.cp}>@ RECOVER 2020</p>
+        </div>
         <div className={styles.linksContainer}>
-          <div className={styles.logoContainer}>
-            <Link href="/">
-              <img
-                className="header-menu-logo"
-                src="/RECOVER-logo.svg"
-                alt="Recover Logo"
-                role="presentation"
-              />
-            </Link>
-            <p className={styles.logoPara}>
-              <strong className={styles.strong}>Use it, or Lose it</strong>
-            </p>
-            <p className={styles.cp}>@ RECOVER 2020</p>
-          </div>
-          <div>
+          <div className={styles.menuColumn}>
             <p className={styles.linksPara}>
               <strong className={styles.strong}>Protocol</strong>
             </p>
@@ -42,7 +42,7 @@ export default function () {
               </li>
             </ul>
           </div>
-          <div>
+          <div className={styles.menuColumn}>
             <p className={styles.linksPara}>
               <strong className={styles.strong}>Products</strong>
             </p>
@@ -54,7 +54,7 @@ export default function () {
               </li>
             </ul>
           </div>
-          <div>
+          <div className={styles.menuColumn}>
             <p className={styles.linksPara}>
               <strong className={styles.strong}>Social</strong>
             </p>
@@ -77,7 +77,7 @@ export default function () {
               </li>
             </ul>
           </div>
-          <div>
+          <div className={styles.menuColumn}>
             <p className={styles.linksPara}>
               <strong className={styles.strong}>Last Posts</strong>
             </p>

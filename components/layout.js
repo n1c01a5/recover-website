@@ -4,6 +4,7 @@ import { slide as Menu } from 'react-burger-menu'
 
 import Button from './elements/button'
 import Footer from './elements/Footer'
+import Header from './elements/Header'
 
 function Scroll({ setTop, isTop }) {
   useEffect(function onFirstMount() {
@@ -32,7 +33,7 @@ const Layout = ({ children, noRightButton }) => {
     <>
       <nav suppressHydrationWarning>
         {/* FIXME: remove this props to mute warning. */}
-        <div className="mobile-layout">
+        {/* <div className="mobile-layout">
           <div className="header-menu-small">
             <Link href="/">
               <img
@@ -94,8 +95,8 @@ const Layout = ({ children, noRightButton }) => {
               </a>
             </Menu>
           </div>
-        </div>
-        <div className="desktop-layout">
+        </div> */}
+        {/* <div className="desktop-layout">
           <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
             <div>
               <Link href="/">
@@ -159,158 +160,16 @@ const Layout = ({ children, noRightButton }) => {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Header isTop={isTop} />
       </nav>
 
       <main role="main">
         <div className="body-container">{children}</div>
       </main>
-
-      {/* <div className="mobile-layout">
-        <div style={{ marginTop: '40px' }}>
-          <footer
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center'
-            }}
-          >
-            <div>
-              <Link href="/">
-                <img
-                  className="header-menu-logo"
-                  src="/RECOVER-logo.svg"
-                  alt="Recover Logo"
-                  role="presentation"
-                />
-              </Link>
-              <p style={{ marginTop: '10px', textAlign: 'center' }}>
-                <strong>Use it, or Lose it</strong>
-              </p>
-              <p style={{ marginTop: '10px', textAlign: 'center' }}>
-                @ RECOVER 2020
-              </p>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                width: '100vw',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                padding: '30px 14%'
-              }}
-            >
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Protocol</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://kleros.io/">Kleros</a>
-                  </li>
-                  <li style={{ padding: '2px 0' }}>
-                    <a href="https://ethereum.org/en/">Ethereum</a>
-                  </li>
-                  <li style={{ padding: '2px 0' }}>
-                    <a href="https://ipfs.io/">IPFS</a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Products</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="/loser-box">Loser Box</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                width: '100vw',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                padding: '0 14%'
-              }}
-            >
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Social</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="https://github.com/blockchain-mafia/">Github</a>
-                  </li>
-                  <li style={{ padding: '2px 0' }}>
-                    <a href="mailto: contact@wagner-nicolas.com">Mail</a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p style={{ padding: '8px 0 10px 0', fontSize: '18px' }}>
-                  <strong>Last Posts</strong>
-                </p>
-                <ul>
-                  <li style={{ paddingBottom: '2px' }}>
-                    <a href="/">Escrow</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div style={{ height: '140px' }}>
-              <img
-                style={{ height: '140px' }}
-                className="footer-cryptokitty-recover"
-                src="/cryptokitty-recover.png"
-                alt="Cryptokitty with Recover"
-                role="presentation"
-              />
-            </div>
-          </footer>
-        </div>
-      </div> */}
       <Footer />
       <style jsx global>
         {`
-          .header-menu {
-            display: flex;
-            justify-content: space-between;
-            position: fixed;
-            min-width: 100vw;
-            padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
-            line-height: 58px;
-            color: #444;
-            box-shadow: 0px 1px 10px #999;
-            background: #fff;
-            z-index: 1000;
-          }
-
-          .header-menu__isTop {
-            position: absolute;
-            margin-top: 30px;
-            box-shadow: 0 0 0 #fff;
-            z-index: 1000;
-          }
-
-          .header-menu-logo {
-            position: relative;
-            top: 7px;
-            cursor: pointer;
-          }
-
-          .header-menu-small {
-            position: fixed;
-            box-shadow: 0px 1px 10px #999;
-            background: #fff;
-            line-height: 60px;
-            min-width: 100%;
-            color: #444;
-            z-index: 100;
-          }
-
           /* Position and sizing of burger button */
           .bm-burger-button {
             position: fixed;

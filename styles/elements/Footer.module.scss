@@ -3,13 +3,14 @@
   padding: 0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2);
   .footer {
     display: flex;
+    justify-content: space-between;
   }
   .linksContainer {
     display: flex;
-    flex: 1;
-    padding-top: 20px;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
+
   .logoPara {
     width: 191px;
     margin-top: 10px;
@@ -53,11 +54,30 @@
       flex-direction: column;
       align-items: center;
     }
+    .linksContainer {
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      padding: 2rem;
+    }
+    .cp {
+      margin-top: 1px;
+    }
+    .menuColumn {
+      width: 40%;
+      padding: 0.5rem;
+      margin: 0.7rem;
+    }
     .logoContainer {
-      border: 1px solid red;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      width: 70%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .logoPara {
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+    .cp {
+      margin: 0 auto;
     }
   }
 }
