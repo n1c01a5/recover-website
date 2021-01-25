@@ -293,20 +293,31 @@ export default function LoserboxStepper () {
           {steps.map((label, index) => {
             const stepProps = {}
             const labelProps = {}
-            if (label === `Swap ETH to ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI`) {
+            if (
+              label ===
+              `Swap ETH to ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI`
+            ) {
               labelProps.optional = (
                 <Typography
-                  variant='caption'
+                  variant="caption"
                   style={{ color: 'rgba(0, 0, 0, 0.54)', display: 'block' }}
-                  align='center'
+                  align="center"
                 >
                   Optional
                 </Typography>
               )
             }
             return (
-              <Step key={label} {...stepProps}>
-                <StepLabel className='hideOnMobile' {...labelProps}>
+              <Step key={label}>
+                <StepLabel
+                  className="hideOnMobile"
+                  StepIconProps={{
+                    classes: {
+                      active: classes.stepIcon
+                    }
+                  }}
+                  {...labelProps}
+                >
                   {label}
                 </StepLabel>
               </Step>
