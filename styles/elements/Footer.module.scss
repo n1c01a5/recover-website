@@ -5,10 +5,14 @@
     display: flex;
     justify-content: space-between;
   }
+  .logoContainer {
+    margin-top: 0.5rem;
+  }
   .linksContainer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    flex: 2;
   }
 
   .logoPara {
@@ -44,6 +48,15 @@
   strong {
     font-weight: 700;
   }
+  .footerImageContainer {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+  }
+  .footerImage {
+    height: 180px;
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 720px) {
@@ -55,12 +68,10 @@
       align-items: center;
     }
     .linksContainer {
-      margin: 0 auto;
+      width: 100%;
       margin-bottom: 2rem;
-      padding: 2rem;
-    }
-    .cp {
-      margin-top: 1px;
+      padding-left: 2rem;
+      justify-content: space-around;
     }
     .menuColumn {
       width: 40%;
@@ -78,6 +89,10 @@
     }
     .cp {
       margin: 0 auto;
+      margin-top: 1px;
+    }
+    .footerImageContainer {
+      margin-top: -2rem;
     }
   }
 }

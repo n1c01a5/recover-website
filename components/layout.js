@@ -96,71 +96,7 @@ const Layout = ({ children, noRightButton }) => {
             </Menu>
           </div>
         </div> */}
-        {/* <div className="desktop-layout">
-          <div className={`header-menu ${isTop ? 'header-menu__isTop' : ''}`}>
-            <div>
-              <Link href="/">
-                <img
-                  className="header-menu-logo"
-                  src="/RECOVER-logo.svg"
-                  alt="Recover Logo"
-                />
-              </Link>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                width: '100%'
-              }}
-            >
-              <div style={{ padding: '0 40px' }}>
-                <a
-                  style={{
-                    textDecoration: 'none',
-                    color: '#444',
-                    fontWeight: '500'
-                  }}
-                  href="https://app.recover.ws/"
-                  target="_blank"
-                >
-                  APPLICATION
-                </a>
-              </div>
-              <div style={{ padding: '0 40px' }}>
-                <Link href="/blog">
-                  <a
-                    style={{
-                      textDecoration: 'none',
-                      color: '#444',
-                      fontWeight: '500'
-                    }}
-                  >
-                    BLOG
-                  </a>
-                </Link>
-              </div>
-              <div style={{ padding: '0 40px' }}>
-                <Link href="/about">
-                  <a
-                    style={{
-                      textDecoration: 'none',
-                      color: '#444',
-                      fontWeight: '500'
-                    }}
-                  >
-                    ABOUT
-                  </a>
-                </Link>
-              </div>
-            </div>
-            <div>
-              <Link href="/loser-box">
-                <Button isPrimary>Get Your Loser Box</Button>
-              </Link>
-            </div>
-          </div>
-        </div> */}
+
         <Header isTop={isTop} />
       </nav>
 
@@ -208,7 +144,6 @@ const Layout = ({ children, noRightButton }) => {
             position: fixed;
             height: 100%;
           }
-
           /* General sidebar styles */
           .bm-menu {
             background: #fff;

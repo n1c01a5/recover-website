@@ -90,10 +90,9 @@ export default function () {
             </ul>
           </div>
         </div>
-        <div style={{ height: '180px' }}>
+        <div className={styles.footerImageContainer}>
           <img
-            style={{ height: '180px' }}
-            className="footer-cryptokitty-recover"
+            className={`${styles.footerImage} footer-cryptokitty-recover`}
             src="/cryptokitty-recover.png"
             alt="Cryptokitty with Recover"
             role="presentation"
