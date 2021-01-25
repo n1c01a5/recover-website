@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1)
+  },
+  stepIcon:{
+    color: '#A6FFCB !important'
   }
 }))
 
@@ -313,7 +316,8 @@ export default function LoserboxStepper () {
                   className="hideOnMobile"
                   StepIconProps={{
                     classes: {
-                      active: classes.stepIcon
+                      active: classes.stepIcon,
+                      completed:classes.stepIcon
                     }
                   }}
                   {...labelProps}
