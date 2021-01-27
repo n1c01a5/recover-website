@@ -24,8 +24,18 @@
     font-size: 22px;
     font-weight: 500;
     color: #15171a;
+    line-height: 1;
   }
   .blogResume {
     color: gray;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .blogTileContainer {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
   }
 }

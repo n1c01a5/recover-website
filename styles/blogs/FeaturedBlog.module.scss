@@ -1,36 +1,81 @@
-.highlightedBlog {
-  display: flex;
-  background-color: #fff;
-  width: 84%;
-  margin: 0 auto;
-  .blogImage {
-    width: 70%;
-    height: 22rem;
-    background-size: cover;
-    margin: 2rem;
-    margin-right: 0;
-    margin-bottom: 1rem;
-    border-radius: 5px;
+.linkWrapper {
+  color: black;
+  .highlightedBlog {
+    display: flex;
+    background-color: #fff;
+    width: 84%;
+    margin: 0 auto;
+    .blogImage {
+      width: 70%;
+      height: 22rem;
+      background-size: cover;
+      background-position: center;
+      margin: 2rem;
+      margin-right: 0;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+    .info {
+      width: 30%;
+      padding: 2rem;
+      padding-top: 7rem;
+    }
+    .topic {
+      color: #51c4e9;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+    .title {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      margin-top: 0.7rem;
+    }
+    .teaser {
+      font-size: 1.1rem;
+      line-height: 1.1;
+    }
   }
-  .info {
-    width: 30%;
-    padding: 2rem;
-    padding-top: 7rem;
-  }
-  .topic {
-    color: #51c4e9;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-  .title {
-    font-size: 1.7rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    margin-top: 0.7rem;
-  }
-  .teaser {
-    font-size: 1.1rem;
-    line-height: 1.1;
+}
+
+@media screen and (max-width: 720px) {
+  .linkWrapper {
+    .highlightedBlog {
+      width: 85%;
+      flex-direction: column;
+      margin: 0 auto;
+      .blogImage {
+        width: 100%;
+        height: 12rem;
+        background-size: cover;
+        margin: 0rem;
+        margin-bottom: 1rem;
+      }
+      .info {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0rem;
+      }
+      .topic {
+        font-size: 0.9rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #51c4e9;
+        margin-bottom: 0.9rem;
+      }
+      .title {
+        margin-bottom: 1rem;
+        font-size: 22px;
+        font-weight: 500;
+        color: #15171a;
+        line-height: 1;
+      }
+      .teaser {
+        color: gray;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+    }
   }
 }

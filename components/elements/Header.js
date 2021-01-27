@@ -63,22 +63,22 @@ const Header = ({ isTop }) => {
             X
           </div>
           <div className={styles.linkContainer}>
-            <Link
+            <a
               className={styles.link}
               href="https://app.recover.ws/"
               target="_blank"
             >
               APPLICATION
+            </a>
+          </div>
+          <div className={styles.linkContainer}>
+            <Link href="/blog">
+              <a className={styles.link}>BLOG</a>
             </Link>
           </div>
           <div className={styles.linkContainer}>
-            <Link className={styles.link} active href="/blog">
-              BLOG
-            </Link>
-          </div>
-          <div className={styles.linkContainer}>
-            <Link className={styles.link} href="/about">
-              ABOUT
+            <Link href="/about">
+              <a className={styles.link}>ABOUT</a>
             </Link>
           </div>
         </div>
