@@ -189,6 +189,52 @@ h2 {
   }
 }
 
+.additionalClassForHead {
+  padding: 5px 0;
+  background: #fff !important;
+  color: #444 !important;
+  font-weight: 300 !important;
+}
+.additionalClassForHeadMobile {
+  padding: 5px 0;
+  background: #fff !important;
+  color: #444 !important;
+  font-weight: 300 !important;
+}
+.additionalClassForHead h3 {
+  font-family: Montserrat;
+  font-size: 22px !important;
+  font-weight: 200 !important;
+  margin: 0;
+  padding: 0;
+}
+.additionalClassForHeadMobile h3 {
+  font-family: Montserrat;
+  font-size: 18px !important;
+  font-weight: 200 !important;
+  margin: 0;
+  padding: 0;
+}
+.additionalClassForHead:hover,
+.active-accordion {
+  color: #444 !important;
+  background: #fff !important;
+}
+.additionalClassForHeadMobile:hover,
+.active-accordion {
+  color: #444 !important;
+  background: #fff !important;
+}
+.additionalClassForContent {
+  background: #fff !important;
+  margin: 0 !important;
+  padding: 17px 0 !important;
+  line-height: 24px !important;
+}
+.additionalClassForContent p {
+  padding: 7px 0;
+}
+
 /* ####################################################### */
 
 .new-button {
