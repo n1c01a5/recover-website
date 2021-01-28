@@ -60,7 +60,7 @@
     .buttonContainer {
       display: none;
     }
-    .burgerMenu {
+    .Menu {
       display: block;
       width: 2.7rem;
       height: 3.5rem;
@@ -72,7 +72,6 @@
       background-color: gray;
       margin: 5px;
     }
-
     .sidebar {
       position: absolute;
       height: 100vh;
@@ -82,9 +81,8 @@
       left: 0;
       padding: 2rem;
     }
-
     .crossButton {
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: 700;
       text-align: right;
       padding: 0.7rem;

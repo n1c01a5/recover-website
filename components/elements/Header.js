@@ -7,6 +7,25 @@ import styles from '../../styles/elements/Header.module.scss'
 
 const Header = ({ isTop }) => {
   const [showSidebar, setShowSidebar] = useState(false)
+
+  const ToggleButton = () => {
+    return (
+      <div className={styles.Menu} onClick={() => setShowSidebar(!showSidebar)}>
+        {!showSidebar ? <HamburgerMenu /> : <CrossButton />}
+      </div>
+    )
+  }
+
+  const HamburgerMenu = () => (
+    <div>
+      <div className={styles.burgerMenuBar}></div>
+      <div className={styles.burgerMenuBar}></div>
+      <div className={styles.burgerMenuBar}></div>
+    </div>
+  )
+
+  const CrossButton = () => <span className={styles.crossButton}>X</span>
+
   return (
     <div
       className={`${styles.headerMenu} ${isTop ? 'header-menu__isTop' : ''}`}
@@ -46,22 +65,9 @@ const Header = ({ isTop }) => {
           <Button isPrimary>Get Your Loser Box</Button>
         </Link>
       </div>
-      <div
-        className={styles.burgerMenu}
-        onClick={() => setShowSidebar(!showSidebar)}
-      >
-        <div className={styles.burgerMenuBar}></div>
-        <div className={styles.burgerMenuBar}></div>
-        <div className={styles.burgerMenuBar}></div>
-      </div>
+      <ToggleButton />
       {showSidebar ? (
         <div className={styles.sidebar}>
-          <div
-            className={styles.crossButton}
-            onClick={() => setShowSidebar(false)}
-          >
-            X
-          </div>
           <div className={styles.linkContainer}>
             <a
               className={styles.link}
