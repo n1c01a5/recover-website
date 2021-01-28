@@ -177,6 +177,10 @@ body {
     margin-bottom: 1rem;
     width: 45%;
   }
+  .loser-box-container {
+    width: 90% !important;
+    border: 1px solid red;
+  }
 }
 
 @media screen and (min-width: 1025px) {

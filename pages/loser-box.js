@@ -12,7 +12,7 @@ import IpfsLogo from '../public/ipfs-logo.svg'
 
 const Faq = dynamic(() => import('../components/faq'), { ssr: false })
 
-export default function LoserBox () {
+export default function LoserBox() {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 1024px)'
   })
@@ -21,18 +21,19 @@ export default function LoserBox () {
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div>
         <header>
-          <div className='desktop-layout'>
+          <div className="desktop-layout">
             <div
+              className="loser-box-container"
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '1250px',
-                margin: '0 auto 0 auto'
+                margin: '5rem auto'
               }}
             >
               <div
@@ -53,7 +54,7 @@ export default function LoserBox () {
                     marginBottom: '20px'
                   }}
                 >
-                  <img src='loser-box-buy.png' style={{ width: '64px' }} />
+                  <img src="loser-box-buy.png" style={{ width: '64px' }} />
                 </div>
                 <div
                   style={{
@@ -68,7 +69,7 @@ export default function LoserBox () {
                   }}
                 >
                   <img
-                    src='loser-box-pvc-card-keyring-square.jpg'
+                    src="loser-box-pvc-card-keyring-square.jpg"
                     style={{ objectFix: 'cover', width: '128px' }}
                   />
                 </div>
@@ -85,7 +86,7 @@ export default function LoserBox () {
                   }}
                 >
                   <img
-                    src='loser-box-pvc-card-square.png'
+                    src="loser-box-pvc-card-square.png"
                     style={{ objectFix: 'cover', width: '128px' }}
                   />
                 </div>
@@ -98,7 +99,7 @@ export default function LoserBox () {
                   width: '1000px'
                 }}
               >
-                <img src='loser-box-buy.png' style={{ width: '320px' }} />
+                <img src="loser-box-buy.png" style={{ width: '320px' }} />
               </div>
               <div>
                 <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
@@ -147,17 +148,17 @@ export default function LoserBox () {
                 >
                   <img
                     src={EthereumLogo}
-                    alt='Ethereum logo svg'
+                    alt="Ethereum logo svg"
                     style={{ width: '26px' }}
                   />
                   <img
                     src={KlerosLogo}
-                    alt='Kleros logo svg'
+                    alt="Kleros logo svg"
                     style={{ width: '45px' }}
                   />
                   <img
                     src={IpfsLogo}
-                    alt='IPFS logo svg'
+                    alt="IPFS logo svg"
                     style={{ width: '35px' }}
                   />
                 </div>
@@ -195,7 +196,7 @@ export default function LoserBox () {
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <div>
-                    <Link href='/loserbox-stepper?step=1'>
+                    <Link href="/loserbox-stepper?step=1">
                       <Button isPrimary style={{ width: '300px' }}>
                         BUY LOSER BOX
                       </Button>
@@ -226,17 +227,18 @@ export default function LoserBox () {
             </div>
           </div>
 
-          <div className='mobile-layout' />
+          <div className="mobile-layout" />
         </header>
       </div>
-      <style jsx>{`
-        h1 {
-          font-weight: 700;
-        }
-        .form-group {
-          display: block;
-        }
-      `}
+      <style jsx>
+        {`
+          h1 {
+            font-weight: 700;
+          }
+          .form-group {
+            display: block;
+          }
+        `}
       </style>
     </Layout>
   )

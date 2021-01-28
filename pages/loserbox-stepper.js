@@ -13,13 +13,11 @@ import ConnectWeb3 from '../components/stepper/connect-web3'
 import SwapToken from '../components/stepper/swap-token'
 import ApproveDAI from '../components/stepper/approve-dai'
 import TransferDAI from '../components/stepper/transfer-dai'
+import styles from '../styles/loser-box/LoserBoxStepper.module.scss'
 const mattAbi = require('../contracts/MultipleArbitrationToken.json')
 const erc20Abi = require('../contracts/ERC20.json')
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%'
-  },
   backButton: {
     marginRight: theme.spacing(1)
   },
@@ -27,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1)
   },
-  stepIcon:{
+  stepIcon: {
     color: '#A6FFCB !important'
   }
 }))
 
-function getSteps () {
+function getSteps() {
   return [
     'Personal Details',
     'Connect to Web3',
@@ -43,7 +41,7 @@ function getSteps () {
 }
 let pageCount = 1
 
-export default function LoserboxStepper () {
+export default function LoserboxStepper() {
   const router = useRouter()
   const [account, setAccount] = useState('')
   const [multipleArbitrableTokenContract, setMattContract] = useState(null)
@@ -148,8 +146,7 @@ export default function LoserboxStepper () {
       setEnvData({
         ERC_TOKEN: process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN,
         MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS:
-          process.env
-            .NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
+          process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
         TIMEOUTPAYMENT: process.env.NEXT_PUBLIC_MAINNET_TIMEOUT_PAYMENT,
         RECEIVER: process.env.NEXT_PUBLIC_MAINNET_RECEIVER_ADDRESS
       })
@@ -163,18 +160,13 @@ export default function LoserboxStepper () {
         process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
       )
       // Use BigNumber
-      decimals = web3.utils.toBN(
-        process.env.NEXT_PUBLIC_MAINNET_TOKEN_DECIMALS
-      )
-      amount = web3.utils.toBN(
-        process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT
-      )
+      decimals = web3.utils.toBN(process.env.NEXT_PUBLIC_MAINNET_TOKEN_DECIMALS)
+      amount = web3.utils.toBN(process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT)
     } else {
       setEnvData({
         ERC_TOKEN: process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN,
         MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS:
-          process.env
-            .NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
+          process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS,
         TIMEOUTPAYMENT: process.env.NEXT_PUBLIC_KOVAN_TIMEOUT_PAYMENT,
         RECEIVER: process.env.NEXT_PUBLIC_KOVAN_RECEIVER_ADDRESS
       })
@@ -187,9 +179,7 @@ export default function LoserboxStepper () {
         process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
       )
       // Use BigNumber
-      decimals = web3.utils.toBN(
-        process.env.NEXT_PUBLIC_KOVAN_TOKEN_DECIMALS
-      )
+      decimals = web3.utils.toBN(process.env.NEXT_PUBLIC_KOVAN_TOKEN_DECIMALS)
       amount = web3.utils.toBN(process.env.NEXT_PUBLIC_KOVAN_TOKEN_AMOUNT)
     }
 
@@ -232,7 +222,7 @@ export default function LoserboxStepper () {
     setCid(data)
   }
 
-  function getStepContent (stepIndex) {
+  function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
         return <PersonalDetailsFormData handleNextStep={handleNextStep} />
@@ -288,10 +278,10 @@ export default function LoserboxStepper () {
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={classes.root}>
+      <div className={styles.root}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => {
             const stepProps = {}
@@ -317,7 +307,7 @@ export default function LoserboxStepper () {
                   StepIconProps={{
                     classes: {
                       active: classes.stepIcon,
-                      completed:classes.stepIcon
+                      completed: classes.stepIcon
                     }
                   }}
                   {...labelProps}
@@ -329,19 +319,13 @@ export default function LoserboxStepper () {
           })}
         </Stepper>
         <div>
-          {activeStep === steps.length
-            ? (
-              <div>
-                <p className={classes.instructions}>
-                  All steps completed
-                </p>
-              </div>
-              )
-            : (
-              <div>
-                {getStepContent(activeStep)}
-              </div>
-              )}
+          {activeStep === steps.length ? (
+            <div>
+              <p className={classes.instructions}>All steps completed</p>
+            </div>
+          ) : (
+            <div>{getStepContent(activeStep)}</div>
+          )}
         </div>
       </div>
     </Layout>
