@@ -8,11 +8,7 @@
   color: #444;
   background: #fff;
   z-index: 1000;
-  padding: 2rem 6rem;
-  .headerMenuIsTop {
-    box-shadow: 0 0 0 #fff;
-  }
-
+  padding: 2rem 1rem 2rem 7rem;
   .headerMenuLogo {
     position: relative;
     top: 7px;
@@ -57,7 +53,8 @@
 
 @media screen and (max-width: 720px) {
   .headerMenu {
-    padding: 0.5rem 2rem;
+    padding: 0 1rem !important;
+    box-shadow: 0 3px 3px gray;
     line-height: 28px;
     .linksContainer {
       display: none;
