@@ -281,11 +281,13 @@ export default function Home() {
                   </TextLoop>
                 </h1>
               </div>
-              <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                <Button isPrimary isSmallFormat>
-                  Get your Loser Box
-                </Button>
-              </div>
+              <Link href="/loser-box">
+                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                  <Button isPrimary isSmallFormat>
+                    Get your Loser Box
+                  </Button>
+                </div>
+              </Link>
             </div>
           </div>
         </header>
@@ -760,11 +762,13 @@ export default function Home() {
                     transform: 'rotate(-1.1deg)'
                   }}
                 />
-                <div style={{ textAlign: 'center', marginTop: '-40px' }}>
-                  <Button isPrimary isSmallFormat>
-                    Get your Loser Box
-                  </Button>
-                </div>
+                <Link href="/loser-box">
+                  <div style={{ textAlign: 'center', marginTop: '-40px' }}>
+                    <Button isPrimary isSmallFormat>
+                      Get your Loser Box
+                    </Button>
+                  </div>
+                </Link>
                 <div>
                   <p style={{ marginTop: '20px' }}>
                     <a style={{ textDecoration: 'underline' }}>
@@ -1041,7 +1045,9 @@ export default function Home() {
               <h3 style={{ marginBottom: '30px' }}>
                 Discover the loser Box now:
               </h3>
-              <Button isPrimary>Get your Loser Box</Button>
+              <Link href="/loser-box">
+                <Button isPrimary>Get your Loser Box</Button>
+              </Link>
               <a
                 href="https://app.recover.ws/"
                 style={{ paddingLeft: '28px', textDecoration: 'underline' }}
