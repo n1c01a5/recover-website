@@ -53,8 +53,15 @@
 
 @media screen and (max-width: 720px) {
   .headerMenu {
-    padding: 0 1rem !important;
-    box-shadow: 0 3px 3px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    color: #444;
+    background: #fff;
+    z-index: 1000;
+    padding: 0.5rem 2rem;
     line-height: 28px;
     .linksContainer {
       display: none;
