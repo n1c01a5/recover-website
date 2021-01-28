@@ -193,61 +193,6 @@ h2 {
 
 /* About */
 
-.about__hero {
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.about__hero-text {
-  padding: 3rem 2rem;
-  text-align: justify;
-}
-
-.img-container img {
-  width: 100vw;
-}
-
-.social-links ul {
-  display: flex;
-  margin-top: 2rem;
-  justify-content: center;
-}
-
-.social-links ul li {
-  margin: 1rem;
-}
-
-.about__hero {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'about__img-container'
-    'about__hero-text'
-    'about__social-links';
-}
-
-.about__img-container {
-  width: 100vw;
-  grid-area: about__img-container;
-}
-
-.about__hero-text {
-  grid-area: about__hero-text;
-}
-
-.about__social-links {
-  grid-area: about__social-links;
-  width: 100vw;
-  padding: 0 20px;
-}
-
-.about__social-links li {
-  list-style-type: none;
-}
-
 .about__social-links-icon {
   float: left;
   width: 70px;
@@ -259,6 +204,61 @@ h2 {
 @media screen and (max-width: 720px) {
   .about__hero {
     margin-top: -6rem;
+  }
+
+  .about__hero {
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .about__hero-text {
+    padding: 3rem 2rem;
+    text-align: justify;
+  }
+
+  .img-container img {
+    width: 100vw;
+  }
+
+  .social-links ul {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+
+  .social-links ul li {
+    margin: 1rem;
+  }
+
+  .about__hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'about__img-container'
+      'about__hero-text'
+      'about__social-links';
+  }
+
+  .about__img-container {
+    width: 100vw;
+    grid-area: about__img-container;
+  }
+
+  .about__hero-text {
+    grid-area: about__hero-text;
+  }
+
+  .about__social-links {
+    grid-area: about__social-links;
+    width: 100vw;
+    padding: 0 20px;
+  }
+
+  .about__social-links li {
+    list-style-type: none;
   }
 }
 
@@ -289,12 +289,15 @@ h2 {
     grid-area: about__social-links;
     width: 500px;
     margin: 0;
+    position: relative;
+    top: -10rem;
   }
 
   .about__social-links-icon {
     float: left;
     margin: 0;
     margin-left: 40px;
+    margin-top: 1rem;
   }
 
   .about__social-links-icon--first {
