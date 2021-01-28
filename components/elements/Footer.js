@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from '../../styles/elements/Footer.module.scss'
 
-export default function () {
+export default function Footer() {
   return (
     <div className={styles.footerContainer}>
       <footer className={styles.footer}>
@@ -17,7 +17,7 @@ export default function () {
           <p className={styles.logoPara}>
             <strong className={styles.strong}>Use it, or Lose it</strong>
           </p>
-          <p className={styles.cp}>@ RECOVER 2020</p>
+          <p className={styles.copyright}>@ RECOVER 2020</p>
         </div>
         <div className={styles.linksContainer}>
           <div className={styles.menuColumn}>
@@ -26,19 +26,19 @@ export default function () {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <a className={styles.a} href="https://kleros.io/">
-                  Kleros
-                </a>
+                <Link href="https://kleros.io/">
+                  <a className={styles.a}>Kleros</a>
+                </Link>
               </li>
               <li className={styles.otherLi}>
-                <a className={styles.a} href="https://ethereum.org/en/">
-                  Ethereum
-                </a>
+                <Link href="https://ethereum.org/en/">
+                  <a className={styles.a}>Ethereum</a>
+                </Link>
               </li>
               <li className={styles.otherLi}>
-                <a className={styles.a} href="https://ipfs.io/">
-                  IPFS
-                </a>
+                <Link href="https://ipfs.io/">
+                  <a className={styles.a}>IPFS</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -48,9 +48,9 @@ export default function () {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <a className={styles.a} href="/loser-box">
-                  Loser Box
-                </a>
+                <Link href="/loser-box">
+                  <a className={styles.a}>Loser Box</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -60,20 +60,14 @@ export default function () {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <a
-                  className={styles.a}
-                  href="https://github.com/blockchain-mafia/"
-                >
-                  Github
-                </a>
+                <Link href="https://github.com/blockchain-mafia/">
+                  <a className={styles.a}>Github</a>
+                </Link>
               </li>
               <li className={styles.otherLi}>
-                <a
-                  className={styles.a}
-                  href="mailto: contact@wagner-nicolas.com"
-                >
-                  Mail
-                </a>
+                <Link href="mailto: contact@wagner-nicolas.com">
+                  <a className={styles.a}>Mail</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -83,9 +77,9 @@ export default function () {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <a className={styles.a} href="/">
-                  Escrow
-                </a>
+                <Link href="/blog/securing-valuables-with-escrow-smart-contracts">
+                  <a className={styles.a}>Escrow</a>
+                </Link>
               </li>
             </ul>
           </div>

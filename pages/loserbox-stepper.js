@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1)
   },
   stepIcon: {
-    color: '#A6FFCB !important'
+    color: '#a6ffcb !important'
   }
 }))
 

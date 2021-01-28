@@ -35,6 +35,8 @@
     .teaser {
       font-size: 1.1rem;
       line-height: 1.1;
+      color: gray;
+      font-weight: 500;
     }
   }
 }
@@ -72,8 +74,6 @@
         line-height: 1;
       }
       .teaser {
-        color: gray;
-        font-weight: 500;
         font-size: 1rem;
       }
     }

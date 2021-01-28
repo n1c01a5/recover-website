@@ -1,9 +1,15 @@
 import styles from '../../styles/blogs/FeaturedBlog.module.scss'
+import { useRouter } from 'next/router'
 
 export const FeaturedBlogTile = ({ featuredBlog }) => {
   const { topic, title, teaser, slug, cover } = featuredBlog
+  const router = useRouter()
+
   return (
-    <a className={styles.linkWrapper} href={`/blog/${slug}`}>
+    <div
+      onClick={() => router.push(`/blog/${slug}`)}
+      className={styles.linkWrapper}
+    >
       <div className={styles.highlightedBlog}>
         <div
           className={styles.blogImage}
@@ -17,6 +23,6 @@ export const FeaturedBlogTile = ({ featuredBlog }) => {
           </div>
         </div>
       </div>
-    </a>
+    </div>
   )
 }
