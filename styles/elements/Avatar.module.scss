@@ -1,0 +1,28 @@
+.author {
+  width: 13rem;
+  background-color: #efefef;
+  border-radius: 35px;
+  padding: 0.3rem;
+  display: flex;
+  margin-right: 2rem;
+  .authorImage {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+  }
+  .authorDesc {
+    font-weight: bold;
+  }
+  .authorName {
+    margin-bottom: 0.3rem;
+    font-size: 0.7rem;
+  }
+  .lastPara {
+    font-style: italic;
+    margin-bottom: 0.1rem;
+    font-size: 0.6rem;
+  }
+}

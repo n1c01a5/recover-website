@@ -1,0 +1,103 @@
+.headerMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  line-height: 58px;
+  color: #444;
+  background: #fff;
+  z-index: 1000;
+  padding: 2rem 6rem;
+  .headerMenuIsTop {
+    box-shadow: 0 0 0 #fff;
+  }
+
+  .headerMenuLogo {
+    position: relative;
+    top: 7px;
+    cursor: pointer;
+  }
+
+  .headerMenuSmall {
+    position: fixed;
+    box-shadow: 0px 1px 10px #999;
+    background: #fff;
+    line-height: 60px;
+    min-width: 100%;
+    color: #444;
+    z-index: 100;
+  }
+
+  .logoContainer {
+    margin-top: -1rem;
+  }
+
+  .linksContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .linkContainer {
+    padding: 0 40px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+  }
+  .sidebarLink {
+    display: none;
+  }
+  .burgerMenu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .headerMenu {
+    padding: 0.5rem 2rem;
+    line-height: 28px;
+    .linksContainer {
+      display: none;
+    }
+    .buttonContainer {
+      display: none;
+    }
+    .burgerMenu {
+      display: block;
+      width: 2.7rem;
+      height: 3.5rem;
+      padding-top: 8px;
+    }
+    .burgerMenuBar {
+      width: 90%;
+      height: 0.4rem;
+      background-color: gray;
+      margin: 5px;
+    }
+
+    .sidebar {
+      position: absolute;
+      height: 100vh;
+      width: 80%;
+      margin-top: 700px;
+      background-color: #fff;
+      left: 0;
+      padding: 2rem;
+    }
+
+    .crossButton {
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: right;
+      padding: 0.7rem;
+    }
+    .linkContainer {
+      font-size: 1.3rem;
+      padding: 1rem 0.9rem;
+      border-radius: 5px;
+    }
+  }
+}

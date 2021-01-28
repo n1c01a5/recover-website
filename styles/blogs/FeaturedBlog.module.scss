@@ -1,0 +1,36 @@
+.highlightedBlog {
+  display: flex;
+  background-color: #fff;
+  width: 84%;
+  margin: 0 auto;
+  .blogImage {
+    width: 70%;
+    height: 22rem;
+    background-size: cover;
+    margin: 2rem;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+  }
+  .info {
+    width: 30%;
+    padding: 2rem;
+    padding-top: 7rem;
+  }
+  .topic {
+    color: #51c4e9;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  .title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 0.7rem;
+  }
+  .teaser {
+    font-size: 1.1rem;
+    line-height: 1.1;
+  }
+}

@@ -1,9 +1,11 @@
 import Head from 'next/head'
+import styles from '../../styles/blogs/Blog.module.scss'
+
 import Layout from '../../components/layout'
 import BlogHeader from '../../components/blog/BlogHeader'
 import { getPosts } from '../api/posts'
 export default function Post({ post }) {
-  const { slug, content, cover } = post
+  const { content, cover } = post
 
   const createMarkup = () => {
     return { __html: content }
@@ -11,7 +13,7 @@ export default function Post({ post }) {
 
   const BlogCover = () => (
     <div
-      className="blog-cover"
+      className={styles.blogCover}
       style={{ backgroundImage: `url(${cover})` }}
     ></div>
   )
@@ -24,13 +26,7 @@ export default function Post({ post }) {
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        className={
-          slug == 'lost-and-found-iphone'
-            ? 'recover_phone_container'
-            : 'escrow-container'
-        }
-      >
+      <div className={styles.container}>
         <BlogHeader post={post} />
         <BlogCover />
         <BlogContent />

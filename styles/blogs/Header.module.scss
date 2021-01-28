@@ -1,0 +1,31 @@
+.blogInfo {
+  margin-bottom: 5rem;
+  .heading {
+    font-weight: 500;
+    margin-bottom: 2rem;
+    font-size: 3.4rem;
+    line-height: 1;
+  }
+  .topic {
+    margin-left: 0.2rem;
+    font-size: 1rem;
+    color: #4fc2e9;
+    text-transform: uppercase;
+  }
+  .resume {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #9cacb3;
+    word-spacing: 0.3rem;
+    line-height: 1;
+  }
+  hr {
+    margin-top: 3rem;
+    border-color: lightgrey;
+  }
+  .authors {
+    display: flex;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+}

@@ -1,22 +1,21 @@
+import styles from '../../styles/blogs/BlogTile.module.scss'
+
 export const BlogTile = ({ post }) => {
   const { topic, title, teaser, cover, slug } = post
+
   return (
-    <a href={`/blog/${slug}`}>
-      <div className="blog">
+    <a href={`/blog/${slug}`} className={styles.blogTileContainer}>
+      <div>
         <div
-          className="blog_image blog_tile_1"
+          className={styles.blogImage}
           style={{ backgroundImage: `url(${cover})` }}
         ></div>
         <div>
-          <div className="blog_topic">
-            <a href={`/blog/${slug}`}>
-              <h4>{topic}</h4>
-            </a>
+          <div>
+            <h4 className={styles.blogTopic}>{topic}</h4>
           </div>
-          <p className="blog_title">
-            <a href={`/blog/${slug}`}>{title}</a>
-          </p>
-          <p className="blog_resume">{teaser}</p>
+          <p className={styles.blogTitle}>{title}</p>
+          <p className={styles.blogResume}>{teaser}</p>
         </div>
       </div>
     </a>

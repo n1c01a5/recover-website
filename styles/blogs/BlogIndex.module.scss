@@ -1,0 +1,19 @@
+.hero {
+  height: 400px;
+  background-image: url('../../public/blog-index-photo/guy-searching-for-his-valuable.jpg');
+  background-size: cover;
+  background-position: center;
+  .heroOverlay {
+    padding: 2rem;
+    width: 100%;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    top: 240px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .hero {
+    margin-top: -150px;
+  }
+}
