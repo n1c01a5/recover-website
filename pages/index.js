@@ -619,13 +619,16 @@ export default function Home() {
                 margin: '0 20px'
               }}
             >
-              <div>
+              <div
+                style={{
+                  marginTop: '1rem'
+                }}
+              >
                 <h3>
                   <img
                     style={{
                       position: 'relative',
                       width: '40px',
-                      top: '12px',
                       left: '-4px'
                     }}
                     src="/icon-qrcode.png"
@@ -641,13 +644,13 @@ export default function Home() {
               </div>
               <div style={{ textAlign: 'right' }}>
                 <h3>
-                  <span style={{ paddingRight: '10px' }}>Incentive</span>
                   <img
-                    style={{ position: 'relative', width: '40px', top: '12px' }}
+                    style={{ position: 'relative', width: '40px' }}
                     src="/icon-incentive.png"
                     alt="Incentive people to give back your item"
                     role="presentation"
                   />
+                  <span style={{ paddingRight: '10px' }}>Incentive</span>
                 </h3>
                 <p style={{ padding: '20px 0' }}>
                   A Reward is linked with the QrCode to incentivize the finder
@@ -660,7 +663,6 @@ export default function Home() {
                     style={{
                       position: 'relative',
                       width: '40px',
-                      top: '12px',
                       left: '-4px'
                     }}
                     src="/icon-secure.png"
@@ -679,8 +681,7 @@ export default function Home() {
                   <img
                     style={{
                       position: 'relative',
-                      width: '40px',
-                      top: '-10px'
+                      width: '40px'
                     }}
                     src="/icon-blockchain.png"
                     alt="Blockchain for a lost a found service"
@@ -831,7 +832,6 @@ export default function Home() {
                       style={{
                         position: 'relative',
                         width: '40px',
-                        top: '12px',
                         left: '-20px'
                       }}
                       src="/icon-incentive.png"
@@ -864,7 +864,6 @@ export default function Home() {
                       style={{
                         position: 'relative',
                         width: '40px',
-                        top: '12px',
                         left: '-20px'
                       }}
                       src="/icon-qrcode.png"
@@ -897,7 +896,6 @@ export default function Home() {
                       style={{
                         position: 'relative',
                         width: '40px',
-                        top: '12px',
                         left: '-20px'
                       }}
                       src="/icon-secure.png"
