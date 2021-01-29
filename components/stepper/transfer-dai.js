@@ -8,10 +8,12 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-  Button,
-  Typography
+  Button
 } from '@material-ui/core'
 import { useRouter } from 'next/router'
+import Airtable from 'airtable'
+
+import { MetaEvidence } from '../../loser-box-contract/meta-evidence'
 
 export default function TransferDAI ({
   web3,
@@ -26,22 +28,26 @@ export default function TransferDAI ({
   const [buttonView, setButtonView] = useState(true)
   const [isPending, setIsPending] = useState(false)
   const [isOngoing, setIsOngoing] = useState(false)
-  const [txError, setTXerror] = useState(false)
-  const [isAgree, setIsagree] = useState(false)
+  const [txError, setTxError] = useState(false)
+  const [isAgree, setIsAgree] = useState(false)
   const [txId, setTxId] = useState('')
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const hashPostalAddress = JSON.parse(localStorage.getItem('userDetails')).hashPostalAddress
 
   const handleClickOpen = (event) => {
     event.preventDefault()
-    setOpen(true)
+
+    setIsOpen(true)
   }
 
   const handleClose = () => {
-    setOpen(false)
+    setIsOpen(false)
   }
+
   const transfer = async () => {
     if (isAgree) {
-      setTXerror(false)
+      setTxError(false)
       setIsPending(true)
       setIsOngoing(false)
       setButtonView(false)
@@ -50,10 +56,11 @@ export default function TransferDAI ({
         .createTransaction(
           tokenAmount,
           envData.ERC_TOKEN,
-          envData.TIMEOUTPAYMENT.toString(),
+          envData.TIMEOUTPAYMENT.toString(), // FIXME: TIMEOUTPAYMENT => TIMEOUT_PAYMENT
           envData.RECEIVER,
           cid)
         .encodeABI()
+
       const transactionParameters = {
         to: envData.MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS, // Required except during contract publications.
         from: account, // must match user's active address.
@@ -68,6 +75,37 @@ export default function TransferDAI ({
         })
         .once('confirmation', (confirmationNumber, receipt) => {
           if (receipt.status) {
+            const base = new Airtable(
+              { apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY })
+              .base(networkName === 'kovan'
+                ? process.env.NEXT_PUBLIC_AIRTABLE_KOVAN_BASE
+                : process.env.NEXT_PUBLIC_AIRTABLE_MAINNET_BASE)
+
+            base('Clients').create([
+              {
+                'fields': {
+                  'Name': address.toLowerCase(),
+                  'Ethereum Address': email,
+                  'Address': phoneNumber,
+                  'Address Complement': address.toLowerCase(),
+                  'City': email,
+                  'ZipCode': phoneNumber,
+                  'Country': phoneNumber,
+                  'soliditySha3': address.toLowerCase(),
+                  'Mail': email,
+                  'Phone Number': phoneNumber
+                }
+              }
+            ], (err, records) => {
+              if (err) {
+                console.error(err)
+
+                return
+              }
+              records.forEach(function (record) {
+                console.log(record.getId())
+              })
+            })
             router.push('/loserbox-confirmation')
           }
         })
@@ -75,12 +113,12 @@ export default function TransferDAI ({
           console.error('error', error)
           setIsOngoing(false)
           setIsPending(true)
-          setTXerror(true)
+          setTxError(true)
         })
     }
   }
 
-  const linkFun = () => {
+  const labelSellingContractModal = () => {
     return (
       <a
         href='#'
@@ -91,6 +129,7 @@ export default function TransferDAI ({
       </a>
     )
   }
+
   return (
     <div style={{ paddingTop: 50 }}>
       <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
@@ -102,18 +141,18 @@ export default function TransferDAI ({
         control={
           <Checkbox
             checked={isAgree}
-            onChange={() => setIsagree(!isAgree)}
+            onChange={() => setIsAgree(!isAgree)}
             name='isAgree'
             color='primary'
           />
         }
-        label={linkFun()}
+        label={labelSellingContractModal()}
       />
       <div className='row'>
         <div className='col-md-12'>
           <div
             className='alert btns'
-            style={{ background: '#A6FFCC' }}
+            style={{ background: '#a6ffcc' }}
             role='alert'
           >
             <p style={{ paddingTop: '15px' }}>
@@ -129,7 +168,7 @@ export default function TransferDAI ({
                 style={{
                   width: '100%',
                   marginTop: '20px',
-                  backgroundColor: '#A6FFCC'
+                  backgroundColor: '#a6ffcc'
                 }}
                 type='button'
                 disabled={!isAgree}
@@ -164,68 +203,22 @@ export default function TransferDAI ({
       </div>
       {isOpen && (
         <Dialog
+          maxWidth='md'
           open={isOpen}
           onClose={handleClose}
           aria-labelledby='alert-dialog-title'
           aria-describedby='alert-dialog-description'
         >
           <DialogTitle id='alert-dialog-title'>
-            Terms of the Contract
+            Loser Box Contract
           </DialogTitle>
           <DialogContent>
             <DialogContentText id='alert-dialog-description'>
-              <Typography paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                at diam et nibh condimentum ornare. Maecenas faucibus dolor
-                eros, a suscipit neque eleifend in. Vestibulum vehicula elit
-                lacus, nec efficitur orci auctor ac. Vestibulum dignissim nunc a
-                dictum suscipit. Duis sollicitudin sagittis faucibus. Aenean mi
-                libero, sagittis in gravida et, gravida in tortor. Pellentesque
-                augue massa, aliquet eget ante ut, tincidunt lacinia metus. Cras
-                orci ex, egestas a ornare et, cursus non risus. Suspendisse
-                lobortis metus id magna pharetra, quis consectetur risus
-                bibendum.
-              </Typography>
-              <Typography paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                at diam et nibh condimentum ornare. Maecenas faucibus dolor
-                eros, a suscipit neque eleifend in. Vestibulum vehicula elit
-                lacus, nec efficitur orci auctor ac. Vestibulum dignissim nunc a
-                dictum suscipit. Duis sollicitudin sagittis faucibus. Aenean mi
-                libero, sagittis in gravida et, gravida in tortor. Pellentesque
-                augue massa, aliquet eget ante ut, tincidunt lacinia metus. Cras
-                orci ex, egestas a ornare et, cursus non risus. Suspendisse
-                lobortis metus id magna pharetra, quis consectetur risus
-                bibendum.
-              </Typography>
-              <Typography paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                at diam et nibh condimentum ornare. Maecenas faucibus dolor
-                eros, a suscipit neque eleifend in. Vestibulum vehicula elit
-                lacus, nec efficitur orci auctor ac. Vestibulum dignissim nunc a
-                dictum suscipit. Duis sollicitudin sagittis faucibus. Aenean mi
-                libero, sagittis in gravida et, gravida in tortor. Pellentesque
-                augue massa, aliquet eget ante ut, tincidunt lacinia metus. Cras
-                orci ex, egestas a ornare et, cursus non risus. Suspendisse
-                lobortis metus id magna pharetra, quis consectetur risus
-                bibendum.
-              </Typography>
-              <Typography paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                at diam et nibh condimentum ornare. Maecenas faucibus dolor
-                eros, a suscipit neque eleifend in. Vestibulum vehicula elit
-                lacus, nec efficitur orci auctor ac. Vestibulum dignissim nunc a
-                dictum suscipit. Duis sollicitudin sagittis faucibus. Aenean mi
-                libero, sagittis in gravida et, gravida in tortor. Pellentesque
-                augue massa, aliquet eget ante ut, tincidunt lacinia metus. Cras
-                orci ex, egestas a ornare et, cursus non risus. Suspendisse
-                lobortis metus id magna pharetra, quis consectetur risus
-                bibendum.
-              </Typography>
+              <div dangerouslySetInnerHTML={{ __html: MetaEvidence({ hashPostalAddress }).extraData['Contract Information'].replace(/\n/g, '<br />') }} />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color='primary'>
+            <Button onClick={handleClose} variant='contained' style={{ background: '#a6ffcc', color: '#444' }}>
               Ok
             </Button>
           </DialogActions>

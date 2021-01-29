@@ -18,7 +18,7 @@ export default function ConnectWeb3 ({
             ? (
               <div
                 className='alert'
-                style={{ background: '#A6FFCC' }}
+                style={{ background: '#a6ffcc' }}
                 role='alert'
               >
                 <p style={{ paddingTop: '15px' }}>
@@ -32,7 +32,7 @@ export default function ConnectWeb3 ({
           <div>
             <div
               className='alert'
-              style={{ background: '#A6FFCC' }}
+              style={{ background: '#a6ffcc' }}
               role='alert'
             >
               <p>A pop up will open to connect to your Metamask wallet.</p>

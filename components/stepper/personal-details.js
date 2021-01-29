@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../../src/helpers/helper'
+import Ethereum from 'web3'
+
+import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../../helpers/helper'
 
 export default function PersonalDetails ({ handleNextStep }) {
   const [recepientName, setRecepientName] = useState('')
@@ -25,6 +27,7 @@ export default function PersonalDetails ({ handleNextStep }) {
   useEffect(() => {
     if (localStorage.getItem('userDetails')) {
       const personData = JSON.parse(localStorage.getItem('userDetails'))
+
       setRecepientName(personData.recepientName)
       setAddress(personData.address)
       setAddressCp(personData.addressCp)
@@ -38,6 +41,7 @@ export default function PersonalDetails ({ handleNextStep }) {
 
   const handleNextLocal = () => {
     setSubmit(true)
+
     if (
       recepientName !== '' &&
       address !== '' &&
@@ -49,25 +53,39 @@ export default function PersonalDetails ({ handleNextStep }) {
       !checkPhone(phone) &&
       (email === '' || isValidEmail(email))
     ) {
-      const data = {
-        recepientName: recepientName,
-        address: address,
-        addressCp: addressCp,
-        city: city,
-        zip: zip,
-        country: country,
-        email: email,
-        phone: phone
+      const hashPostalAddress = Ethereum.utils.soliditySha3(
+        recepientName || '',
+        address || '',
+        addressCp || '',
+        city || '',
+        zip || '',
+        country || ''
+      )
+
+      const userPersonalDetails = {
+        recepientName,
+        address,
+        addressComplement: addressCp, // FIXME: change variable name to be consistent.
+        city,
+        zip,
+        country,
+        email,
+        phone,
+        hashPostalAddress
       }
-      localStorage.setItem('userDetails', JSON.stringify(data))
+
+      localStorage.setItem('userDetails', JSON.stringify(userPersonalDetails))
+
       handleNextStep()
     }
   }
 
   const onblurChangeValue = (e) => {
     setSubmit(false)
+
     const name = e.target.name
     const temp = { ...formValue, [name]: true }
+
     setFormValue(temp)
   }
 
@@ -92,7 +110,7 @@ export default function PersonalDetails ({ handleNextStep }) {
                 id='recepientName'
                 placeholder=''
                 value={recepientName}
-                onChange={(e) => setRecepientName(e.target.value)}
+                onChange={(event) => setRecepientName(event.target.value)}
               />
               {submit && checkSpecialChar(recepientName)
                 ? (
@@ -102,7 +120,7 @@ export default function PersonalDetails ({ handleNextStep }) {
                   )
                 : null}
             </div>
-            <div classNameName='col-md-12'>
+            <div className='col-md-12'>
               <div className='mb-3'>
                 <label className='pdetails'>Address</label>
                 <input
@@ -113,7 +131,7 @@ export default function PersonalDetails ({ handleNextStep }) {
                   id='address'
                   placeholder=''
                   value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={(event) => setAddress(event.target.value)}
                 />
                 {submit && address === ''
                   ? (
@@ -124,7 +142,7 @@ export default function PersonalDetails ({ handleNextStep }) {
                   : null}
               </div>
             </div>
-            <div classNameName='col-md-12'>
+            <div className='col-md-12'>
               <div className='mb-3'>
                 <label className='pdetails'>Address Line 2</label>
                 <input
@@ -133,7 +151,7 @@ export default function PersonalDetails ({ handleNextStep }) {
                   id='addressCp'
                   placeholder=''
                   value={addressCp}
-                  onChange={(e) => setAddressCp(e.target.value)}
+                  onChange={(event) => setAddressCp(event.target.value)}
                 />
               </div>
             </div>
@@ -172,12 +190,12 @@ export default function PersonalDetails ({ handleNextStep }) {
                   id='zip'
                   placeholder=''
                   value={zip}
-                  onChange={(e) => setZip(e.target.value)}
+                  onChange={(event) => setZip(event.target.value)}
                 />
                 {submit && checkNumber(zip)
                   ? (
                     <span style={{ color: 'red', fontSize: '14px' }}>
-                      The zip not valid.
+                      The zip code not valid.
                     </span>
                     )
                   : null}
@@ -194,7 +212,7 @@ export default function PersonalDetails ({ handleNextStep }) {
                   id='country'
                   placeholder=''
                   value={country}
-                  onChange={(e) => setCountry(e.target.value)}
+                  onChange={(event) => setCountry(event.target.value)}
                 />
                 {submit && checkSpecialChar(country)
                   ? (
@@ -213,12 +231,12 @@ export default function PersonalDetails ({ handleNextStep }) {
                 <input
                   type='email'
                   name='emailValidation'
-                  onBlur={(e) => onblurChangeValue(e)}
+                  onBlur={(event) => onblurChangeValue(event)}
                   className='form-control'
                   id='email'
                   placeholder=''
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(event) => setEmail(event.target.value)}
                 />
                 {email.length > 0 &&
                   submit &&

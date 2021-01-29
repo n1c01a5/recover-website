@@ -8,7 +8,7 @@ import RecoverImage from '../../../public/Blog_2_Lostphone.jpg'
 
 import { getAuthorHelper } from '../../../utils/blogs'
 
-export function getPosts() {
+export function getPosts () {
   const getAuthor = getAuthorHelper(authors)
 
   return [

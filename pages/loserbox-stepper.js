@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1)
   },
-  stepIcon:{
-    color: '#A6FFCB !important'
+  stepIcon: {
+    color: '#a6ffcb !important'
   }
 }))
 
@@ -57,7 +57,7 @@ export default function LoserboxStepper () {
   const [cid, setCid] = useState('')
   const [envData, setEnvData] = useState({})
   const classes = useStyles()
-  const [activeStep, setActiveStep] = React.useState(0)
+  const [activeStep, setActiveStep] = useState(0)
   const steps = getSteps()
 
   const changeNet = () => {
@@ -98,11 +98,15 @@ export default function LoserboxStepper () {
   }, [])
 
   const findMetamaskAccounts = async () => {
-    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' }) FIXME: what is this???
     await window.ethereum.enable()
+
     const web3 = (window.web3 = new Web3(window.ethereum))
+
     setWeb3(web3)
+
     const accounts = await web3.eth.getAccounts()
+
     if (accounts && accounts.length > 0) {
       setAccount(accounts[0])
       findNetworks(web3, accounts)
