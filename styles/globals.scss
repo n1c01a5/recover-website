@@ -293,3 +293,20 @@ input[type='number'] {
     display: none !important;
   }
 }
+
+// Header
+@media only screen and (min-width: 720px) {
+  .header-menu__isTop {
+    position: absolute !important;
+    margin-top: 30px;
+    box-shadow: 0 0 0 #fff !important;
+    z-index: 1000;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .header-menu__isTop {
+    margin-top: 10px;
+    margin-top: 0;
+  }
+}
