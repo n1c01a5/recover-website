@@ -9,7 +9,7 @@ const Header = ({ isTop }) => {
   const [showSidebar, setShowSidebar] = useState(false)
   return (
     <div
-      className={`${styles.headerMenu} ${!isTop ? 'headerMenuIsNotTop' : ''}`}
+      className={`${styles.headerMenu} ${isTop ? 'header-menu__isTop' : ''}`}
     >
       <div className={styles.logoContainer}>
         <Link href="/">
