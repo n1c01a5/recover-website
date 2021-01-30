@@ -52,3 +52,22 @@ h3 {
 .no_left_margin {
   margin-left: 0rem;
 }
+
+@media screen and (max-width: 720px) {
+  .escrow-container {
+    font-size: 1.2rem;
+    word-spacing: 0;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 18px;
+    }
+    .blog__list li {
+      font-size: 18px;
+    }
+    strong {
+      font-weight: 500;
+    }
+  }
+}
