@@ -5,12 +5,17 @@ import Button from './button'
 
 import styles from '../../styles/elements/Header.module.scss'
 
-const Header = ({ isTop }) => {
+const Header = ({ isTop, setShowOverlay }) => {
   const [showSidebar, setShowSidebar] = useState(false)
+
+  const handleClick = () => {
+    setShowOverlay(!showSidebar)
+    setShowSidebar(!showSidebar)
+  }
 
   const ToggleButton = () => {
     return (
-      <div className={styles.Menu} onClick={() => setShowSidebar(!showSidebar)}>
+      <div className={styles.Menu} onClick={handleClick}>
         <HamburgerMenu />
       </div>
     )
@@ -65,10 +70,7 @@ const Header = ({ isTop }) => {
       </div>
       <ToggleButton />
       <div className={`${styles.sidebar} ${showSidebar ? styles.open : ''}`}>
-        <div
-          className={styles.crossButton}
-          onClick={() => setShowSidebar(!showSidebar)}
-        >
+        <div className={styles.crossButton} onClick={handleClick}>
           X
         </div>
         <div className={styles.linkContainer}>
