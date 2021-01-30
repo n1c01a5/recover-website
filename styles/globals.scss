@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
+@import './blogs/Escrow.module.scss';
+@import './blogs/Recover.module.scss';
+
 /* global */
 
 .MuiStepIcon-active > .MuiStepIcon-text {
@@ -193,12 +196,6 @@ body {
   .loser-box-container {
     width: 100%;
   }
-}
-
-.escrow-container h1,
-h2 {
-  font-weight: 500;
-  margin: 2rem 0;
 }
 
 /* About */

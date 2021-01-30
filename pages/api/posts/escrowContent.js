@@ -1,6 +1,6 @@
 export const EscrowBlogContent = `
-    <div className="escrow-container">
-      <section className="blog__section">
+    <div class="escrow-container">
+      <section class="blog__section">
         <h2>What is a generic Escrow?</h2>
         <p>
           In traditional transactions, both the parties (payee and the payer)
@@ -14,7 +14,7 @@ export const EscrowBlogContent = `
           transaction being more secure as the funds are kept in an escrow
           account which is managed by the
           <a
-            className="blog_link"
+            class="blog_link"
             href="https://en.wikipedia.org/wiki/Online_dispute_resolution"
           >
             arbitrator
@@ -28,13 +28,13 @@ export const EscrowBlogContent = `
           handshake deal which can result in foul play afterward.
         </p>
       </section>
-      <section className="blog__section">
+      <section class="blog__section">
         <h2>How Escrow Financial Transaction Works?</h2>
         <p>
           Initially, either the payee or the payer approaches Escrow which acts
           as an arbitrator, the terms and conditions should be agreed upon
           before the transaction is started.
-          <ul className="blog__list">
+          <ul class="blog__list">
             <li>
               The buyer puts the payment to escrow to purchase a product or
               service.
@@ -50,19 +50,18 @@ export const EscrowBlogContent = `
           </ul>
         </p>
       </section>
-      <section className="blog__section">
+      <section class="blog__section">
         <h2>What is an Escrow Smart Contract?</h2>
         <p>
           A smart contract is a program that is smart enough to execute a piece
           of code instructions when conditions are met. Also, smart contracts do
           not require any third-party control and run solely on the basis of
           pre-programmed logic which is overseen by a distributed, decentralized
-          network of computers that runs on
-          <a
-            className="blog_link"
+          network of computers that runs on<a
+            class="blog_link"
             href="https://www.investopedia.com/terms/b/blockchain.asp#what-is-blockchain"
           >
-            blockchain
+          blockchain
           </a>
           . It is a computer protocol that is used to digitally and
           automatically facilitate, verify, and enforce the terms of a contract.
@@ -71,9 +70,8 @@ export const EscrowBlogContent = `
           fraud transactions. The program automatically validates a condition
           and determines whether an asset will go to one person or back to the
           person who sent it. It is interesting to know that during the process,
-          the
-          <a
-            className="blog_link"
+          the<a
+            class="blog_link"
             href="https://searchcio.techtarget.com/definition/distributed-ledger"
           >
             distributed ledger
@@ -82,7 +80,7 @@ export const EscrowBlogContent = `
           security and immutability.
         </p>
       </section>
-      <section className="blog__section">
+      <section class="blog__section">
         <h2>Main Advantages of using Escrow Smart Contracts</h2>
         <div>
           <p>
@@ -97,12 +95,10 @@ export const EscrowBlogContent = `
           <p>
             <strong>
               Arbitration Decentralized (reduce conflict interest) with
-              <a className="blog_link" href="https://kleros.io/">
+              <a class="blog_link" href="https://kleros.io/">
                 Kleros
-              </a>
-              /
-              <a
-                className="blog_link no_left_margin"
+              </a>/<a
+                class="blog_link no_left_margin"
                 href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
               >
                 Aragon
@@ -110,7 +106,7 @@ export const EscrowBlogContent = `
             </strong>
             : The arbitration is decentralized and if any conflict of interest
             arises, it is being dealt with
-            <a className="blog_link" href="https://kleros.io/">
+            <a class="blog_link" href="https://kleros.io/">
               Kleros
             </a>
             , a Decentralized Autonomous Organisation (DAO) to solve disputes.
@@ -121,7 +117,7 @@ export const EscrowBlogContent = `
             arbitrator you can easily change the arbitrator, being said the
             smart contract follows the arbitrator standard. It allows a
             <a
-              className="blog_link"
+              class="blog_link"
               href="https://blog.kleros.io/kleros-layer-2/"
             >
               decentralized arbitrator
@@ -144,10 +140,10 @@ export const EscrowBlogContent = `
           </p>
         </div>
       </section>
-      <section className="blog__section">
+      <section class="blog__section">
         <h2>Escrow Smart Contract implementation with Recover</h2>
         <p>
-          <ul className="blog__list">
+          <ul class="blog__list">
             <li>The finder finds your lost valuable.</li>
             <li>
               The honest finder will definitely return your valuable, but the
@@ -162,7 +158,7 @@ export const EscrowBlogContent = `
           </ul>
         </p>
       </section>
-      <section className="blog__section">
+      <section class="blog__section">
         <h2>Conclusion</h2>
         <p>
           Escrow financial agreement not only helps make the transaction secure
@@ -173,7 +169,7 @@ export const EscrowBlogContent = `
           escrow smart contracts with easy implementation to make sure your
           valuable is returned, the next time you lose it. Now that we have
           learned briefly how blockchain escrow works, let us discover
-          <a className="blog_link" href="/">
+          <a class="blog_link" href="/">
             Recover
           </a>
           .
