@@ -22,7 +22,7 @@ export const RecoverBlogContent = `
       <p> Here is what you should do immediately after the phone is lost</p>
     </section>
     <section class="section1">
-      <h2 style={{margin:"0"}}>What measures to take right after the Phone is lost? </h2>
+      <h2>What measures to take right after the Phone is lost? </h2>
 
       <h3>1. Call or text your phone</h3>
       <p>
