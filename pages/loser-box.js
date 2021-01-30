@@ -32,7 +32,7 @@ export default function LoserBox() {
               display: 'flex',
               justifyContent: 'space-between',
               width: '1250px',
-              margin: '5rem auto'
+              margin: '8rem auto'
             }}
           >
             <div

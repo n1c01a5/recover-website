@@ -11,7 +11,7 @@ const Header = ({ isTop }) => {
   const ToggleButton = () => {
     return (
       <div className={styles.Menu} onClick={() => setShowSidebar(!showSidebar)}>
-        {!showSidebar ? <HamburgerMenu /> : <CrossButton />}
+        <HamburgerMenu />
       </div>
     )
   }
@@ -23,8 +23,6 @@ const Header = ({ isTop }) => {
       <div className={styles.burgerMenuBar}></div>
     </div>
   )
-
-  const CrossButton = () => <span className={styles.crossButton}>X</span>
 
   return (
     <div
@@ -66,29 +64,33 @@ const Header = ({ isTop }) => {
         </Link>
       </div>
       <ToggleButton />
-      {showSidebar ? (
-        <div className={styles.sidebar}>
-          <div className={styles.linkContainer}>
-            <a
-              className={styles.link}
-              href="https://app.recover.ws/"
-              target="_blank"
-            >
-              APPLICATION
-            </a>
-          </div>
-          <div className={styles.linkContainer}>
-            <Link href="/blog">
-              <a className={styles.link}>BLOG</a>
-            </Link>
-          </div>
-          <div className={styles.linkContainer}>
-            <Link href="/about">
-              <a className={styles.link}>ABOUT</a>
-            </Link>
-          </div>
+      <div className={`${styles.sidebar} ${showSidebar ? styles.open : ''}`}>
+        <div
+          className={styles.crossButton}
+          onClick={() => setShowSidebar(!showSidebar)}
+        >
+          X
         </div>
-      ) : null}
+        <div className={styles.linkContainer}>
+          <a
+            className={styles.link}
+            href="https://app.recover.ws/"
+            target="_blank"
+          >
+            APPLICATION
+          </a>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link href="/blog">
+            <a className={styles.link}>BLOG</a>
+          </Link>
+        </div>
+        <div className={styles.linkContainer}>
+          <Link href="/about">
+            <a className={styles.link}>ABOUT</a>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
