@@ -93,7 +93,14 @@ export default function LoserboxStepper() {
 
   useEffect(() => {
     changeNet()
+    setIconViewBox()
   }, [])
+
+  const setIconViewBox = () => {
+    document
+      .querySelector('.MuiSvgIcon-root')
+      .setAttribute('viewBox', '-1 -1 27 27')
+  }
 
   const findMetamaskAccounts = async () => {
     // const accounts = await ethereum.request({ method: 'eth_requestAccounts' })

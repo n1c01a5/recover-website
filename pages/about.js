@@ -25,7 +25,7 @@ export default function About() {
           >
             Nicolas
           </h1>
-          <p className="p-indent">
+          <p>
             I am a self-taught developer who has worked as Freelance since 2014
             for different startups and corporates (Tradelab, Novactive, Air
             France, SNCF...). Beginning in June 2016, he became interested in
