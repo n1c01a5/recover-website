@@ -93,13 +93,18 @@ export default function LoserboxStepper() {
 
   useEffect(() => {
     changeNet()
-    setIconViewBox()
   }, [])
 
+  useEffect(() => {
+    setIconViewBox()
+  }, [pageCount])
+
   const setIconViewBox = () => {
-    document
-      .querySelector('.MuiSvgIcon-root')
-      .setAttribute('viewBox', '-1 -1 27 27')
+    const elements = document.querySelectorAll('.MuiSvgIcon-root')
+
+    elements.forEach((element) =>
+      element.setAttribute('viewBox', '-1 -1 27 27')
+    )
   }
 
   const findMetamaskAccounts = async () => {

@@ -10,7 +10,8 @@
   fill: black !important;
 }
 
-.MuiStepLabel-iconContainer > .MuiStepIcon-active > circle {
+.MuiStepLabel-iconContainer > .MuiStepIcon-active > circle,
+.MuiStepLabel-iconContainer > .MuiStepIcon-completed > path {
   stroke: black;
 }
 
