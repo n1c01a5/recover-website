@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { checkNumber, checkPhone, isValidEmail, checkSpecialChar } from '../../src/helpers/helper'
+import {
+  checkNumber,
+  checkPhone,
+  isValidEmail,
+  checkSpecialChar
+} from '../../src/helpers/helper'
 
-export default function PersonalDetails ({ handleNextStep }) {
+export default function PersonalDetails({ handleNextStep }) {
   const [recepientName, setRecepientName] = useState('')
   const [address, setAddress] = useState('')
   const [addressCp, setAddressCp] = useState('')
@@ -75,198 +80,188 @@ export default function PersonalDetails ({ handleNextStep }) {
     <div>
       <form>
         <div style={{ paddingTop: 50 }}>
-          <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
+          <div className="row form-group" style={{ padding: '.375rem .75rem' }}>
             <h4>
               <span style={{ color: '#13a2dc' }}>Personal</span> Details
             </h4>
           </div>
 
-          <div className='form-group'>
-            <div className='mb-3'>
-              <label className='pdetails'>Recipient's name</label>
+          <div className="form-group">
+            <div className="mb-3">
+              <label className="pdetails">Recipient's name</label>
               <input
-                name='recepientNameValidation'
-                type='text'
+                name="recepientNameValidation"
+                type="text"
                 onBlur={(e) => onblurChangeValue(e)}
-                className='form-control'
-                id='recepientName'
-                placeholder=''
+                className="form-control"
+                id="recepientName"
+                placeholder=""
                 value={recepientName}
                 onChange={(e) => setRecepientName(e.target.value)}
               />
-              {submit && checkSpecialChar(recepientName)
-                ? (
-                  <span style={{ color: 'red', fontSize: '14px' }}>
-                    The format of the name is not valid.
-                  </span>
-                  )
-                : null}
+              {submit && checkSpecialChar(recepientName) ? (
+                <span style={{ color: 'red', fontSize: '14px' }}>
+                  The format of the name is not valid.
+                </span>
+              ) : null}
             </div>
-            <div classNameName='col-md-12'>
-              <div className='mb-3'>
-                <label className='pdetails'>Address</label>
+          </div>
+          <div className="row form-group">
+            <div className="col-md-12">
+              <div className="mb-3">
+                <label className="pdetails">Address</label>
                 <input
-                  type='text'
-                  name='addressValidation'
+                  type="text"
+                  name="addressValidation"
                   onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='address'
-                  placeholder=''
+                  className="form-control"
+                  id="address"
+                  placeholder=""
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
-                {submit && address === ''
-                  ? (
-                    <span style={{ color: 'red', fontSize: '14px' }}>
-                      The address is not valid.
-                    </span>
-                    )
-                  : null}
+                {submit && address === '' ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The address is not valid.
+                  </span>
+                ) : null}
               </div>
             </div>
-            <div classNameName='col-md-12'>
-              <div className='mb-3'>
-                <label className='pdetails'>Address Line 2</label>
+          </div>
+          <div className="row form-group">
+            <div className="col-md-12">
+              <div className="mb-3">
+                <label className="pdetails">Address Line 2</label>
                 <input
-                  type='text'
-                  className='form-control'
-                  id='addressCp'
-                  placeholder=''
+                  type="text"
+                  className="form-control"
+                  id="addressCp"
+                  placeholder=""
                   value={addressCp}
                   onChange={(e) => setAddressCp(e.target.value)}
                 />
               </div>
             </div>
           </div>
-          <div className='row form-group'>
-            <div className='col-md-4'>
-              <div className='mb-3 '>
-                <label className='pdetails'>City</label>
+          <div className="row form-group">
+            <div className="col-md-4">
+              <div className="mb-3 ">
+                <label className="pdetails">City</label>
                 <input
-                  type='text'
-                  name='cityValidation'
+                  type="text"
+                  name="cityValidation"
                   onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='city'
-                  placeholder=''
+                  className="form-control"
+                  id="city"
+                  placeholder=""
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                 />
-                {submit && checkSpecialChar(city)
-                  ? (
-                    <span style={{ color: 'red', fontSize: '14px' }}>
-                      The format of the city is not valid.
-                    </span>
-                    )
-                  : null}
+                {submit && checkSpecialChar(city) ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The format of the city is not valid.
+                  </span>
+                ) : null}
               </div>
             </div>
-            <div className='col-md-2'>
-              <div className='mb-3'>
-                <label className='pdetails'>Zip Code</label>
+            <div className="col-md-2">
+              <div className="mb-3">
+                <label className="pdetails">Zip Code</label>
                 <input
-                  type='number'
-                  name='zipValidation'
+                  type="number"
+                  name="zipValidation"
                   onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='zip'
-                  placeholder=''
+                  className="form-control"
+                  id="zip"
+                  placeholder=""
                   value={zip}
                   onChange={(e) => setZip(e.target.value)}
                 />
-                {submit && checkNumber(zip)
-                  ? (
-                    <span style={{ color: 'red', fontSize: '14px' }}>
-                      The zip not valid.
-                    </span>
-                    )
-                  : null}
+                {submit && checkNumber(zip) ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The zip not valid.
+                  </span>
+                ) : null}
               </div>
             </div>
-            <div className='col-md-6'>
-              <div className='mb-3'>
-                <label className='pdetails'>Country</label>
+            <div className="col-md-6">
+              <div className="mb-3">
+                <label className="pdetails">Country</label>
                 <input
-                  type='text'
-                  name='countryValidation'
+                  type="text"
+                  name="countryValidation"
                   onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='country'
-                  placeholder=''
+                  className="form-control"
+                  id="country"
+                  placeholder=""
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                 />
-                {submit && checkSpecialChar(country)
-                  ? (
-                    <span style={{ color: 'red', fontSize: '14px' }}>
-                      The format of the country is not valid.
-                    </span>
-                    )
-                  : null}
+                {submit && checkSpecialChar(country) ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The format of the country is not valid.
+                  </span>
+                ) : null}
               </div>
             </div>
           </div>
-          <div className='row form-group'>
-            <div className='col-md-6'>
-              <div className='mb-3'>
-                <label className='pdetails'>Mail (optional)</label>
+          <div className="row form-group">
+            <div className="col-md-6">
+              <div className="mb-3">
+                <label className="pdetails">Mail (optional)</label>
                 <input
-                  type='email'
-                  name='emailValidation'
+                  type="email"
+                  name="emailValidation"
                   onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='email'
-                  placeholder=''
+                  className="form-control"
+                  id="email"
+                  placeholder=""
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 {email.length > 0 &&
-                  submit &&
-                  formValue.emailValidation &&
-                  !isValidEmail(email)
-                  ? (
-                    <span style={{ color: 'red', fontSize: '14px' }}>
-                      The email format is not valid.
-                    </span>
-                    )
-                  : null}
+                submit &&
+                formValue.emailValidation &&
+                !isValidEmail(email) ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The email format is not valid.
+                  </span>
+                ) : null}
               </div>
             </div>
-            <div className='col-md-6'>
-              <div className='mb-3'>
-                <label className='pdetails'>Phone (optional)</label>
+            <div className="col-md-6">
+              <div className="mb-3">
+                <label className="pdetails">Phone (optional)</label>
                 <input
                   maxLength={14}
-                  type='number'
-                  pattern='[+]?\d*'
-                  name='phoneValidation'
+                  type="number"
+                  pattern="[+]?\d*"
+                  name="phoneValidation"
                   onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='phone'
-                  placeholder=''
+                  className="form-control"
+                  id="phone"
+                  placeholder=""
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-                {submit && formValue.phoneValidation && checkPhone(phone)
-                  ? (
-                    <span style={{ color: 'red', fontSize: '14px' }}>
-                      The format of the phone is not valid.
-                    </span>
-                    )
-                  : null}
+                {submit && formValue.phoneValidation && checkPhone(phone) ? (
+                  <span style={{ color: 'red', fontSize: '14px' }}>
+                    The format of the phone is not valid.
+                  </span>
+                ) : null}
               </div>
             </div>
           </div>
-          <div className='row form-group'>
+          <div className="row form-group">
             <div
-              className='col-md-12 text-center'
+              className="col-md-12 text-center"
               style={{ margin: '30px 0px' }}
             >
-              <div className='d-grid gap-2'>
+              <div className="d-grid gap-2">
                 <button
-                  className='new-button'
+                  className="new-button"
                   style={{ width: '100%', backgroundColor: '#A6FFCC' }}
-                  type='button'
+                  type="button"
                   onClick={handleNextLocal}
                 >
                   <strong>Validate</strong>

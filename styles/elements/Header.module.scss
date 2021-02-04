@@ -15,24 +15,26 @@
     top: 7px;
     cursor: pointer;
   }
-
   .logoContainer {
     margin-top: -1rem;
   }
-
+  .buttonContainer {
+    margin-right: -5rem;
+  }
   .linksContainer {
     display: flex;
     justify-content: flex-end;
   }
-
   .linkContainer {
     padding: 0 40px;
   }
-
   .link {
     text-decoration: none;
     color: #444;
     font-weight: 500;
+  }
+  .sidebar {
+    display: none;
   }
   .sidebarLink {
     display: none;
@@ -60,7 +62,7 @@
     .buttonContainer {
       display: none;
     }
-    .burgerMenu {
+    .Menu {
       display: block;
       width: 2.7rem;
       height: 3.5rem;
@@ -72,22 +74,30 @@
       background-color: gray;
       margin: 5px;
     }
-
-    .sidebar {
-      position: absolute;
-      height: 100vh;
-      width: 80%;
-      margin-top: 700px;
-      background-color: #fff;
-      left: 0;
-      padding: 2rem;
-    }
-
     .crossButton {
-      font-size: 1rem;
       font-weight: 700;
-      text-align: right;
-      padding: 0.7rem;
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      font-size: 1rem;
+      margin-left: 50px;
+    }
+    .sidebar {
+      display: block;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 2;
+      top: 55px;
+      left: 0;
+      background-color: #fff;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding: 2rem 0;
+    }
+    .open {
+      padding: 2rem;
+      width: 92% !important;
     }
     .linkContainer {
       font-size: 1.3rem;

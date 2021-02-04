@@ -3,8 +3,13 @@
   font-weight: 400;
   line-height: 1.4;
   word-spacing: 0.3rem;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
+  word-spacing: 0.3rem;
+}
+
+.escrow-container h2 {
+  font-size: 1.8rem;
 }
 
 .escrow-container h1,
@@ -40,10 +45,29 @@ h3 {
 }
 
 .blog_link {
-  margin-left: 0.3rem;
+  font-weight: 500;
   color: #4fc2e9;
 }
 
 .no_left_margin {
   margin-left: 0rem;
+}
+
+@media screen and (max-width: 720px) {
+  .escrow-container {
+    font-size: 1.2rem;
+    word-spacing: 0;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 18px;
+    }
+    .blog__list li {
+      font-size: 18px;
+    }
+    strong {
+      font-weight: 500;
+    }
+  }
 }

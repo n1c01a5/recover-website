@@ -18,7 +18,7 @@ export const Blogs = ({ posts }) => {
   const nonFeaturedBlogs = getNonFeaturedBlogs(posts)
 
   const nonFeaturedBlogTiles = nonFeaturedBlogs.map((post) => (
-    <BlogTile post={post} />
+    <BlogTile key={post.slug} post={post} />
   ))
 
   const blogTilesWithDivider = () => insertDivider(nonFeaturedBlogTiles)

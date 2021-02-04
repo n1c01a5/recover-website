@@ -1,6 +1,6 @@
 export const RecoverBlogContent = `
-<div className="recoverPhoneContainer">
-    <section className="heroSection">
+<div class="recoverPhoneContainer">
+    <section class="heroSection">
       <p>
         Smartphones have taken place as one of the most personal and important
         tools in today's world. They contain a large part of your private and
@@ -21,8 +21,8 @@ export const RecoverBlogContent = `
       </p>
       <p> Here is what you should do immediately after the phone is lost</p>
     </section>
-    <section className="section1">
-      <h2 style={{margin:"0"}}>What measures to take right after the Phone is lost? </h2>
+    <section class="section1">
+      <h2>What measures to take right after the Phone is lost? </h2>
 
       <h3>1. Call or text your phone</h3>
       <p>
@@ -67,8 +67,8 @@ export const RecoverBlogContent = `
         on Android and IOS devices
       </h2>
     </section>
-    <section className="section2">
-      <div className="android">
+    <section class="section2">
+      <div class="android">
         <h3>Learn how to locate an Android phone:</h3>
         <p>There are 2 ways to find an Android phone.</p>
         <ul>
@@ -97,7 +97,7 @@ export const RecoverBlogContent = `
           </ul>
         </ul>
       </div>
-      <div className="iphone">
+      <div class="iphone">
         <h3>Learn how to locate an iPhone (IOS):</h3>
         <ul>
           <li>
@@ -120,7 +120,7 @@ export const RecoverBlogContent = `
           </li>
         </ul>
       </div>
-      <div className="windows">
+      <div class="windows">
         <h3>Know how to find a Phone - Windows OS:</h3>
         <ul>
           <li>
@@ -139,8 +139,8 @@ export const RecoverBlogContent = `
         </ul>
       </div>
     </section>
-    <section className="section-3">
-      <div className="measures-div">
+    <section class="section-3">
+      <div class="measures-div">
         <h2>Immediate measures to take</h2>
         <ul>
           <li>
@@ -188,7 +188,7 @@ export const RecoverBlogContent = `
         </p>
       </div>
     </section>
-    <section className="section-4">
+    <section class="section-4">
       <h2>
         Market Solutions to find your lost Phone - Preventive measures to take
         in advance
@@ -201,7 +201,7 @@ export const RecoverBlogContent = `
       <h3>1. Tile, a Bluetooth solution to find your Phone</h3>
       <p>
         Tile is one organization that helps users around the world locate lost
-        items using Bluetooth trackers or where they were last seen.{' '}
+        items using Bluetooth trackers or where they were last seen.
       </p>
       <h4>What does it offer?</h4>
       <p>

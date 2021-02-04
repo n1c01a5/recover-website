@@ -1,5 +1,12 @@
 .divider {
   width: 100%;
-  margin: 4rem 0;
-  color: #dcdcdc;
+  margin: 2rem 0 3rem 0;
+  hr {
+    border-top: 1px solid gray;
+  }
+}
+@media screen and (max-width: 720px) {
+  .divider {
+    display: none;
+  }
 }
