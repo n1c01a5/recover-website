@@ -6,15 +6,18 @@
     justify-content: space-between;
   }
   .logoContainer {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
   .linksContainer {
+    max-width: 1000px;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     flex: 2;
+    margin-top: 1rem;
+    padding-left: 5rem;
   }
-
   .logoPara {
     width: 191px;
     margin-top: 10px;
@@ -35,7 +38,7 @@
     color: #444;
     font-weight: 500;
   }
-  .cp {
+  .copyright {
     width: 191px;
     margin-top: 50px;
     text-align: center;
@@ -49,12 +52,11 @@
     font-weight: 700;
   }
   .footerImageContainer {
-    height: 140px;
     display: flex;
     justify-content: center;
   }
   .footerImage {
-    height: 140px;
+    height: 160px;
     width: 70%;
   }
 }
@@ -90,7 +92,7 @@
     .linksPara {
       padding-bottom: 2px;
     }
-    .cp {
+    .copyright {
       margin: 0 auto;
       margin-top: 1px;
     }

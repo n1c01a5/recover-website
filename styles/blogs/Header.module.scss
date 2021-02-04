@@ -5,11 +5,13 @@
     margin-bottom: 2rem;
     font-size: 3.4rem;
     line-height: 1;
+    word-spacing: 0.3rem;
   }
   .topic {
     margin-left: 0.2rem;
     font-size: 1rem;
     color: #4fc2e9;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
   }
   .resume {
@@ -21,11 +23,26 @@
   }
   hr {
     margin-top: 3rem;
-    border-color: lightgrey;
+    border-top: 1px solid black;
   }
   .authors {
     display: flex;
     width: 100%;
     margin-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .blogInfo {
+    .heading {
+      font-size: 1.7rem;
+      word-spacing: 0.1rem;
+    }
+    .authors {
+      flex-direction: column;
+    }
+    .resume {
+      word-spacing: 0;
+    }
   }
 }

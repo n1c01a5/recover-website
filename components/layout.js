@@ -25,16 +25,20 @@ function Scroll({ setTop, isTop }) {
 
 const Layout = ({ children, noRightButton }) => {
   const [isTop, setTop] = useState(true)
+  const [showOverlay, setShowOverlay] = useState(false)
 
   Scroll({ setTop, isTop })
 
   return (
     <>
       <nav suppressHydrationWarning>
-        <Header isTop={isTop} />
+        <Header isTop={isTop} setShowOverlay={setShowOverlay} />
       </nav>
       <main role="main">
-        <div className={styles.bodyContainer}>{children}</div>
+        <div className={styles.container}>
+          {showOverlay ? <div className={styles.overlay} /> : null}
+          <div className={styles.bodyContainer}>{children}</div>
+        </div>
       </main>
       <Footer />
     </>

@@ -1,23 +1,26 @@
 import styles from '../../styles/blogs/BlogTile.module.scss'
+import { useRouter } from 'next/router'
 
 export const BlogTile = ({ post }) => {
   const { topic, title, teaser, cover, slug } = post
+  const router = useRouter()
 
   return (
-    <a href={`/blog/${slug}`} className={styles.blogTileContainer}>
+    <div
+      onClick={() => router.push(`/blog/${slug}`)}
+      className={styles.blogTileContainer}
+    >
+      <div
+        className={styles.blogImage}
+        style={{ backgroundImage: `url(${cover})` }}
+      />
       <div>
-        <div
-          className={styles.blogImage}
-          style={{ backgroundImage: `url(${cover})` }}
-        ></div>
         <div>
-          <div>
-            <h4 className={styles.blogTopic}>{topic}</h4>
-          </div>
-          <p className={styles.blogTitle}>{title}</p>
-          <p className={styles.blogResume}>{teaser}</p>
+          <h4 className={styles.blogTopic}>{topic}</h4>
         </div>
+        <p className={styles.blogTitle}>{title}</p>
+        <p className={styles.blogResume}>{teaser}</p>
       </div>
-    </a>
+    </div>
   )
 }
