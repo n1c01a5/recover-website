@@ -94,11 +94,13 @@ export default function LoserBox() {
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center',
                 width: '1000px'
               }}
             >
-              <img src="loser-box-buy.png" style={{ width: '320px' }} />
+              <img
+                src="loser-box-buy.png"
+                style={{ width: '320px', height: '500px' }}
+              />
             </div>
             <div>
               <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
@@ -209,20 +211,24 @@ export default function LoserBox() {
               display: 'flex',
               justifyContent: 'space-between',
               width: '1250px',
-              margin: '50px auto 0 auto'
+              margin: '5px auto 0 auto'
             }}
           >
-            <h2>Items Description</h2>
+            <h2 style={{ fontSize: '24px', marginTop: '1rem' }}>
+              Items Description
+            </h2>
           </div>
           <div
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               width: '1250px',
-              margin: '50px auto 0 auto'
+              margin: '5px auto 0 auto'
             }}
           >
-            <h2>Loser Box Gallery</h2>
+            <h2 style={{ fontSize: '24px', marginTop: '1rem' }}>
+              Loser Box Gallery
+            </h2>
           </div>
 
           <div className="mobile-layout" />
