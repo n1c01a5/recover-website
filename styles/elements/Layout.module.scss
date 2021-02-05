@@ -18,7 +18,8 @@
       right: 0;
       bottom: 0;
       z-index: 1;
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.1);
+      transition: background-color 0.5s ease;
     }
     .bodyContainer {
       padding-top: 150px;
