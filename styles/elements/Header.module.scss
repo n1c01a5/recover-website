@@ -12,14 +12,15 @@
   padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
   .headerMenuLogo {
     position: relative;
-    top: 7px;
+    top: 15px;
     cursor: pointer;
   }
   .logoContainer {
     margin-top: -1rem;
   }
   .buttonContainer {
-    margin-right: -5rem;
+    margin-right: -12rem;
+    font-size: 18px;
   }
   .linksContainer {
     display: flex;
