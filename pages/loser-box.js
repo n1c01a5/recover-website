@@ -97,7 +97,10 @@ export default function LoserBox() {
                 width: '1000px'
               }}
             >
-              <img src="loser-box-buy.png" style={{ width: '320px' }} />
+              <img
+                src="loser-box-buy.png"
+                style={{ width: '320px', height: '500px' }}
+              />
             </div>
             <div>
               <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
