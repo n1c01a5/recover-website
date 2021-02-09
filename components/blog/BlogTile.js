@@ -4,12 +4,12 @@ export const BlogTile = ({ post }) => {
   const { topic, title, teaser, cover, slug } = post
 
   return (
-    <a href={`/blog/${slug}`} className={styles.blogTileContainer}>
+    <a href={`/blog/${slug}`} className={styles.blogTileContainer}> {/* FIXME: encapsulation */}
       <div>
         <div
           className={styles.blogImage}
           style={{ backgroundImage: `url(${cover})` }}
-        ></div>
+        />
         <div>
           <div>
             <h4 className={styles.blogTopic}>{topic}</h4>

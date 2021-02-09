@@ -1,46 +1,27 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Stepper from '@material-ui/core/Stepper'
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
-import Typography from '@material-ui/core/Typography'
-import Layout from '../components/layout'
+import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+
+import Layout from '../components/layout'
+import Stepper from '../components/elements/stepper'
 import PersonalDetailsFormData from '../components/stepper/personal-details'
 import ConnectWeb3 from '../components/stepper/connect-web3'
 import SwapToken from '../components/stepper/swap-token'
 import ApproveDAI from '../components/stepper/approve-dai'
 import TransferDAI from '../components/stepper/transfer-dai'
+
 const mattAbi = require('../contracts/MultipleArbitrationToken.json')
 const erc20Abi = require('../contracts/ERC20.json')
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%'
-  },
-  backButton: {
-    marginRight: theme.spacing(1)
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  },
-  stepIcon: {
-    color: '#a6ffcb !important'
-  }
-}))
+const steps = [
+  'Personal Details',
+  'Connect to Web3',
+  `Swap ETH to ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI`,
+  'Approve DAI Transfer',
+  'Transfer DAI to the Escrow'
+]
 
-function getSteps () {
-  return [
-    'Personal Details',
-    'Connect to Web3',
-    `Swap ETH to ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI`,
-    'Approve DAI Transfer',
-    'Transfer DAI to the Escrow'
-  ]
-}
 let pageCount = 1
 
 export default function LoserboxStepper () {
@@ -56,9 +37,7 @@ export default function LoserboxStepper () {
   const [tokenBalanceApproved, setTokenBalanceApproved] = useState(false)
   const [cid, setCid] = useState('')
   const [envData, setEnvData] = useState({})
-  const classes = useStyles()
-  const [activeStep, setActiveStep] = useState(0)
-  const steps = getSteps()
+  const [indexActiveStep, setIndexActiveStep] = useState(2)
 
   const changeNet = () => {
     const step = window.location.search.split('step=')
@@ -69,14 +48,14 @@ export default function LoserboxStepper () {
         query: { step: 2 }
       })
       pageCount = 2
-      setActiveStep(1)
+      setIndexActiveStep(1)
       setTokenBalanceApproved(false)
     } else {
       router.push({
         pathname: '/loserbox-stepper',
         query: { step: 1 }
       })
-      setActiveStep(0)
+      setIndexActiveStep(0)
       pageCount = 1
     }
   }
@@ -218,7 +197,7 @@ export default function LoserboxStepper () {
   }
 
   const handleNextStep = (networkId) => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+    setIndexActiveStep((prevActiveStep) => prevActiveStep + 1)
     pageCount = pageCount + 1
     let queryName
     if (networkId === 42 || networkName !== '') {
@@ -295,55 +274,20 @@ export default function LoserboxStepper () {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className={classes.root}>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map((label, index) => {
-            const stepProps = {}
-            const labelProps = {}
-            if (
-              label ===
-              `Swap ETH to ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI`
-            ) {
-              labelProps.optional = (
-                <Typography
-                  variant="caption"
-                  style={{ color: 'rgba(0, 0, 0, 0.54)', display: 'block' }}
-                  align="center"
-                >
-                  Optional
-                </Typography>
-              )
-            }
-            return (
-              <Step key={label}>
-                <StepLabel
-                  className="hideOnMobile"
-                  StepIconProps={{
-                    classes: {
-                      active: classes.stepIcon,
-                      completed:classes.stepIcon
-                    }
-                  }}
-                  {...labelProps}
-                >
-                  {label}
-                </StepLabel>
-              </Step>
-            )
-          })}
-        </Stepper>
+      <div>
+        <Stepper steps={steps} indexActiveStep={indexActiveStep} />
         <div>
-          {activeStep === steps.length
+          {indexActiveStep === steps.length
             ? (
               <div>
-                <p className={classes.instructions}>
+                <p>
                   All steps completed
                 </p>
               </div>
               )
             : (
               <div>
-                {getStepContent(activeStep)}
+                {getStepContent(indexActiveStep)}
               </div>
               )}
         </div>

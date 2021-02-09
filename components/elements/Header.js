@@ -12,11 +12,11 @@ const Header = ({ isTop }) => {
       className={`${styles.headerMenu} ${isTop ? styles.headerMenuIsTop : ''}`}
     >
       <div className={styles.logoContainer}>
-        <Link href="/">
+        <Link href='/'>
           <img
             className={styles.headerMenuLogo}
-            src="/RECOVER-logo.svg"
-            alt="Recover Logo"
+            src='/RECOVER-logo.svg'
+            alt='Recover Logo'
           />
         </Link>
       </div>
@@ -24,65 +24,68 @@ const Header = ({ isTop }) => {
         <div className={styles.linkContainer}>
           <a
             className={styles.link}
-            href="https://app.recover.ws/"
-            target="_blank"
+            href='https://app.recover.ws/'
+            rel='noreferrer'
+            target='_blank'
           >
             APPLICATION
           </a>
         </div>
         <div className={styles.linkContainer}>
-          <Link href="/blog">
+          <Link href='/blog'>
             <a className={styles.link}>BLOG</a>
           </Link>
         </div>
         <div className={styles.linkContainer}>
-          <Link href="/about">
+          <Link href='/about'>
             <a className={styles.link}>ABOUT</a>
           </Link>
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <Link href="/loser-box">
-          <Button isPrimary>Get Your Loser Box</Button>
+        <Link href='/loser-box'>
+          <a><Button isPrimary>Get Your Loser Box</Button></a>
         </Link>
       </div>
       <div
         className={styles.burgerMenu}
         onClick={() => setShowSidebar(!showSidebar)}
       >
-        <div className={styles.burgerMenuBar}></div>
-        <div className={styles.burgerMenuBar}></div>
-        <div className={styles.burgerMenuBar}></div>
+        <div className={styles.burgerMenuBar} />
+        <div className={styles.burgerMenuBar} />
+        <div className={styles.burgerMenuBar} />
       </div>
-      {showSidebar ? (
-        <div className={styles.sidebar}>
-          <div
-            className={styles.crossButton}
-            onClick={() => setShowSidebar(false)}
-          >
-            X
-          </div>
-          <div className={styles.linkContainer}>
-            <Link
-              className={styles.link}
-              href="https://app.recover.ws/"
-              target="_blank"
+      {showSidebar
+        ? (
+          <div className={styles.sidebar}>
+            <div
+              className={styles.crossButton}
+              onClick={() => setShowSidebar(false)}
             >
-              APPLICATION
-            </Link>
-          </div>
-          <div className={styles.linkContainer}>
-            <Link className={styles.link} active href="/blog">
-              BLOG
-            </Link>
-          </div>
-          <div className={styles.linkContainer}>
-            <Link className={styles.link} href="/about">
-              ABOUT
-            </Link>
-          </div>
-        </div>
-      ) : null}
+              X
+            </div>
+            <div className={styles.linkContainer}>
+              <Link
+                className={styles.link}
+                href='https://app.recover.ws/'
+                rel='noreferrer'
+                target='_blank'
+              >
+                APPLICATION
+              </Link>
+            </div>
+            <div className={styles.linkContainer}>
+              <Link className={styles.link} active href='/blog'>
+                BLOG
+              </Link>
+            </div>
+            <div className={styles.linkContainer}>
+              <Link className={styles.link} href='/about'>
+                ABOUT
+              </Link>
+            </div>
+          </div>)
+        : null}
     </div>
   )
 }

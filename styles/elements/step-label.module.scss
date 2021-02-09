@@ -1,0 +1,21 @@
+.stepLabel {
+  margin-top: 8px;;
+  font-size: 14px;
+  text-align: center;
+
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+}
+
+.default {color: #444;}
+.active {color: #444;}
+.checked {color: #444;}
+
+.content {
+  line-height: 16px;
+}
+
+.optionalLabel {
+  font-size: 12px;
+}
