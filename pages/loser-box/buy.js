@@ -12,7 +12,7 @@ import ApproveDAI from '../../components/loser-box-buy/approve-dai'
 import TransferDAI from '../../components/loser-box-buy/transfer-dai'
 
 import multipleArbitrationTokenAbi from '../../contracts/multiple-arbitration-token.json'
-import erc20Abi from '../../contracts/erc-20.json'
+import erc20Abi from '../../contracts/erc20.json'
 
 const steps = [
   'Personal Details',
