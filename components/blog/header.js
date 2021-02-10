@@ -3,7 +3,7 @@ import TimeInfo from './TimeInfo'
 
 import styles from '../../styles/blogs/Header.module.scss'
 
-const BlogHeader = ({ post }) => {
+const Header = ({ post }) => {
   const { topic, title, teaser: resume, readTime, date, authors } = post
   return (
     <header className={styles.blogInfo}>
@@ -30,4 +30,4 @@ const BlogHeader = ({ post }) => {
   )
 }
 
-export default BlogHeader
+export default Header

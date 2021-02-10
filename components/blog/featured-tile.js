@@ -1,7 +1,7 @@
 import styles from '../../styles/blogs/FeaturedBlog.module.scss'
 import { useRouter } from 'next/router'
 
-export const FeaturedBlogTile = ({ featuredBlog }) => {
+const FeaturedTile = ({ featuredBlog }) => {
   const { topic, title, teaser, slug, cover } = featuredBlog
   const router = useRouter()
 
@@ -14,7 +14,7 @@ export const FeaturedBlogTile = ({ featuredBlog }) => {
         <div
           className={styles.blogImage}
           style={{ backgroundImage: `url(${cover})` }}
-        ></div>
+        />
         <div className={styles.info}>
           <div>
             <h4 className={styles.topic}>{topic}</h4>
@@ -26,3 +26,5 @@ export const FeaturedBlogTile = ({ featuredBlog }) => {
     </div>
   )
 }
+
+export default FeaturedTile

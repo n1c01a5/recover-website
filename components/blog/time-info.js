@@ -1,4 +1,4 @@
-import styles from '../../styles/blogs/TimeInfo.module.scss'
+import styles from '../../styles/blogs/time-info.module.scss'
 
 const TimeInfo = ({ readTime, date }) => (
   <div className={styles.timeInfo}>

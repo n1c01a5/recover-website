@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DEXAG from 'dexag-sdk'
-const axios = require('axios')
+
+const axios = require('axios') // FIXME: use the import style
 
 export default function SwapToken ({
   web3,
@@ -82,7 +83,7 @@ export default function SwapToken ({
               </div>
               )
             : null}
-          <div className='alert' style={{ background: 'a6ffcc' }} role='alert'>
+          <div className='alert' style={{ background: '#a6ffcc' }} role='alert'>
             <p style={{ paddingTop: '15px' }}>
               To buy the Loser Box, you need to swap your Ether to {process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI.
             </p>

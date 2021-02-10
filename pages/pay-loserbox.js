@@ -126,7 +126,7 @@ export default function PayLoserBox () {
         </div>
         <div className='row'>
           <div className='col-md-12'>
-            <div className='alert' style={{ background: '#A6FFCC' }} role='alert'>
+            <div className='alert' style={{ background: '#a6ffcc' }} role='alert'>
               <p style={{ paddingTop: '15px' }}>
                 Finish the transaction with the Pay button.
               </p>
@@ -138,7 +138,7 @@ export default function PayLoserBox () {
                   style={{
                     width: '100%',
                     marginTop: '20px',
-                    backgroundColor: '#A6FFCC'
+                    backgroundColor: '#a6ffcc'
                   }}
                   type='button'
                   onClick={pay}

@@ -1,7 +1,7 @@
 import styles from '../../styles/blogs/BlogTile.module.scss'
 import { useRouter } from 'next/router'
 
-export const BlogTile = ({ post }) => {
+const Tile = ({ post }) => {
   const { topic, title, teaser, cover, slug } = post
   const router = useRouter()
 
@@ -24,3 +24,5 @@ export const BlogTile = ({ post }) => {
     </div>
   )
 }
+
+export default Tile
