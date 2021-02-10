@@ -5,7 +5,6 @@ import Web3 from 'web3'
 import { BounceLoader } from 'react-spinners'
 
 import Layout from '../../components/layout'
-
 const multipleArbitrationTokenAbi = require('../../contracts/multiple-arbitration-token.json')
 
 export default function PayLoserBox () {
