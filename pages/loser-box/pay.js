@@ -4,17 +4,17 @@ import { useRouter } from 'next/router'
 import Web3 from 'web3'
 import { BounceLoader } from 'react-spinners'
 
-import Layout from '../../../components/layout'
+import Layout from '../../components/layout'
 
-const multipleArbitrationToken = require('../../../contracts/multiple-arbitration-token.json')
+const multipleArbitrationTokenAbi = require('../../contracts/multiple-arbitration-token.json')
 
 export default function PayLoserBox () {
   const router = useRouter()
-  const [txHash, settxHash] = useState('')
+  const [txHash, setTxHash] = useState('')
   const [buttonView, setButtonView] = useState(true)
   const [isPending, setIsPending] = useState(false)
   const [isOngoing, setIsOngoing] = useState(false)
-  const [txError, setTXerror] = useState(false)
+  const [txError, setTxError] = useState(false)
   const [networkName, setNetworkName] = useState('')
 
   const pay = async () => {
@@ -53,7 +53,7 @@ export default function PayLoserBox () {
         let amount
         if (networkId === 1) {
           multipleArbitrableTokenContract = new web3.eth.Contract(
-            multipleArbitrationToken,
+            multipleArbitrationTokenAbi,
             process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
           )
           // Use BigNumber
@@ -65,7 +65,7 @@ export default function PayLoserBox () {
           )
         } else {
           multipleArbitrableTokenContract = new web3.eth.Contract(
-            multipleArbitrationToken,
+            multipleArbitrationTokenAbi,
             process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
           )
           // Use BigNumber
@@ -92,7 +92,7 @@ export default function PayLoserBox () {
           .sendTransaction(transactionParameters)
           .on('transactionHash', function (hash) {
             setIsOngoing(true)
-            settxHash(hash)
+            setTxHash(hash)
           })
           .once('confirmation', function (confirmationNumber, receipt) {
             if (receipt.status) {
@@ -102,7 +102,7 @@ export default function PayLoserBox () {
           .on('error', (error) => {
             console.error('error', error)
             setIsOngoing(false)
-            setTXerror(true)
+            setTxError(true)
           })
       }
     }

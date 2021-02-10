@@ -11,7 +11,7 @@ import SwapToken from '../../components/loser-box-buy/swap-token'
 import ApproveDAI from '../../components/loser-box-buy/approve-dai'
 import TransferDAI from '../../components/loser-box-buy/transfer-dai'
 
-const multipleArbitrationToken = require('../../contracts/multiple-arbitration-token.json')
+const multipleArbitrationTokenAbi = require('../../contracts/multiple-arbitration-token.json')
 const erc20Abi = require('../../contracts/erc20.json')
 
 const steps = [
@@ -153,7 +153,7 @@ export default function LoserboxStepper () {
         process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN
       )
       multipleArbitrableTokenContract = new web3.eth.Contract(
-        multipleArbitrationToken,
+        multipleArbitrationTokenAbi,
         process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
       )
       // Use BigNumber
@@ -172,7 +172,7 @@ export default function LoserboxStepper () {
         process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN
       )
       multipleArbitrableTokenContract = new web3.eth.Contract(
-        multipleArbitrationToken,
+        multipleArbitrationTokenAbi,
         process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
       )
       // Use BigNumber
