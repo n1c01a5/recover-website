@@ -10,8 +10,9 @@ import ConnectWeb3 from '../../components/loser-box-buy/connect-web3'
 import SwapToken from '../../components/loser-box-buy/swap-token'
 import ApproveDAI from '../../components/loser-box-buy/approve-dai'
 import TransferDAI from '../../components/loser-box-buy/transfer-dai'
-const multipleArbitrationTokenAbi = require('../../contracts/multiple-arbitration-token.json')
-const erc20Abi = require('../../contracts/erc20.json')
+
+import multipleArbitrationTokenAbi from '../../contracts/multiple-arbitration-token.json'
+import erc20Abi from '../../contracts/erc20.json'
 
 const steps = [
   'Personal Details',
