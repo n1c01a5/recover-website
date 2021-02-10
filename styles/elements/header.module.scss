@@ -8,7 +8,7 @@
   color: #444;
   box-shadow: 0px 1px 10px #999;
   background: #fff;
-  z-index: 1000;
+  z-index: 10;
   padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
   .headerMenuLogo {
     position: relative;
@@ -19,7 +19,6 @@
     margin-top: -2rem;
   }
   .buttonContainer {
-    margin-right: -12rem;
     font-size: 18px;
   }
   .linksContainer {
@@ -34,83 +33,26 @@
     color: #444;
     font-weight: 500;
   }
-  .sidebar {
-    display: none;
+
+  @media screen and (max-width: 720px) {
+    .linksContainer {
+      display: none;
+    }
   }
-  .sidebarLink {
-    display: none;
-  }
-  .burgerMenu {
-    display: none;
+
+  @media screen and (max-width: 720px) {
+    .buttonContainer {
+      display: none;
+    }
   }
 }
 
 @media screen and (max-width: 720px) {
   .headerMenu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    color: #444;
-    background: #fff;
-    z-index: 1000;
-    padding: 0.2rem 1.3rem;
-    line-height: 28px;
-    .linksContainer {
-      display: none;
-    }
-    .buttonContainer {
-      display: none;
-    }
-    .Menu {
-      display: block;
-      width: 2.7rem;
-      height: 3.5rem;
-      padding-top: 8px;
-      margin-right: 0.9rem;
-    }
-    .burgerMenuBar {
-      width: 85%;
-      height: 6px;
-      background-color: #727272;
-      margin: 6px;
-    }
-    .crossButton {
-      font-weight: 700;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 0.9rem;
-      margin-left: 50px;
-    }
-    .sidebar {
-      display: block;
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 2;
-      top: 55px;
-      left: 0;
-      background-color: #fff;
-      overflow-x: hidden;
-      transition: width 0.7s ease;
-      padding: 4rem 0rem;
-    }
-    .open {
-      width: 83% !important;
-    }
-    .linkContainer {
-      font-size: 1.3rem;
-      padding: 1rem 0.9rem;
-      border-radius: 5px;
-      margin-left: 1.8rem;
-    }
-    .link {
-      text-decoration: none;
-      color: #444;
-      font-weight: 500;
-      font-size: 18.5px;
-    }
+    height: 54px;
+  }
+
+  .headerMenuLogo {
+    padding: 2px 0 0 20px;
   }
 }

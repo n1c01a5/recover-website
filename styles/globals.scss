@@ -456,13 +456,6 @@ input[type='number'] {
   font-size: 16px !important;
 }
 
-// FIXME: remove this
-@media only screen and (max-width: 992px) {
-  // .MuiStepLabel-labelContainer {
-  //   display: none !important;
-  // }
-}
-
 // Header
 @media only screen and (min-width: 720px) {
   .header-menu__isTop {
@@ -477,5 +470,92 @@ input[type='number'] {
   .header-menu__isTop {
     margin-top: 10px;
     margin-top: 0;
+  }
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 22px;
+  top: 14px;
+  z-index: 100;
+}
+
+@media screen and (min-width: 720px) {
+  .bm-burger-button {
+    display: none;
+  }
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #444;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #fff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #000;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  padding: 0.8em;
+}
+
+.bm-item-list a {
+  font-family: "Montserrat";
+  line-height: 40px;
+  font-weight: bold;
+  color: #444 !important;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 720px) {
+  .bm-burger-button {
+    display: none;
   }
 }

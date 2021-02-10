@@ -6,28 +6,6 @@ import Button from './button'
 import styles from '../../styles/elements/header.module.scss'
 
 const Header = ({ isTop, setShowOverlay }) => {
-  const [showSidebar, setShowSidebar] = useState(false)
-
-  const handleClick = () => {
-    setShowOverlay(!showSidebar)
-    setShowSidebar(!showSidebar)
-  }
-
-  const ToggleButton = () => { // FIXME: this Toggle has some side effect.
-    return (
-      <div className={styles.Menu} onClick={handleClick}>
-        <HamburgerMenu />
-      </div>
-    )
-  }
-
-  const HamburgerMenu = () => (
-    <div>
-      <div className={styles.burgerMenuBar}></div>
-      <div className={styles.burgerMenuBar}></div>
-      <div className={styles.burgerMenuBar}></div>
-    </div>
-  )
 
   return (
     <div
@@ -68,31 +46,6 @@ const Header = ({ isTop, setShowOverlay }) => {
         <Link href='/loser-box'>
           <a><Button isPrimary>Get Your Loser Box</Button></a>
         </Link>
-      </div>
-      <ToggleButton />
-      <div className={`${styles.sidebar} ${showSidebar ? styles.open : ''}`}>
-        <div className={styles.crossButton} onClick={handleClick}>
-          X
-        </div>
-        <div className={styles.linkContainer}>
-          <a
-            className={styles.link}
-            href='https://app.recover.ws/'
-            target='_blank'
-          >
-            APPLICATION
-          </a>
-        </div>
-        <div className={styles.linkContainer}>
-          <Link href='/blog'>
-            <a className={styles.link}>BLOG</a>
-          </Link>
-        </div>
-        <div className={styles.linkContainer}>
-          <Link href='/about'>
-            <a className={styles.link}>ABOUT</a>
-          </Link>
-        </div>
       </div>
     </div>
   )

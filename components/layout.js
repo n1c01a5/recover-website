@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { slide as Menu } from 'react-burger-menu'
 
 import Footer from './elements/footer'
 import Header from './elements/header'
@@ -31,6 +33,11 @@ const Layout = ({ children, noRightButton }) => {
 
   return (
     <>
+      <Menu right>
+        <a className='menu-item' href='app.recover.ws' target='_blank' rel='noreferrer'>APPLICATION</a>
+        <a className='menu-item'><Link href='/blog'><a>BLOG</a></Link></a>
+        <a className='menu-item'><Link href='/about'><a>ABOUT</a></Link></a>
+      </Menu>
       <nav suppressHydrationWarning>
         <Header isTop={isTop} setShowOverlay={setShowOverlay} />
       </nav>
