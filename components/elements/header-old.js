@@ -13,7 +13,7 @@ const Header = ({ isTop, setShowOverlay }) => {
     setShowSidebar(!showSidebar)
   }
 
-  const ToggleButton = () => {
+  const ToggleButton = () => { // FIXME: this Toggle has some side effect.
     return (
       <div className={styles.Menu} onClick={handleClick}>
         <HamburgerMenu />
