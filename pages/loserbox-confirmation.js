@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
+
 import Layout from '../components/layout'
 
 export default function LoserBox () {
@@ -25,7 +26,7 @@ export default function LoserBox () {
             <div
               className='alert btns'
               style={{
-                background: '#A6FFCC'
+                background: '#a6ffcc'
               }}
               role='alert'
             >
@@ -37,7 +38,7 @@ export default function LoserBox () {
                 style={{
                   width: '100%',
                   marginTop: '20px',
-                  backgroundColor: '#A6FFCC'
+                  backgroundColor: '#a6ffcc'
                 }}
                 type='button'
               >

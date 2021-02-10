@@ -75,37 +75,42 @@ export default function TransferDAI ({
         })
         .once('confirmation', (confirmationNumber, receipt) => {
           if (receipt.status) {
-            const base = new Airtable(
-              { apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY })
-              .base(networkName === 'kovan'
-                ? process.env.NEXT_PUBLIC_AIRTABLE_KOVAN_BASE
-                : process.env.NEXT_PUBLIC_AIRTABLE_MAINNET_BASE)
+            try {
+              const base = new Airtable(
+                { apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY })
+                .base(networkName === 'kovan'
+                  ? process.env.NEXT_PUBLIC_AIRTABLE_KOVAN_BASE
+                  : process.env.NEXT_PUBLIC_AIRTABLE_MAINNET_BASE)
 
-            base('Clients').create([
-              {
-                'fields': {
-                  'Name': address.toLowerCase(),
-                  'Ethereum Address': email,
-                  'Address': phoneNumber,
-                  'Address Complement': address.toLowerCase(),
-                  'City': email,
-                  'ZipCode': phoneNumber,
-                  'Country': phoneNumber,
-                  'soliditySha3': address.toLowerCase(),
-                  'Mail': email,
-                  'Phone Number': phoneNumber
+              base('Clients').create([
+                {
+                  'fields': {
+                    'Name': address.toLowerCase(),
+                    'Ethereum Address': email,
+                    'Address': phoneNumber,
+                    'Address Complement': address.toLowerCase(),
+                    'City': email,
+                    'ZipCode': phoneNumber,
+                    'Country': phoneNumber,
+                    'soliditySha3': address.toLowerCase(),
+                    'Mail': email,
+                    'Phone Number': phoneNumber
+                  }
                 }
-              }
-            ], (err, records) => {
-              if (err) {
-                console.error(err)
+              ], (error, records) => {
+                if (error) {
+                  console.error(error)
 
-                return
-              }
-              records.forEach(function (record) {
-                console.log(record.getId())
+                  return
+                }
+                records.forEach(function (record) {
+                  console.log(record.getId())
+                })
               })
-            })
+            } catch (error) {
+              console.error(error)
+            }
+
             router.push('/loserbox-confirmation')
           }
         })
