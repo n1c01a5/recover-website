@@ -73,7 +73,7 @@ export default function SwapToken ({
             ? (
               <div
                 className='alert'
-                style={{ background: '#A6FFCC' }}
+                style={{ background: '#a6ffcc' }}
                 role='alert'
               >
                 <p style={{ paddingTop: '15px' }}>
@@ -82,7 +82,7 @@ export default function SwapToken ({
               </div>
               )
             : null}
-          <div className='alert' style={{ background: '#A6FFCC' }} role='alert'>
+          <div className='alert' style={{ background: 'a6ffcc' }} role='alert'>
             <p style={{ paddingTop: '15px' }}>
               To buy the Loser Box, you need to swap your Ether to {process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT} DAI.
             </p>
@@ -93,7 +93,7 @@ export default function SwapToken ({
             style={{
               width: '100%',
               marginTop: '20px',
-              backgroundColor: '#A6FFCC'
+              backgroundColor: '#a6ffcc'
             }}
             type='button'
             disabled={!tokenBalanceApproved && networkName !== ''}

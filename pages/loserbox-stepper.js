@@ -6,14 +6,16 @@ import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Typography from '@material-ui/core/Typography'
-import Layout from '../components/layout'
 import Web3 from 'web3'
+
+import Layout from '../components/layout'
 import PersonalDetailsFormData from '../components/stepper/personal-details'
 import ConnectWeb3 from '../components/stepper/connect-web3'
 import SwapToken from '../components/stepper/swap-token'
 import ApproveDAI from '../components/stepper/approve-dai'
 import TransferDAI from '../components/stepper/transfer-dai'
 import styles from '../styles/loser-box/LoserBoxStepper.module.scss'
+
 const mattAbi = require('../contracts/MultipleArbitrationToken.json')
 const erc20Abi = require('../contracts/ERC20.json')
 
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function getSteps() {
+function getSteps () {
   return [
     'Personal Details',
     'Connect to Web3',
@@ -41,7 +43,7 @@ function getSteps() {
 }
 let pageCount = 1
 
-export default function LoserboxStepper() {
+export default function LoserboxStepper () {
   const router = useRouter()
   const [account, setAccount] = useState('')
   const [multipleArbitrableTokenContract, setMattContract] = useState(null)
@@ -55,7 +57,7 @@ export default function LoserboxStepper() {
   const [cid, setCid] = useState('')
   const [envData, setEnvData] = useState({})
   const classes = useStyles()
-  const [activeStep, setActiveStep] = React.useState(0)
+  const [activeStep, setActiveStep] = useState(0)
   const steps = getSteps()
 
   const changeNet = () => {
@@ -108,11 +110,15 @@ export default function LoserboxStepper() {
   }
 
   const findMetamaskAccounts = async () => {
-    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+    // const accounts = await ethereum.request({ method: 'eth_requestAccounts' }) FIXME: what is this???
     await window.ethereum.enable()
+
     const web3 = (window.web3 = new Web3(window.ethereum))
+
     setWeb3(web3)
+
     const accounts = await web3.eth.getAccounts()
+
     if (accounts && accounts.length > 0) {
       setAccount(accounts[0])
       findNetworks(web3, accounts)
@@ -234,7 +240,7 @@ export default function LoserboxStepper() {
     setCid(data)
   }
 
-  function getStepContent(stepIndex) {
+  function getStepContent (stepIndex) {
     switch (stepIndex) {
       case 0:
         return <PersonalDetailsFormData handleNextStep={handleNextStep} />
@@ -290,7 +296,7 @@ export default function LoserboxStepper() {
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <div className={styles.root}>
@@ -304,9 +310,9 @@ export default function LoserboxStepper() {
             ) {
               labelProps.optional = (
                 <Typography
-                  variant="caption"
+                  variant='caption'
                   style={{ color: 'rgba(0, 0, 0, 0.54)', display: 'block' }}
-                  align="center"
+                  align='center'
                 >
                   Optional
                 </Typography>
@@ -315,7 +321,7 @@ export default function LoserboxStepper() {
             return (
               <Step key={label}>
                 <StepLabel
-                  className="hideOnMobile"
+                  className='hideOnMobile'
                   StepIconProps={{
                     classes: {
                       active: classes.stepIcon,

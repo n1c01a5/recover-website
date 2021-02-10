@@ -9,6 +9,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
+cp .env.development .env.development.local # and set the env vars
 npm run dev
 ```
 

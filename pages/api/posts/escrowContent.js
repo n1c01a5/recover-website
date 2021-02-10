@@ -174,6 +174,42 @@ export const EscrowBlogContent = `
           </a>
           .
         </p>
-      </section>
-    </div>
+      </div>
+    </section>
+    <section className="blog__section">
+      <h2>Escrow Smart Contract implementation with Recover</h2>
+      <p>
+        <ul className="blog__list">
+          <li>The finder finds your lost valuable.</li>
+          <li>
+            The honest finder will definitely return your valuable, but the
+            dishonest person (who is not willing to not return the product) on
+            seeing the reward capped higher than the market price is
+            incentivized to return it to the owner.
+          </li>
+          <li> When the item is returned the finder gets the reward.</li>
+          <li>
+            If not, a dispute is created which is handled by the arbitrator.
+          </li>
+        </ul>
+      </p>
+    </section>
+    <section className="blog__section">
+      <h2>Conclusion</h2>
+      <p>
+        Escrow financial agreement not only helps make the transaction secure
+        but also adds more trust among two parties. On the other hand, Escrow
+        smart contracts provide advantages like smart contract enforcement,
+        interoperability, resilience, and better cost to name a few.
+        Additionally, the Recover Loser box comes with all the advantages of
+        escrow smart contracts with easy implementation to make sure your
+        valuable is returned, the next time you lose it. Now that we have
+        learned briefly how blockchain escrow works, let us discover
+        <a className="blog_link" href="/">
+          Recover
+        </a>
+        .
+      </p>
+    </section>
+  </div>
 `
