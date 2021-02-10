@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import styles from '../../styles/blogs/Blog.module.scss'
+import styles from '../../styles/blogs/post.module.scss'
 
 import Layout from '../../components/layout'
-import BlogHeader from '../../components/blog/BlogHeader'
+import BlogHeader from '../../components/blog/header'
 import { getPosts } from '../api/posts'
 export default function Post({ post }) {
   const { content, cover } = post

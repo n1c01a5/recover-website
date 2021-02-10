@@ -1,8 +1,8 @@
-import { BlogTile } from './BlogTile'
+import BlogTile from './tile'
 import { getNonFeaturedBlogs } from '../../utils/blogs'
 
-import styles from '../../styles/blogs/Blogs.module.scss'
-import dividerStyles from '../../styles/elements/Divider.module.scss'
+import styles from '../../styles/blogs/posts.module.scss'
+import dividerStyles from '../../styles/elements/divider.module.scss'
 
 const Divider = () => (
   <div className={dividerStyles.divider}>
@@ -11,10 +11,10 @@ const Divider = () => (
 )
 
 const insertDivider = (posts) => {
-  return [...posts.slice(0, 3), <Divider />, ...posts.slice(3)]
+  return [...posts.slice(0, 3), <Divider />, ...posts.slice(3)] // FIXME: add key in the divider component.
 }
 
-export const Blogs = ({ posts }) => {
+const Posts = ({ posts }) => {
   const nonFeaturedBlogs = getNonFeaturedBlogs(posts)
 
   const nonFeaturedBlogTiles = nonFeaturedBlogs.map((post) => (
@@ -25,3 +25,5 @@ export const Blogs = ({ posts }) => {
 
   return <section className={styles.blogs}>{blogTilesWithDivider()}</section>
 }
+
+export default Posts

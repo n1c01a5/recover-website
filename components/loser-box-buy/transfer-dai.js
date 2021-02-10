@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import { BounceLoader } from 'react-spinners'
 import {
   Checkbox,
@@ -10,7 +11,6 @@ import {
   DialogActions,
   Button
 } from '@material-ui/core'
-import { useRouter } from 'next/router'
 import Airtable from 'airtable'
 
 import { MetaEvidence } from '../../loser-box-contract/meta-evidence'

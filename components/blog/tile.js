@@ -1,5 +1,6 @@
-import styles from '../../styles/blogs/BlogTile.module.scss'
 import { useRouter } from 'next/router'
+
+import styles from '../../styles/blogs/tile.module.scss'
 
 const Tile = ({ post }) => {
   const { topic, title, teaser, cover, slug } = post

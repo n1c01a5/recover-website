@@ -1,20 +1,21 @@
 import Head from 'next/head'
+
 import Layout from '../components/layout'
 
-export default function About() {
+export default function About () {
   return (
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <section className="about__hero">
+      <section className='about__hero'>
         <img
-          className="about__img-container"
-          src="/wagner-nicolas.jpg"
-          alt="Wagner Nicolas biography - blockchain developer"
+          className='about__img-container'
+          src='/wagner-nicolas.jpg'
+          alt='Wagner Nicolas biography - blockchain developer'
         />
-        <div className="about__hero-text">
+        <div className='about__hero-text'>
           <h1
             style={{
               color: '#51c4e9',
@@ -45,7 +46,7 @@ export default function About() {
             and more globally all the blockchain ecosystem become mainstream to
             found the new internet of value.
           </p>
-          <p className="p-indent" style={{ paddingTop: '1rem' }}>
+          <p className='p-indent' style={{ paddingTop: '1rem' }}>
             About the projects I particularly want to be part:
             <ul>
               <li>
@@ -61,7 +62,7 @@ export default function About() {
               </li>
             </ul>
           </p>
-          <p className="p-indent" style={{ paddingTop: '2rem' }}>
+          <p className='p-indent' style={{ paddingTop: '2rem' }}>
             Finally, here is my general vision about the blockchain, we are
             going to respond to the major challenges of the blockchain, such as:
             <ul>
@@ -75,28 +76,28 @@ export default function About() {
             to make the blockchain the new generation of the internet.
           </p>
         </div>
-        <ul className="about__social-links">
+        <ul className='about__social-links'>
           <li>
-            <a href="https://twitter.com/w_n1c01a5">
+            <a href='https://twitter.com/w_n1c01a5'>
               <img
-                className="about__social-links-icon .about__social-links--first"
-                src="/twitter.svg"
+                className='about__social-links-icon .about__social-links--first'
+                src='/twitter.svg'
               />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/nicolas-wagner-ab59249a">
-              <img className="about__social-links-icon" src="/linkedin.svg" />
+            <a href='https://www.linkedin.com/in/nicolas-wagner-ab59249a'>
+              <img className='about__social-links-icon' src='/linkedin.svg' />
             </a>
           </li>
           <li>
-            <a href="mailto:contact@wagner-nicolas.com">
-              <img className="about__social-links-icon" src="/gmail.svg" />
+            <a href='mailto:contact@wagner-nicolas.com'>
+              <img className='about__social-links-icon' src='/gmail.svg' />
             </a>
           </li>
           <li>
-            <a href="https://github.com/n1c01a5">
-              <img className="about__social-links-icon" src="/github.svg" />
+            <a href='https://github.com/n1c01a5'>
+              <img className='about__social-links-icon' src='/github.svg' />
             </a>
           </li>
         </ul>

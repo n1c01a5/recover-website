@@ -1,17 +1,18 @@
 import Link from 'next/link'
-import styles from '../../styles/elements/Footer.module.scss'
 
-export default function Footer() {
+import styles from '../../styles/elements/footer.module.scss'
+
+export default function Footer () {
   return (
     <div className={styles.footerContainer}>
       <footer className={styles.footer}>
         <div className={styles.logoContainer}>
-          <Link href="/">
+          <Link href='/'>
             <img
-              className="header-menu-logo"
-              src="/RECOVER-logo.svg"
-              alt="Recover Logo"
-              role="presentation"
+              className='header-menu-logo'
+              src='/RECOVER-logo.svg'
+              alt='Recover Logo'
+              role='presentation'
             />
           </Link>
           <p className={styles.logoPara}>
@@ -26,17 +27,17 @@ export default function Footer() {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <Link href="https://kleros.io/">
+                <Link href='https://kleros.io/'>
                   <a className={styles.a}>Kleros</a>
                 </Link>
               </li>
               <li className={styles.otherLi}>
-                <Link href="https://ethereum.org/en/">
+                <Link href='https://ethereum.org/en/'>
                   <a className={styles.a}>Ethereum</a>
                 </Link>
               </li>
               <li className={styles.otherLi}>
-                <Link href="https://ipfs.io/">
+                <Link href='https://ipfs.io/'>
                   <a className={styles.a}>IPFS</a>
                 </Link>
               </li>
@@ -48,7 +49,7 @@ export default function Footer() {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <Link href="/loser-box">
+                <Link href='/loser-box'>
                   <a className={styles.a}>Loser Box</a>
                 </Link>
               </li>
@@ -60,12 +61,12 @@ export default function Footer() {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <Link href="https://github.com/blockchain-mafia/">
+                <Link href='https://github.com/blockchain-mafia/'>
                   <a className={styles.a}>Github</a>
                 </Link>
               </li>
               <li className={styles.otherLi}>
-                <Link href="mailto: contact@wagner-nicolas.com">
+                <Link href='mailto: contact@wagner-nicolas.com'>
                   <a className={styles.a}>Mail</a>
                 </Link>
               </li>
@@ -77,7 +78,7 @@ export default function Footer() {
             </p>
             <ul className={styles.ul}>
               <li className={styles.firstLi}>
-                <Link href="/blog/securing-valuables-with-escrow-smart-contracts">
+                <Link href='/blog/securing-valuables-with-escrow-smart-contracts'>
                   <a className={styles.a}>Escrow</a>
                 </Link>
               </li>
@@ -87,9 +88,9 @@ export default function Footer() {
         <div className={styles.footerImageContainer}>
           <img
             className={`${styles.footerImage} footer-cryptokitty-recover`}
-            src="/cryptokitty-recover.png"
-            alt="Cryptokitty with Recover"
-            role="presentation"
+            src='/cryptokitty-recover.png'
+            alt='Cryptokitty with Recover'
+            role='presentation'
           />
         </div>
       </footer>

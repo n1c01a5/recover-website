@@ -1,7 +1,7 @@
-import Avatar from '../elements/Avatar'
-import TimeInfo from './TimeInfo'
+import Avatar from '../elements/avatar'
+import TimeInfo from './time-info'
 
-import styles from '../../styles/blogs/Header.module.scss'
+import styles from '../../styles/blogs/header.module.scss'
 
 const Header = ({ post }) => {
   const { topic, title, teaser: resume, readTime, date, authors } = post

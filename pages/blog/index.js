@@ -1,15 +1,14 @@
 import Head from 'next/head'
+
 import Layout from '../../components/layout'
-import styles from '../../styles/blogs/BlogIndex.module.scss'
-
-import { FeaturedBlogTile } from '../../components/blog/FeaturedBlogTile'
-import { Blogs } from '../../components/blog/Blogs'
-
+import FeaturedBlogTile from '../../components/blog/featured-tile'
+import Blogs from '../../components/blog/posts'
 import { getPosts } from '../../pages/api/posts'
-
 import { getFeaturedBlog } from '../../utils/blogs'
 
-export default function BlogIndex({ posts }) {
+import styles from '../../styles/blogs/index.module.scss'
+
+export default function BlogIndex ({ posts }) {
   const featuredBlog = getFeaturedBlog(posts)
 
   const Hero = () => (
@@ -24,9 +23,9 @@ export default function BlogIndex({ posts }) {
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <section className="main-container">
+      <section className='main-container'>
         <Hero />
         <Blogs posts={posts} />
       </section>

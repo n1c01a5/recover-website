@@ -310,5 +310,5 @@ export const RecoverBlogContent = `
         Recover helps in Recovery, Click here.
       </p>
     </section>
-  </div>  
+  </div>
 `

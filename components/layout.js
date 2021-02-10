@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 
-import Footer from './elements/Footer'
-import Header from './elements/Header'
+import Footer from './elements/footer'
+import Header from './elements/header'
 
-import styles from '../styles/elements/Layout.module.scss'
+import styles from '../styles/elements/layout.module.scss'
 
-function Scroll({ setTop, isTop }) {
-  useEffect(function onFirstMount() {
-    function onScroll() {
+function Scroll ({ setTop, isTop }) {
+  useEffect(function onFirstMount () {
+    function onScroll () {
       window.document.addEventListener('scroll', () => {
-        if (window.scrollY < 30 !== isTop) {
+        if ((window.scrollY < 30) !== isTop) {
           setTop(false)
         } else {
           setTop(true)
@@ -34,7 +34,7 @@ const Layout = ({ children, noRightButton }) => {
       <nav suppressHydrationWarning>
         <Header isTop={isTop} setShowOverlay={setShowOverlay} />
       </nav>
-      <main role="main">
+      <main role='main'>
         <div className={styles.container}>
           {showOverlay ? <div className={styles.overlay} /> : null}
           <div className={styles.bodyContainer}>{children}</div>

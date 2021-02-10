@@ -4,7 +4,7 @@ import bhaveshImage from '../../../public/bhavesh.jpg'
 export const authors = [
   {
     name: 'Wagner Nicolas',
-    designation: 'CEO',
+    designation: 'Buidler',
     tag: 'nico',
     image: nicoImage
   },

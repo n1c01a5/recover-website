@@ -1,4 +1,5 @@
-import styles from '../../styles/elements/Avatar.module.scss'
+import styles from '../../styles/elements/avatar.module.scss'
+
 const Avatar = ({ tag, name, designation, image }) => (
   <div className={styles.author}>
     <div

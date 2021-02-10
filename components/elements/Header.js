@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import Button from './button'
 
-import styles from '../../styles/elements/Header.module.scss'
+import styles from '../../styles/elements/header.module.scss'
 
 const Header = ({ isTop, setShowOverlay }) => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -77,19 +77,19 @@ const Header = ({ isTop, setShowOverlay }) => {
         <div className={styles.linkContainer}>
           <a
             className={styles.link}
-            href="https://app.recover.ws/"
-            target="_blank"
+            href='https://app.recover.ws/'
+            target='_blank'
           >
             APPLICATION
           </a>
         </div>
         <div className={styles.linkContainer}>
-          <Link href="/blog">
+          <Link href='/blog'>
             <a className={styles.link}>BLOG</a>
           </Link>
         </div>
         <div className={styles.linkContainer}>
-          <Link href="/about">
+          <Link href='/about'>
             <a className={styles.link}>ABOUT</a>
           </Link>
         </div>

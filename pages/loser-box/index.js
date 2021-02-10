@@ -3,17 +3,17 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useMediaQuery } from 'react-responsive'
 
-import Layout from '../components/layout'
-import Button from '../components/elements/button'
+import Layout from '../../components/layout'
+import Button from '../../components/elements/button'
 
-import EthereumLogo, { length } from '../public/ethereum-logo.svg'
-import KlerosLogo from '../public/kleros-logo.svg'
-import IpfsLogo from '../public/ipfs-logo.svg'
+import EthereumLogo, { length } from '../../public/ethereum-logo.svg' // FIXME: remove me - length - if I am not used.
+import KlerosLogo from '../../public/kleros-logo.svg'
+import IpfsLogo from '../../public/ipfs-logo.svg'
 
-const Faq = dynamic(() => import('../components/faq'), { ssr: false })
+const Faq = dynamic(() => import('../../components/faq'), { ssr: false }) // FIXME: remove me if I am not used.
 
-export default function LoserBox() {
-  const isDesktopOrLaptop = useMediaQuery({
+export default function LoserBox () {
+  const isDesktopOrLaptop = useMediaQuery({ // FIXME: remove me if I'm nut used.
     query: '(min-device-width: 1024px)'
   })
 
@@ -21,13 +21,13 @@ export default function LoserBox() {
     <Layout>
       <Head>
         <title>Recover.ws - Loser Box to protect your item from loss</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <div>
         <header>
           <div
-            className="loser-box-container"
+            className='loser-box-container'
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -53,7 +53,7 @@ export default function LoserBox() {
                   marginBottom: '20px'
                 }}
               >
-                <img src="loser-box-buy.png" style={{ width: '64px' }} />
+                <img src='loser-box-buy.png' style={{ width: '64px' }} />
               </div>
               <div
                 style={{
@@ -68,7 +68,7 @@ export default function LoserBox() {
                 }}
               >
                 <img
-                  src="loser-box-pvc-card-keyring-square.jpg"
+                  src='loser-box-pvc-card-keyring-square.jpg'
                   style={{ objectFix: 'cover', width: '128px' }}
                 />
               </div>
@@ -85,7 +85,7 @@ export default function LoserBox() {
                 }}
               >
                 <img
-                  src="loser-box-pvc-card-square.png"
+                  src='loser-box-pvc-card-square.png'
                   style={{ objectFix: 'cover', width: '128px' }}
                 />
               </div>
@@ -98,7 +98,7 @@ export default function LoserBox() {
               }}
             >
               <img
-                src="loser-box-buy.png"
+                src='loser-box-buy.png'
                 style={{ width: '320px', height: '500px' }}
               />
             </div>
@@ -149,17 +149,17 @@ export default function LoserBox() {
               >
                 <img
                   src={EthereumLogo}
-                  alt="Ethereum logo svg"
+                  alt='Ethereum logo svg'
                   style={{ width: '26px' }}
                 />
                 <img
                   src={KlerosLogo}
-                  alt="Kleros logo svg"
+                  alt='Kleros logo svg'
                   style={{ width: '45px' }}
                 />
                 <img
                   src={IpfsLogo}
-                  alt="IPFS logo svg"
+                  alt='IPFS logo svg'
                   style={{ width: '35px' }}
                 />
               </div>
@@ -197,7 +197,7 @@ export default function LoserBox() {
               <br />
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div>
-                  <Link href="/loserbox-stepper?step=1">
+                  <Link href='/loser-box/buy?step=1'>
                     <Button isPrimary style={{ width: '300px' }}>
                       BUY LOSER BOX
                     </Button>
@@ -231,7 +231,7 @@ export default function LoserBox() {
             </h2>
           </div>
 
-          <div className="mobile-layout" />
+          <div className='mobile-layout' />
         </header>
       </div>
       <style jsx>

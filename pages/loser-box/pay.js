@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 import Web3 from 'web3'
 import { BounceLoader } from 'react-spinners'
 
-import Layout from '../components/layout'
-const mattAbi = require('../contracts/MultipleArbitrationToken.json')
+import Layout from '../../../components/layout'
+
+const multipleArbitrationToken = require('../../../contracts/multiple-arbitration-token.json')
 
 export default function PayLoserBox () {
   const router = useRouter()
@@ -52,7 +53,7 @@ export default function PayLoserBox () {
         let amount
         if (networkId === 1) {
           multipleArbitrableTokenContract = new web3.eth.Contract(
-            mattAbi,
+            multipleArbitrationToken,
             process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
           )
           // Use BigNumber
@@ -64,7 +65,7 @@ export default function PayLoserBox () {
           )
         } else {
           multipleArbitrableTokenContract = new web3.eth.Contract(
-            mattAbi,
+            multipleArbitrationToken,
             process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
           )
           // Use BigNumber

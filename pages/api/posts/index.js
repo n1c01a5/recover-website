@@ -1,12 +1,11 @@
 import { authors } from '../authors'
-import { EscrowBlogContent } from './escrowContent'
-import { RecoverBlogContent } from './recoverContent'
+import { EscrowBlogContent } from './escrow-content'
+import { RecoverBlogContent } from './recover-content'
+import { getAuthorHelper } from '../../../utils/blogs'
 
 import DogeImage from '../../../public/doge.png'
 import EscrowImage from '../../../public/Blog_1_Escrow.jpg'
 import RecoverImage from '../../../public/Blog_2_Lostphone.jpg'
-
-import { getAuthorHelper } from '../../../utils/blogs'
 
 export function getPosts () {
   const getAuthor = getAuthorHelper(authors)

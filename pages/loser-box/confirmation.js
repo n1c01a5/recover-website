@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import Link from 'next/link'
 
-import Layout from '../components/layout'
+import Layout from '../../components/layout'
 
 export default function LoserBox () {
   useEffect(() => {

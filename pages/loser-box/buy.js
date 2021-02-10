@@ -3,16 +3,16 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
 
-import Layout from '../components/layout'
-import Stepper from '../components/elements/stepper'
-import PersonalDetailsFormData from '../components/stepper/personal-details'
-import ConnectWeb3 from '../components/stepper/connect-web3'
-import SwapToken from '../components/stepper/swap-token'
-import ApproveDAI from '../components/stepper/approve-dai'
-import TransferDAI from '../components/stepper/transfer-dai'
+import Layout from '../../components/layout'
+import Stepper from '../../components/elements/stepper'
+import PersonalDetailsFormData from '../../components/loser-box-buy/personal-details'
+import ConnectWeb3 from '../../components/loser-box-buy/connect-web3'
+import SwapToken from '../../components/loser-box-buy/swap-token'
+import ApproveDAI from '../../components/loser-box-buy/approve-dai'
+import TransferDAI from '../../components/loser-box-buy/transfer-dai'
 
-const mattAbi = require('../contracts/MultipleArbitrationToken.json')
-const erc20Abi = require('../contracts/ERC20.json')
+const multipleArbitrationToken = require('../../contracts/multiple-arbitration-token.json')
+const erc20Abi = require('../../contracts/erc20.json')
 
 const steps = [
   'Personal Details',
@@ -44,7 +44,7 @@ export default function LoserboxStepper () {
 
     if (localStorage.getItem('userDetails') && step[1] > 1) {
       router.push({
-        pathname: '/loserbox-stepper',
+        pathname: '/loser-box/buy',
         query: { step: 2 }
       })
       pageCount = 2
@@ -52,7 +52,7 @@ export default function LoserboxStepper () {
       setTokenBalanceApproved(false)
     } else {
       router.push({
-        pathname: '/loserbox-stepper',
+        pathname: '/loser-box/buy',
         query: { step: 1 }
       })
       setIndexActiveStep(0)
@@ -153,7 +153,7 @@ export default function LoserboxStepper () {
         process.env.NEXT_PUBLIC_MAINNET_ERC_TOKEN
       )
       multipleArbitrableTokenContract = new web3.eth.Contract(
-        mattAbi,
+        multipleArbitrationToken,
         process.env.NEXT_PUBLIC_MAINNET_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
       )
       // Use BigNumber
@@ -172,7 +172,7 @@ export default function LoserboxStepper () {
         process.env.NEXT_PUBLIC_KOVAN_ERC_TOKEN
       )
       multipleArbitrableTokenContract = new web3.eth.Contract(
-        mattAbi,
+        multipleArbitrationToken,
         process.env.NEXT_PUBLIC_KOVAN_MULTIPLE_ARBITRABLE_CONTRACT_ADDRESS
       )
       // Use BigNumber
@@ -210,7 +210,7 @@ export default function LoserboxStepper () {
       queryName = { step: encodeURI(pageCount) }
     }
     router.push({
-      pathname: '/loserbox-stepper',
+      pathname: '/loser-box/buy',
       query: queryName
     })
   }

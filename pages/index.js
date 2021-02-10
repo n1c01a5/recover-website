@@ -12,7 +12,7 @@ import EthereumLogo from '../public/ethereum-logo.svg'
 import KlerosLogo from '../public/kleros-logo.svg'
 import IpfsLogo from '../public/ipfs-logo.svg'
 import DexLogo from '../public/dex-ag-logo.png'
-import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
+// import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
 import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
 import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
 import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escrow.svg'

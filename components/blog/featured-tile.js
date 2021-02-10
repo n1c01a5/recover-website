@@ -1,5 +1,6 @@
-import styles from '../../styles/blogs/FeaturedBlog.module.scss'
 import { useRouter } from 'next/router'
+
+import styles from '../../styles/blogs/featured-blog.module.scss'
 
 const FeaturedTile = ({ featuredBlog }) => {
   const { topic, title, teaser, slug, cover } = featuredBlog
