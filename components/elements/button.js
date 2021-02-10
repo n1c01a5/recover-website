@@ -1,10 +1,10 @@
 const Button = ({
-    isPrimary,
-    isSmallFormat,
-    widthSize,
-    onClick,
-    style,
-    children
+  isPrimary,
+  isSmallFormat,
+  widthSize,
+  onClick,
+  style,
+  children
 }) => (
   <>
     <button onClick={onClick} style={style}>{children}</button>
@@ -21,7 +21,8 @@ const Button = ({
         line-height: ${isSmallFormat ? '48px' : ' 48px'};
         cursor: pointer;
       }
-    `}</style>
+    `}
+    </style>
   </>
 )
 

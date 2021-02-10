@@ -34,11 +34,11 @@ const Header = ({ isTop, setShowOverlay }) => {
       className={`${styles.headerMenu} ${isTop ? 'header-menu__isTop' : ''}`}
     >
       <div className={styles.logoContainer}>
-        <Link href="/">
+        <Link href='/'>
           <img
             className={styles.headerMenuLogo}
-            src="/RECOVER-logo.svg"
-            alt="Recover Logo"
+            src='/RECOVER-logo.svg'
+            alt='Recover Logo'
           />
         </Link>
       </div>
@@ -46,26 +46,27 @@ const Header = ({ isTop, setShowOverlay }) => {
         <div className={styles.linkContainer}>
           <a
             className={styles.link}
-            href="https://app.recover.ws/"
-            target="_blank"
+            href='https://app.recover.ws/'
+            rel='noreferrer'
+            target='_blank'
           >
             APPLICATION
           </a>
         </div>
         <div className={styles.linkContainer}>
-          <Link href="/blog">
+          <Link href='/blog'>
             <a className={styles.link}>BLOG</a>
           </Link>
         </div>
         <div className={styles.linkContainer}>
-          <Link href="/about">
+          <Link href='/about'>
             <a className={styles.link}>ABOUT</a>
           </Link>
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <Link href="/loser-box">
-          <Button isPrimary>Get Your Loser Box</Button>
+        <Link href='/loser-box'>
+          <a><Button isPrimary>Get Your Loser Box</Button></a>
         </Link>
       </div>
       <ToggleButton />

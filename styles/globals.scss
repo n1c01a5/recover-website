@@ -456,10 +456,11 @@ input[type='number'] {
   font-size: 16px !important;
 }
 
+// FIXME: remove this
 @media only screen and (max-width: 992px) {
-  .hideOnMobile .MuiStepLabel-labelContainer {
-    display: none !important;
-  }
+  // .MuiStepLabel-labelContainer {
+  //   display: none !important;
+  // }
 }
 
 // Header
