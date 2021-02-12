@@ -15,7 +15,7 @@ export default function LoserBox () {
         <title>Recover.ws - Loser Box to protect your item from loss</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div style={{ paddingTop: 8 }}>
+      <div style={{ padding: '0 calc((100vw - 1250px) / 2)', paddingTop: 30 }}>
         <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
           <h4>
             <span style={{ color: '#13a2dc' }}>Order</span> Confirmation

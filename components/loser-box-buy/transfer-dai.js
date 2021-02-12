@@ -111,7 +111,7 @@ export default function TransferDAI ({
               console.error(error)
             }
 
-            router.push('/loserbox-confirmation')
+            router.push('/loser-box/confirmation')
           }
         })
         .on('error', (error) => {
