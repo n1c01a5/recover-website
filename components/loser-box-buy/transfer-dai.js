@@ -33,6 +33,14 @@ export default function TransferDAI ({
   const [txId, setTxId] = useState('')
   const [isOpen, setIsOpen] = useState(false)
 
+  const name = JSON.parse(localStorage.getItem('userDetails')).recepientName
+  const address = JSON.parse(localStorage.getItem('userDetails')).address
+  const addressComplement = JSON.parse(localStorage.getItem('userDetails')).addressComplement
+  const city = JSON.parse(localStorage.getItem('userDetails')).city
+  const zip = JSON.parse(localStorage.getItem('userDetails')).zip
+  const country = JSON.parse(localStorage.getItem('userDetails')).country
+  const email = JSON.parse(localStorage.getItem('userDetails')).email
+  const phoneNumber = JSON.parse(localStorage.getItem('userDetails')).phone
   const hashPostalAddress = JSON.parse(localStorage.getItem('userDetails')).hashPostalAddress
 
   const handleClickOpen = (event) => {
@@ -73,7 +81,7 @@ export default function TransferDAI ({
           setIsOngoing(true)
           setTxId(hash)
         })
-        .once('confirmation', (confirmationNumber, receipt) => {
+        .once('confirmation', async (confirmationNumber, receipt) => {
           if (receipt.status) {
             try {
               const base = new Airtable(
@@ -85,14 +93,14 @@ export default function TransferDAI ({
               base('Clients').create([
                 {
                   'fields': {
-                    'Name': address.toLowerCase(),
-                    'Ethereum Address': email,
-                    'Address': phoneNumber,
-                    'Address Complement': address.toLowerCase(),
-                    'City': email,
-                    'ZipCode': phoneNumber,
-                    'Country': phoneNumber,
-                    'soliditySha3': address.toLowerCase(),
+                    'Name': name,
+                    'Ethereum Address': account,
+                    'Address': address,
+                    'Address Complement': addressComplement,
+                    'City': city,
+                    'ZipCode': Number(zip),
+                    'Country': country,
+                    'soliditySha3': hashPostalAddress,
                     'Mail': email,
                     'Phone Number': phoneNumber
                   }
@@ -103,15 +111,15 @@ export default function TransferDAI ({
 
                   return
                 }
-                records.forEach(function (record) {
+                records.forEach((record) => {
                   console.log(record.getId())
                 })
+
+                router.push('/loser-box/confirmation')
               })
             } catch (error) {
               console.error(error)
             }
-
-            router.push('/loser-box/confirmation')
           }
         })
         .on('error', (error) => {
