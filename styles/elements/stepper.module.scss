@@ -1,11 +1,12 @@
 .stepper {
   display: flex;
-  flex: 1;
   flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .stepWithLabelAndConnection {
-  width: 100%;
+  width: 16%;
 }
 
 .stepWithConnection {

@@ -1,29 +1,11 @@
 .container {
-  .overlay {
-    width: 100%;
-  }
-  .bodyContainer {
-    padding-top: 120px;
-  }
+  flex: 1;
+  padding-top: 100px;
 }
 
 @media screen and (max-width: 720px) {
   .container {
-    .overlay {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 55px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      background-color: rgba(0, 0, 0, 0.1);
-      transition: background-color 0.5s ease;
-    }
-    .bodyContainer {
-      padding-top: 150px;
-      width: 100%;
-    }
+    padding-top: 150px;
+    width: 100%;
   }
 }

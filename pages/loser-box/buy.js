@@ -278,24 +278,30 @@ export default function LoserboxStepper () {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div>
-        <Stepper steps={steps} indexActiveStep={indexActiveStep} />
-        <div>
-          {indexActiveStep === steps.length
-            ? (
-              <div>
-                <p>
-                  All steps completed
-                </p>
-              </div>
-              )
-            : (
-              <div>
-                {getStepContent(indexActiveStep)}
-              </div>
-              )}
-        </div>
-      </div>
+      <header><Stepper steps={steps} indexActiveStep={indexActiveStep} /></header>
+      <section>
+        {indexActiveStep === steps.length
+          ? (
+            <div
+              style={{
+                padding: '0 calc((100vw - 1250px) / 2)'
+              }}
+            >
+              <p>
+                All steps completed
+              </p>
+            </div>
+            )
+          : (
+            <div
+              style={{
+                padding: '0 calc((100vw - 1250px) / 2)'
+              }}
+            >
+              {getStepContent(indexActiveStep)}
+            </div>
+            )}
+      </section>
     </Layout>
   )
 }

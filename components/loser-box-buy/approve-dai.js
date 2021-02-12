@@ -82,7 +82,7 @@ export default function ApproveDAI ({
   }
 
   return (
-    <div style={{ paddingTop: 50 }}>
+    <div style={{ paddingTop: 8 }}>
       <div className='row form-group' style={{ padding: '.375rem .80rem' }}>
         <h4>
           <span style={{ color: '#13a2dc' }}>Approve</span> DAI Transfer

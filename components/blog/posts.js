@@ -10,15 +10,15 @@ const Divider = () => (
   </div>
 )
 
-const insertDivider = (posts) => {
-  return [...posts.slice(0, 3), <Divider />, ...posts.slice(3)] // FIXME: add key in the divider component.
-}
+const insertDivider = (posts) => ([
+  ...posts.slice(0, 3), <Divider />, ...posts.slice(3)] // FIXME: add key in the divider component.
+)
 
 const Posts = ({ posts }) => {
   const nonFeaturedBlogs = getNonFeaturedBlogs(posts)
 
-  const nonFeaturedBlogTiles = nonFeaturedBlogs.map((post) => (
-    <BlogTile key={post.slug} post={post} />
+  const nonFeaturedBlogTiles = nonFeaturedBlogs.map((post, index) => (
+    <BlogTile key={index} post={post} />
   ))
 
   const blogTilesWithDivider = () => insertDivider(nonFeaturedBlogTiles)

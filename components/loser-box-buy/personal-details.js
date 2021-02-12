@@ -92,7 +92,7 @@ export default function PersonalDetails ({ handleNextStep }) {
   return (
     <div>
       <form>
-        <div style={{ paddingTop: 50 }}>
+        <div style={{ paddingTop: 8 }}>
           <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
             <h4>
               <span style={{ color: '#13a2dc' }}>Personal</span> Details
@@ -121,38 +121,36 @@ export default function PersonalDetails ({ handleNextStep }) {
                   : null
               }
             </div>
-            <div className='col-md-12'>
-              <div className='mb-3'>
-                <label className='pdetails'>Address</label>
-                <input
-                  type='text'
-                  name='addressValidation'
-                  onBlur={(e) => onblurChangeValue(e)}
-                  className='form-control'
-                  id='address'
-                  placeholder=''
-                  value={address}
-                  onChange={(event) => setAddress(event.target.value)}
-                />
-                {
-                  submit && address === ''
-                    ? (<span style={{ color: 'red', fontSize: '14px' }}>The address is not valid.</span>)
-                    : null
-                  }
-              </div>
+            <div className='mb-3'>
+              <label className='pdetails'>Address</label>
+              <input
+                type='text'
+                name='addressValidation'
+                onBlur={(e) => onblurChangeValue(e)}
+                className='form-control'
+                id='address'
+                placeholder=''
+                value={address}
+                onChange={(event) => setAddress(event.target.value)}
+              />
+              {
+                submit && address === ''
+                  ? (<span style={{ color: 'red', fontSize: '14px' }}>The address is not valid.</span>)
+                  : null
+              }
             </div>
-            <div className='col-md-12'>
-              <div className='mb-3'>
-                <label className='pdetails'>Address Line 2</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='addressCp'
-                  placeholder=''
-                  value={addressCp}
-                  onChange={(event) => setAddressCp(event.target.value)}
-                />
-              </div>
+            <div className='mb-3'>
+              <label className='pdetails'>Address Line 2</label>
+              <input
+                type='text'
+                name='addressCpValidation'
+                onBlur={(e) => onblurChangeValue(e)}
+                className='form-control'
+                id='addressCp'
+                placeholder=''
+                value={addressCp || ''}
+                onChange={(event) => setAddressCp(event.target.value)}
+              />
             </div>
           </div>
           <div className='row form-group'>

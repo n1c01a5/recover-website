@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { slide as Menu } from 'react-burger-menu'
 
 import Footer from './elements/footer'
-import Header from './elements/header'
+import Nav from './elements/nav'
 
 import styles from '../styles/elements/layout.module.scss'
 
@@ -20,35 +20,29 @@ function Scroll ({ setTop, isTop }) {
     }
 
     window.addEventListener('scroll', onScroll)
-  }, []) // empty dependencies array means "run this once on first mount"
-
-  return null
+  }, [])
 }
 
-const Layout = ({ children, noRightButton }) => {
+const Layout = ({ children }) => {
   const [isTop, setTop] = useState(true)
-  const [showOverlay, setShowOverlay] = useState(false)
 
   Scroll({ setTop, isTop })
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <Menu right>
         <a className='menu-item' href='app.recover.ws' target='_blank' rel='noreferrer'>APPLICATION</a>
-        <a className='menu-item'><Link href='/blog'><a>BLOG</a></Link></a>
-        <a className='menu-item'><Link href='/about'><a>ABOUT</a></Link></a>
+        <span className='menu-item'><Link href='/blog' className='menu-item'><a>BLOG</a></Link></span>
+        <span className='menu-item'><Link href='/about' className='menu-item'><a>ABOUT</a></Link></span>
       </Menu>
       <nav suppressHydrationWarning>
-        <Header isTop={isTop} setShowOverlay={setShowOverlay} />
+        <Nav isTop={isTop} />
       </nav>
-      <main role='main'>
-        <div className={styles.container}>
-          {showOverlay ? <div className={styles.overlay} /> : null}
-          <div className={styles.bodyContainer}>{children}</div>
-        </div>
-      </main>
+      <div className={styles.container}>
+        <main role='main'>{children}</main>
+      </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

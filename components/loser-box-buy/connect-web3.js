@@ -6,7 +6,7 @@ export default function ConnectWeb3 ({
   networkName
 }) {
   return (
-    <div style={{ paddingTop: 50 }}>
+    <div style={{ paddingTop: 8 }}>
       <div className='row form-group' style={{ padding: '.375rem .75rem' }}>
         <h4>
           <span style={{ color: '#13a2dc' }}>Connect</span> to Web3

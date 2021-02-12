@@ -1,22 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import { useMediaQuery } from 'react-responsive'
 
 import Layout from '../../components/layout'
 import Button from '../../components/elements/button'
 
-import EthereumLogo, { length } from '../../public/ethereum-logo.svg' // FIXME: remove me - length - if I am not used.
+import EthereumLogo from '../../public/ethereum-logo.svg'
 import KlerosLogo from '../../public/kleros-logo.svg'
 import IpfsLogo from '../../public/ipfs-logo.svg'
 
-const Faq = dynamic(() => import('../../components/faq'), { ssr: false }) // FIXME: remove me if I am not used.
-
 export default function LoserBox () {
-  const isDesktopOrLaptop = useMediaQuery({ // FIXME: remove me if I'm nut used.
-    query: '(min-device-width: 1024px)'
-  })
-
   return (
     <Layout>
       <Head>
@@ -32,7 +24,7 @@ export default function LoserBox () {
               display: 'flex',
               justifyContent: 'space-between',
               width: '1250px',
-              margin: '8rem auto'
+              margin: '3rem auto'
             }}
           >
             <div

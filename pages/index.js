@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
 import TextLoop from 'react-text-loop'
 
 import Layout from '../components/layout'
@@ -12,7 +12,6 @@ import EthereumLogo from '../public/ethereum-logo.svg'
 import KlerosLogo from '../public/kleros-logo.svg'
 import IpfsLogo from '../public/ipfs-logo.svg'
 import DexLogo from '../public/dex-ag-logo.png'
-// import IllustrationTestEthereum from '../public/illustration_test-ethereum.svg' // TODO: improve this
 import IllustrationUserExperienceBlockchain from '../public/illustration_user-experience-blockchain.svg'
 import IllustrationBlockchainBusinessModel from '../public/illustration_blockchain-business-model.svg'
 import IllustrationBlockchainEscrow from '../public/illustration_blockchain-escrow.svg'
@@ -21,10 +20,8 @@ import BackgroundLoserBox from '../public/background_loser-box.svg'
 
 const Faq = dynamic(() => import('../components/faq'), { ssr: false })
 
-export default function Home() {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1024px)'
-  })
+export default function Home () {
+  const router = useRouter()
 
   const [whyBlockchainIllustration, setWhyBlockchainIllustration] = useState(
     IllustrationUserExperienceBlockchain
@@ -36,18 +33,19 @@ export default function Home() {
         <title>
           Recover.ws - Lost and Found service based on the Ethereum Blockchain
         </title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <div>
         <header>
-          <div className="desktop-layout">
+          <div className='desktop-layout'>
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '1250px',
-                margin: '50px auto 0 auto'
+                margin: '50px auto 0 auto',
+                paddingTop: '50px'
               }}
             >
               <div>
@@ -79,18 +77,16 @@ export default function Home() {
                   <div>
                     <Button>How it Works</Button>
                   </div>
-                  <Link href="/loser-box">
-                    <div>
-                      <Button isPrimary>Get your Loser Box</Button>
-                    </div>
-                  </Link>
+                  <Button isPrimary onClick={() => router.push('/loser-box')}>
+                    <Link href='/loser-box'><a>Get your Loser Box</a></Link>
+                  </Button>
                 </div>
               </div>
               <div>
                 <img
-                  src="/doge.png"
-                  alt="Doge with QrCode"
-                  role="presentation"
+                  src='/doge.png'
+                  alt='Doge with QrCode'
+                  role='presentation'
                 />
               </div>
             </div>
@@ -110,7 +106,7 @@ export default function Home() {
                 <div>
                   <p>
                     <a
-                      href="https://consensys.net/developers/buidlnetwork/"
+                      href='https://consensys.net/developers/buidlnetwork/'
                       style={{
                         color: 'rgba(0, 0, 0, 0.4)',
                         textDecoration: 'none'
@@ -136,13 +132,13 @@ export default function Home() {
                       }}
                     >
                       <a
-                        href="https://kleros.io/"
+                        href='https://kleros.io/'
                         style={{ textDecoration: 'none' }}
                       >
                         <figure style={{ textAlign: 'center' }}>
                           <img
                             src={KlerosLogo}
-                            alt="Kleros logo svg"
+                            alt='Kleros logo svg'
                             style={{ width: '45px' }}
                           />
                           <figcaption
@@ -163,13 +159,13 @@ export default function Home() {
                       }}
                     >
                       <a
-                        href="https://ethereum.org/en/"
+                        href='https://ethereum.org/en/'
                         style={{ textDecoration: 'none' }}
                       >
                         <figure style={{ textAlign: 'center' }}>
                           <img
                             src={EthereumLogo}
-                            alt="Ethereum logo svg"
+                            alt='Ethereum logo svg'
                             style={{ width: '26px' }}
                           />
                           <figcaption
@@ -191,13 +187,13 @@ export default function Home() {
                       }}
                     >
                       <a
-                        href="https://ipfs.io/"
+                        href='https://ipfs.io/'
                         style={{ textDecoration: 'none' }}
                       >
                         <figure style={{ textAlign: 'center' }}>
                           <img
                             src={IpfsLogo}
-                            alt="IPFS logo svg"
+                            alt='IPFS logo svg'
                             style={{ width: '35px' }}
                           />
                           <figcaption
@@ -219,13 +215,13 @@ export default function Home() {
                       }}
                     >
                       <a
-                        href="https://dex.ag/"
+                        href='https://dex.ag/'
                         style={{ textDecoration: 'none' }}
                       >
                         <figure style={{ textAlign: 'center' }}>
                           <img
                             src={DexLogo}
-                            alt="DexLogo logo png"
+                            alt='DexLogo logo png'
                             style={{ width: '35px' }}
                           />
                           <figcaption
@@ -245,7 +241,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mobile-layout">
+          <div className='mobile-layout'>
             <div
               style={{
                 display: 'flex',
@@ -257,9 +253,9 @@ export default function Home() {
               <div style={{ textAlign: 'center' }}>
                 <img
                   style={{ width: '80vw' }}
-                  src="/doge.png"
-                  alt="Doge with QrCode"
-                  role="presentation"
+                  src='/doge.png'
+                  alt='Doge with QrCode'
+                  role='presentation'
                 />
               </div>
               <div style={{ marginTop: '20px' }}>
@@ -281,13 +277,11 @@ export default function Home() {
                   </TextLoop>
                 </h1>
               </div>
-              <Link href="/loser-box">
-                <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                  <Button isPrimary isSmallFormat>
-                    Get your Loser Box
-                  </Button>
-                </div>
-              </Link>
+              <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <Button isPrimary isSmallFormat onClick={() => router.push('/loser-box')}>
+                  <Link href='/loser-box'><a>Get your Loser Box</a></Link>
+                </Button>
+              </div>
             </div>
           </div>
         </header>
@@ -295,7 +289,7 @@ export default function Home() {
 
       <div>
         <section>
-          <div className="desktop-layout">
+          <div className='desktop-layout'>
             <h2
               style={{
                 fontWeight: '600',
@@ -352,9 +346,9 @@ export default function Home() {
                 <div style={{ flex: '1', textAlign: 'center' }}>
                   <img
                     style={{ width: '240px' }}
-                    src="/generate-qr-code.jpg"
-                    alt="Generate Lost and Found QrCode"
-                    role="presentation"
+                    src='/generate-qr-code.jpg'
+                    alt='Generate Lost and Found QrCode'
+                    role='presentation'
                   />
                 </div>
               </div>
@@ -368,9 +362,9 @@ export default function Home() {
                 <div style={{ flex: '1', textAlign: 'center' }}>
                   <img
                     style={{ width: '300px' }}
-                    src="/lost-valuable.jpg"
-                    alt="Lose your Valuable"
-                    role="presentation"
+                    src='/lost-valuable.jpg'
+                    alt='Lose your Valuable'
+                    role='presentation'
                   />
                 </div>
                 <div
@@ -454,15 +448,15 @@ export default function Home() {
                 <div style={{ flex: '1', textAlign: 'center' }}>
                   <img
                     style={{ width: '270px' }}
-                    src="/exchange-reward-to-valuable.jpg"
-                    alt="Generate Lost and Found QrCode"
-                    role="presentation"
+                    src='/exchange-reward-to-valuable.jpg'
+                    alt='Generate Lost and Found QrCode'
+                    role='presentation'
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="mobile-layout">
+          <div className='mobile-layout'>
             <h2
               style={{
                 fontWeight: '600',
@@ -488,9 +482,9 @@ export default function Home() {
                     position: 'relative',
                     left: '-14px'
                   }}
-                  src="/generate-qr-code.jpg"
-                  alt="Generate Lost and Found QrCode"
-                  role="presentation"
+                  src='/generate-qr-code.jpg'
+                  alt='Generate Lost and Found QrCode'
+                  role='presentation'
                 />
                 <div
                   style={{
@@ -529,9 +523,9 @@ export default function Home() {
                     position: 'relative',
                     left: '-14px'
                   }}
-                  src="/lost-valuable.jpg"
-                  alt="Lose your Valuable"
-                  role="presentation"
+                  src='/lost-valuable.jpg'
+                  alt='Lose your Valuable'
+                  role='presentation'
                 />
                 <div
                   style={{
@@ -570,9 +564,9 @@ export default function Home() {
                     position: 'relative',
                     left: '-14px'
                   }}
-                  src="/exchange-reward-to-valuable.jpg"
-                  alt="Generate Lost and Found QrCode"
-                  role="presentation"
+                  src='/exchange-reward-to-valuable.jpg'
+                  alt='Generate Lost and Found QrCode'
+                  role='presentation'
                 />
                 <div
                   style={{
@@ -633,9 +627,9 @@ export default function Home() {
                       width: '40px',
                       left: '-4px'
                     }}
-                    src="/icon-qrcode.png"
-                    alt="Incentive people to give back your item"
-                    role="presentation"
+                    src='/icon-qrcode.png'
+                    alt='Incentive people to give back your item'
+                    role='presentation'
                   />
                   <span style={{ paddingLeft: '5px' }}>Convenient</span>
                 </h3>
@@ -648,9 +642,9 @@ export default function Home() {
                 <h3>
                   <img
                     style={{ position: 'relative', width: '40px' }}
-                    src="/icon-incentive.png"
-                    alt="Incentive people to give back your item"
-                    role="presentation"
+                    src='/icon-incentive.png'
+                    alt='Incentive people to give back your item'
+                    role='presentation'
                   />
                   <span style={{ paddingRight: '10px' }}>Incentive</span>
                 </h3>
@@ -667,9 +661,9 @@ export default function Home() {
                       width: '40px',
                       left: '-4px'
                     }}
-                    src="/icon-secure.png"
-                    alt="Keep private your personal details"
-                    role="presentation"
+                    src='/icon-secure.png'
+                    alt='Keep private your personal details'
+                    role='presentation'
                   />
                   <span style={{ paddingLeft: '5px' }}>Privacy</span>
                 </h3>
@@ -685,9 +679,9 @@ export default function Home() {
                       position: 'relative',
                       width: '40px'
                     }}
-                    src="/icon-blockchain.png"
-                    alt="Blockchain for a lost a found service"
-                    role="presentation"
+                    src='/icon-blockchain.png'
+                    alt='Blockchain for a lost a found service'
+                    role='presentation'
                   />
                   <br />
                   Experiment the Blockchain Ecosystem
@@ -754,7 +748,7 @@ export default function Home() {
                 }}
               >
                 <img
-                  src="loser-box.png"
+                  src='loser-box.png'
                   style={{
                     position: 'relative',
                     width: '240px',
@@ -762,13 +756,11 @@ export default function Home() {
                     transform: 'rotate(-1.1deg)'
                   }}
                 />
-                <Link href="/loser-box">
-                  <div style={{ textAlign: 'center', marginTop: '-40px' }}>
-                    <Button isPrimary isSmallFormat>
-                      Get your Loser Box
-                    </Button>
-                  </div>
-                </Link>
+                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                  <Button isPrimary isSmallFormat onClick={() => router.push('/loser-box')}>
+                    <Link href='/loser-box'><a>Get your Loser Box</a></Link>
+                  </Button>
+                </div>
                 <div>
                   <p style={{ marginTop: '20px' }}>
                     <a style={{ textDecoration: 'underline' }}>
@@ -780,7 +772,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="mobile-layout">
+        <section className='mobile-layout'>
           <h2
             style={{
               fontWeight: '600',
@@ -799,7 +791,7 @@ export default function Home() {
 
       <div>
         <section>
-          <div style={{ marginTop: '140px' }} className="desktop-layout">
+          <div style={{ marginTop: '140px' }} className='desktop-layout'>
             <h2
               style={{
                 fontWeight: '600',
@@ -838,9 +830,9 @@ export default function Home() {
                         width: '40px',
                         left: '-20px'
                       }}
-                      src="/icon-incentive.png"
-                      alt="Incentive people to give back your item"
-                      role="presentation"
+                      src='/icon-incentive.png'
+                      alt='Incentive people to give back your item'
+                      role='presentation'
                     />
                     <span style={{ fontSize: '24px' }}>Incentive</span>
                   </h3>
@@ -870,9 +862,9 @@ export default function Home() {
                         width: '40px',
                         left: '-20px'
                       }}
-                      src="/icon-qrcode.png"
-                      alt="Easy to use this lost and found service"
-                      role="presentation"
+                      src='/icon-qrcode.png'
+                      alt='Easy to use this lost and found service'
+                      role='presentation'
                     />
                     <span style={{ fontSize: '24px' }}>Convenient</span>
                   </h3>
@@ -902,9 +894,9 @@ export default function Home() {
                         width: '40px',
                         left: '-20px'
                       }}
-                      src="/icon-secure.png"
-                      alt="Keep private your personal details"
-                      role="presentation"
+                      src='/icon-secure.png'
+                      alt='Keep private your personal details'
+                      role='presentation'
                     />
                     <span style={{ fontSize: '24px' }}>Privacy</span>
                   </h3>
@@ -925,9 +917,9 @@ export default function Home() {
                 <h3>
                   <img
                     style={{ position: 'relative', width: '40px', top: '12px' }}
-                    src="/icon-blockchain.png"
-                    alt="Blockchain for a lost a found service"
-                    role="presentation"
+                    src='/icon-blockchain.png'
+                    alt='Blockchain for a lost a found service'
+                    role='presentation'
                   />
                   <span style={{ paddingLeft: '20px', fontSize: '24px' }}>
                     Experiment the Blockchain Ecosystem
@@ -951,7 +943,7 @@ export default function Home() {
                             IllustrationUserExperienceBlockchain
                           )
                         }
-                        className="why-blockchain"
+                        className='why-blockchain'
                       >
                         The Blockchain User Experience (workflow, tools,
                         libraries...) for regular and cryptoenthousiast user.
@@ -960,9 +952,8 @@ export default function Home() {
                         onMouseEnter={() =>
                           setWhyBlockchainIllustration(
                             IllustrationBlockchainBusinessModel
-                          )
-                        }
-                        className="why-blockchain"
+                          )}
+                        className='why-blockchain'
                       >
                         A viable Business Model that does not interfere with the
                         decentralization of the project.
@@ -973,7 +964,7 @@ export default function Home() {
                             IllustrationBlockchainEscrow
                           )
                         }
-                        className="why-blockchain"
+                        className='why-blockchain'
                       >
                         The trust for the transactions between parties
                         (seller/buyer, finder/owner) thanks to the escrow
@@ -985,7 +976,7 @@ export default function Home() {
                             IllustrationTraceabilityBlockchain
                           )
                         }
-                        className="why-blockchain"
+                        className='why-blockchain'
                       >
                         The traceability of products and sales by associating a
                         non-fungible token to each Loser Box.
@@ -999,8 +990,8 @@ export default function Home() {
                       <img
                         style={{ width: '370px' }}
                         src={whyBlockchainIllustration}
-                        role="presentation"
-                        alt="User experience and blockchain"
+                        role='presentation'
+                        alt='User experience and blockchain'
                       />
                     </div>
                   </div>
@@ -1012,7 +1003,7 @@ export default function Home() {
       </div>
 
       <div
-        className="desktop-layout"
+        className='desktop-layout'
         style={{
           background: `url(${BackgroundLoserBox}) no-repeat right`,
           backgroundSize: 'contain',
@@ -1045,11 +1036,11 @@ export default function Home() {
               <h3 style={{ marginBottom: '30px' }}>
                 Discover the loser Box now:
               </h3>
-              <Link href="/loser-box">
-                <Button isPrimary>Get your Loser Box</Button>
-              </Link>
+              <Button isPrimary onClick={() => router.push('/loser-box')}>
+                <Link href='/loser-box'><a>Get your Loser Box</a></Link>
+              </Button>
               <a
-                href="https://app.recover.ws/"
+                href='https://app.recover.ws/'
                 style={{ paddingLeft: '28px', textDecoration: 'underline' }}
               >
                 or test Recover for free
@@ -1057,7 +1048,7 @@ export default function Home() {
             </div>
             <div>
               <img
-                src="loser-box.png"
+                src='loser-box.png'
                 style={{
                   position: 'relative',
                   width: '340px',
@@ -1071,7 +1062,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="desktop-layout">
+      <div className='desktop-layout'>
         <section>
           <h2
             style={{

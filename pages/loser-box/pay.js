@@ -119,7 +119,7 @@ export default function PayLoserBox () {
         href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap'
         rel='stylesheet'
       />
-      <div style={{ paddingTop: 50 }}>
+      <div style={{ paddingTop: 8 }}>
         <div className='row form-group' style={{ padding: '.375rem .80rem' }}>
           <h4>
             <span style={{ color: '#13a2dc' }}>Pay</span> Order
