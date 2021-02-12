@@ -916,7 +916,7 @@ export default function Home () {
               <div style={{ margin: '78px 0' }}>
                 <h3>
                   <img
-                    style={{ position: 'relative', width: '40px', top: '12px' }}
+                    style={{ position: 'relative', width: '40px' }}
                     src='/icon-blockchain.png'
                     alt='Blockchain for a lost a found service'
                     role='presentation'
