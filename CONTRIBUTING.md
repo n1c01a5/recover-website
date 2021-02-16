@@ -9,3 +9,13 @@
 - first prop in a component is the `className` prop
 - use this export style for component: `const MyComponent` and `export default MyComponent`
 - import `web3` has to be like this: `import Ethereum from 'web3'
+- stories must have the same path of the `src` files
+- we use `BEM` for the CSS methodology:
+```
+.block {
+  @at-root #{&}__element {
+  }
+  @at-root #{&}--modifier {
+  }
+}
+```

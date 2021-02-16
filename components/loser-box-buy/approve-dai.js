@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { BounceLoader } from 'react-spinners'
+import { useState } from 'react'
 import ipfsClient from 'ipfs-http-client'
 
+import EthereumTransaction from '../../components/elements/message-box'
 import { MetaEvidence } from '../../loser-box-contract/meta-evidence'
 
 export default function ApproveDAI ({
@@ -114,24 +114,12 @@ export default function ApproveDAI ({
 
           {isPending
             ? (
-              <div
-                className='pendingBox'
-                onClick={() =>
-                  window.open(`https://${networkName === '' ? '' : (networkName + '.')}etherscan.io/tx/${txId}`)}
-              >
-                <div className='pending'>
-                  <div>
-                    {(isPending || isOngoing) && !txError
-                      ? 'Transaction pending...'
-                      : null}
-                    {txError ? 'Transaction rejected. Please try again.' : null}
-                  </div>
-                  <div>
-                    {isOngoing ? <BounceLoader size={50} color='#fff' /> : null}
-                  </div>
-                </div>
-              </div>
-              )
+              <EthereumTransaction
+                networkName={networkName}
+                txId={txId}
+                isPending={isPending}
+                isOngoing={isOngoing}
+              />)
             : null}
         </div>
       </div>

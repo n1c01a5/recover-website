@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { BounceLoader } from 'react-spinners'
 import {
   Checkbox,
   FormControlLabel,
@@ -13,6 +12,7 @@ import {
 } from '@material-ui/core'
 import Airtable from 'airtable'
 
+import EthereumTransaction from '../../components/elements/message-box'
 import { MetaEvidence } from '../../loser-box-contract/meta-evidence'
 
 export default function TransferDAI ({
@@ -111,9 +111,6 @@ export default function TransferDAI ({
 
                   return
                 }
-                records.forEach((record) => {
-                  console.log(record.getId())
-                })
 
                 router.push('/loser-box/confirmation')
               })
@@ -193,24 +190,12 @@ export default function TransferDAI ({
 
           {isPending
             ? (
-              <div
-                className='pendingBox'
-                onClick={() =>
-                  window.open(`https://${networkName === '' ? '' : (networkName + '.')}etherscan.io/tx/${txId}`)}
-              >
-                <div className='pending'>
-                  <div>
-                    {(isPending || isOngoing) && !txError
-                      ? 'Transaction pending...'
-                      : null}
-                    {txError ? 'Transaction rejected. Please try again.' : null}
-                  </div>
-                  <div>
-                    {isOngoing ? <BounceLoader size={50} color='#fff' /> : null}
-                  </div>
-                </div>
-              </div>
-              )
+              <EthereumTransaction
+                networkName={networkName}
+                txId={txId}
+                isPending={isPending}
+                isOngoing={isOngoing}
+              />)
             : null}
         </div>
       </div>
