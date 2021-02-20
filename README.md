@@ -35,3 +35,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## StoryBook
 
 See [https://wagner-nicolas.com/recover-website](https://wagner-nicolas.com/recover-website).
+
+To deploy it, run this command: `npm run deploy-storybook`.
