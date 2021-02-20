@@ -3,7 +3,7 @@ import { Header } from './header'
 export default {
   title: 'Example/Header',
   component: Header
-};
+}
 
 const Template = (args) => <Header {...args} />
 

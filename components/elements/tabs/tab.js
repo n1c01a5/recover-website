@@ -4,14 +4,13 @@ import { useTabContext } from './tabs'
 
 import styles from '../../../styles/elements/tabs/tab.module.scss'
 
-const Tab = ({ activeTab = '', label = '' }) => {
-  const { onClickTabItem } = useTabContext()
-  const changeTab = () => onClickTabItem(label)
+const Tab = ({ activeTab, label }) => {
+  const { setActiveTab } = useTabContext()
 
   return (
     <li
       className={`${styles.tabListItem} ${activeTab === label ? styles.tabListActive : ''}`}
-      onClick={changeTab}
+      onClick={() => setActiveTab(label)}
     >
       {label}
     </li>
@@ -21,6 +20,11 @@ const Tab = ({ activeTab = '', label = '' }) => {
 Tab.propTypes = {
   activeTab: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
+}
+
+Tab.defaultProps = {
+  activeTab: '',
+  label: 'Tab 1'
 }
 
 export default Tab

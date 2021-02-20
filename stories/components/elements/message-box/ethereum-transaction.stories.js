@@ -1,7 +1,7 @@
 import EthereumTransaction from '../../../../components/elements/message-box/ethereum-transaction'
 
 export default {
-  title: 'Elements/MessageBox',
+  title: 'Elements/MessageBox/EthereumTransaction',
   component: EthereumTransaction
 }
 

@@ -21,7 +21,7 @@ const EthereumTransaction = ({
         : null}
       {txError ? 'Transaction rejected. Please try again.' : null}
     </div>
-    {isOngoing ? <BounceLoader size={50} color='#fff' /> : null}
+    {isOngoing && !txError ? <BounceLoader size={50} color='#fff' /> : null}
   </div>
 )
 

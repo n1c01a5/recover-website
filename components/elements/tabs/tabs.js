@@ -1,42 +1,36 @@
-import { useState, createContext, useContext } from 'react'
+import React, { createElement, useState, createContext, useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import Tab from './tab'
 
 import styles from '../../../styles/elements/tabs/tabs.module.scss'
 
-Tabs.propTypes = {
-  children: PropTypes.instanceOf(Array).isRequired
-}
+const TabsContext = createContext({ setActiveTab: null })
 
-const TabsContext = createContext(null)
-
-export default function Tabs ({ children = [] }) {
+export default function Tabs ({ children }) {
   const [activeTab, setActiveTab] = useState(children[0].props.label)
-  const onClickTabItem = (tab) => setActiveTab(tab)
 
   return (
-    <TabsContext.Provider value={{ onClickTabItem, activeTab, setActiveTab }}>
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
       <div className={`${styles.tabs}`}>
         <div
           className={`${styles.tabContent} ${children[0].props.label !== activeTab ? styles.tabContentMask : ''}`}
         >
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined
+
             return child.props.children
           })}
         </div>
 
         <ul className={`${styles.tabList}`}>
-          {children.map((child) => {
-            return (
-              <Tab
-                key={child.props.label}
-                activeTab={activeTab}
-                label={child.props.label}
-              />
-            )
-          })}
+          {children.map((child) => (
+            <Tab
+              key={child.props.label}
+              activeTab={activeTab}
+              label={child.props.label}
+            />
+          ))}
         </ul>
       </div>
     </TabsContext.Provider>
@@ -45,6 +39,13 @@ export default function Tabs ({ children = [] }) {
 
 Tabs.propTypes = {
   children: PropTypes.instanceOf(Array).isRequired
+}
+
+Tabs.defaultProps = {
+  children: [
+    <TabsItem key='tab 1' label='tab 1' />,
+    <TabsItem key='tab 2' label='tab 2' />
+  ]
 }
 
 export function useTabContext () {
