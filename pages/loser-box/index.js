@@ -468,10 +468,9 @@ export default function LoserBox () {
                       flex: '0 50%'
                     }}
                   >
-                    <div className='bell'>
+                    <div className='container-key-ring'>
                       <img className='key-ring' src='loser-box/key-ring-lost-and-found.png' />
                     </div>
-
                   </div>
                   <div
                     style={{
@@ -512,10 +511,10 @@ export default function LoserBox () {
               display: 'flex',
               justifyContent: 'space-between',
               width: '1250px',
-              margin: '5px auto 0 auto'
+              margin: '180px auto 0 auto'
             }}
           >
-            <h2 style={{ fontSize: '24px', marginTop: '1rem' }}>
+            <h2 style={{ fontSize: '30px' }}>
               Loser Box Gallery
             </h2>
           </div>
@@ -660,15 +659,15 @@ export default function LoserBox () {
             height: 35px;
             width: 35px;
           }
+
           .key-ring {
             filter: drop-shadow(10px 10px 6px #12c2e9);
           }
-
-          .bell {
-            width: 100%;
+          .container-key-ring {
+            margin-left: 90px;
             cursor: pointer;
           }
-          .bell:hover {
+          .container-key-ring:hover {
             transform: rotate(-10deg) translateZ(0);
             transform-origin: 85%  16%;
           }
