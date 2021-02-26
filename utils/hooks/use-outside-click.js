@@ -1,16 +1,16 @@
-import { useEffect } from "react"
+import { useEffect } from 'react'
 
 const useOutsideClick = (ref, callback) => {
-  const handleClick = e => {
-    if (ref?.current?.contains(e.target)) return
+  const handleClick = (event) => {
+    if (ref?.current?.contains(event.target)) return
     callback()
   }
 
   useEffect(() => {
-    document.addEventListener("click", handleClick)
+    document.addEventListener('click', handleClick)
 
     return () => {
-      document.removeEventListener("click", handleClick)
+      document.removeEventListener('click', handleClick)
     }
   })
 }

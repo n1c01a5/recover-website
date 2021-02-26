@@ -543,9 +543,9 @@ export default function LoserBox () {
             >
               <div
                 style={{
-                  background: 'red',
                   width: '400px',
-                  marginRight: '25px'
+                  marginRight: '25px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -559,9 +559,9 @@ export default function LoserBox () {
               </div>
               <div
                 style={{
-                  background: 'green',
                   width: '400px',
-                  marginRight: '25px'
+                  marginRight: '25px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -575,7 +575,8 @@ export default function LoserBox () {
               </div>
               <div
                 style={{
-                  width: '400px'
+                  width: '400px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -599,7 +600,8 @@ export default function LoserBox () {
               <div
                 style={{
                   width: '400px',
-                  marginRight: '25px'
+                  marginRight: '25px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -614,7 +616,8 @@ export default function LoserBox () {
               <div
                 style={{
                   width: '400px',
-                  marginRight: '25px'
+                  marginRight: '25px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -628,7 +631,8 @@ export default function LoserBox () {
               </div>
               <div
                 style={{
-                  width: '400px'
+                  width: '400px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
