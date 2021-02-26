@@ -14,6 +14,7 @@ import IpfsLogo from '../../public/ipfs-logo.svg'
 export default function LoserBox () {
   const { setOpen } = useModalContext()
   const [modalContent, setContentModal] = useState()
+  const [photoProductContent, setPhotoProductContent] = useState()
 
   return (
     <Layout>
@@ -27,9 +28,6 @@ export default function LoserBox () {
       <Modal>{modalContent}</Modal>
 
       <div>
-        <button type='button' onClick={() => setOpen(true)}>
-          Open Modal
-        </button>
         <header>
           <div
             className='loser-box-container'
@@ -47,6 +45,7 @@ export default function LoserBox () {
               }}
             >
               <div
+                onClick={() => setPhotoProductContent(<img src='loser-box-buy.png' style={{ width: '320px', height: '500px' }} />)}
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
@@ -55,12 +54,14 @@ export default function LoserBox () {
                   height: '128px',
                   overflow: 'hidden',
                   border: '3px solid #ccc',
-                  marginBottom: '20px'
+                  marginBottom: '20px',
+                  cursor: 'pointer'
                 }}
               >
                 <img src='loser-box-buy.png' style={{ width: '64px' }} />
               </div>
               <div
+                onClick={() => setPhotoProductContent(<img src='loser-box-pvc-card-keyring-square.jpg' style={{ width: '410px', height: '380px' }} />)}
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
@@ -69,7 +70,8 @@ export default function LoserBox () {
                   height: '128px',
                   overflow: 'hidden',
                   border: '3px solid #ccc',
-                  marginBottom: '20px'
+                  marginBottom: '20px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -78,6 +80,7 @@ export default function LoserBox () {
                 />
               </div>
               <div
+                onClick={() => setPhotoProductContent(<img src='loser-box-pvc-card-square.png' style={{ width: '410px', height: '380px' }} />)}
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
@@ -86,7 +89,8 @@ export default function LoserBox () {
                   height: '128px',
                   overflow: 'hidden',
                   border: '3px solid #ccc',
-                  marginBottom: '20px'
+                  marginBottom: '20px',
+                  cursor: 'pointer'
                 }}
               >
                 <img
@@ -102,10 +106,11 @@ export default function LoserBox () {
                 width: '1000px'
               }}
             >
-              <img
-                src='loser-box-buy.png'
-                style={{ width: '320px', height: '500px' }}
-              />
+              {
+                photoProductContent
+                  ? photoProductContent
+                  : <img src='loser-box-buy.png' style={{ width: '320px', height: '500px' }} />
+              }
             </div>
             <div>
               <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
@@ -559,15 +564,28 @@ export default function LoserBox () {
                   marginRight: '25px'
                 }}
               >
-                image 2
+                <img
+                  src='loser-box/ledger-lost-and-found.png'
+                  style={{ width: '400px' }}
+                  onClick={() => { // FIXME: refactor me
+                    setContentModal(<img src='loser-box/ledger-lost-and-found.png' style={{ width: '60vw' }} />),
+                    setOpen(true)
+                  }}
+                />
               </div>
               <div
                 style={{
-                  background: 'red',
                   width: '400px'
                 }}
               >
-                image 3
+                <img
+                  src='loser-box/ledger-lost-and-found.png'
+                  style={{ width: '400px' }}
+                  onClick={() => { // FIXME: refactor me
+                    setContentModal(<img src='loser-box/ledger-lost-and-found.png' style={{ width: '60vw' }} />),
+                    setOpen(true)
+                  }}
+                />
               </div>
             </div>
 
@@ -580,29 +598,47 @@ export default function LoserBox () {
             >
               <div
                 style={{
-                  background: 'red',
                   width: '400px',
                   marginRight: '25px'
                 }}
               >
-                image 1
+                <img
+                  src='loser-box/ledger-lost-and-found.png'
+                  style={{ width: '400px' }}
+                  onClick={() => { // FIXME: refactor me
+                    setContentModal(<img src='loser-box/ledger-lost-and-found.png' style={{ width: '60vw' }} />),
+                    setOpen(true)
+                  }}
+                />
               </div>
               <div
                 style={{
-                  background: 'green',
                   width: '400px',
                   marginRight: '25px'
                 }}
               >
-                image 2
+                <img
+                  src='loser-box/ledger-lost-and-found.png'
+                  style={{ width: '400px' }}
+                  onClick={() => { // FIXME: refactor me
+                    setContentModal(<img src='loser-box/ledger-lost-and-found.png' style={{ width: '60vw' }} />),
+                    setOpen(true)
+                  }}
+                />
               </div>
               <div
                 style={{
-                  background: 'red',
                   width: '400px'
                 }}
               >
-                image 3
+                <img
+                  src='loser-box/ledger-lost-and-found.png'
+                  style={{ width: '400px' }}
+                  onClick={() => { // FIXME: refactor me
+                    setContentModal(<img src='loser-box/ledger-lost-and-found.png' style={{ width: '60vw' }} />),
+                    setOpen(true)
+                  }}
+                />
               </div>
             </div>
           </div>
