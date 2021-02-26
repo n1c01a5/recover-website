@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import TextLoop from 'react-text-loop'
 
 import Layout from '../../components/layout'
 import Button from '../../components/elements/button'

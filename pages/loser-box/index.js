@@ -1,15 +1,20 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 import Layout from '../../components/layout'
 import Button from '../../components/elements/button'
+import Modal from '../../components/modal'
+import { useModalContext } from '../../contexts/state'
 
 import EthereumLogo from '../../public/ethereum-logo.svg'
 import KlerosLogo from '../../public/kleros-logo.svg'
 import IpfsLogo from '../../public/ipfs-logo.svg'
-import { RotateLoader } from 'react-spinners'
 
 export default function LoserBox () {
+  const { setOpen } = useModalContext()
+  const [modalContent, setContentModal] = useState()
+
   return (
     <Layout>
       <Head>
@@ -19,7 +24,12 @@ export default function LoserBox () {
         <link href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap' rel='stylesheet' />
       </Head>
 
+      <Modal>{modalContent}</Modal>
+
       <div>
+        <button type='button' onClick={() => setOpen(true)}>
+          Open Modal
+        </button>
         <header>
           <div
             className='loser-box-container'
@@ -27,7 +37,7 @@ export default function LoserBox () {
               display: 'flex',
               justifyContent: 'space-between',
               width: '1250px',
-              margin: '3rem auto'
+              margin: '10vh auto 3rem auto'
             }}
           >
             <div
@@ -454,7 +464,7 @@ export default function LoserBox () {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  marginTop: '-130px'
+                  marginTop: '-100px'
                 }}
               >
                 <div
@@ -509,14 +519,92 @@ export default function LoserBox () {
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
               width: '1250px',
-              margin: '180px auto 0 auto'
+              margin: '180px auto 0 auto',
+              flexDirection: 'column'
             }}
           >
-            <h2 style={{ fontSize: '30px' }}>
-              Loser Box Gallery
-            </h2>
+            <div>
+              <h2 style={{ fontSize: '30px' }}>
+                Loser Box Gallery
+              </h2>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: '5rem'
+              }}
+            >
+              <div
+                style={{
+                  background: 'red',
+                  width: '400px',
+                  marginRight: '25px'
+                }}
+              >
+                <img
+                  src='loser-box/ledger-lost-and-found.png'
+                  style={{ width: '400px' }}
+                  onClick={() => { // FIXME: refactor me
+                    setContentModal(<img src='loser-box/ledger-lost-and-found.png' style={{ width: '60vw' }} />),
+                    setOpen(true)
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  background: 'green',
+                  width: '400px',
+                  marginRight: '25px'
+                }}
+              >
+                image 2
+              </div>
+              <div
+                style={{
+                  background: 'red',
+                  width: '400px'
+                }}
+              >
+                image 3
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: '3rem'
+              }}
+            >
+              <div
+                style={{
+                  background: 'red',
+                  width: '400px',
+                  marginRight: '25px'
+                }}
+              >
+                image 1
+              </div>
+              <div
+                style={{
+                  background: 'green',
+                  width: '400px',
+                  marginRight: '25px'
+                }}
+              >
+                image 2
+              </div>
+              <div
+                style={{
+                  background: 'red',
+                  width: '400px'
+                }}
+              >
+                image 3
+              </div>
+            </div>
           </div>
 
           <div className='mobile-layout' />
