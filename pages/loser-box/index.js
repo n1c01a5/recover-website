@@ -10,6 +10,7 @@ import { useModalContext } from '../../contexts/state'
 import EthereumLogo from '../../public/ethereum-logo.svg'
 import KlerosLogo from '../../public/kleros-logo.svg'
 import IpfsLogo from '../../public/ipfs-logo.svg'
+import DexLogo from '../../public/dex-ag-logo.png'
 
 export default function LoserBox () {
   const { setOpen } = useModalContext()
@@ -30,7 +31,6 @@ export default function LoserBox () {
       <div>
         <header>
           <div
-            className='loser-box-container'
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -41,7 +41,8 @@ export default function LoserBox () {
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                width: '134px'
               }}
             >
               <div
@@ -102,8 +103,7 @@ export default function LoserBox () {
             <div
               style={{
                 display: 'flex',
-                justifyContent: 'center',
-                width: '1000px'
+                justifyContent: 'center'
               }}
             >
               {
@@ -112,49 +112,53 @@ export default function LoserBox () {
                   : <img src='loser-box-buy.png' style={{ width: '320px', height: '500px' }} />
               }
             </div>
-            <div>
-              <h1 style={{ fontSize: '22px', fontWeight: 'bold' }}>
-                LOSER BOX - Lost and Found Pack to prevent your valuables from
-                Loss - Limited Edition (only 42 items)
+            <div
+              style={{
+                width: '500px'
+              }}
+            >
+              <h1 style={{ fontSize: '60px', fontWeight: 'bold', lineHeight: '70px' }}>
+                LOSER BOX
               </h1>
-              <p
-                style={{
-                  margin: '20px 0',
-                  lineHeight: '26px',
-                  fontWeight: 'bold'
-                }}
-              >
-                A crafted box with pre-printed QR-code on :
-                <ul>
-                  <li style={{ fontWeight: 'bold' }}>- 2 sets of stickers</li>
-                  <li style={{ fontWeight: 'bold' }}>- 2 PVC cards</li>
-                  <li style={{ fontWeight: 'bold' }}>- 1 key-ring</li>
-                </ul>
+              <h2 style={{ fontSize: '32px', fontFamily: 'Montserrat', lineHeight: '32px' }}>
+                <span style={{ color: '#12c2e9' }}>Buidl</span> To Recover
+              </h2>
+              <p style={{ fontFamily: 'Montserrat', fontSize: '22px', paddingTop: '10px' }}>
+                PRICE:&nbsp;
+                <span style={{ fontWeight: 'bold' }}>
+                  {process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT}DAI
+                </span>
               </p>
-              <hr />
+              <p style={{ fontFamily: 'Montserrat', fontSize: '16px', marginTop: '-14px' }}>
+                Lost and Found Pack to prevent your valuables from Loss - Limited Edition (only 42)
+              </p>
+              <hr
+                style={{
+                  marginTop: '-4px'
+                }}
+              />
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
-                  marginTop: '20px'
+                  marginTop: '18px'
                 }}
               >
                 <p
                   style={{
-                    lineHeight: '50px',
+                    lineHeight: '20px',
                     fontWeight: 'bold',
                     justifyContent: 'center'
                   }}
                 >
-                  Payment secured by an escrow smart contract
+                  BUILD TOP OF
                 </p>
               </div>
               <div
                 style={{
-                  margin: '20px 100px',
                   display: 'flex',
                   justifyContent: 'space-between',
-                  marginTop: '20px'
+                  margin: '-2px 0 16px 0'
                 }}
               >
                 <img
@@ -172,43 +176,26 @@ export default function LoserBox () {
                   alt='IPFS logo svg'
                   style={{ width: '35px' }}
                 />
+                <img
+                  src={DexLogo}
+                  alt='Dex logo to swap ETH to DAI'
+                  style={{ position: 'relative', top: '7px', height: '34px' }}
+                />
               </div>
-              <div
+              <p>A crafted box with pre-printed QR-code on :</p>
+              <ul
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  marginTop: '100px',
-                  marginBottom: '20px'
+                  marginTop: '-14px'
                 }}
               >
-                <div style={{ display: 'flex' }}>
-                  <div
-                    style={{
-                      background: '#f2f2f2',
-                      width: '300px',
-                      height: '60px',
-                      marginRight: '10px',
-                      boxSizing: 'border-box',
-                      border: '2px solid gray'
-                    }}
-                  >
-                    <p
-                      style={{
-                        lineHeight: '56px',
-                        textAlign: 'center',
-                        fontSize: '20px'
-                      }}
-                    >
-                      ${process.env.NEXT_PUBLIC_MAINNET_TOKEN_AMOUNT}.00 DAI
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <br />
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <li style={{ paddingLeft: '20px' }}>💳 PVC cards (Wallet and Luggages)</li>
+                <li style={{ paddingLeft: '20px' }}>🏷 stickers (Computer, Ledger...)</li>
+                <li style={{ paddingLeft: '20px' }}>🗝 key-ring</li>
+              </ul>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
                 <div>
                   <Link href='/loser-box/buy?step=1'>
-                    <Button isPrimary style={{ width: '300px' }}>
+                    <Button isPrimary style={{ width: '500px' }}>
                       BUY LOSER BOX
                     </Button>
                   </Link>
@@ -270,7 +257,7 @@ export default function LoserBox () {
                         fontWeight: 'bold'
                       }}
                     >
-                      CARD
+                      CARDS
                     </p>
                     <p
                       style={{
@@ -519,6 +506,28 @@ export default function LoserBox () {
                   </div>
                 </div>
               </div>
+            </div>
+            <div
+              style={{
+                background: '#ffc282',
+                borderRadius: '10px',
+                padding: '24px 30px',
+                marginTop: '300px'
+              }}
+            >
+              <h3>WARNING</h3>
+              <p>
+                The first product version on offer is a prototype which will help us gain valuable feedback to enrich the upcoming versions. For this reason, you may find the quality “far from perfect” but next versions will be better in terms of quality and functionality.
+                <br /><br />
+                If it interests you, we would be delighted to count you among our first testers and feedback providers.
+              </p>
+            </div>
+            <div>
+              <Link href='/loser-box/buy?step=1'>
+                <Button isPrimary style={{ width: '100%', marginTop: '30px' }}>
+                  I UNDERSTAND THE RISKS BUT I WANT MY LOSER BOX
+                </Button>
+              </Link>
             </div>
           </div>
           <div
