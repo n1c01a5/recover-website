@@ -19,7 +19,7 @@
     "bootstrap": "^4.5.3",
     "dexag-sdk": "^2.2.9",
     "ipfs-http-client": "^49.0.2",
-    "next": "10.0.9",
+    "next": "10.1.1",
     "react": "16.14.0",
     "react-bootstrap": "^1.4.0",
     "react-burger-menu": "^3.0.3",
