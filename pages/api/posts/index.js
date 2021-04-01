@@ -26,14 +26,13 @@ export function getPosts () {
     },
     {
       slug: 'securing-valuables-with-escrow-smart-contracts',
-      topic: 'Escrow',
+      topic: '',
       title: 'Securing valuables with Escrow Smart contracts',
-      teaser:
-        'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      teaser: 'How an escrow and smart contracts work to help secure products',
       content: EscrowBlogContent,
       cover: EscrowImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
-      readTime: 4,
+      readTime: 5,
       date: '15th DEC, 2020',
       isFeatured: false
     },
