@@ -26,7 +26,7 @@ export function getPosts () {
     },
     {
       slug: 'securing-valuables-with-escrow-smart-contracts',
-      topic: '',
+      topic: 'Escrow',
       title: 'Securing valuables with Escrow Smart contracts',
       teaser: 'How an escrow and smart contracts work to help secure products',
       content: EscrowBlogContent,
