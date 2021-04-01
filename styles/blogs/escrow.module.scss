@@ -7,7 +7,7 @@
   margin: 0 auto;
   word-spacing: 0.3rem;
 
-  h2 {
+  .title {
     font-style: normal;
     font-weight: 600;
     font-size: 50px;
@@ -17,7 +17,7 @@
     margin-top: 75px;
   }
 
-  h3 {
+  .sub-title {
     font-style: normal;
     font-weight: normal;
     font-size: 40px;
@@ -25,7 +25,7 @@
     color: #000000;
   }
 
-  p {
+  .content {
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
@@ -92,17 +92,17 @@
   .escrow-container {
     font-size: 1.2rem;
     word-spacing: 0;
-    h2 {
+    .title {
       font-size: 20px;
       line-height: 24px;
       margin-bottom: 10px;
       margin-top: 20px;
     }
-    h3 {
+    .sub-title {
       font-size: 15px;
       line-height: 18px;
     }
-    p {
+    .content {
       font-size: 10px;
       line-height: 12px;
     }
