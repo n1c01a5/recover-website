@@ -20,12 +20,12 @@ export const EscrowBlogContent = `
           Also, it adds an extra level of trust both parties have for the
           Escrow so chances of foul play are less.
           <br>
-          <br>
+          <span></span>
           There are certain obligations
           that need to be fulfilled before a payment is released and in case the
           terms of the contract are not respected a dispute can be raised.
           <br>
-          <br>
+          <span></span>
           Escrow technology takes care of your transaction without fraud or risk
           of losing money. It is always better to trust Escrow than making a
           handshake deal which can result in foul play afterward.
@@ -74,7 +74,7 @@ export const EscrowBlogContent = `
           dependency of intermediates, centralized arbitrators to help reduce
           fraud transactions.
           <br>
-          <br>
+          <span></span>
           The program automatically validates a condition
           and determines whether an asset will go to one person or back to the
           person who sent it. It is interesting to know that during the process,
@@ -102,7 +102,7 @@ export const EscrowBlogContent = `
           defined by parties and enforced by the blockchain. It’s smart
           contract enforcement.
           <br>
-          <br>
+          <span></span>
           Arbitration Decentralized (reduce conflict interest) with
           <a class="blog_link" href="https://kleros.io/">
             Kleros
@@ -111,7 +111,7 @@ export const EscrowBlogContent = `
             href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
           >Aragon</a>: 
           <br>
-          <br>
+          <span></span>
           The arbitration is decentralized and if any conflict of interest
           arises, it is being dealt with
           <a class="blog_link" href="https://kleros.io/">Kleros</a>,
@@ -179,24 +179,24 @@ export const EscrowBlogContent = `
           Escrow financial agreement not only helps make the transaction secure
           but also adds more trust among two parties.
           <br>
-          <br>
+          <span></span>
           On the other hand, Escrow
           smart contracts provide advantages like smart contract enforcement,
           interoperability, resilience, and better cost to name a few.
           <br>
-          <br>
+          <span></span>
           Moreover, the Smart contract can also be secured with
           <a class="blog_link" href="/">
             Kleros dispute resolution
           </a>
           which helps the transaction being more secore.
           <br>
-          <br>
+          <span></span>
           The Recover Loser box comes with all the advantages of
           escrow smart contracts with easy implementation to make sure your
           valuable is returned, the next time you lose it.
           <br>
-          <br>
+          <span></span>
           Now that we have
           learned briefly how blockchain escrow works, let us discover
           <a class="blog_link" href="/">Recover</a>.
