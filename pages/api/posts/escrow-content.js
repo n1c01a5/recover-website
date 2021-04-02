@@ -16,10 +16,8 @@ export const EscrowBlogContent = `
           <a
             class="blog_link"
             href="https://en.wikipedia.org/wiki/Online_dispute_resolution"
-          >
-            arbitrator
-          </a>
-          . Also, it adds an extra level of trust both parties have for the
+          >arbitrator</a>.
+          Also, it adds an extra level of trust both parties have for the
           Escrow so chances of foul play are less. There are certain obligations
           that need to be fulfilled before a payment is released and in case the
           terms of the contract are not respected a dispute can be raised.
@@ -64,10 +62,8 @@ export const EscrowBlogContent = `
           network of computers that runs on<a
             class="blog_link"
             href="https://www.investopedia.com/terms/b/blockchain.asp#what-is-blockchain"
-          >
-          blockchain
-          </a>
-          . It is a computer protocol that is used to digitally and
+          >blockchain</a>.
+          It is a computer protocol that is used to digitally and
           automatically facilitate, verify, and enforce the terms of a contract.
           The main benefit of the Escrow smart contract is to reduce the
           dependency of intermediates, centralized arbitrators to help reduce
@@ -105,17 +101,13 @@ export const EscrowBlogContent = `
           </a>/<a
             class="blog_link no_left_margin"
             href="https://aragon.org/blog/aragon-network-jurisdiction-part-1-decentralized-court-c8ab2a675e82"
-          >
-            Aragon
-          </a>: 
+          >Aragon</a>: 
           <br>
           <br>
           The arbitration is decentralized and if any conflict of interest
           arises, it is being dealt with
-          <a class="blog_link" href="https://kleros.io/">
-            Kleros
-          </a>
-          , a Decentralized Autonomous Organisation (DAO) to solve disputes.
+          <a class="blog_link" href="https://kleros.io/">Kleros</a>,
+          a Decentralized Autonomous Organisation (DAO) to solve disputes.
         </p>
         <h3 class="sub-title">Interoperable (switching arbitrator)</h2>
         <p class="content">
@@ -195,10 +187,7 @@ export const EscrowBlogContent = `
           <br>
           Now that we have
           learned briefly how blockchain escrow works, let us discover
-          <a class="blog_link" href="/">
-            Recover
-          </a>
-          .
+          <a class="blog_link" href="/">Recover</a>.
         </p>
       </div>
     </section>

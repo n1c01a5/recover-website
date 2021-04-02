@@ -3,8 +3,8 @@ import bhaveshImage from '../../../public/bhavesh.jpg'
 
 export const authors = [
   {
-    name: 'Wagner Nicolas',
-    designation: 'Buidler',
+    name: 'Nicolas Wagner',
+    designation: 'CEO',
     tag: 'nico',
     image: nicoImage
   },
