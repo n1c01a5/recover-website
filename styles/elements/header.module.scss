@@ -9,7 +9,7 @@
   box-shadow: 0px 1px 10px #999;
   background: #fff;
   z-index: 10;
-  padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
+  padding: 2px 5%;
   .headerMenuLogo {
     position: relative;
     top: 15px;
@@ -19,14 +19,14 @@
     margin-top: -2rem;
   }
   .buttonContainer {
-    font-size: 18px;
+    font-size: 16px;
   }
   .linksContainer {
     display: flex;
     justify-content: flex-end;
   }
   .linkContainer {
-    padding: 0 40px;
+    padding: 0 1rem;
   }
   .link {
     text-decoration: none;
@@ -49,6 +49,8 @@
 
 @media screen and (max-width: 720px) {
   .headerMenu {
+    padding: 2px calc((100vw - 1250px) / 2) 0 calc((100vw - 1250px) / 2);
+
     height: 54px;
   }
 

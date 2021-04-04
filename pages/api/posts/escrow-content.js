@@ -1,3 +1,7 @@
+import image3 from '../../../public/photos-blog-1/image3.png'
+import klerosAndSmartContract from '../../../public/photos-blog-1/kleros-and-smart-contract.jpg'
+import smartContractHot from '../../../public/photos-blog-1/smart-contract-hot.png'
+
 export const EscrowBlogContent = `
     <div class="escrow-container">
       <section class="blog__section">
@@ -20,9 +24,15 @@ export const EscrowBlogContent = `
             arbitrator
           </a>
           . Also, it adds an extra level of trust both parties have for the
-          Escrow so chances of foul play are less. There are certain obligations
+          Escrow so chances of foul play are less.
+          <br/><br />
+          
+          There are certain obligations
           that need to be fulfilled before a payment is released and in case the
           terms of the contract are not respected a dispute can be raised.
+          
+          <br/><br />
+          
           Escrow technology takes care of your transaction without fraud or risk
           of losing money. It is always better to trust Escrow than making a
           handshake deal which can result in foul play afterward.
@@ -30,6 +40,8 @@ export const EscrowBlogContent = `
       </section>
       <section class="blog__section">
         <h2>How Escrow Financial Transaction Works?</h2>
+        <div class="blog__section-image"  style="background-image: url('${image3}') "></div>
+        <div class="blog__section-image-caption">A trustless process for smooth flow of transactions</div>
         <p>
           Initially, either the payee or the payer approaches Escrow which acts
           as an arbitrator, the terms and conditions should be agreed upon
@@ -52,6 +64,8 @@ export const EscrowBlogContent = `
       </section>
       <section class="blog__section">
         <h2>What is an Escrow Smart Contract?</h2>
+        <div class="blog__section-image"  style="background-image: url('${smartContractHot}') "></div>
+        <div class="blog__section-image-caption">Can you see the future with those contracts? </div>
         <p>
           A smart contract is a program that is smart enough to execute a piece
           of code instructions when conditions are met. Also, smart contracts do
@@ -67,7 +81,11 @@ export const EscrowBlogContent = `
           automatically facilitate, verify, and enforce the terms of a contract.
           The main benefit of the Escrow smart contract is to reduce the
           dependency of intermediates, centralized arbitrators to help reduce
-          fraud transactions. The program automatically validates a condition
+          fraud transactions. 
+            
+          <br/><br />
+          
+          The program automatically validates a condition
           and determines whether an asset will go to one person or back to the
           person who sent it. It is interesting to know that during the process,
           the<a
@@ -82,9 +100,14 @@ export const EscrowBlogContent = `
       </section>
       <section class="blog__section">
         <h2>Main Advantages of using Escrow Smart Contracts</h2>
+        <div class="blog__section-image"  style="background-image: url('${klerosAndSmartContract}') "></div>
+        <div class="blog__section-image-caption">When the transactions has a low-price and high security, it is here to stay</div>
         <div>
           <p>
-            <strong>Smart Contract enforcement:</strong> Smart contracts are
+            <div  class="blog__section-subtitle">
+            Smart Contract enforcement
+            </div>
+            Smart contracts are
             enforced the same way as normal programs are done. Smart contracts
             are similar to real-world contracts but not exactly. In the real
             world, if a contract is broken you can take the person to court but
@@ -93,7 +116,6 @@ export const EscrowBlogContent = `
             contract enforcement.
           </p>
           <p>
-            <strong>
               Arbitration Decentralized (reduce conflict interest) with
               <a class="blog_link" href="https://kleros.io/">
                 Kleros
@@ -103,8 +125,9 @@ export const EscrowBlogContent = `
               >
                 Aragon
               </a>
-            </strong>
-            : The arbitration is decentralized and if any conflict of interest
+            : 
+            <br /><br />
+            The arbitration is decentralized and if any conflict of interest
             arises, it is being dealt with
             <a class="blog_link" href="https://kleros.io/">
               Kleros
@@ -112,8 +135,11 @@ export const EscrowBlogContent = `
             , a Decentralized Autonomous Organisation (DAO) to solve disputes.
           </p>
           <p>
-            <strong>Interoperable (switch the arbitrator)</strong>: Escrow smart
-            contracts are Interoperable that means if you don’t trust the
+          <div  class="blog__section-subtitle">
+          Interoperable (switch the arbitrator)
+
+          </div>
+            Escrow smart contracts are Interoperable that means if you don’t trust the
             arbitrator you can easily change the arbitrator, being said the
             smart contract follows the arbitrator standard. It allows a
             <a
@@ -126,13 +152,19 @@ export const EscrowBlogContent = `
             allow their users to choose themselves their arbitration services.
           </p>
           <p>
-            <strong>Resilient</strong>: The service is resilient and is here to
+            <div  class="blog__section-subtitle">
+            Resilient
+            </div>
+            The service is resilient and is here to
             stay. In other words, the service is always up. With an escrow smart
             contract, you can be sure that your fund is never lost because it
             uses blockchain protocol with high availability.
           </p>
           <p>
-            <strong>Cheap</strong>: Smart contracts act as a less expensive way
+          <div  class="blog__section-subtitle">
+          Less Arbitratation fees (if the gas is affordable :p) 
+          </div>
+            Smart contracts act as a less expensive way
             of doing business between two or more parties. In case of any
             dispute, you just have to pay the arbitration fee. Also,
             decentralized arbitrators like Kleros are cheap and affordable as
@@ -141,9 +173,12 @@ export const EscrowBlogContent = `
         </div>
       </section>
       <section class="blog__section">
-        <h2>Escrow Smart Contract implementation with Recover</h2>
+        <h2>Use cases where an Escrow plays a major role</h2>
         <p>
+        
+          <div class="blog__section-subtitle">1. Recover </div>
           <ul class="blog__list">
+            <li>Let us see how Recover functions in few easy steps.</li>
             <li>The finder finds your lost valuable.</li>
             <li>
               The honest finder will definitely return your valuable, but the
@@ -156,58 +191,35 @@ export const EscrowBlogContent = `
               If not, a dispute is created which is handled by the arbitrator.
             </li>
           </ul>
+          <div class="blog__section-subtitle">2. Hiring Freelancers </div>
+
+          <ul class="blog__list">
+            <li>Escrow can work tremendously well when it comes to hiring freelancers for 
+            a project. The money is sent to an Escrow and is only released when the expected 
+            work is delivered within the time. </li>
+          </ul>
         </p>
       </section>
-      <section class="blog__section">
-        <h2>Conclusion</h2>
-        <p>
-          Escrow financial agreement not only helps make the transaction secure
-          but also adds more trust among two parties. On the other hand, Escrow
-          smart contracts provide advantages like smart contract enforcement,
-          interoperability, resilience, and better cost to name a few.
-          Additionally, the Recover Loser box comes with all the advantages of
-          escrow smart contracts with easy implementation to make sure your
-          valuable is returned, the next time you lose it. Now that we have
-          learned briefly how blockchain escrow works, let us discover
-          <a class="blog_link" href="/">
-            Recover
-          </a>
-          .
-        </p>
-      </div>
-    </section>
-    <section className="blog__section">
-      <h2>Escrow Smart Contract implementation with Recover</h2>
-      <p>
-        <ul className="blog__list">
-          <li>The finder finds your lost valuable.</li>
-          <li>
-            The honest finder will definitely return your valuable, but the
-            dishonest person (who is not willing to not return the product) on
-            seeing the reward capped higher than the market price is
-            incentivized to return it to the owner.
-          </li>
-          <li> When the item is returned the finder gets the reward.</li>
-          <li>
-            If not, a dispute is created which is handled by the arbitrator.
-          </li>
-        </ul>
-      </p>
-    </section>
     <section className="blog__section">
       <h2>Conclusion</h2>
       <p>
-        Escrow financial agreement not only helps make the transaction secure
-        but also adds more trust among two parties. On the other hand, Escrow
-        smart contracts provide advantages like smart contract enforcement,
-        interoperability, resilience, and better cost to name a few.
-        Additionally, the Recover Loser box comes with all the advantages of
-        escrow smart contracts with easy implementation to make sure your
-        valuable is returned, the next time you lose it. Now that we have
-        learned briefly how blockchain escrow works, let us discover
-        <a className="blog_link" href="/">
-          Recover
-        </a>
+      Escrow financial agreement not only helps make the transaction secure but also adds more trust among two parties. 
+      <br/><br/>
+      On the other hand, Escrow smart contracts provide advantages like smart contract enforcement, interoperability, resilience, and less arbritation fees to name a few. 
+      <br/><br/>
+      
+      Morover, the Smart contract can aslo be secured with Kleros dispute resolution which helps the transaction being more secure. 
+      <br/><br/>
+      
+      
+      The Recover Loser box comes with all the advantages of escrow smart contracts with easy implementation to make sure your valuable is returned, the next time you lose it. 
+      <br/><br/>
+      
+      Now that we have learned briefly how escrow smart contracts work, let us discover
+            
+      <a class="blog_link" href="/">
+      Recover
+      </a>
         .
       </p>
     </section>

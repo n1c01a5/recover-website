@@ -12,10 +12,12 @@ export default function Post({ post }) {
   }
 
   const BlogCover = () => (
-    <div
-      className={styles.blogCover}
-      style={{ backgroundImage: `url(${cover})` }}
-    ></div>
+    <div className={styles.blogCoverContainer}>
+      <div className={styles.blogCover} style={{ backgroundImage: `url(${cover})` }}></div>
+      <div className={styles.blogCaption}>
+        When technology is trustless, smart contracts are born{' '}
+      </div>
+    </div>
   )
 
   const BlogContent = () => <div dangerouslySetInnerHTML={createMarkup()} />
