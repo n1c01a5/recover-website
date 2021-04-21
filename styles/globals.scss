@@ -484,7 +484,7 @@ input[type='number'] {
   z-index: 100;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 960px) {
   .bm-burger-button {
     display: none;
   }
@@ -555,7 +555,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 960px) {
   .bm-burger-button {
     display: none;
   }

@@ -1,5 +1,8 @@
 .footerContainer {
   margin-top: 120px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
   padding: 0 calc((100vw - 1370px) / 2) 0 calc((100vw - 1250px) / 2);
   .footer {
     display: flex;

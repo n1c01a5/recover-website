@@ -17,6 +17,7 @@ export function getPosts () {
       title: 'How can I Recover my Phone if it is lost?',
       teaser:
         'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      category: '',
       cover: RecoverImage,
       content: RecoverBlogContent,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
@@ -28,12 +29,12 @@ export function getPosts () {
       slug: 'securing-valuables-with-escrow-smart-contracts',
       topic: 'Escrow',
       title: 'Securing valuables with Escrow Smart contracts',
-      teaser:
-        'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      teaser: 'How an escrow and smart contracts work to help secure products',
+      category: 'Lost and Found',
       content: EscrowBlogContent,
       cover: EscrowImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
-      readTime: 4,
+      readTime: 5,
       date: '15th DEC, 2020',
       isFeatured: false
     },
@@ -43,6 +44,7 @@ export function getPosts () {
       title: 'Lorem ipsum dolor sit amet consectetur adipiscing',
       teaser:
         'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      category: '',
       content: '',
       cover: DogeImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
@@ -56,6 +58,7 @@ export function getPosts () {
       title: 'Lorem ipsum dolor sit amet consectetur adipiscing',
       teaser:
         'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      category: '',
       content: '',
       cover: DogeImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
@@ -69,6 +72,7 @@ export function getPosts () {
       title: 'Lorem ipsum dolor sit amet consectetur adipiscing',
       teaser:
         'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      category: '',
       content: '',
       cover: DogeImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
@@ -82,6 +86,7 @@ export function getPosts () {
       title: 'Lorem ipsum dolor sit amet consectetur adipiscing',
       teaser:
         'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      category: '',
       content: '',
       cover: DogeImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
@@ -95,6 +100,7 @@ export function getPosts () {
       title: 'Lorem ipsum dolor sit amet consectetur adipiscing',
       teaser:
         'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+      category: '',
       content: '',
       cover: DogeImage,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],

@@ -1,11 +1,13 @@
 .blogInfo {
   margin-bottom: 5rem;
+  margin: 0 auto;
+  width: 85%;
   .heading {
-    font-weight: 500;
-    margin-bottom: 2rem;
-    font-size: 3.4rem;
-    line-height: 1;
-    word-spacing: 0.3rem;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 78px;
+    color: #000000;
   }
   .topic {
     margin-left: 0.2rem;
@@ -15,14 +17,22 @@
     text-transform: uppercase;
   }
   .resume {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: #9cacb3;
-    word-spacing: 0.3rem;
-    line-height: 1;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 45px;
+    line-height: 57px;
+    color: #000000;
+  }
+  .category {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #12C2E9;
+    text-transform: uppercase;
   }
   hr {
-    margin-top: 3rem;
+    margin-top: 0;
     border-top: 1px solid black;
   }
   .authors {
@@ -35,14 +45,21 @@
 @media screen and (max-width: 720px) {
   .blogInfo {
     .heading {
-      font-size: 1.7rem;
-      word-spacing: 0.1rem;
+      font-size: 30px;
+      line-height: 37px;
+      padding-bottom: 12px;
+    }
+    .category {
+      font-size: 12px;
+      line-height: 15px;
     }
     .authors {
       flex-direction: column;
     }
     .resume {
-      word-spacing: 0;
+      font-size: 23px;
+      line-height: 28px;
+      padding-bottom: 28px;
     }
   }
 }
