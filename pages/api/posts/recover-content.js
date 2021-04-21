@@ -1,6 +1,11 @@
+import StepsImage from '../../../public/photos-blog-2/retracing-steps.jpg'
+import TrackImage from '../../../public/photos-blog-2/tracking-phone.png';
+
 export const RecoverBlogContent = `
 <div class="recoverPhoneContainer">
     <section class="heroSection">
+      <p class="image-prescription">Losing a phone is like losing yourself in wide unknown space</p>
+
       <p>
         Smartphones have taken place as one of the most personal and important
         tools in today's world. They contain a large part of your private and
@@ -8,6 +13,7 @@ export const RecoverBlogContent = `
         is. For example, memories from the last vacation or the access code to
         your house, a smartphone has the power to store all of it.
       </p>
+      
       <p>
         Nowadays, there is nothing worse for a person than losing his phone. The
         phone is not just about making calls and just knowing that a stranger is
@@ -54,6 +60,9 @@ export const RecoverBlogContent = `
         so, just give a description of your phone or give your number for the
         employee to call to have a safe return.
       </p>
+      <div class="recover-image" style="background-image: url(${StepsImage})"></div>
+      <p class="image-prescription">Retracing your steps helps, but only if you are moving in right direction</p>
+
       <h3>3. Locate your Phone - Location tracking service</h3>
       <p>
         If you were unable to get someone on the other side then try finding it
@@ -62,6 +71,10 @@ export const RecoverBlogContent = `
         machine. Android device manager and Find my iPhone helps you do this as
         well.
       </p>
+
+      <div class="recover-image" style="background-image: url(${TrackImage})"></div>
+      <p class="image-prescription">Say what!!</p>
+
       <h2>
         Here is the detailed description of how you can use the location service
         on Android and IOS devices
