@@ -12,10 +12,10 @@ export default function Post({ post }) {
   }
 
   const BlogCover = () => (
-    <div
+    <img
       className={styles.blogCover}
-      style={{ backgroundImage: `url(${cover})` }}
-    ></div>
+      src={cover}
+    ></img>
   )
 
   const BlogContent = () => <div dangerouslySetInnerHTML={createMarkup()} />

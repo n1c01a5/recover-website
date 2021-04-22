@@ -1,5 +1,5 @@
 import StepsImage from '../../../public/photos-blog-2/retracing-steps.jpg'
-import TrackImage from '../../../public/photos-blog-2/tracking-phone.png';
+import TrackImage from '../../../public/photos-blog-2/tracking-phone.png'
 import IOSimage from '../../../public/photos-blog-2/ios-secure-tracking.png'
 import WindowsPhoneImage from '../../../public/photos-blog-2/windows-phone.png'
 import AndroidPhoneImage from '../../../public/photos-blog-2/android-phone.png'
@@ -48,7 +48,7 @@ export const RecoverBlogContent = `
         return it but has no means to reach you if the phone is locked. Your
         call/text can help you connect to the finder who can be waiting for it.
         If you cannot find a person nearby whose phone you can use, free
-        websites like text2day.com can help you send a message to your number
+        websites like <a href="text2day.com">text2day.com</a> can help you send a message to your number
         right away. Also, you can offer compensation to the person for their
         goodwill by communicating via call/text to increase your chances of
         return.
@@ -93,74 +93,141 @@ export const RecoverBlogContent = `
         <img class="recover-image" src="${AndroidPhoneImage}"></img>
         <p class="image-prescription">Android is cool, only if you don’t have an IOS</p>  
 
-        <p>There are 2 ways to find an Android phone.</p>
-        <ul>
+        <p>There are 3 ways to find an Android phone.</p>
+        <ul class="small-header">
           <li>
-            If the device is still on and connected to a wireless network, use
-            Device Manager.
+            <p>
+              If the device is still on and connected to a wireless network, use
+              Device Manager.
+            </p>
           </li>
           <li>
-            If it is off and off-grid, you can still locate its last known
-            location from a computer.
+            <p>
+              If it is off and off-grid, you can still locate its last known
+              location from a computer.
+            </p>
           </li>
-          <p>To use Device Manager:</p>
-          <ul>
-            <li>
+          <li>
+            <p>
+              Samsung’s SmartThings find to locate Galaxy devices.
+            </p>
+          </li>
+        </ul>
+
+        <p>To use Device Manager:</p>
+        <ul class="decimal small-header">
+          <li>
+            <p>
               Sign in to your Google Account from a computer or other device.
               You will instantly see where your phone is on Google Maps. You can
               also lock it, ring it, or erase its contents and data remotely.
-            </li>
-            <li>
+            </p>
+          </li>
+          <li>
+            <p>
               You will find the last known location of your phone on the page
               you have. Click Location History and then click Manage History.
               This method uses Wi-Fi and mobile signals rather than GPS. The
               location of your phone will not be as accurate as with the Device
               Manager.
-            </li>
-          </ul>
+            </p>
+          </li>
         </ul>
+        <p>To use Samsung SmartThings Find:</p>
+        <ul class="none ">
+          <li>
+            <p>
+              In 2020, Samsung announced SmartThings to help users quickly locate 
+              their Galaxy devices in case of loss or misplacement. This service only runs 
+              on devices using Android 8 or later and uses Bluetooth Low Energy (BLE) 
+              and Ultra-Wideband to help find your device.
+            </p>
+          </li>
+        </ul>
+        <p>How it works:</p>
+        <ul class="decimal small-header">
+          <li>
+            <p>
+              Signup for SmartThings Find on your device.
+            </p>
+          </li>
+          <li>
+            <p>
+              After a quick registration process, access SmartThings Find from
+            </p>  
+          </li>
+          <li>
+            <p>
+            SmartThings app home screen.
+            </p>
+          </li>
+          <li>
+            <p>
+              Now you are all set to find your Galaxy devices from smartphone
+            </p>
+          </li>
+        </ul>
+        <p>Here you can find the <a href="https://www.youtube.com/watch?v=gGCHpFJl6Hs&feature=emb_logo">video</a> for better understanding and <a href="https://play.google.com/store/apps/details?id=com.samsung.android.oneconnect&hl=en&gl=US">link</a> to download the application from the app store. </p>
       </div>
       <div class="iphone">
         <h3>Learn how to locate an iPhone (IOS):</h3>
         <img class="recover-image" src="${IOSimage}" />
         <p class="image-prescription">IOS is secure, only till it doesn't get hacked</p>
-        <ul>
+        <ul class="decimal  small-header">
           <li>
-            The Find My iPhone app is the best way to locate a lost iPhone. If
-            it is not installed on your phone, you will first need to download
-            it from the App Store. The application is fairly accurate, but for
-            it to work, your iPhone must be turned on and connected to the
-            Internet.
+            <p>
+              The Find My iPhone app is the best way to locate a lost iPhone. If
+              it is not installed on your phone, you will first need to download
+              it from the App Store. The application is fairly accurate, but for
+              it to work, your iPhone must be turned on and connected to the
+              Internet.
+            </p>
           </li>
           <li>
-            Sign in to your iCloud from a computer or other mobile device and
-            open Find My iPhone. You will need to see the location of your phone
-            on a map and you will be able to track its movements as well.
+            <p>
+              Sign in to your iCloud from a computer or other mobile device and
+              open Find My iPhone. You will need to see the location of your phone
+              on a map and you will be able to track its movements as well.
+            </p>
           </li>
           <li>
-            Find My iPhone makes it possible to remotely ring the phone (to
-            locate and make people understand that it is lost or stolen), to
-            send a text message with your details or to delete its content and
-            its data.
+            <p>
+              Find My iPhone makes it possible to remotely ring the phone (to
+              locate and make people understand that it is lost or stolen), to
+              send a text message with your details or to delete its content and
+              its data.
+            </p>
           </li>
         </ul>
       </div>
       <div class="windows">
         <h3>Know how to find a Phone - Windows OS:</h3>
         <img src="${WindowsPhoneImage}" class="recover-image" />
-        <ul>
+        <p class="image-prescription">If you are still searching for your Windows OS phone, think again</p>
+
+        <ul class="decimal small-header">
           <li>
-            The phones running Windows 8.1 and later have built-in functionality
-            to find them.
+            <p>
+              The phones running Windows 8.1 and later have built-in functionality
+              to find them.
+            </p>
           </li>
           <li>
-            From a computer or other wireless device, go to the Microsoft
-            Devices page to see a list of tablets and phones that you own. Then
-            use the location service to locate the device you want to find.
+            <p>
+              From a computer or other wireless device, go to the Microsoft
+              Devices page to see a list of tablets and phones that you own.
+            </p>
           </li>
           <li>
-            Log in to lost Windows device service to remotely lock your phone or
-            erase its contents.
+            <p>
+              Then use the location service to locate the device you want to find.
+            </p>
+          </li>
+          <li>
+            <p>
+              Log in to lost Windows device service to remotely lock your phone or
+              erase its contents.
+            </p>
           </li>
         </ul>
       </div>
@@ -172,7 +239,7 @@ export const RecoverBlogContent = `
         <img class="recover-image" src="${ImmediateMeasuresToTake}"></img>
         <p class="image-prescription">Need help? All you need is to call the right number</p>
 
-        <ul>
+        <ul class="decimal">
           <li>
             <h3>Call the Police:</h3>
             <p>
@@ -244,17 +311,23 @@ export const RecoverBlogContent = `
       <p class="image-prescription">You can find your product with Tile, but only if you are in range</p>
 
       <h4>How does it work?</h4>
-      <ul>
+      <ul class="small-header">
         <li>
-          The application allows ringing the Tile or beep if the object in
-          question is near.
+          <p>
+            The application allows ringing the Tile or beep if the object in
+            question is near.
+          </p>
         </li>
         <li>
-          When you are far away, you will see the last time and place it was
-          updated.
+          <p>
+            When you are far away, you will see the last time and place it was
+            updated.
+          </p>
         </li>
         <li>
-          If the product is lost, the community helps you find the product.
+          <p>
+            If the product is lost, the community helps you find the product.
+          </p>
         </li>
       </ul>
       <h4>How are they doing it? Technology behind Tile</h4>
@@ -266,26 +339,34 @@ export const RecoverBlogContent = `
         Bluetooth enabled device.
       </p>
       <h4>Advantages of Bluetooth based tracking systems:</h4>
-      <ul>
+      <ul class="decimal small-header">
         <li>
-          It avoids interference from other wireless devices and is only
-          connected to a particular device.
+          <p>
+            It avoids interference from other wireless devices and is only
+            connected to a particular device.
+          </p>
         </li>
         <li>
-          Devices have low power consumption and can be easily updated to the
-          latest model.
+          <p>
+            Devices have low power consumption and can be easily updated to the
+            latest model.
+          </p>  
         </li>
       </ul>
       <h4>Disadvantages of Bluetooth based tracking systems:</h4>
-      <ul>
+      <ul class="decimal small-header">
         <li>
-          Generally offers limited functionality when it comes to range. The
-          maximum range can be 20 meters which are significantly low for finding
-          your lost phone. Anything above 20 meters becomes irretrievable.
+          <p>
+            Generally offers limited functionality when it comes to range. The
+            maximum range can be 20 meters which are significantly low for finding
+            your lost phone. Anything above 20 meters becomes irretrievable.
+          </p>  
         </li>
         <li>
-          The inability of the Bluetooth based tracking device to track the
-          physical location of the person.
+          <p>
+            The inability of the Bluetooth based tracking device to track the
+            physical location of the person.
+          </p>
         </li>
       </ul>
       <h3>2. Recover, a blockchain solution to find your Phone</h3>
@@ -302,13 +383,15 @@ export const RecoverBlogContent = `
         which can be used to secure a phone or any other valuable you own. The
         Loser box has:
       </p>
-      <ul>
+      <ul class="small-header">
         <li>
-          2 sets of stickers (2 middle-sized which can be linked with your
-          phone, 1 small and a round one for pets).
+          <p>
+            2 sets of stickers (2 middle-sized which can be linked with your
+            phone, 1 small and a round one for pets).
+          </p>
         </li>
-        <li>2 cards to secure your wallet/luggage.</li>
-        <li>1 key-ring</li>
+        <li><p>2 cards to secure your wallet/luggage.</p></li>
+        <li><p>1 key-ring</p></li>
       </ul>
       <p>
         For a user, Recover provides service with an added incentive which acts
@@ -328,23 +411,26 @@ export const RecoverBlogContent = `
         Recover offer it services with Loser Box which can be set up in three
         easy steps:
       </p>
-      <ul>
+      <ul class="decimal small-header">
         <li>
-          With Recover’s Loser Box you receive QR codes which get linked to your
-          valuables.
+          <p>
+            With Recover’s Loser Box you receive QR codes which get linked to your
+            valuables.
+          </p>
         </li>
         <li>
-          In case of loss, seeing the phone unattended the finder is
-          incentivized to return it.
+          <p>
+            In case of loss, seeing the phone unattended the finder is
+            incentivized to return it.
+          </p>
         </li>
         <li>The reward is exchanged for the phone.</li>
       </ul>
       <p>
-        Now that you have knowledge of what measures to take in case of the lost
-        phone and what are the companies that are using the latest technology to
-        help prevent the loss. Recover can also be used in complementary with
-        Tile to add an extra cover of insurance for your valuables. To check how
-        Recover helps in Recovery, Click here.
+        Now you have knowledge of what measures to take in case of the lost phone and
+        about the companies that are using the latest technology to help prevent the
+        loss. Recover can also be used alongside Tile to add an <a href="http://recover.ws/">extra cover of insurance for
+        your valuables</a> and insure safe return in case of loss.
       </p>
     </section>
   </div>

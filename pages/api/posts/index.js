@@ -16,7 +16,7 @@ export function getPosts () {
       topic: 'Lost and Found',
       title: 'How can I Recover my Phone if it is lost?',
       teaser:
-        'Lorem ipsum dolor sit amet, labore et dolore magna temporsit amet, consectetur adipiscing ut labore et dolore magna',
+        'A guide to explain what measures to take right after your phone is lost and which services can help you retrieve it',
       cover: RecoverImage,
       content: RecoverBlogContent,
       authors: [getAuthor('nico'), getAuthor('bhavesh')],
