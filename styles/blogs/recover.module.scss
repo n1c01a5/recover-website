@@ -53,10 +53,12 @@
   }
   .recover-image {
     width: 100%;
-    height: 35rem;
-    background-size: cover;
-    background-position: center;
+    max-height: 40rem;
+    object-fit: contain;
     margin-bottom: 2rem;
+  }
+  .bluetooth-image {
+    max-height: 15rem;
   }
   
   p.image-prescription {

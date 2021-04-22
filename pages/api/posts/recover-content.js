@@ -1,6 +1,12 @@
 import StepsImage from '../../../public/photos-blog-2/retracing-steps.jpg'
 import TrackImage from '../../../public/photos-blog-2/tracking-phone.png';
-
+import IOSimage from '../../../public/photos-blog-2/ios-secure-tracking.png'
+import WindowsPhoneImage from '../../../public/photos-blog-2/windows-phone.png'
+import AndroidPhoneImage from '../../../public/photos-blog-2/android-phone.png'
+import ImmediateMeasuresToTake from '../../../public/photos-blog-2/calling-right-number.jpg'
+import BluetoothTrackingTile from '../../../public/photos-blog-2/bluetooth-tracking-tile.jpg'
+import BluetoothImage from '../../../public/photos-blog-2/bluetooth.png'
+import CryptoKitty from '../../../public/photos-blog-2/phone-lost-cryptokitty.jpg'
 export const RecoverBlogContent = `
 <div class="recoverPhoneContainer">
     <section class="heroSection">
@@ -60,7 +66,7 @@ export const RecoverBlogContent = `
         so, just give a description of your phone or give your number for the
         employee to call to have a safe return.
       </p>
-      <div class="recover-image" style="background-image: url(${StepsImage})"></div>
+      <img class="recover-image" src="${StepsImage}"></img>
       <p class="image-prescription">Retracing your steps helps, but only if you are moving in right direction</p>
 
       <h3>3. Locate your Phone - Location tracking service</h3>
@@ -72,7 +78,7 @@ export const RecoverBlogContent = `
         well.
       </p>
 
-      <div class="recover-image" style="background-image: url(${TrackImage})"></div>
+      <img class="recover-image" src="${TrackImage}"></img>
       <p class="image-prescription">Say what!!</p>
 
       <h2>
@@ -83,6 +89,10 @@ export const RecoverBlogContent = `
     <section class="section2">
       <div class="android">
         <h3>Learn how to locate an Android phone:</h3>
+
+        <img class="recover-image" src="${AndroidPhoneImage}"></img>
+        <p class="image-prescription">Android is cool, only if you don’t have an IOS</p>  
+
         <p>There are 2 ways to find an Android phone.</p>
         <ul>
           <li>
@@ -112,6 +122,8 @@ export const RecoverBlogContent = `
       </div>
       <div class="iphone">
         <h3>Learn how to locate an iPhone (IOS):</h3>
+        <img class="recover-image" src="${IOSimage}" />
+        <p class="image-prescription">IOS is secure, only till it doesn't get hacked</p>
         <ul>
           <li>
             The Find My iPhone app is the best way to locate a lost iPhone. If
@@ -135,6 +147,7 @@ export const RecoverBlogContent = `
       </div>
       <div class="windows">
         <h3>Know how to find a Phone - Windows OS:</h3>
+        <img src="${WindowsPhoneImage}" class="recover-image" />
         <ul>
           <li>
             The phones running Windows 8.1 and later have built-in functionality
@@ -155,6 +168,10 @@ export const RecoverBlogContent = `
     <section class="section-3">
       <div class="measures-div">
         <h2>Immediate measures to take</h2>
+
+        <img class="recover-image" src="${ImmediateMeasuresToTake}"></img>
+        <p class="image-prescription">Need help? All you need is to call the right number</p>
+
         <ul>
           <li>
             <h3>Call the Police:</h3>
@@ -223,6 +240,9 @@ export const RecoverBlogContent = `
         can later use the Tile app to help locate the item if the object is lost
         or misplaced.
       </p>
+      <img class="recover-image" src="${BluetoothTrackingTile}"></img>
+      <p class="image-prescription">You can find your product with Tile, but only if you are in range</p>
+
       <h4>How does it work?</h4>
       <ul>
         <li>
@@ -238,6 +258,8 @@ export const RecoverBlogContent = `
         </li>
       </ul>
       <h4>How are they doing it? Technology behind Tile</h4>
+      <img class="recover-image bluetooth-image" src="${BluetoothImage}"></img>
+      <p class="image-prescription">Bluetooth, the savior. Whether music or finding your valuable</p>
       <p>
         They use Bluetooth trackers to find the lost device. Usually, Bluetooth
         works well within a shorter range and is dependent on a connection to a
@@ -267,6 +289,8 @@ export const RecoverBlogContent = `
         </li>
       </ul>
       <h3>2. Recover, a blockchain solution to find your Phone</h3>
+      <img class="recover-image" src="${CryptoKitty}"></img>
+      <p class="image-prescription">Blockchain technology can help you find your phone, as well as your Kitty</p>
       <p>
         Recover is a Lost and Found service for valuables powered by Blockchain
         technology to incentivize people to return your items. It offers a Loser
