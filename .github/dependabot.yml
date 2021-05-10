@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: next
+    versions:
+    - 10.1.1
+  - dependency-name: ipfs-http-client
+    versions:
+    - 49.0.0
