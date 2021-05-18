@@ -1,8 +1,11 @@
 {
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true
-        },
-        "ecmaVersion": 2020
-    }
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  }
 }

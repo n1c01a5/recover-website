@@ -30,6 +30,11 @@ const Nav = ({ isTop, setShowOverlay }) => (
         </a>
       </div>
       <div className={styles.linkContainer}>
+        <Link href='/docs/add-item/flowchart'>
+          <a className={styles.link}>DOCS</a>
+        </Link>
+      </div>
+      <div className={styles.linkContainer}>
         <Link href='/blog'>
           <a className={styles.link}>BLOG</a>
         </Link>

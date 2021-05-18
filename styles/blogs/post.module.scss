@@ -6,9 +6,8 @@
   margin-top: 2rem;
   .blogCover {
     width: 100%;
-    height: 15rem;
-    background-size: cover;
-    background-position: center;
+    max-height: 40rem;
+    object-fit: contain;
     margin-bottom: 2rem;
   }
 }
