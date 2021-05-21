@@ -1,4 +1,3 @@
-import EthereumMassAdoption from '../../../public/photos-blog-3/ethereum-mass-adoption.png'
 import InvestorsNews from '../../../public/photos-blog-3/investors-news.jpg'
 import InvestorPersona from '../../../public/photos-blog-3/investors-persona.jpg'
 import BuidlerNewProjects from '../../../public/photos-blog-3/builder-new-projects.png'
@@ -34,7 +33,7 @@ export const CryptoActorsBlogContent = `
       </section>
       <section class="blog__section">
         <h2 class="title">Crypto Investors: money, profits and the space in between</h2>
-        <img class="escrow-image" src="${InvestorsNews}" alt="How Escrow Financial Transaction Works?" />
+        <img class="image" src="${InvestorsNews}" alt="Crypto investors - Bitcoin" />
         <legend>
           Invest in crypto to be part of the ecosystem and gain huge chunks of money - Tom Lee
         </legend>
@@ -59,14 +58,14 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of an crypto Investor</h3>
-        <img class="escrow-image" src="${InvestorPersona}" alt="Synthetic Persona of an Investor" />
+        <img class="image" src="${InvestorPersona}" alt="Synthetic Persona of an Investor" />
 
         Note: on parle ici des gros invessitsseurs qui investissent plusieurs millions dans les projets pas des petits...
         Ils peuvent etre aussi des tetes brulés...
       </section>
       <section class="blog__section">
         <h2 class="title">Builders: Blockchain developers, entrepreneurs, crypto designers, artists; the ones who shape the ecosystem</h2>
-        <img class="escrow-image" src="${BuidlerNewProjects}" alt="Buidler - blockchain developer" />
+        <img class="image" src="${BuidlerNewProjects}" alt="Buidler - blockchain developer" />
         <legend>So, what are you BUIDLing today? </legend>
         <p class="content">
           Builders in the cryptocurrency space constitute organizations, projects or people who have a vision to disrupt the market by
@@ -76,7 +75,7 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of a Buidler</h3>
-        <img class="escrow-image" src="${BuidlersPersona}" alt="Synthetic Persona of a Buidler" />
+        <img class="image" src="${BuidlersPersona}" alt="Synthetic Persona of a Buidler" />
 
         <h3>Typography of dApp projects</h3>
 
@@ -160,7 +159,7 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of a Regular User</h3>
-        <img class="escrow-image" src="${RegularUserPersona}" alt="Synthetic Persona of a Regular Crypto User" />
+        <img class="image" src="${RegularUserPersona}" alt="Synthetic Persona of a Regular Crypto User" />
 
         <h2>Crypto Bidders and Gamers: kitty’s won’t take down your network</h2>
 
@@ -176,7 +175,7 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of a crypto Regular User</h3>
-        <img class="escrow-image" src="${GamersPersona}" alt="Synthetic Persona of a Regular Crypto User" />
+        <img class="image" src="${GamersPersona}" alt="Synthetic Persona of a Regular Crypto User" />
 
         <h2>Early Adapters: Movers, Shakers and Millionaires</h2>
 
@@ -188,11 +187,11 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of a crypto Early Adopters</h3>
-        <img class="escrow-image" src="${EarlyAdoptersPersona}" alt="Synthetic Persona of a crypto early adopters" />
+        <img class="image" src="${EarlyAdoptersPersona}" alt="Synthetic Persona of a crypto early adopters" />
 
         <h2>Scammers: They exist for the #hash</h2>
 
-        <img class="escrow-image" src="${ScammersHashSteal}" alt="Bitconnet one of the famous crypto scam" />
+        <img class="image" src="${ScammersHashSteal}" alt="Bitconnet one of the famous crypto scam" />
         <legend>Wasu Wasu Wasu...Wasted!!</legend>
 
         <p>
@@ -201,7 +200,7 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of Scammers</h3>
-        <img class="escrow-image" src="${ScammersPersona}" alt="Crypto scammer persona" />
+        <img class="image" src="${ScammersPersona}" alt="Crypto scammer persona" />
 
         <h2>Crypto Pirates: they exist to make a hack</h2>
 
@@ -217,7 +216,7 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of Pirates</h3>
-        <img class="escrow-image" src="${PiratesPersona}" alt="Crypto pirates persona" />
+        <img class="image" src="${PiratesPersona}" alt="Crypto pirates persona" />
 
         <h2>Traders: The ones make the crypto weather on the market</h2>
 
@@ -236,7 +235,7 @@ export const CryptoActorsBlogContent = `
           the crypto market works and usually are very active in this ecosystem.
         </p>
 
-        <img class="escrow-image" src="${PiratesPersona}" alt="Crypto pirates persona" />
+        <img class="image" src="${PiratesPersona}" alt="Crypto pirates persona" />
         <legend><a href="http://www.cryptoweather.online">It’s trading in every possible direction</a></legend>
 
         <h3>Cryptocurrency traders</h3>
@@ -283,11 +282,11 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of Crypto Traders</p>
-        <img class="escrow-image" src="${TradersPersona}" alt="Crypto traders persona" />
+        <img class="image" src="${TradersPersona}" alt="Crypto traders persona" />
 
         <h2>Regulators: The ones who want to take charge (at least a bit)</h2>
 
-        <img class="escrow-image" src="${RegulatorsControl}" alt="Regulators in the cryptospace" />
+        <img class="image" src="${RegulatorsControl}" alt="Regulators in the cryptospace" />
         <legend>But do we really need an off-chain regulation? 🤫</legend>
 
         <p>
@@ -300,7 +299,7 @@ export const CryptoActorsBlogContent = `
         </p>
 
         <h3>Synthetic Persona of Crypto Regulators</p>
-        <img class="escrow-image" src="${RegulatorsPersona}" alt="Crypto regulators persona" />
+        <img class="image" src="${RegulatorsPersona}" alt="Crypto regulators persona" />
 
         <h2>Mix of crypto typology of the personas</h2>
 
@@ -318,10 +317,12 @@ export const CryptoActorsBlogContent = `
         Of course it is not an exhaustive list and we continue to see multiple actors coming and playing their part as the ecosystem evolves and adoption grows.
         </p>
 
+        <!--
         <p>
-          Last world on Recover ... Recover, on the other hand, positions itself in the ecosystem in the mix of legitimate and builders as it aspires to provide first of its kind lost and found service using Blockchain technology by presenting a use case which has a tremendous future potential. Initially designed for Blockchain enthusiasts, we empower to scale the product as the technology gains more adoption.
+          Talk a little bit the position about Recover. It's a mix of legitimate and builders as it aspires to provide first of its kind lost and found service using Blockchain technology by presenting a use case which has a tremendous future potential.
+          Initially designed for Blockchain enthusiasts, we empower to scale the product as the technology gains more adoption.
         </p>
-
+        -->
       </section>
   </div>
 `

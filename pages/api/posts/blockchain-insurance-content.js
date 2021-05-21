@@ -64,7 +64,7 @@ export const BlockchainInsuranceBlogContent = `
 
         <h2>Insurance for On-chain ecosystem and some insurance solutions</h2>
 
-        <img class="escrow-image" src="${OnChainSolution}" alt="On-chain insurance" />
+        <img class="image" src="${OnChainSolution}" alt="On-chain insurance" />
         <legend>
           Even though the technology is new, learning about insurance solutions in
           on-chain system will help you in a longer run
@@ -113,7 +113,7 @@ export const BlockchainInsuranceBlogContent = `
           </li>
         </ul>
 
-        <img class="escrow-image" src="${SmartContractHack}" alt="On-chain insurance" />
+        <img class="image" src="${SmartContractHack}" alt="On-chain insurance" />
         <legend>
           In few seconds, smart contracts are drained of several million
           in an almost anonymous way
@@ -252,7 +252,7 @@ export const BlockchainInsuranceBlogContent = `
           many companies use them simply because they were being turned down for funding traditional VC’s and financial institutions.
         </p>
 
-        <img class="escrow-image" src="${FaceAfterGettingHacked}" alt="Face after getting be hacked" />
+        <img class="image" src="${FaceAfterGettingHacked}" alt="Face after getting be hacked" />
         <legend>
           In few seconds, smart contracts are drained of several million
           in an almost anonymous way
@@ -292,22 +292,22 @@ export const BlockchainInsuranceBlogContent = `
 
         <ol>
           <li>
-          One of the solutions is set on increment payment workflow. If everything
-          is moving as per the defined guidelines and the project provides value
-          for the investors on a continuous basis, the investment will flow else
-          the investors have the access to stop the money flow to the project
-          if something fishy is detected. StreamPay is one such example
-          which focuses on providing continuous value transfer by real
-          time payments.
+            One of the solutions is set on increment payment workflow. If everything
+            is moving as per the defined guidelines and the project provides value
+            for the investors on a continuous basis, the investment will flow else
+            the investors have the access to stop the money flow to the project
+            if something fishy is detected. StreamPay is one such example
+            which focuses on providing continuous value transfer by real
+            time payments.
           </li>
           <li>
-          Crypto-native Insurance: They are on-chain insurance covering
-                      protocols and DAO’s which are still on the building stage which have
-                      a potential to insure DeFi that has grown expansively over the last year.
-                      Though, there are lots of challenges at bay like market structure,
-                      payout decisions, creating and evaluating coverage but once they
-                      are navigated it will provide an opportunity to insure billions of dollars
-                      in DeFi today and trillions in global commerce.
+            Crypto-native Insurance: They are on-chain insurance covering
+            protocols and DAO’s which are still on the building stage which have
+            a potential to insure DeFi that has grown expansively over the last year.
+            Though, there are lots of challenges at bay like market structure,
+            payout decisions, creating and evaluating coverage but once they
+            are navigated it will provide an opportunity to insure billions of dollars
+            in DeFi today and trillions in global commerce.
           </li>
         </ol>
 
@@ -403,7 +403,7 @@ export const BlockchainInsuranceBlogContent = `
 
       <h3>How can i secure my belongings using Blockchain?</h3>
 
-      <img class="escrow-image" src="${HouseInsurance}" alt="On-chain insurance" />
+      <img class="image" src="${HouseInsurance}" alt="On-chain insurance" />
       <legend>
         Did the history of your house help you get the amount of insurance need to rebuild?
       </legend>
@@ -421,7 +421,7 @@ export const BlockchainInsuranceBlogContent = `
         for understanding the insurance value and policy.
       </p>
 
-      <img class="escrow-image" src="${ElonMuskCybertruck}" alt="Elon Mush with the cybertrunk with the broken window" />
+      <img class="image" src="${ElonMuskCybertruck}" alt="Elon Mush with the cybertrunk with the broken window" />
       <legend>
         A decentralized insurance to match your upcoming Cybertrunk!
       </legend>
@@ -443,7 +443,8 @@ export const BlockchainInsuranceBlogContent = `
 
       <h2>Bonus: prediction markets as decentralized insurance</h2>
 
-      <img class="escrow-image" src="${PredictionMarket}" alt="Gnosis: decentralized prediction market" />
+      <img class="image" src="${PredictionMarket}" alt="Gnosis: decentralized prediction market" />
+
       <legend>
         A Prediction market to bet on the next lockdown
       </legend>
@@ -456,12 +457,14 @@ export const BlockchainInsuranceBlogContent = `
         a result. For example, being a restaurant owner one can make a bet that there will be a new pandemic and
         if it turns out to be true, the restaurant will win the bet despite being turned down.
       </p>
-
+      <!--
       <h3>Another Bonus: Interesting Research to estimate the risk => Move to on-chain insurance</h3>
 
       <p>
-      We want to share an interesting research which can be useful for estimating risk in a decentralised ecosystem. Proposal has been made to derive a mathematical model to estimate and to prize the risk associated with Blockchain in case of financial loss occurred due to fraud and foul play. Using advanced probability theory, one way is proposed to find how a bad smart contract code can affect the assigned values of smart contracts and how prediction theory can predict the price at risk in case of fraud. This can help estimate the loss and reimbursement of the affected wallet. In this case we use the power of smart contract transparency to investigate the damage. More information can be found in the link [5].
+        We want to share an interesting research which can be useful for estimating risk in a decentralised ecosystem. Proposal has been made to derive a mathematical model to estimate and to prize the risk associated with Blockchain in case of financial loss occurred due to fraud and foul play. Using advanced probability theory, one way is proposed to find how a bad smart contract code can affect the assigned values of smart contracts and how prediction theory can predict the price at risk in case of fraud. This can help estimate the loss and reimbursement of the affected wallet. In this case we use the power of smart contract transparency to investigate the damage. More information can be found in the link [5].
       </p>
+
+      -->
 
       <h2>Conclusion</h2>
 
@@ -485,10 +488,8 @@ export const BlockchainInsuranceBlogContent = `
       <p>
         As discussed, some challenges still need to be resolved with DeFii, wallets ICO’s being a major concern,
         but with emerging applications and more companies collaborating to provide a fast, secure and transparent service
-        for the ecosystem, the time is not far when your phone, car, and house etc...are all insured with blockchain.
+        for the ecosystem, the time is not far when your phone, car, and house etc... are all insured with blockchain.
       </p>
-
-      <p>PS: We built a service to insure your valuables, let’s Discover recover!</p>
     </section>
   </div>
 `

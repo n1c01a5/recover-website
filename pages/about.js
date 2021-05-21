@@ -24,12 +24,12 @@ export default function About () {
               marginTop: '-0.5rem'
             }}
           >
-            Nicolas
+            n1c0
           </h1>
-          <p>
+          <p className='p-indent'>
             I am a self-taught developer who has worked as Freelance since 2014
             for different startups and corporates (Tradelab, Novactive, Air
-            France, SNCF...). Beginning in June 2016, he became interested in
+            France, SNCF...). Beginning in June 2016, I was interested in
             blockchain technology. The transparent and disintermediate dimension
             of this blockchain protocol convinced him that it would be the next
             technology that would disrupt technology and society, just as the
@@ -38,41 +38,40 @@ export default function About () {
             and I won some (2nd BeMyApp, 2nd Startup weekend blockchain, 1st
             prize at Merkle Week with Dether) and organised some blockchain
             meetup. In 2017, I co-funded Kleros, the first decentralized
-            trabunal who the juror are crowdsourced to solve any kind of
-            disputes (insurance, moderation). It was a big challenge technically
-            and humainement. In 2019, I left the project and take some rest :) .
-            I took over freelance for web and blockchain and in parallel I
-            continue some side project like Recover on Kleros hoping that Kleros
-            and more globally all the blockchain ecosystem become mainstream to
-            found the new internet of value.
+            court who the juror are crowdsourced to solve any kind of
+            disputes (insurance, moderation...). It was a big challenge technically
+            and humanly. In 2019, I left the project and go back freelancing
+            but specialized in blockchain and continue some side project like Recover.
           </p>
           <p className='p-indent' style={{ paddingTop: '1rem' }}>
             About the projects I particularly want to be part:
-            <ul>
-              <li>
-                - open source source and if possible transparency project,
-              </li>
-              <li>
-                - project focus on the real economy (Defi is necessary but
-                projects linked directly with the real economy as well...),
-              </li>
-              <li>
-                - project where we pushed the decentralization as as much as
-                possible.
-              </li>
-            </ul>
           </p>
+          <ul>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>
+              open source source and if possible transparency project,
+            </li>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>
+              project focus on the real economy (DeFi is necessary but
+              projects linked directly with the real economy as well...),
+            </li>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>
+              project where we pushed the decentralization as as much as
+              possible.
+            </li>
+          </ul>
           <p className='p-indent' style={{ paddingTop: '2rem' }}>
             Finally, here is my general vision about the blockchain, we are
             going to respond to the major challenges of the blockchain, such as:
-            <ul>
-              <li>- scalability,</li>
-              <li>- onboarding and the experience of (new) users,</li>
-              <li>
-                - governance of the protocol and decentralized applications,
-              </li>
-              <li>- and the security of smart contracts,</li>
-            </ul>
+          </p>
+          <ul>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>scalability,</li>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>onboarding and the experience of (new) users,</li>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>
+              governance of the protocol and decentralized applications,
+            </li>
+            <li style={{ listStyleType: 'circle', marginLeft: '60px' }}>and the security of smart contracts,</li>
+          </ul>
+          <p>
             to make the blockchain the new generation of the internet.
           </p>
         </div>

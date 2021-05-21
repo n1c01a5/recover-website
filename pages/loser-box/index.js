@@ -194,11 +194,11 @@ export default function LoserBox () {
               </ul>
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
                 <div>
-                  <Link href='/loser-box/buy?step=1'>
+                  {/* <Link href='/loser-box/buy?step=1'> */}
                     <Button isPrimary style={{ width: '500px' }}>
-                      BUY LOSER BOX
+                      BUY LOSER BOX (available soon!)
                     </Button>
-                  </Link>
+                  {/* </Link> */}
                 </div>
               </div>
             </div>
@@ -523,11 +523,11 @@ export default function LoserBox () {
               </p>
             </div>
             <div>
-              <Link href='/loser-box/buy?step=1'>
+              {/* <Link href='/loser-box/buy?step=1'> */}
                 <Button isPrimary style={{ width: '100%', marginTop: '30px' }}>
-                  I UNDERSTAND THE RISKS BUT I WANT MY LOSER BOX
+                  I UNDERSTAND THE RISKS BUT I WANT MY LOSER BOX  (available soon!)
                 </Button>
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
           <div

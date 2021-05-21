@@ -7,8 +7,8 @@ import { getAuthorHelper } from '../../../utils/blogs'
 
 import EscrowImage from '../../../public/photos-blog-1/escrow-bond.jpg'
 import RecoverImage from '../../../public/photos-blog-2/losing-yourself-in-unknown.jpg'
-import BlockchainInsuranceCover from '../../../public/photos-blog-3/flight-delay-insurance-cover.jpg'
-import CryptoActorsCover from '../../../public/photos-blog-4/ethereum-mass-adoption.png'
+import CryptoActorsCover from '../../../public/photos-blog-3/ethereum-mass-adoption.png'
+import BlockchainInsuranceCover from '../../../public/photos-blog-4/flight-delay-insurance-cover.jpg'
 
 export function getPosts () {
   const getAuthor = getAuthorHelper(authors)
