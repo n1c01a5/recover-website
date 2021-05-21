@@ -48,7 +48,7 @@ export function getPosts () {
         'A road to meet the people who frame the crypto ecosystem. From millionaires to regulators, we have it covered.',
       content: CryptoActorsBlogContent,
       cover: CryptoActorsCover,
-      authors: [getAuthor('n1c0')],
+      authors: [getAuthor('n1c0'), getAuthor('bhavesh')],
       readTime: 6,
       date: '15th DEC, 2020',
       isFeatured: false
@@ -61,7 +61,7 @@ export function getPosts () {
         'The hacks of smart contracts is one of the major problems in DeFi whose impact can be reduced by insurances. Let\'s see this practical case of decentralized insurance and many others!',
       content: BlockchainInsuranceBlogContent,
       cover: BlockchainInsuranceCover,
-      authors: [getAuthor('n1c0')],
+      authors: [getAuthor('n1c0'), getAuthor('bhavesh')],
       readTime: 6,
       date: '15th DEC, 2020',
       isFeatured: false

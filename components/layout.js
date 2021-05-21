@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
       <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
         <Menu right>
           <a className='menu-item' href='app.recover.ws' target='_blank' rel='noreferrer'>APPLICATION</a>
-          <span className='menu-item'><Link href='/documentation' className='menu-item'><a>DOCUMENTATION</a></Link></span>
+          <span className='menu-item'><Link href='/docs/add-item/introduction' className='menu-item'><a>DOCS</a></Link></span>
           <span className='menu-item'><Link href='/blog' className='menu-item'><a>BLOG</a></Link></span>
           <span className='menu-item'><Link href='/about' className='menu-item'><a>ABOUT</a></Link></span>
         </Menu>
