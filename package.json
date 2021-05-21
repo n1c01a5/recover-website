@@ -20,6 +20,7 @@
     "dexag-sdk": "^2.2.9",
     "ipfs-http-client": "^49.0.2",
     "next": "10.2.0",
+    "postcss": "^8.3.0",
     "react": "16.14.0",
     "react-bootstrap": "^1.4.0",
     "react-burger-menu": "^3.0.3",
@@ -49,9 +50,6 @@
     "standardx": "^7.0.0",
     "style-loader": "^2.0.0",
     "babel-eslint": "^10.1.0"
-  },
-  "peerDependencies": {
-    "postcss": "^8.0.0"
   },
   "standard": {
     "globals": [
