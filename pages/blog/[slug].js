@@ -38,5 +38,6 @@ export default function Post({ post }) {
 Post.getInitialProps = async (ctx) => {
   const posts = getPosts()
   const post = posts.find((post) => post.slug === ctx.query.slug)
+
   return { post }
 }
