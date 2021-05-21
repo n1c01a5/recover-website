@@ -5,16 +5,10 @@ import { BlockchainInsuranceBlogContent } from './blockchain-insurance-content'
 import { CryptoActorsBlogContent } from './crypto-actors-content'
 import { getAuthorHelper } from '../../../utils/blogs'
 
-<<<<<<< HEAD
 import EscrowImage from '../../../public/photos-blog-1/escrow-bond.jpg'
 import RecoverImage from '../../../public/photos-blog-2/losing-yourself-in-unknown.jpg'
 import CryptoActorsCover from '../../../public/photos-blog-3/ethereum-mass-adoption.png'
 import BlockchainInsuranceCover from '../../../public/photos-blog-4/flight-delay-insurance-cover.jpg'
-=======
-import DogeImage from '../../../public/doge.png'
-import EscrowImage from '../../../public/Blog_1_Escrow.jpg'
-import RecoverImage from '../../../public/photos-blog-2/losing-yourself-in-unknown.jpg'
->>>>>>> 0ffabf0ddc6a03cb56974fc07393c540de8a6a16
 
 export function getPosts () {
   const getAuthor = getAuthorHelper(authors)
