@@ -7,7 +7,6 @@ import ImmediateMeasuresToTake from '../../../public/photos-blog-2/calling-right
 import BluetoothTrackingTile from '../../../public/photos-blog-2/bluetooth-tracking-tile.jpg'
 import BluetoothImage from '../../../public/photos-blog-2/bluetooth.png'
 import CryptoKitty from '../../../public/photos-blog-2/phone-lost-cryptokitty.jpg'
-
 export const RecoverBlogContent = `
   <div class="recoverPhoneContainer">
     <section class="heroSection">
@@ -20,7 +19,6 @@ export const RecoverBlogContent = `
         is. For example, memories from the last vacation or the access code to
         your house, a smartphone has the power to store all of it.
       </p>
-
       <p>
         Nowadays, there is nothing worse for a person than losing his phone. The
         phone is not just about making calls and just knowing that a stranger is

@@ -15,7 +15,11 @@ export default function Post({ post }) {
     <img
       className={styles.blogCover}
       src={cover}
+<<<<<<< HEAD
     />
+=======
+    ></img>
+>>>>>>> 0ffabf0ddc6a03cb56974fc07393c540de8a6a16
   )
 
   const BlogContent = () => <div dangerouslySetInnerHTML={createMarkup()} />
