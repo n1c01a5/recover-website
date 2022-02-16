@@ -44,7 +44,7 @@
     "css-loader": "^5.0.2",
     "next-images": "^1.6.2",
     "sass": "^1.32.7",
-    "sass-loader": "^11.0.1",
+    "sass-loader": "^12.6.0",
     "semistandard": "^16.0.0",
     "standard": "^16.0.3",
     "standardx": "^7.0.0",
