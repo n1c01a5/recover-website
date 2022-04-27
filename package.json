@@ -15,7 +15,7 @@
     "@material-ui/icons": "^4.11.2",
     "@zeit/next-css": "^1.0.1",
     "airtable": "^0.11.0",
-    "axios": "^0.21.1",
+    "axios": "^0.27.2",
     "bootstrap": "^5.0.0",
     "dexag-sdk": "^2.2.9",
     "ipfs-http-client": "^55.0.0",
