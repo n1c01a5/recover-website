@@ -43,7 +43,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.2",
     "next-images": "^1.6.2",
-    "sass": "^1.32.7",
+    "sass": "^1.53.0",
     "sass-loader": "^11.0.1",
     "semistandard": "^16.0.0",
     "standard": "^16.0.3",
